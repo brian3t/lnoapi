@@ -1,0 +1,29 @@
+/* line 4, ../sass/custom.scss */
+table.detail-view th {
+  width: 20%;
+}
+/* line 7, ../sass/custom.scss */
+table.detail-view td {
+  width: 80%;
+}
+
+/* line 12, ../sass/custom.scss */
+table.kv-grid-table th {
+  font-size: 88%;
+}
+
+/* line 16, ../sass/custom.scss */
+.column_center {
+  width: 100%;
+  text-align: center;
+}
+
+/* line 22, ../sass/custom.scss */
+form.responsive div.form-group {
+  width: 45%;
+}
+
+/* line 26, ../sass/custom.scss */
+table.kv-grid-table input.form-control {
+  width: initial;
+}
