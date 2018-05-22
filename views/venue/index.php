@@ -25,80 +25,47 @@ $this->registerJs($search);
 <?php 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
-        ['attribute' => 'id', 'visible' => false],
-        'name',
-        'venue_type',
         [
-            'attribute' => 'company_id',
-            'value' => function($model){
-                return is_object($model->company)?$model->company->name:'N/A';
+            'class' => 'kartik\grid\ExpandRowColumn',
+            'width' => '50px',
+            'value' => function ($model, $key, $index, $column) {
+                return GridView::ROW_COLLAPSED;
             },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'id', 'name'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'Company', 'id' => 'grid--company_id']
+            'detail' => function ($model, $key, $index, $column) {
+                return Yii::$app->controller->renderPartial('_expand', ['model' => $model]);
+            },
+            'headerOptions' => ['class' => 'kartik-sheet-style'],
+            'expandOneOnly' => true
         ],
-        'created_at',
-        'updated_at',
-//        'previous_name',
-//        'note',
-//        'ticket_rebate',
-//        'other_deal',
-        'address1',
-//        'address2',
-        'city',
-        'state',
-        'zipcode',
-//        'country',
-//        'timezone',
-        'owner',
-        'general_info_email:email',
-/*        'main_office_phone',
-        'box_office_phone',
-        'fax_phone',
-        'other_phone',*/
+        ['attribute' => 'id', 'visible' => false],
         [
-                'attribute' => 'primary_ticketing_company_id',
-                'label' => 'Primary Ticketing Company',
+                'attribute' => 'user_id',
+                'label' => 'User',
                 'value' => function($model){
-                    return is_object($model->primaryTicketingCompany)?$model->primaryTicketingCompany->name:'N/A';
+                    if ($model->user)
+                    {return $model->user->username;}
+                    else
+                    {return NULL;}
                 },
                 'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'id', 'name'),
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
                 'filterWidgetOptions' => [
                     'pluginOptions' => ['allowClear' => true],
                 ],
-                'filterInputOptions' => ['placeholder' => 'Company', 'id' => 'grid--primary_ticketing_company_id']
+                'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
             ],
-        /*'other_seating_capacity',
-        'end_stage_seating_capacity',
-        'full_stage_seating_capacity',
-        'half_stage_seating_capacity',
-        'in_the_round_seating_capacity',
-        'other_seating_capacity_name',
-        'other_seating_capacity_value',
-        'webpage',
-        'facebook',
-        'yahoo',
-        'linkedin',
+        'name',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'zip',
+        'description',
+        'phone',
+        'cost',
+        'website',
         'twitter',
-        'instagram',
-        'google',*/
-        [
-            'attribute' => 'belong_company_id',
-            'label' => 'Belong to Company',
-            'value' => function($model){
-                return $model->belongCompany->name??'';
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'id', 'name'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'Company', 'id' => 'grid--belong_company_id']
-        ],
+        'facebook',
         [
             'class' => 'yii\grid\ActionColumn',
         ],

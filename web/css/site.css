@@ -127,3 +127,15 @@ div.panel-primary > div > table.kv-grid-table > thead > tr > th.kv-expand-header
 .navbar-nav > li > form{
     padding: 7px 0 3px 0;
 }
+.version{
+    float: left;
+    height: 50px;
+    padding: 15px 15px;
+    font-size: 18px;
+    line-height: 20px;
+}
+@media (max-width:725px) {
+    .version{
+        width: 100%;
+    }
+}

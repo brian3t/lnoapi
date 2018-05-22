@@ -12,19 +12,32 @@ use kartik\grid\GridView;
 
     <div class="row">
         <div class="col-sm-9">
-            <h2><?= Html::encode($model->id) ?></h2>
+            <h2><?= Html::encode($model->name) ?></h2>
         </div>
     </div>
 
     <div class="row">
 <?php 
     $gridColumn = [
-        ['attribute' => 'id', 'hidden' => true],
-        'action',
-        'mp_id',
-        'start',
-        'stop',
-        'note',
+        ['attribute' => 'id', 'visible' => false],
+        [
+            'attribute' => 'user.username',
+            'label' => 'User',
+        ],
+        [
+            'attribute' => 'venue.name',
+            'label' => 'Venue',
+        ],
+        'date',
+        'start_time',
+        'end_time',
+        'name',
+        'description:ntext',
+        'cost',
+        'is_charity',
+        'twitter',
+        'facebook',
+        'website',
     ];
     echo DetailView::widget([
         'model' => $model,

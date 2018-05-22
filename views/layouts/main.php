@@ -34,10 +34,10 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/img/logo.png'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-fixed-top',
+            'class' => 'navbar navbar-default navbar-fixed-top',
         ],
     ]);
-    echo '<span class="navbar-brand">v0.0.1</span>';
+    echo '<span class="version">v0.5</span>';
     $items = [];
     $admin_items = [
 
@@ -75,24 +75,16 @@ AppAsset::register($this);
             'items' => $admin_items,
         ],
         [
-            'label' => 'Companies',
-            'url' => '/company',
+            'label' => 'Bands',
+            'url' => '/band',
         ],
         [
             'label' => 'Venues',
             'url' => '/venue',
         ],
         [
-            'label' => 'Offers',
-            'url' => '/offer',
-        ],
-        [
-            'label' => 'Settlements',
-            'url' => '/settlement',
-        ],
-        [
-            'label' => 'Marketing Plan',
-            'url' => '/marketing',
+            'label' => 'Events',
+            'url' => '/event',
         ],
         ['label' => 'Raw User data', 'url' => '/user'],
     ]);

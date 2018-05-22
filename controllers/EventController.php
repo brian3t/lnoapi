@@ -23,6 +23,19 @@ class EventController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+            'access' => [
+                'class' => \yii\filters\AccessControl::className(),
+                'rules' => [
+                    [
+                        'allow' => true,
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-band-event', 'add-user-event'],
+                        'roles' => ['@']
+                    ],
+                    [
+                        'allow' => false
+                    ]
+                ]
+            ]
         ];
     }
 
@@ -33,7 +46,7 @@ class EventController extends Controller
     public function actionIndex()
     {
         $dataProvider = new ActiveDataProvider([
-            'query' => Event::find()->orderBy(['start' => SORT_DESC]),
+            'query' => Event::find(),
         ]);
 
         return $this->render('index', [
@@ -49,8 +62,16 @@ class EventController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
+        $providerBandEvent = new \yii\data\ArrayDataProvider([
+            'allModels' => $model->bandEvents,
+        ]);
+        $providerUserEvent = new \yii\data\ArrayDataProvider([
+            'allModels' => $model->userEvents,
+        ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'providerBandEvent' => $providerBandEvent,
+            'providerUserEvent' => $providerUserEvent,
         ]);
     }
 
@@ -103,6 +124,7 @@ class EventController extends Controller
 
         return $this->redirect(['index']);
     }
+
     
     /**
      * Finds the Event model based on its primary key value.
@@ -115,6 +137,46 @@ class EventController extends Controller
     {
         if (($model = Event::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    
+    /**
+    * Action to load a tabular form grid
+    * for BandEvent
+    * @author Yohanes Candrajaya <moo.tensai@gmail.com>
+    * @author Jiwantoro Ndaru <jiwanndaru@gmail.com>
+    *
+    * @return mixed
+    */
+    public function actionAddBandEvent()
+    {
+        if (Yii::$app->request->isAjax) {
+            $row = Yii::$app->request->post('BandEvent');
+            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
+                $row[] = [];
+            return $this->renderAjax('_formBandEvent', ['row' => $row]);
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    
+    /**
+    * Action to load a tabular form grid
+    * for UserEvent
+    * @author Yohanes Candrajaya <moo.tensai@gmail.com>
+    * @author Jiwantoro Ndaru <jiwanndaru@gmail.com>
+    *
+    * @return mixed
+    */
+    public function actionAddUserEvent()
+    {
+        if (Yii::$app->request->isAjax) {
+            $row = Yii::$app->request->post('UserEvent');
+            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
+                $row[] = [];
+            return $this->renderAjax('_formUserEvent', ['row' => $row]);
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }

@@ -7,29 +7,126 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Event */
 /* @var $form yii\widgets\ActiveForm */
 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+    'viewParams' => [
+        'class' => 'BandEvent', 
+        'relID' => 'band-event', 
+        'value' => \yii\helpers\Json::encode($model->bandEvents),
+        'isNewRecord' => ($model->isNewRecord) ? 1 : 0
+    ]
+]);
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+    'viewParams' => [
+        'class' => 'UserEvent', 
+        'relID' => 'user-event', 
+        'value' => \yii\helpers\Json::encode($model->userEvents),
+        'isNewRecord' => ($model->isNewRecord) ? 1 : 0
+    ]
+]);
 ?>
 
 <div class="event-form">
 
     <?php $form = ActiveForm::begin(); ?>
-    
+
     <?= $form->errorSummary($model); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'action')->dropDownList([ 'MP ORDER IMPORT' => 'MP ORDER IMPORT', 'ROP ORDER PULL' => 'ROP ORDER PULL', ], ['prompt' => '']) ?>
+    <?= $form->field($model, 'user_id')->widget(\kartik\widgets\Select2::classname(), [
+        'data' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->orderBy('id')->asArray()->all(), 'id', 'username'),
+        'options' => ['placeholder' => 'Choose User'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'mp_id')->textInput(['placeholder' => 'Mp']) ?>
+    <?= $form->field($model, 'venue_id')->widget(\kartik\widgets\Select2::classname(), [
+        'data' => \yii\helpers\ArrayHelper::map(\app\models\Venue::find()->orderBy('id')->asArray()->all(), 'id', 'name'),
+        'options' => ['placeholder' => 'Choose Venue'],
+        'pluginOptions' => [
+            'allowClear' => true
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'start')->textInput(['placeholder' => 'Start']) ?>
+    <?= $form->field($model, 'date')->widget(\kartik\datecontrol\DateControl::classname(), [
+        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
+        'saveFormat' => 'php:Y-m-d',
+        'ajaxConversion' => true,
+        'options' => [
+            'pluginOptions' => [
+                'placeholder' => 'Choose Date',
+                'autoclose' => true
+            ]
+        ],
+    ]); ?>
 
-    <?= $form->field($model, 'stop')->textInput(['placeholder' => 'Stop']) ?>
+    <?= $form->field($model, 'start_time')->widget(\kartik\datecontrol\DateControl::className(), [
+        'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
+        'saveFormat' => 'php:H:i:s',
+        'ajaxConversion' => true,
+        'options' => [
+            'pluginOptions' => [
+                'placeholder' => 'Choose Start Time',
+                'autoclose' => true
+            ]
+        ]
+    ]); ?>
 
-    <?= $form->field($model, 'note')->textInput(['maxlength' => true, 'placeholder' => 'Note']) ?>
+    <?= $form->field($model, 'end_time')->widget(\kartik\datecontrol\DateControl::className(), [
+        'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
+        'saveFormat' => 'php:H:i:s',
+        'ajaxConversion' => true,
+        'options' => [
+            'pluginOptions' => [
+                'placeholder' => 'Choose End Time',
+                'autoclose' => true
+            ]
+        ]
+    ]); ?>
 
+    <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
+
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'cost')->textInput(['maxlength' => true, 'placeholder' => 'Cost']) ?>
+
+    <?= $form->field($model, 'is_charity')->textInput(['placeholder' => 'Is Charity']) ?>
+
+    <?= $form->field($model, 'twitter')->textInput(['maxlength' => true, 'placeholder' => 'Twitter']) ?>
+
+    <?= $form->field($model, 'facebook')->textInput(['maxlength' => true, 'placeholder' => 'Facebook']) ?>
+
+    <?= $form->field($model, 'website')->textInput(['maxlength' => true, 'placeholder' => 'Website']) ?>
+
+    <?php
+    $forms = [
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode('BandEvent'),
+            'content' => $this->render('_formBandEvent', [
+                'row' => \yii\helpers\ArrayHelper::toArray($model->bandEvents),
+            ]),
+        ],
+        [
+            'label' => '<i class="glyphicon glyphicon-book"></i> ' . Html::encode('UserEvent'),
+            'content' => $this->render('_formUserEvent', [
+                'row' => \yii\helpers\ArrayHelper::toArray($model->userEvents),
+            ]),
+        ],
+    ];
+    echo kartik\tabs\TabsX::widget([
+        'items' => $forms,
+        'position' => kartik\tabs\TabsX::POS_ABOVE,
+        'encodeLabels' => false,
+        'pluginOptions' => [
+            'bordered' => true,
+            'sideways' => true,
+            'enableCache' => false,
+        ],
+    ]);
+    ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
-        <?= Html::a(Yii::t('app', 'Cancel'),['index'],['class'=> 'btn btn-danger']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

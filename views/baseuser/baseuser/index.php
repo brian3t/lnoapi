@@ -31,45 +31,18 @@ $this->registerJs($search);
             },
             'format'=>'html'
             ],
-        [
-                'attribute' => 'company_id',
-                'label' => 'Company',
-                'value' => function($model){
-                    return $model->company->name;
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'id', 'name'),
-                'filterWidgetOptions' => [
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => 'Company', 'id' => 'grid--company_id']
-            ],
-        'job_title',
         'email:email',
         'registration_ip',
         'created_at:datetime',
         'updated_at:datetime',
         'first_name',
         'last_name',
-        'line_of_business',
-        'union_memberships',
         ['attribute'=>'phone_number_type','label'=>'Phone Type'],
         ['attribute'=>'phone_number','label'=> 'Phone'],
-        'birthdate:date',
+       'favorite_genres',
+       'favorite_venue_types',
         'website_url:url',
         [
-            'attribute' => 'belong_company_id',
-            'label' => 'Belongs to',
-            'value' => function($model){
-                return $model->belongCompany->name??'';
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Company::find()->asArray()->all(), 'id', 'name'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'Company', 'id' => 'grid--belong_company_id']
-        ],[
             'class' => 'yii\grid\ActionColumn',
         ],
     ];

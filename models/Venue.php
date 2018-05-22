@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use Yii;
 use \app\models\base\Venue as BaseVenue;
 
 /**
@@ -9,11 +10,23 @@ use \app\models\base\Venue as BaseVenue;
  */
 class Venue extends BaseVenue
 {
-    public static $order_by_col='name';
-
-    public function beforeValidate()
+    /**
+     * @inheritdoc
+     */
+    public function rules()
     {
-        $this->zipcode = strval($this->zipcode);
-        return parent::beforeValidate();
+        return array_replace_recursive(parent::rules(),
+	    [
+            [['created_at', 'updated_at'], 'safe'],
+            [['created_by', 'user_id'], 'integer'],
+            [['cost'], 'number'],
+            [['name', 'address1', 'address2', 'website', 'twitter', 'facebook'], 'string', 'max' => 255],
+            [['city'], 'string', 'max' => 80],
+            [['state'], 'string', 'max' => 8],
+            [['zip'], 'string', 'max' => 25],
+            [['description'], 'string', 'max' => 800],
+            [['phone'], 'string', 'max' => 18]
+        ]);
     }
+	
 }

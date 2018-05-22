@@ -28,7 +28,7 @@ class VenueController extends Controller
                 'rules' => [
                     [
                         'allow' => true,
-                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-offer', 'add-settlement'],
+                        'actions' => ['index', 'view', 'create', 'update', 'delete', 'add-event'],
                         'roles' => ['@']
                     ],
                     [
@@ -62,16 +62,12 @@ class VenueController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
-        $providerOffer = new \yii\data\ArrayDataProvider([
-            'allModels' => $model->offers,
-        ]);
-        $providerSettlement = new \yii\data\ArrayDataProvider([
-            'allModels' => $model->settlements,
+        $providerEvent = new \yii\data\ArrayDataProvider([
+            'allModels' => $model->events,
         ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
-            'providerOffer' => $providerOffer,
-            'providerSettlement' => $providerSettlement,
+            'providerEvent' => $providerEvent,
         ]);
     }
 
@@ -137,6 +133,26 @@ class VenueController extends Controller
     {
         if (($model = Venue::findOne($id)) !== null) {
             return $model;
+        } else {
+            throw new NotFoundHttpException('The requested page does not exist.');
+        }
+    }
+    
+    /**
+    * Action to load a tabular form grid
+    * for Event
+    * @author Yohanes Candrajaya <moo.tensai@gmail.com>
+    * @author Jiwantoro Ndaru <jiwanndaru@gmail.com>
+    *
+    * @return mixed
+    */
+    public function actionAddEvent()
+    {
+        if (Yii::$app->request->isAjax) {
+            $row = Yii::$app->request->post('Event');
+            if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
+                $row[] = [];
+            return $this->renderAjax('_formEvent', ['row' => $row]);
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
