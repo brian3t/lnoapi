@@ -38,7 +38,11 @@ $this->registerJs($search);
             'expandOneOnly' => true
         ],
         ['attribute' => 'id', 'visible' => false],
-        'name',
+        ['attribute' => 'name',
+            'format'=>'raw',
+            'value' => function($model){
+                return "<a href=/band/view?id=" . $model->id . ">{$model->name}</a>";
+            }],
         [
                 'attribute' => 'user_id',
                 'label' => 'User',
@@ -55,13 +59,12 @@ $this->registerJs($search);
                 ],
                 'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
             ],
-        'logo',
+        'logo:image',
         'lno_score',
         'type',
         'similar_to',
         'hometown_city',
         'hometown_state',
-        'description:ntext',
         'website',
         'facebook',
         'twitter',

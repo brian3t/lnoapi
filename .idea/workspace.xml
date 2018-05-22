@@ -1,29 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="838b1b5a-1588-46f0-bc1f-05498dc61fac" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyleSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8af9d57b-160d-468d-bf90-b3c39e10ceeb.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/8af9d57b-160d-468d-bf90-b3c39e10ceeb/storage.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/tri.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ermapi.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/frameworkRootSettings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/watcherTasks.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/webServers.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+    <list default="true" id="6068b561-2242-4c8d-807a-3b8aedf4744b" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/models/constants.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/band/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/band/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/band/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/view.php" afterDir="false" />
     </list>
+    <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap/" />
+    <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap3-dialog/" />
+    <ignored path="$PROJECT_DIR$/vendor/bower/inputmask/" />
+    <ignored path="$PROJECT_DIR$/vendor/bower/jquery/" />
+    <ignored path="$PROJECT_DIR$/vendor/bower/punycode/" />
+    <ignored path="$PROJECT_DIR$/vendor/bower/typeahead.js/" />
+    <ignored path="$PROJECT_DIR$/vendor/bower/yii2-pjax/" />
+    <ignored path="$PROJECT_DIR$/vendor/cebe/js-search/" />
+    <ignored path="$PROJECT_DIR$/vendor/cebe/markdown/" />
+    <ignored path="$PROJECT_DIR$/vendor/cebe/markdown-latex/" />
+    <ignored path="$PROJECT_DIR$/vendor/composer/" />
+    <ignored path="$PROJECT_DIR$/vendor/creocoder/yii2-nested-sets/" />
+    <ignored path="$PROJECT_DIR$/vendor/dektrium/yii2-user/" />
+    <ignored path="$PROJECT_DIR$/vendor/doctrine/lexer/" />
+    <ignored path="$PROJECT_DIR$/vendor/egulias/email-validator/" />
+    <ignored path="$PROJECT_DIR$/vendor/electrolinux/phpquery/" />
+    <ignored path="$PROJECT_DIR$/vendor/ezyang/htmlpurifier/" />
+    <ignored path="$PROJECT_DIR$/vendor/fzaninotto/faker/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/bootstrap-tabs-x/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/php-date-formatter/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-builder/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-date-range/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-datecontrol/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-dialog/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-dynagrid/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-export/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-field-range/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-grid/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-mpdf/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-sortable/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-tabs-x/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-tree-manager/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-activeform/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-affix/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-alert/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-colorinput/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datetimepicker/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-fileinput/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-growl/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rangeinput/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rating/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-select2/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-sidenav/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-spinner/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-switchinput/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-timepicker/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-touchspin/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-typeahead/" />
+    <ignored path="$PROJECT_DIR$/vendor/kartik-v/yii2-widgets/" />
+    <ignored path="$PROJECT_DIR$/vendor/mikevanriel/text-to-latex/" />
+    <ignored path="$PROJECT_DIR$/vendor/mootensai/yii2-enhanced-gii/" />
+    <ignored path="$PROJECT_DIR$/vendor/mootensai/yii2-jsblock/" />
+    <ignored path="$PROJECT_DIR$/vendor/mootensai/yii2-optimistic-lock-validator/" />
+    <ignored path="$PROJECT_DIR$/vendor/mootensai/yii2-relation-trait/" />
+    <ignored path="$PROJECT_DIR$/vendor/mootensai/yii2-uuid-behavior/" />
+    <ignored path="$PROJECT_DIR$/vendor/mpdf/mpdf/" />
+    <ignored path="$PROJECT_DIR$/vendor/nikic/php-parser/" />
+    <ignored path="$PROJECT_DIR$/vendor/phpdocumentor/reflection/" />
+    <ignored path="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock/" />
+    <ignored path="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet/" />
+    <ignored path="$PROJECT_DIR$/vendor/phpspec/php-diff/" />
+    <ignored path="$PROJECT_DIR$/vendor/psr/log/" />
+    <ignored path="$PROJECT_DIR$/vendor/psr/simple-cache/" />
+    <ignored path="$PROJECT_DIR$/vendor/scrivo/highlight.php/" />
+    <ignored path="$PROJECT_DIR$/vendor/setasign/fpdi/" />
+    <ignored path="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer/" />
+    <ignored path="$PROJECT_DIR$/vendor/voskobovich/yii2-many-many-behavior/" />
+    <ignored path="$PROJECT_DIR$/vendor/vova07/yii2-console-runner-extension/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-apidoc/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-authclient/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-composer/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-debug/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-faker/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-gii/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-httpclient/" />
+    <ignored path="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,31 +100,61 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-    <executablePath>composer</executablePath>
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="composer.json" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/composer.json">
+      <file leaf-file-name="app.log" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="_form.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/band/_form.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/band/view.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/views/band/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
+            <state relative-caret-position="465">
+              <caret line="48" column="44" lean-forward="true" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/web/index.php">
+      <file leaf-file-name="constants.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/constants.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
+            <state relative-caret-position="195">
+              <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>user</find>
+      <find>state</find>
+      <find>bandcomm</find>
+    </findStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -63,8 +162,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/composer.json" />
-        <option value="$PROJECT_DIR$/web/index.php" />
+        <option value="$PROJECT_DIR$/config/db.php" />
+        <option value="$PROJECT_DIR$/views/band/view.php" />
+        <option value="$PROJECT_DIR$/models/constants.php" />
+        <option value="$PROJECT_DIR$/views/band/_form.php" />
+        <option value="$PROJECT_DIR$/runtime/logs/app.log" />
+        <option value="$PROJECT_DIR$/views/band/index.php" />
       </list>
     </option>
   </component>
@@ -76,13 +179,6 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/vendor/bower/bootstrap/package.json" />
-      <path value="$PROJECT_DIR$/vendor/bower/typeahead.js/package.json" />
-      <path value="$PROJECT_DIR$/vendor/bower/yii2-pjax/package.json" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput/package.json" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating/package.json" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown/package.json" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/php-date-formatter/package.json" />
       <path value="$PROJECT_DIR$/web/assets/220e2e4f/package.json" />
       <path value="$PROJECT_DIR$/web/assets/6511cc0d/package.json" />
       <path value="$PROJECT_DIR$/web/assets/980d9e62/package.json" />
@@ -91,10 +187,16 @@
       <path value="$PROJECT_DIR$/web/assets/b87978db/package.json" />
       <path value="$PROJECT_DIR$/web/assets/bfd97dc7/package.json" />
       <path value="$PROJECT_DIR$/web/assets/c56c2c13/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/d1571b8e/package.json" />
       <path value="$PROJECT_DIR$/web/assets/e2794e30/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.2">
+  <component name="PhpServers">
+    <servers>
+      <server host="lnoapi" id="24054062-f63d-47ed-9881-f7e18fdfece5" name="lnoapi" />
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
@@ -184,15 +286,15 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="x" value="1" />
+    <option name="width" value="950" />
+    <option name="height" value="1059" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
@@ -204,20 +306,44 @@
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="web" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="logs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+              <item name="band" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="reference.webide.settings.project.settings.php" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -246,11 +372,11 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="838b1b5a-1588-46f0-bc1f-05498dc61fac" name="Default" comment="" />
-      <created>1526068870244</created>
+      <changelist id="6068b561-2242-4c8d-807a-3b8aedf4744b" name="Default" comment="" />
+      <created>1527015181128</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1526068870244</updated>
+      <updated>1527015181128</updated>
     </task>
     <servers />
   </component>
@@ -261,16 +387,17 @@
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="right" id="Palette&#9;" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Migrations" />
       <window_info anchor="bottom" id="Database Changes" show_stripe_button="false" />
       <window_info anchor="bottom" id="Run" order="2" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Terminal" />
       <window_info id="Designer" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15833333" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info anchor="right" id="Database" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.4" />
       <window_info id="Favorites" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -286,35 +413,55 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/composer.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="21" lean-forward="true" selection-start-line="21" selection-start-column="21" selection-end-line="21" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="35" selection-start-line="11" selection-start-column="35" selection-end-line="11" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
+  <component name="debuggerHistoryManager">
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>\yii\helpers\ArrayHelper::map(\app\models\User::find()-&gt;orderBy('id')-&gt;asArray()-&gt;all(), 'id', 'username')</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>\app\models\User::find()-&gt;orderBy('id')-&gt;asArray()-&gt;all()</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/config/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="45" selection-start-line="4" selection-start-column="45" selection-end-line="4" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/constants.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="20" lean-forward="true" selection-start-line="13" selection-start-column="20" selection-end-line="13" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/band/_form.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/band/view.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/band/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="48" column="44" lean-forward="true" selection-start-line="48" selection-start-column="44" selection-end-line="48" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

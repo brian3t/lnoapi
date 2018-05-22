@@ -3,11 +3,14 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+chdir(dirname(dirname(__DIR__)));
+require_once 'models/constants.php';
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Band */
 /* @var $form yii\widgets\ActiveForm */
 
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END,
     'viewParams' => [
         'class' => 'BandComment', 
         'relID' => 'band-comment', 
@@ -61,7 +64,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'logo')->textInput(['maxlength' => true, 'placeholder' => 'Paste url to logo image here. Use image hosting services such as imgur or wikimedia ']) ?>
 
-    <!--?= $form->field($model, 'lno_score')->textInput(['maxlength' => true, 'placeholder' => 'Lno Score']) --?>
+    <?php //echo $form->field($model, 'lno_score')->textInput(['maxlength' => true, 'placeholder' => 'Lno Score']) ?>
 
     <?= $form->field($model, 'type')->dropDownList([ 'covers' => 'Covers', 'originals' => 'Originals', 'covers & originals' => 'Covers & originals', 'unknown' => 'Unknown', ], ['prompt' => '']) ?>
 
@@ -69,7 +72,7 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'hometown_city')->textInput(['maxlength' => true, 'placeholder' => 'Hometown City']) ?>
 
-    <?= $form->field($model, 'hometown_state')->textInput(['maxlength' => true, 'placeholder' => 'Hometown State']) ?>
+    <?= $form->field($model, 'hometown_state')->dropDownList(STATES, ['placeholder' => 'Hometown State']) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
@@ -106,7 +109,7 @@ use yii\widgets\ActiveForm;
             ]),
         ],
     ];
-    echo kartik\tabs\TabsX::widget([
+    /*echo kartik\tabs\TabsX::widget([
         'items' => $forms,
         'position' => kartik\tabs\TabsX::POS_ABOVE,
         'encodeLabels' => false,
@@ -115,7 +118,7 @@ use yii\widgets\ActiveForm;
             'sideways' => true,
             'enableCache' => false,
         ],
-    ]);
+    ]);*/
     ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
