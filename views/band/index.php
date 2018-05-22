@@ -68,6 +68,8 @@ $this->registerJs($search);
         'website',
         'facebook',
         'twitter',
+        'created_at:datetime',
+        'twitter',
         [
             'class' => 'yii\grid\ActionColumn',
         ],
