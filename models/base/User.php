@@ -27,8 +27,8 @@ use Yii;
  * @property string $birthdate
  * @property integer $birth_month
  * @property integer $birth_year
- * @property array $favorite_genres
- * @property array $favorite_venue_types
+ * @property string $favorite_genres
+ * @property string $favorite_venue_types
  * @property string $website_url
  * @property string $twitter_id
  * @property string $facebook_id

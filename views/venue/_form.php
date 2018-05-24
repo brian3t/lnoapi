@@ -3,6 +3,9 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+chdir(dirname(dirname(__DIR__)));
+require_once 'models/constants.php';
+
 /* @var $this yii\web\View */
 /* @var $model app\models\Venue */
 /* @var $form yii\widgets\ActiveForm */
@@ -41,11 +44,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'city')->textInput(['maxlength' => true, 'placeholder' => 'City']) ?>
 
-    <?= $form->field($model, 'state')->textInput(['maxlength' => true, 'placeholder' => 'State']) ?>
+    <?= $form->field($model, 'state')->dropDownList(STATES, ['placeholder' => 'Hometown State']) ?>
 
     <?= $form->field($model, 'zip')->textInput(['maxlength' => true, 'placeholder' => 'Zip']) ?>
 
-    <?= $form->field($model, 'description')->textInput(['maxlength' => true, 'placeholder' => 'Description']) ?>
+    <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'phone')->textInput(['maxlength' => true, 'placeholder' => 'Phone']) ?>
 
