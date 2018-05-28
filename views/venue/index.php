@@ -38,22 +38,6 @@ $this->registerJs($search);
             'expandOneOnly' => true
         ],
         ['attribute' => 'id', 'visible' => false],
-        [
-                'attribute' => 'user_id',
-                'label' => 'User',
-                'value' => function($model){
-                    if ($model->user)
-                    {return $model->user->username;}
-                    else
-                    {return NULL;}
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
-                'filterWidgetOptions' => [
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
-            ],
         'name',
         'address1',
         'address2',
@@ -67,9 +51,29 @@ $this->registerJs($search);
         'twitter',
         'facebook',
         [
+            'attribute' => 'user_id',
+            'label' => 'Venue owner',
+            'value' => function($model){
+                if ($model->user)
+                {return $model->user->username;}
+                else
+                {return NULL;}
+            },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
+            ],
+            'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
+        ],
+        ['attribute'=>'created_by',
+            'value'=>function($model){
+                return $model->createdBy->username;
+            }],
+        [
             'class' => 'yii\grid\ActionColumn',
         ],
-    ]; 
+    ];
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,

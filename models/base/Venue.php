@@ -3,6 +3,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base model class for table "venue".
@@ -119,4 +120,19 @@ class Venue extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\User::className(), ['id' => 'user_id'])->inverseOf('venues');
     }
+    
+    /**
+     * @inheritdoc
+     * @return array mixed
+     */
+    public function behaviors()
+    {
+        return [
+            'blameable' => [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'created_by',
+                'updatedByAttribute' => false,
+            ],
+        ];
     }
+}

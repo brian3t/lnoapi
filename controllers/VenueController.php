@@ -62,6 +62,7 @@ class VenueController extends Controller
     public function actionView($id)
     {
         $model = $this->findModel($id);
+        $createdBy = $model->createdBy;
         $providerEvent = new \yii\data\ArrayDataProvider([
             'allModels' => $model->events,
         ]);
