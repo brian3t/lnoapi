@@ -72,7 +72,7 @@ $this->registerJs($search);
         ],
         ['attribute' => 'created_by',
             'value' => function ($model) {
-                return $model->createdBy->username;
+                return $model->createdBy?$model->createdBy->username:'N/A';
             }],
         [
             'class' => 'yii\grid\ActionColumn',
