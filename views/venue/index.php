@@ -47,12 +47,15 @@ $this->registerJs($search);
         'city',
         'state',
         'zip',
-        'description',
+        ['attribute' => 'description',
+            'value' => function ($model) {
+                return substr($model->description, 0, 200);
+            }],
         'phone',
         'cost',
-        'website',
-        'twitter',
-        'facebook',
+        'website:url',
+        'twitter:url',
+        'facebook:url',
         [
             'attribute' => 'user_id',
             'label' => 'Venue owner',
@@ -72,7 +75,7 @@ $this->registerJs($search);
         ],
         ['attribute' => 'created_by',
             'value' => function ($model) {
-                return $model->createdBy?$model->createdBy->username:'N/A';
+                return $model->createdBy ? $model->createdBy->username : 'N/A';
             }],
         [
             'class' => 'yii\grid\ActionColumn',
