@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use yii\helpers\Html;
@@ -22,23 +23,25 @@ $this->registerJs($search);
     <p>
         <?= Html::a('Create Venue', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php 
+    <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         [
             'class' => 'kartik\grid\ExpandRowColumn',
             'width' => '50px',
-            'value' => function ($model, $key, $index, $column) {
+            'value' => function () {
                 return GridView::ROW_COLLAPSED;
             },
-            'detail' => function ($model, $key, $index, $column) {
+            'detail' => function ($model) {
                 return Yii::$app->controller->renderPartial('_expand', ['model' => $model]);
             },
             'headerOptions' => ['class' => 'kartik-sheet-style'],
             'expandOneOnly' => true
         ],
         ['attribute' => 'id', 'visible' => false],
-        'name',
+        [
+            'class' => 'app\brian\yiiplus\EditColumn',
+        ],
         'address1',
         'address2',
         'city',
@@ -53,11 +56,12 @@ $this->registerJs($search);
         [
             'attribute' => 'user_id',
             'label' => 'Venue owner',
-            'value' => function($model){
-                if ($model->user)
-                {return $model->user->username;}
-                else
-                {return NULL;}
+            'value' => function ($model) {
+                if ($model->user) {
+                    return $model->user->username;
+                } else {
+                    return NULL;
+                }
             },
             'filterType' => GridView::FILTER_SELECT2,
             'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
@@ -66,8 +70,8 @@ $this->registerJs($search);
             ],
             'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
         ],
-        ['attribute'=>'created_by',
-            'value'=>function($model){
+        ['attribute' => 'created_by',
+            'value' => function ($model) {
                 return $model->createdBy->username;
             }],
         [
@@ -103,7 +107,7 @@ $this->registerJs($search);
                 'exportConfig' => [
                     ExportMenu::FORMAT_PDF => false
                 ]
-            ]) ,
+            ]),
         ],
     ]); ?>
 

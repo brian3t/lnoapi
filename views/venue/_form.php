@@ -28,7 +28,7 @@ require_once 'models/constants.php';
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'user_id')->widget(\kartik\widgets\Select2::classname(), [
+    <?= $form->field($model, 'user_id')->label('Venue owner')->widget(\kartik\widgets\Select2::class, [
         'data' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->orderBy('id')->asArray()->all(), 'id', 'username'),
         'options' => ['placeholder' => 'Choose User'],
         'pluginOptions' => [

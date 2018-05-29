@@ -114,8 +114,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'email',
         'first_name',
     ];
-    echo DetailView::widget([
-        'model' => $model->user,
-        'attributes' => $gridColumnUser]);
+    if (is_object($model->user)) {
+        echo DetailView::widget([
+            'model' => $model->user,
+            'attributes' => $gridColumnUser]);
+    } else {
+        echo 'Noone claimed this venue yet';
+    }
     ?>
 </div>
