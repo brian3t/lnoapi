@@ -91,6 +91,10 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'cost')->textInput(['maxlength' => true, 'placeholder' => 'Cost']) ?>
 
+    <?= $form->field($model, 'min_cost')->textInput(['maxlength' => true, 'placeholder' => 'Min Cost']) ?>
+
+    <?= $form->field($model, 'max_cost')->textInput(['maxlength' => true, 'placeholder' => 'Max Cost']) ?>
+
     <?= $form->field($model, 'is_charity')->textInput(['placeholder' => 'Is Charity']) ?>
 
     <?= $form->field($model, 'twitter')->textInput(['maxlength' => true, 'placeholder' => 'Twitter']) ?>

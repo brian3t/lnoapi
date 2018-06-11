@@ -34,6 +34,8 @@ use kartik\grid\GridView;
         'name',
         'description:ntext',
         'cost',
+        'min_cost',
+        'max_cost',
         'is_charity',
         'twitter',
         'facebook',

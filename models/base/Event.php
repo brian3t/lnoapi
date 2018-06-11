@@ -3,6 +3,7 @@
 namespace app\models\base;
 
 use Yii;
+use yii\behaviors\BlameableBehavior;
 
 /**
  * This is the base model class for table "event".
@@ -19,6 +20,8 @@ use Yii;
  * @property string $name
  * @property string $description
  * @property string $cost
+ * @property string $min_cost
+ * @property string $max_cost
  * @property integer $is_charity
  * @property string $twitter
  * @property string $facebook
@@ -59,8 +62,8 @@ class Event extends \yii\db\ActiveRecord
             [['created_at', 'updated_at', 'date', 'start_time', 'end_time'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['description'], 'string'],
-            [['cost'], 'number'],
-            [['name', 'twitter', 'facebook', 'website'], 'string', 'max' => 255],
+            [['min_cost', 'max_cost'], 'number'],
+            [['name', 'cost', 'twitter', 'facebook', 'website'], 'string', 'max' => 255],
             [['is_charity'], 'string', 'max' => 4]
         ];
     }
@@ -88,6 +91,8 @@ class Event extends \yii\db\ActiveRecord
             'name' => 'Name',
             'description' => 'Description',
             'cost' => 'Cost',
+            'min_cost' => 'Min Cost',
+            'max_cost' => 'Max Cost',
             'is_charity' => 'Is Charity',
             'twitter' => 'Twitter',
             'facebook' => 'Facebook',
@@ -134,4 +139,19 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\UserEvent::className(), ['event_id' => 'id'])->inverseOf('event');
     }
+    
+    /**
+     * @inheritdoc
+     * @return array mixed
+     */
+    public function behaviors()
+    {
+        return [
+            'blameable' => [
+                'class' => BlameableBehavior::className(),
+                'createdByAttribute' => 'user_id',
+                'updatedByAttribute' => false,
+            ],
+        ];
     }
+}

@@ -20,8 +20,8 @@ class Event extends BaseEvent
             [['created_at', 'updated_at', 'date', 'start_time', 'end_time'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['description'], 'string'],
-            [['cost'], 'number'],
-            [['name', 'twitter', 'facebook', 'website'], 'string', 'max' => 255],
+            [['min_cost', 'max_cost'], 'number'],
+            [['name', 'cost', 'twitter', 'facebook', 'website'], 'string', 'max' => 255],
             [['is_charity'], 'string', 'max' => 4]
         ]);
     }
