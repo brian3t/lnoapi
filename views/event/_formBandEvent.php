@@ -1,10 +1,10 @@
 <div class="form-group" id="add-band-event">
 <?php
-use kartik\grid\GridView;
+
 use kartik\builder\TabularForm;
+use kartik\grid\GridView;
 use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 $dataProvider = new ArrayDataProvider([
     'allModels' => $row,
@@ -48,7 +48,7 @@ echo TabularForm::widget([
             'type' => GridView::TYPE_DEFAULT,
             'before' => false,
             'footer' => false,
-            'after' => Html::button('<i class="glyphicon glyphicon-plus"></i>' . 'Add Band Event', ['type' => 'button', 'class' => 'btn btn-success kv-batch-create', 'onClick' => 'addRowBandEvent()']),
+            'after' => Html::button('<i class="glyphicon glyphicon-plus"></i>' . 'Add Performing Band', ['type' => 'button', 'class' => 'btn btn-success kv-batch-create', 'onClick' => 'addRowBandEvent()']),
         ]
     ]
 ]);

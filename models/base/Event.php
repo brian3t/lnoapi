@@ -2,7 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
 use yii\behaviors\BlameableBehavior;
 
 /**
@@ -149,7 +148,7 @@ class Event extends \yii\db\ActiveRecord
         return [
             'blameable' => [
                 'class' => BlameableBehavior::className(),
-                'createdByAttribute' => 'user_id',
+                'createdByAttribute' => 'created_by',
                 'updatedByAttribute' => false,
             ],
         ];

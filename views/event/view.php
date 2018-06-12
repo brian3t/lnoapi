@@ -1,8 +1,8 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Event */
@@ -12,8 +12,7 @@ $this->params['breadcrumbs'][] = ['label' => 'Event', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="event-view">
-
-    <div class="row">
+    <div class="col-md-6">
         <div class="col-sm-9">
             <h2><?= 'Event'.' '. Html::encode($this->title) ?></h2>
         </div>
@@ -23,21 +22,22 @@ $this->params['breadcrumbs'][] = $this->title;
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
                 'data' => [
-                    'confirm' => 'Are you sure you want to delete this item?',
+                    'confirm' => 'Are you sure you want to delete this Event?',
                     'method' => 'post',
                 ],
             ])
             ?>
         </div>
     </div>
+    <div class="clearfix"></div>
 
-    <div class="row">
+    <div class="col-md-6">
 <?php 
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         [
             'attribute' => 'user.username',
-            'label' => 'User',
+            'label' => 'Event Owner',
         ],
         [
             'attribute' => 'venue.name',
@@ -63,7 +63,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
     </div>
     
-    <div class="row">
+    <div class="col-md-6">
 <?php
 if($providerBandEvent->totalCount){
     $gridColumnBandEvent = [
@@ -71,7 +71,7 @@ if($providerBandEvent->totalCount){
             ['attribute' => 'id', 'visible' => false],
             [
                 'attribute' => 'band.name',
-                'label' => 'Band'
+                'label' => 'Band\'s name'
             ],
                 ];
     echo Gridview::widget([
@@ -80,7 +80,7 @@ if($providerBandEvent->totalCount){
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-band-event']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
-            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Band Event'),
+            'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Bands Performing'),
         ],
         'export' => false,
         'columns' => $gridColumnBandEvent
@@ -89,107 +89,36 @@ if($providerBandEvent->totalCount){
 ?>
 
     </div>
-    <div class="row">
-        <h4>User<?= ' '. Html::encode($this->title) ?></h4>
+    <div class="col-md-6">
+        <h4>Created By</h4>
     </div>
     <?php 
     $gridColumnUser = [
         ['attribute' => 'id', 'visible' => false],
         'username',
         'email',
-        'password_hash',
-        'auth_key',
-        'confirmed_at',
-        'unconfirmed_email',
-        'blocked_at',
-        'registration_ip',
-        'flags',
         'first_name',
-        'last_name',
-        'note',
-        'phone_number_type',
-        'phone_number',
-        'birthdate',
-        'birth_month',
-        'birth_year',
-        'favorite_genres',
-        'favorite_venue_types',
-        'website_url',
-        'twitter_id',
-        'facebook_id',
-        'instagram_id',
-        'google_id',
-        'address1',
-        'address2',
-        'city',
-        'state',
-        'zipcode',
-        'country',
-        'last_login_at',
-    ];
+    ];?>
+    <div class="col-md-6">
+    <?php
     echo DetailView::widget([
         'model' => $model->createdBy,
         'attributes' => $gridColumnUser    ]);
     ?>
-    <div class="row">
-        <h4>User<?= ' '. Html::encode($this->title) ?></h4>
     </div>
-    <?php 
-    $gridColumnUser = [
-        ['attribute' => 'id', 'visible' => false],
-        'username',
-        'email',
-        'password_hash',
-        'auth_key',
-        'confirmed_at',
-        'unconfirmed_email',
-        'blocked_at',
-        'registration_ip',
-        'flags',
-        'first_name',
-        'last_name',
-        'note',
-        'phone_number_type',
-        'phone_number',
-        'birthdate',
-        'birth_month',
-        'birth_year',
-        'favorite_genres',
-        'favorite_venue_types',
-        'website_url',
-        'twitter_id',
-        'facebook_id',
-        'instagram_id',
-        'google_id',
-        'address1',
-        'address2',
-        'city',
-        'state',
-        'zipcode',
-        'country',
-        'last_login_at',
-    ];
-    echo DetailView::widget([
-        'model' => $model->user,
-        'attributes' => $gridColumnUser    ]);
-    ?>
-    <div class="row">
-        <h4>Venue<?= ' '. Html::encode($this->title) ?></h4>
+    <div class="col-md-6">
+        <h4>Venue</h4>
     </div>
+    <div class="col-md-6">
     <?php 
     $gridColumnVenue = [
         ['attribute' => 'id', 'visible' => false],
-        [
-            'attribute' => 'user.username',
-            'label' => 'User',
-        ],
         'name',
         'address1',
         'address2',
         'city',
         'state',
         'zip',
-        'description:ntext',
         'phone',
         'cost',
         'website',
@@ -200,8 +129,8 @@ if($providerBandEvent->totalCount){
         'model' => $model->venue,
         'attributes' => $gridColumnVenue    ]);
     ?>
-    
-    <div class="row">
+    </div>
+    <div class="col-md-6">
 <?php
 if($providerUserEvent->totalCount){
     $gridColumnUserEvent = [

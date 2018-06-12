@@ -1,8 +1,8 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Band */
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= 'Band'.' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
-            
+
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -32,13 +32,13 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         'name',
         [
             'attribute' => 'user.username',
-            'label' => 'User',
+            'label' => 'Band Owner',
         ],
         'logo:image',
         'lno_score',
@@ -57,20 +57,22 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
 ?>
     </div>
-    <div class="row">
-        <h4>Band owner account:<?= ' '. Html::encode($this->title) ?></h4>
-    </div>
-    <?php 
-    $gridColumnUser = [
-        ['attribute' => 'id', 'visible' => false],
-        'username',
-        'email',
-    ];
-    echo DetailView::widget([
-        'model' => $model->user,
-        'attributes' => $gridColumnUser    ]);
-    ?>
-    
+    <?php if (is_object($model->user)): ?>
+        <div class="row">
+            <h4>Band owner account:<?= ' '. Html::encode($this->title) ?></h4>
+        </div>
+        <?php
+        $gridColumnUser = [
+            ['attribute' => 'id', 'visible' => false],
+            'username',
+            'email',
+        ];
+        echo DetailView::widget([
+            'model' => $model->user,
+            'attributes' => $gridColumnUser    ]);
+        ?>
+
+    <?php endif;?>
     <div class="row">
 <?php
 if($providerBandComment->totalCount){
@@ -94,7 +96,7 @@ if($providerBandComment->totalCount){
 ?>
 
     </div>
-    
+
     <div class="row">
 <?php
 if($providerBandEvent->totalCount){
@@ -121,7 +123,7 @@ if($providerBandEvent->totalCount){
 ?>
 
     </div>
-    
+
     <div class="row">
 <?php
 if($providerBandFollow->totalCount){
@@ -148,7 +150,7 @@ if($providerBandFollow->totalCount){
 ?>
 
     </div>
-    
+
     <div class="row">
 <?php
 if($providerBandRate->totalCount){

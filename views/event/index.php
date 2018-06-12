@@ -3,9 +3,9 @@
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use yii\helpers\Html;
 
 $this->title = 'Event';
 $this->params['breadcrumbs'][] = $this->title;
@@ -38,6 +38,9 @@ $this->registerJs($search);
             'expandOneOnly' => true
         ],
         ['attribute' => 'id', 'visible' => false],
+        [
+            'class' => 'app\brian\yiiplus\EditColumn',
+        ],
         [
                 'attribute' => 'user_id',
                 'label' => 'User',
