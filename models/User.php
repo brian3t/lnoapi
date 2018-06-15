@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-use Yii;
-use \app\models\base\User as BaseUser;
+use app\models\base\User as BaseUser;
 
 /**
  * This is the model class for table "user".
@@ -21,7 +20,7 @@ class User extends BaseUser {
 
 
     public function getName() {
-        return $this->profile ? $this->profile->name : $this->username;
+        return $this->username;
     }
 
    
@@ -31,10 +30,6 @@ class User extends BaseUser {
             ['password_hash', 'registration_ip', 'unconfirmed_email', 'blocked_at', 'updated_at']);
         return array_merge($parent_fields, [
             'name',
-            'profile' => function ($model) {
-                return $model->profile ? $model->profile->attributes : null;
-            },
-
         ]);
     }
 

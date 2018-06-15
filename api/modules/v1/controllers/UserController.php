@@ -9,26 +9,12 @@
 namespace app\api\modules\v1\controllers;
 
 use app\api\base\controllers\BaseActiveController;
-use app\controllers\user\SecurityController;
 use app\controllers\user\SettingsController;
 use dektrium\user\Finder;
-use dektrium\user\models\Account;
 use dektrium\user\models\LoginForm;
-use dektrium\user\models\User;
 use dektrium\user\models\UserSearch;
-use dektrium\user\Module;
-use dektrium\user\traits\AjaxValidationTrait;
-use dektrium\user\traits\EventTrait;
-use phpDocumentor\Reflection\Exception;
 use Yii;
-use yii\authclient\AuthAction;
-use yii\authclient\ClientInterface;
-use yii\db\ActiveQuery;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\helpers\Url;
-use yii\web\Controller;
-use yii\web\Response;
+use yii\web\UnauthorizedHttpException;
 
 class UserController extends BaseActiveController
 {
@@ -81,8 +67,7 @@ class UserController extends BaseActiveController
             $user_found=$finder->findUserByEmail($model->login);
             if(is_null($user_found))
             {
-                $response['message']='Username does not exist';
-                return $response;
+                throw new UnauthorizedHttpException('Username does not exist');
             }
             if($model->login())
             {
@@ -92,7 +77,7 @@ class UserController extends BaseActiveController
                 $response['id']=$user_found->id;
             } else
             {
-                $response['message']='Wrong password';
+                throw new UnauthorizedHttpException('Wrong password');
             }
         }
         return $response;
