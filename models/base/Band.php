@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the base model class for table "band".
  *
@@ -15,6 +13,7 @@ use Yii;
  * @property string $logo
  * @property string $lno_score
  * @property string $type
+ * @property string $genre
  * @property string $similar_to
  * @property string $hometown_city
  * @property string $hometown_state
@@ -61,8 +60,8 @@ class Band extends \yii\db\ActiveRecord
             [['type', 'description'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
-            [['similar_to', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
-            [['hometown_state'], 'string', 'max' => 8]
+            [['genre', 'similar_to', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
+            [['hometown_state'], 'string', 'max' => 50]
         ];
     }
 
@@ -86,6 +85,7 @@ class Band extends \yii\db\ActiveRecord
             'logo' => 'Logo',
             'lno_score' => 'Lno Score',
             'type' => 'Type',
+            'genre' => 'Genre',
             'similar_to' => 'Similar To',
             'hometown_city' => 'Hometown City',
             'hometown_state' => 'Hometown State',

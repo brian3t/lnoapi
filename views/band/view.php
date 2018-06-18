@@ -43,6 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'logo:image',
         'lno_score',
         'type',
+        'genre',
         'similar_to',
         'hometown_city',
         'hometown_state',

@@ -3,9 +3,9 @@
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use yii\helpers\Html;
 
 $this->title = 'Band';
 $this->params['breadcrumbs'][] = $this->title;
@@ -62,6 +62,7 @@ $this->registerJs($search);
         'logo:image',
         'lno_score',
         'type',
+        'genre',
         'similar_to',
         'hometown_city',
         'hometown_state',

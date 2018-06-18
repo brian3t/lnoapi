@@ -64,7 +64,9 @@ require_once 'models/constants.php';
 
     <?= $form->field($model, 'logo')->textInput(['maxlength' => true, 'placeholder' => 'Paste url to logo image here. Use image hosting services such as imgur or wikimedia ']) ?>
 
-    <?php //echo $form->field($model, 'lno_score')->textInput(['maxlength' => true, 'placeholder' => 'Lno Score']) ?>
+    <?php echo $form->field($model, 'lno_score')->textInput(['maxlength' => true, 'placeholder' => 'Lno Score (1 to 10)']) ?>
+
+    <?= $form->field($model, 'genre')->textInput(['maxlength' => true, 'placeholder' => 'Genre (csv format)']) ?>
 
     <?= $form->field($model, 'type')->dropDownList([ 'covers' => 'Covers', 'originals' => 'Originals', 'covers & originals' => 'Covers & originals', 'unknown' => 'Unknown', ], ['prompt' => '']) ?>
 
