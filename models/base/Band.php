@@ -111,7 +111,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandComment::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -119,7 +119,24 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandEvent::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-        
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEvents()
+    {
+        return $this->hasMany(\app\models\Event::className(), ['id' => 'event_id'])->via('bandEvents');
+    }
+
+    public function pull_events(){
+        $query= $this->hasMany(\app\models\Event::className(), ['id' => 'event_id'])->viaTable('band_event', ['band_id'=>'id'])
+//            ->joinWith('profile')
+//            ->addSelect(['*', "profile.name AS name"]);
+        ;
+        return $query;
+    }
+
+
     /**
      * @return \yii\db\ActiveQuery
      */
