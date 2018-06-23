@@ -4,11 +4,10 @@ namespace app\api\base\controllers;
 
 use app\api\base\RequestBody;
 use app\api\base\RopResponse;
+use yii\filters\Cors;
+use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController;
 use yii\web\Response;
-use yii\helpers\ArrayHelper;
-use yii\filters\Cors;
-use yii\base\Module;
 
 /**
  * Class BaseActiveController
@@ -21,12 +20,10 @@ class BaseActiveController extends ActiveController
 {
     public $requestbody;
     public $message;
-    public $rop_response;
 
     public function init()
     {
         parent::init();
-        $this->rop_response = new RopResponse();
     }
     
     public function behaviors()
