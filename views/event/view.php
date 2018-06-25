@@ -125,9 +125,11 @@ if($providerBandEvent->totalCount){
         'twitter',
         'facebook',
     ];
-    echo DetailView::widget([
-        'model' => $model->venue,
-        'attributes' => $gridColumnVenue    ]);
+    if (is_object($model->venue)) {
+        echo DetailView::widget([
+            'model' => $model->venue,
+            'attributes' => $gridColumnVenue    ]);
+    }
     ?>
     </div>
     <div class="col-md-6">

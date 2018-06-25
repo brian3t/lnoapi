@@ -4,9 +4,9 @@
 
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use yii\helpers\Html;
 
 $this->title = 'Venue';
 $this->params['breadcrumbs'][] = $this->title;
@@ -84,6 +84,7 @@ $this->registerJs($search);
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'responsive' => true,
         'columns' => $gridColumn,
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-venue']],
