@@ -19,6 +19,7 @@ namespace app\models\base;
  * @property string $hometown_state
  * @property string $description
  * @property string $website
+ * @property string $youtube
  * @property string $facebook
  * @property string $twitter
  *
@@ -60,8 +61,9 @@ class Band extends \yii\db\ActiveRecord
             [['type', 'description'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
-            [['genre', 'similar_to', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
-            [['hometown_state'], 'string', 'max' => 50]
+            [['similar_to', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
+            [['hometown_state'], 'string', 'max' => 50],
+            [['youtube'], 'string', 'max' => 800]
         ];
     }
 
@@ -91,6 +93,7 @@ class Band extends \yii\db\ActiveRecord
             'hometown_state' => 'Hometown State',
             'description' => 'Description',
             'website' => 'Website',
+            'youtube' => 'Youtube',
             'facebook' => 'Facebook',
             'twitter' => 'Twitter',
         ];

@@ -8,6 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\rest\IndexAction;
 
 
+require_once "../../../../models/constants.php";
 class BandController extends BaseActiveController
 {
     // We are using the regular web app modules:

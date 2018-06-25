@@ -48,7 +48,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'hometown_city',
         'hometown_state',
         'description:ntext',
-        'website',
+        'website:url',
+        'youtube:url',
         'facebook',
         'twitter',
     ];

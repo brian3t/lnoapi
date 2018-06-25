@@ -67,6 +67,7 @@ $this->registerJs($search);
         'hometown_city',
         'hometown_state',
         'website',
+        'youtube:url',
         'facebook',
         'twitter',
         'created_at:datetime',

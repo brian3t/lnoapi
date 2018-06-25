@@ -1,5 +1,6 @@
 <?php
 
+use kartik\select2\Select2;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -10,34 +11,34 @@ require_once 'models/constants.php';
 /* @var $model app\models\Band */
 /* @var $form yii\widgets\ActiveForm */
 
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END,
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos' => \yii\web\View::POS_END,
     'viewParams' => [
-        'class' => 'BandComment', 
-        'relID' => 'band-comment', 
+        'class' => 'BandComment',
+        'relID' => 'band-comment',
         'value' => \yii\helpers\Json::encode($model->bandComments),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos' => \yii\web\View::POS_END,
     'viewParams' => [
-        'class' => 'BandEvent', 
-        'relID' => 'band-event', 
+        'class' => 'BandEvent',
+        'relID' => 'band-event',
         'value' => \yii\helpers\Json::encode($model->bandEvents),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos' => \yii\web\View::POS_END,
     'viewParams' => [
-        'class' => 'BandFollow', 
-        'relID' => 'band-follow', 
+        'class' => 'BandFollow',
+        'relID' => 'band-follow',
         'value' => \yii\helpers\Json::encode($model->bandFollows),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos' => \yii\web\View::POS_END,
     'viewParams' => [
-        'class' => 'BandRate', 
-        'relID' => 'band-rate', 
+        'class' => 'BandRate',
+        'relID' => 'band-rate',
         'value' => \yii\helpers\Json::encode($model->bandRates),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
@@ -60,15 +61,29 @@ require_once 'models/constants.php';
         'pluginOptions' => [
             'allowClear' => true
         ],
+        'value' => explode(',', $model->genre)
     ]); ?>
 
     <?= $form->field($model, 'logo')->textInput(['maxlength' => true, 'placeholder' => 'Paste url to logo image here. Use image hosting services such as imgur or wikimedia ']) ?>
 
     <?php echo $form->field($model, 'lno_score')->textInput(['maxlength' => true, 'placeholder' => 'Lno Score (1 to 10)']) ?>
 
-    <?= $form->field($model, 'genre')->textInput(['maxlength' => true, 'placeholder' => 'Genre (csv format)']) ?>
+    <?php
+    //    $form->field($model, 'genre')->textInput(['maxlength' => true, 'placeholder' => 'Genre (csv format)'])
+    echo '<label class="control-label">Genre</label>';
+    echo Select2::widget([
+        'name' => 'genre_array',
+        'data' => array_combine(GENRES, GENRES),
+        'value' => explode(',', $model->genre),
+        'options' => [
+            'placeholder' => 'Select genre ...',
+            'multiple' => true,
+        ],
+    ]);
+    ?>
 
-    <?= $form->field($model, 'type')->dropDownList([ 'covers' => 'Covers', 'originals' => 'Originals', 'covers & originals' => 'Covers & originals', 'unknown' => 'Unknown', ], ['prompt' => '']) ?>
+
+    <?= $form->field($model, 'type')->dropDownList(['covers' => 'Covers', 'originals' => 'Originals', 'covers & originals' => 'Covers & originals', 'unknown' => 'Unknown',], ['prompt' => '']) ?>
 
     <?= $form->field($model, 'similar_to')->textInput(['maxlength' => true, 'placeholder' => 'Similar To']) ?>
 
@@ -79,6 +94,8 @@ require_once 'models/constants.php';
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'website')->textInput(['maxlength' => true, 'placeholder' => 'Website']) ?>
+
+    <?= $form->field($model, 'youtube')->textInput(['maxlength' => true, 'placeholder' => 'Youtube Url']) ?>
 
     <?= $form->field($model, 'facebook')->textInput(['maxlength' => true, 'placeholder' => 'Facebook']) ?>
 

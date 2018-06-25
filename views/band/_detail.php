@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Band */
@@ -28,11 +27,13 @@ use kartik\grid\GridView;
         'logo',
         'lno_score',
         'type',
+        'genre',
         'similar_to',
         'hometown_city',
         'hometown_state',
         'description:ntext',
-        'website',
+        'website:url',
+        'youtube:url',
         'facebook',
         'twitter',
     ];

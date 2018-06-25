@@ -10,10 +10,13 @@ use yii\helpers\ArrayHelper;
  */
 class Band extends BaseBand
 {
-    public function beforeSave($insert)
+    public function beforeValidate()
     {
-        $this->genre = strtolower(preg_replace('/\s+/i', '', $this->genre));
-        return parent::beforeSave($insert);
+        $genre_array = \Yii::$app->request->getBodyParam('genre_array');
+        if (is_array($genre_array)){
+            $this->genre = implode(',', $genre_array);
+        }
+        return parent::beforeValidate();
     }
 
     public function fields()

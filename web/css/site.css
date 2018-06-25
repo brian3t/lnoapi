@@ -139,3 +139,4 @@ div.panel-primary > div > table.kv-grid-table > thead > tr > th.kv-expand-header
         width: 100%;
     }
 }
+div.grid-view img{max-width: 300px}
