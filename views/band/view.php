@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'description:ntext',
         'website:url',
         'youtube:url',
+        'instagram:url',
         'facebook',
         'twitter',
     ];

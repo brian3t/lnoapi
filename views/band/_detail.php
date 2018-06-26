@@ -34,6 +34,7 @@ use yii\widgets\DetailView;
         'description:ntext',
         'website:url',
         'youtube:url',
+        'instagram:url',
         'facebook',
         'twitter',
     ];

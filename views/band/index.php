@@ -68,8 +68,8 @@ $this->registerJs($search);
         'hometown_state',
         'website',
         'youtube:url',
+        'instagram:url',
         'facebook',
-        'twitter',
         'created_at:datetime',
         'twitter',
         [

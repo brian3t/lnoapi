@@ -97,6 +97,8 @@ require_once 'models/constants.php';
 
     <?= $form->field($model, 'youtube')->textInput(['maxlength' => true, 'placeholder' => 'Youtube Url']) ?>
 
+    <?= $form->field($model, 'instagram')->textInput(['maxlength' => true, 'placeholder' => 'Instagram']) ?>
+
     <?= $form->field($model, 'facebook')->textInput(['maxlength' => true, 'placeholder' => 'Facebook']) ?>
 
     <?= $form->field($model, 'twitter')->textInput(['maxlength' => true, 'placeholder' => 'Twitter']) ?>

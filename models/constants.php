@@ -1,7 +1,7 @@
 <?php
 
 define('STATES', [
-    '' => 'Please select state',
+    '' => 'Unknown',
     'AL' => 'Alabama',
     'AK' => 'Alaska',
     'AZ' => 'Arizona',
