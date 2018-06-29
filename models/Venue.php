@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-use Yii;
-use \app\models\base\Venue as BaseVenue;
+use app\models\base\Venue as BaseVenue;
 
 /**
  * This is the model class for table "venue".
@@ -19,7 +18,7 @@ class Venue extends BaseVenue
 	    [
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'user_id'], 'integer'],
-            [['cost'], 'number'],
+            [['lat', 'lng', 'cost'], 'number'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook'], 'string', 'max' => 255],
             [['city'], 'string', 'max' => 80],
             [['state'], 'string', 'max' => 8],
@@ -28,5 +27,9 @@ class Venue extends BaseVenue
             [['phone'], 'string', 'max' => 18]
         ]);
     }
-	
+
+    public function pull_address(){
+        $full = implode(', ', [$this->address1, $this->address2]);
+
+    }
 }

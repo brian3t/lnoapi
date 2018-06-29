@@ -1,10 +1,10 @@
 <div class="form-group" id="add-event">
 <?php
-use kartik\grid\GridView;
+
 use kartik\builder\TabularForm;
+use kartik\grid\GridView;
 use yii\data\ArrayDataProvider;
 use yii\helpers\Html;
-use yii\widgets\Pjax;
 
 $dataProvider = new ArrayDataProvider([
     'allModels' => $row,
@@ -77,6 +77,8 @@ echo TabularForm::widget([
         'name' => ['type' => TabularForm::INPUT_TEXT],
         'description' => ['type' => TabularForm::INPUT_TEXTAREA],
         'cost' => ['type' => TabularForm::INPUT_TEXT],
+        'min_cost' => ['type' => TabularForm::INPUT_TEXT],
+        'max_cost' => ['type' => TabularForm::INPUT_TEXT],
         'is_charity' => ['type' => TabularForm::INPUT_TEXT],
         'twitter' => ['type' => TabularForm::INPUT_TEXT],
         'facebook' => ['type' => TabularForm::INPUT_TEXT],

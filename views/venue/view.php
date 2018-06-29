@@ -1,8 +1,8 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Venue */
@@ -41,6 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'city',
             'state',
             'zip',
+            'lat',
+            'lng',
             'description',
             'phone',
             'cost',

@@ -2,7 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
 use yii\behaviors\BlameableBehavior;
 
 /**
@@ -19,6 +18,8 @@ use yii\behaviors\BlameableBehavior;
  * @property string $city
  * @property string $state
  * @property string $zip
+ * @property string $lat
+ * @property string $lng
  * @property string $description
  * @property string $phone
  * @property string $cost
@@ -56,7 +57,7 @@ class Venue extends \yii\db\ActiveRecord
         return [
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'user_id'], 'integer'],
-            [['cost'], 'number'],
+            [['lat', 'lng', 'cost'], 'number'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook'], 'string', 'max' => 255],
             [['city'], 'string', 'max' => 80],
             [['state'], 'string', 'max' => 8],
@@ -88,6 +89,8 @@ class Venue extends \yii\db\ActiveRecord
             'city' => 'City',
             'state' => 'State',
             'zip' => 'Zip',
+            'lat' => 'Lat',
+            'lng' => 'Lng',
             'description' => 'Description',
             'phone' => 'Phone',
             'cost' => 'Cost',
