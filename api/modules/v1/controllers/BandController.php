@@ -8,7 +8,7 @@ use yii\data\ActiveDataProvider;
 use yii\rest\IndexAction;
 
 
-require_once "../../../../models/constants.php";
+require_once realpath(dirname(dirname(dirname(dirname(__DIR__))))). "/models/constants.php";
 class BandController extends BaseActiveController
 {
     // We are using the regular web app modules:
@@ -30,8 +30,8 @@ class BandController extends BaseActiveController
     public function haseventPrepareDataProvider()
     {
         $params = \Yii::$app->getRequest()->getQueryParams();
-        $event_date_start = $params['event_date_start'] ?? 30;
-        $event_date_end = $params['event_date_end'] ?? 30;
+        $event_date_start = $params['event_date_start'] ?? 60;
+        $event_date_end = $params['event_date_end'] ?? 60;
         $sql = '
         select *
 FROM
@@ -47,7 +47,8 @@ FROM
 
         $dp = new ActiveDataProvider(
             [
-                'query' => Band::findBySql($sql, [':event_date_start' => $event_date_start, ':event_date_end' => $event_date_end]),
+                'query' => Band::find(),
+//                'query' => Band::findBySql($sql, [':event_date_start' => $event_date_start, ':event_date_end' => $event_date_end]),
                 'pagination' => [
                     'pageSize' => 1,
                 ],
