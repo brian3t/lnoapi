@@ -23,8 +23,12 @@ class MagicController extends Controller
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
         $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null]);
         $geocoder = new GoogleMapsGeocoder();
+        $affected_rows = 0;
         foreach ($venues_no_latlng as $venue) {
-            $geocoder->setAddress($venue->pull_address());
+            $full_addr = $venue->pull_address();
+            $geocoder->setAddress($full_addr);
+            $latlng = $geocoder->geocode(true);
+            1;
         }
 
 //        $affected_rows = $command->execute();

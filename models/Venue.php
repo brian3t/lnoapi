@@ -31,5 +31,6 @@ class Venue extends BaseVenue
     public function pull_address(){
         $full = implode(', ', [$this->address1, $this->address2]);
 
+        return $full;
     }
 }

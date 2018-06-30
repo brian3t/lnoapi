@@ -35,7 +35,7 @@ $config = [
     ],
     */
     'controllerMap' => [
-        'cron' => [
+        /*'cron' => [
             'class' => 'mitalcoi\cronjobs\CronController',
             'cronJobs' =>[
                 'test/example1' => [
@@ -43,7 +43,7 @@ $config = [
                 ],
 
             ],
-        ],
+        ],*/
     ],
 ];
 
