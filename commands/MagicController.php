@@ -26,8 +26,20 @@ class MagicController extends Controller
         $affected_rows = 0;
         foreach ($venues_no_latlng as $venue) {
             $full_addr = $venue->pull_address();
+            if (empty($full_addr)){
+                continue;
+            }
             $geocoder->setAddress($full_addr);
+
             $latlng = $geocoder->geocode(true);
+            if ($latlng['status'] == 'ZERO_RESULTS'){
+                continue;
+            }
+            if ($latlng['status'] == 'OK'){
+                $geometry = array_shift($latlng['results'])['geometry']['location'];
+                $venue->setAttributes(['lat' => $geometry['lat'], 'lng'=>$geometry['lng']]);
+                $affected_rows += $venue->save();
+            }
             1;
         }
 

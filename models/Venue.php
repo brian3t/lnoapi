@@ -29,8 +29,7 @@ class Venue extends BaseVenue
     }
 
     public function pull_address(){
-        $full = implode(', ', [$this->address1, $this->address2]);
-
+        $full = implode(', ', [$this->address1, $this->address2, $this->city, $this->state, $this->zip]);
         return $full;
     }
 }
