@@ -12,13 +12,13 @@ use yii\db\Exception;
  *
  * @author Brian Nguyen
  */
-class MagicController extends Controller
+class DlController extends Controller
 {
     /**
      * Pull lat lng for all venues that don't have it yet
      * @throws Exception
      */
-    public function actionPullLatLng()
+    public function actionScrape()
     {
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
         $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null]);
