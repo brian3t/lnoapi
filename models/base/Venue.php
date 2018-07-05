@@ -26,6 +26,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $website
  * @property string $twitter
  * @property string $facebook
+ * @property string $system_note
  *
  * @property \app\models\Event[] $events
  * @property \app\models\User $createdBy
@@ -63,7 +64,8 @@ class Venue extends \yii\db\ActiveRecord
             [['state'], 'string', 'max' => 8],
             [['zip'], 'string', 'max' => 25],
             [['description'], 'string', 'max' => 800],
-            [['phone'], 'string', 'max' => 18]
+            [['phone'], 'string', 'max' => 18],
+            [['system_note'], 'string', 'max' => 8000]
         ];
     }
 
@@ -97,6 +99,7 @@ class Venue extends \yii\db\ActiveRecord
             'website' => 'Website',
             'twitter' => 'Twitter',
             'facebook' => 'Facebook',
+            'system_note' => 'System Note',
         ];
     }
     

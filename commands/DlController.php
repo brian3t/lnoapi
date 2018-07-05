@@ -2,10 +2,15 @@
 
 namespace app\commands;
 
+use app\models\Event;
 use app\models\Venue;
-use GoogleMapsGeocoder;
+use Goutte\Client;
+use Symfony\Component\DomCrawler\Crawler;
 use yii\console\Controller;
 use yii\db\Exception;
+
+define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2018-07-04&end_date=2018-07-04
+define('SDREADER_LOCAL', 'http://lnoapi/tmp/Eventsearch_SanDiegoReader.html');
 
 /**
  * The behind the scenes magic happens here
@@ -14,37 +19,35 @@ use yii\db\Exception;
  */
 class DlController extends Controller
 {
+    public $SCRAPER_ID = null;
+    public function init()
+    {
+        $this->SCRAPER_ID = \Yii::$app->params['scraper_id'];
+        parent::init();
+    }
+
     /**
-     * Pull lat lng for all venues that don't have it yet
+     * Pull events from SDReader
      * @throws Exception
      */
     public function actionScrape()
     {
-        define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
-        $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null]);
-        $geocoder = new GoogleMapsGeocoder();
-        $affected_rows = 0;
-        foreach ($venues_no_latlng as $venue) {
-            $full_addr = $venue->pull_address();
-            if (empty($full_addr)){
-                continue;
-            }
-            $geocoder->setAddress($full_addr);
+        $records = 0;
+        $client = new Client();
+//        $crawler = $client->request('GET', SDREADER, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
+        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
+        $crawler->filter('table.event_list tr')->each(function ($node){
+            /** @var Crawler $node */
+            //find out if venue already exists
+            $venue_name = $node->extract('h5.place');
+            $venue_exist = Venue::findOne(['name' => $venue_name]);
+            $venue = new Venue();
+            $venue->setAttributes(['created_by' => $this->SCRAPER_ID]);
 
-            $latlng = $geocoder->geocode(true);
-            if ($latlng['status'] == 'ZERO_RESULTS'){
-                continue;
-            }
-            if ($latlng['status'] == 'OK'){
-                $geometry = array_shift($latlng['results'])['geometry']['location'];
-                $venue->setAttributes(['lat' => $geometry['lat'], 'lng'=>$geometry['lng']]);
-                $affected_rows += $venue->save();
-            }
-        }
-
-//        $affected_rows = $command->execute();
-//        \Yii::warning("Warning, affected rows:". $affected_rows);
-        echo "Updated for: ". $affected_rows . " records." . PHP_EOL;
+            $event = new Event();
+            $event->setAttributes(['created_by' => $this->SCRAPER_ID]);
+        });
+        echo "Pulled this much: " . $records . " records." . PHP_EOL;
         return 1;
     }
 }
