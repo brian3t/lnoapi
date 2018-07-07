@@ -2,8 +2,7 @@
 
 namespace app\models;
 
-use Yii;
-use \app\models\base\Event as BaseEvent;
+use app\models\base\Event as BaseEvent;
 
 /**
  * This is the model class for table "event".
@@ -21,8 +20,9 @@ class Event extends BaseEvent
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['description'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
-            [['name', 'cost', 'twitter', 'facebook', 'website'], 'string', 'max' => 255],
-            [['is_charity'], 'string', 'max' => 4]
+            [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
+            [['is_charity'], 'string', 'max' => 4],
+            [['system_note'], 'string', 'max' => 8000]
         ]);
     }
 	

@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'twitter',
             'facebook',
             'system_note',
+            'sdr_name',
         ];
         echo DetailView::widget([
             'model' => $model,

@@ -25,6 +25,8 @@ use yii\behaviors\BlameableBehavior;
  * @property string $twitter
  * @property string $facebook
  * @property string $website
+ * @property string $system_note
+ * @property string $sdr_name
  *
  * @property \app\models\BandEvent[] $bandEvents
  * @property \app\models\User $createdBy
@@ -62,8 +64,9 @@ class Event extends \yii\db\ActiveRecord
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['description'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
-            [['name', 'cost', 'twitter', 'facebook', 'website'], 'string', 'max' => 255],
-            [['is_charity'], 'string', 'max' => 4]
+            [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
+            [['is_charity'], 'string', 'max' => 4],
+            [['system_note'], 'string', 'max' => 8000]
         ];
     }
 
@@ -96,6 +99,8 @@ class Event extends \yii\db\ActiveRecord
             'twitter' => 'Twitter',
             'facebook' => 'Facebook',
             'website' => 'Website',
+            'system_note' => 'System Note',
+            'sdr_name' => 'Sdr Name',
         ];
     }
     
