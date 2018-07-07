@@ -1,8 +1,9 @@
 <?php
+
 use kartik\grid\GridView;
 use yii\data\ArrayDataProvider;
 
-    $dataProvider = new ArrayDataProvider([
+$dataProvider = new ArrayDataProvider([
         'allModels' => $model->events,
         'key' => 'id'
     ]);
@@ -16,7 +17,9 @@ use yii\data\ArrayDataProvider;
         'date',
         'start_time',
         'end_time',
-        'name',
+        [
+            'class' => 'app\brian\yiiplus\EditColumn',
+        ],
         'description:ntext',
         'cost',
         'is_charity',

@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= 'Event'.' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
-            
+
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="clearfix"></div>
 
     <div class="col-md-6">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         [
@@ -64,7 +64,7 @@ $this->params['breadcrumbs'][] = $this->title;
     ]);
 ?>
     </div>
-    
+
     <div class="col-md-6">
 <?php
 if($providerBandEvent->totalCount){
@@ -94,7 +94,7 @@ if($providerBandEvent->totalCount){
     <div class="col-md-6">
         <h4>Created By</h4>
     </div>
-    <?php 
+    <?php
     $gridColumnUser = [
         ['attribute' => 'id', 'visible' => false],
         'username',
@@ -112,10 +112,16 @@ if($providerBandEvent->totalCount){
         <h4>Venue</h4>
     </div>
     <div class="col-md-6">
-    <?php 
+    <?php
     $gridColumnVenue = [
         ['attribute' => 'id', 'visible' => false],
-        'name',
+        [
+            'attribute' => 'name',
+            'format' => 'html',
+            'value' => function($model){
+                return "<a href='/venue/view?id={$model->id}'>{$model->name}</a>" ;
+            }
+        ],
         'address1',
         'address2',
         'city',

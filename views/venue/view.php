@@ -72,7 +72,9 @@ $this->params['breadcrumbs'][] = $this->title;
                 'date',
                 'start_time',
                 'end_time',
-                'name',
+                [
+                    'class' => 'app\brian\yiiplus\EditColumn',
+                ],
                 'description:ntext',
                 'cost',
                 'is_charity',

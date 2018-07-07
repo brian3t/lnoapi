@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use kartik\export\ExportMenu;
@@ -22,7 +23,7 @@ $this->registerJs($search);
     <p>
         <?= Html::a('Create Event', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php 
+    <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         [
@@ -42,37 +43,40 @@ $this->registerJs($search);
             'class' => 'app\brian\yiiplus\EditColumn',
         ],
         [
-                'attribute' => 'user_id',
-                'label' => 'User',
-                'value' => function($model){
-                    if ($model->user)
-                    {return $model->user->username;}
-                    else
-                    {return NULL;}
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
-                'filterWidgetOptions' => [
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
+            'attribute' => 'user_id',
+            'label' => 'User',
+            'value' => function ($model) {
+                if ($model->user) {
+                    return $model->user->username;
+                } else {
+                    return NULL;
+                }
+            },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
             ],
+            'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
+        ],
         [
-                'attribute' => 'venue_id',
-                'label' => 'Venue',
-                'value' => function($model){
-                    if ($model->venue)
-                    {return $model->venue->name;}
-                    else
-                    {return NULL;}
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\Venue::find()->asArray()->all(), 'id', 'name'),
-                'filterWidgetOptions' => [
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => 'Venue', 'id' => 'grid--venue_id']
+            'attribute' => 'venue_id',
+            'label' => 'Venue',
+            'format'=>'html',
+            'value' => function ($model) {
+                if ($model->venue) {
+                    return "<a href='/venue/view?id={$model->venue->id}' target='_blank'>{$model->venue->name}</a>";
+                } else {
+                    return NULL;
+                }
+            },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' => \yii\helpers\ArrayHelper::map(\app\models\Venue::find()->asArray()->all(), 'id', 'name'),
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
             ],
+            'filterInputOptions' => ['placeholder' => 'Venue', 'id' => 'grid--venue_id']
+        ],
         'date',
         'start_time',
         'end_time',
@@ -88,12 +92,12 @@ $this->registerJs($search);
         [
             'class' => 'yii\grid\ActionColumn',
         ],
-    ]; 
+    ];
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumn,
-        'pjax' => true,
+        'pjax' => false,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-event']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
@@ -118,7 +122,7 @@ $this->registerJs($search);
                 'exportConfig' => [
                     ExportMenu::FORMAT_PDF => false
                 ]
-            ]) ,
+            ]),
         ],
     ]); ?>
 

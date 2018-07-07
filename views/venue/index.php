@@ -49,7 +49,7 @@ $this->registerJs($search);
         'zip',
         ['attribute' => 'description',
             'value' => function ($model) {
-                return substr($model->description, 0, 200);
+                return substr($model->description, 0, 80);
             }],
         'phone',
         'cost',
