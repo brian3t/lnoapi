@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="Done scraping https://www.sandiegoreader.com/events/search/?category=Genre&amp;start_date=2018-07-04&amp;end_date=2018-07-04&#10;Next: scraping bands and venue address from SDR.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/event/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/event/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/event/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/event/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/venue/_dataEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/_dataEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/venue/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/venue/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/view.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap/" />
     <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap3-dialog/" />
@@ -133,103 +127,97 @@
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="lno" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="venue: table" type="98d5ac3d:MysqlImplModel$Table" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="app.log" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/index.php">
+      <file leaf-file-name="DlController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commands/DlController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="36" column="14" selection-start-line="36" selection-start-column="14" selection-end-line="36" selection-end-column="14" />
+            <state relative-caret-position="705">
+              <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/venue/index.php">
+      <file leaf-file-name="_detail.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/event/_detail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="51" column="56" selection-start-line="51" selection-start-column="56" selection-end-line="51" selection-end-column="56" />
+            <state relative-caret-position="379">
+              <caret line="40" column="19" lean-forward="true" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pull_db_from_ftp.php" pinned="false" current-in-tab="true">
-        <entry file="file://$USER_HOME$/Dropbox/_dtmp/soft/utility/pull_db_from_ftp.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_dataEvent.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/venue/_dataEvent.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="21" column="28" selection-start-line="21" selection-start-column="28" selection-end-line="21" selection-end-column="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="EditColumn.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/brian/yiiplus/EditColumn.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="14" column="5" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="196">
-              <caret line="119" column="31" selection-start-line="119" selection-start-column="31" selection-end-line="119" selection-end-column="31" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="view.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/venue/view.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="525">
-              <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
-              <folding>
-                <element signature="e#7#32#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="console.sql" pinned="false" current-in-tab="false">
+      <file leaf-file-name="console.sql" pinned="false" current-in-tab="true">
         <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/aa3c30e9-1e22-4257-8032-97e3ce09f26a/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+            <state>
+              <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VenueController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/api/modules/v1/controllers/VenueController.php">
+      <file leaf-file-name="CurlMultiHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="12" selection-start-line="12" selection-end-line="12" />
+            <state relative-caret-position="825">
+              <caret line="58" selection-start-line="58" selection-end-line="58" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ErrorHandler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/ErrorHandler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1365">
+              <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/base/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="780">
+              <caret line="52" column="39" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="console.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/console.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="web.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/web.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1515">
+              <caret line="101" column="10" selection-start-line="80" selection-start-column="8" selection-end-line="101" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Crawler.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/symfony/dom-crawler/Crawler.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="5430">
+              <caret line="369" selection-start-line="369" selection-end-line="369" />
             </state>
           </provider>
         </entry>
@@ -316,7 +304,6 @@
         <option value="$PROJECT_DIR$/config/console.php" />
         <option value="$PROJECT_DIR$/config/params.php" />
         <option value="&lt;16f0202f-6bb3-4923-bb3c-88bc6dcac207&gt;/config/params.php" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/aa3c30e9-1e22-4257-8032-97e3ce09f26a/console.sql" />
         <option value="$PROJECT_DIR$/commands/DlController.php" />
         <option value="$PROJECT_DIR$/views/layouts/main.php" />
         <option value="$PROJECT_DIR$/views/event/index.php" />
@@ -326,6 +313,7 @@
         <option value="$PROJECT_DIR$/runtime/logs/app.log" />
         <option value="$PROJECT_DIR$/views/event/view.php" />
         <option value="$PROJECT_DIR$/views/venue/index.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/aa3c30e9-1e22-4257-8032-97e3ce09f26a/console.sql" />
       </list>
     </option>
   </component>
@@ -336,10 +324,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="NodePackageJsonFileManager">
-    <packageJsonPaths>
-      <path value="$PROJECT_DIR$/web/assets/b8de494/package.json" />
-      <path value="$PROJECT_DIR$/web/assets/ea11d21b/package.json" />
-    </packageJsonPaths>
+    <packageJsonPaths />
   </component>
   <component name="PhpServers">
     <servers>
@@ -448,8 +433,10 @@
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="width" value="1920" />
-    <option name="height" value="1054" />
+    <option name="x" value="1919" />
+    <option name="y" value="-1" />
+    <option name="width" value="1922" />
+    <option name="height" value="1087" />
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="false" id="Update" />
@@ -459,8 +446,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -471,12 +456,13 @@
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
+              <item name="api" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
               <item name="api" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -502,17 +488,6 @@
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="brian" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="brian" type="462c0819:PsiDirectoryNode" />
-              <item name="yiiplus" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
               <item name="commands" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -528,13 +503,144 @@
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="dektrium" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="dektrium" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-user" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="dektrium" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-user" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzle" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
+              <item name="guzzle" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Handler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="browser-kit" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="dom-crawler" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2" type="462c0819:PsiDirectoryNode" />
+              <item name="behaviors" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-httpclient" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2-httpclient" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -551,13 +657,27 @@
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
               <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="venue" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
-              <item name="venue" type="462c0819:PsiDirectoryNode" />
+              <item name="web" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="PHP Runtime" type="20ee2d1f:SyntheticLibraryElementNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="PHP Runtime" type="20ee2d1f:SyntheticLibraryElementNode" />
+              <item name="dom" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -578,6 +698,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -599,6 +721,127 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/api/modules/v1/controllers" />
     </key>
+  </component>
+  <component name="RestoreUpdateTree" date="Moments ago" ActionInfo="_Update">
+    <UpdatedFiles>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Updated from server" />
+        <option name="myStatusName" value="Changed on server" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="CHANGED_ON_SERVER" />
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Updated" />
+          <option name="myStatusName" value="Changed" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="UPDATED" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/commands/DlController.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/Event.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/base/Event.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/models/base/Venue.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/event/index.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/event/view.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/layouts/main.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/venue/_dataEvent.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/venue/index.php</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/views/venue/view.php</PATH>
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Created" />
+          <option name="myStatusName" value="Created" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="CREATED" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Deleted" />
+          <option name="myStatusName" value="Deleted" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="true" />
+          <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+        </FILE-GROUP>
+        <FILE-GROUP>
+          <option name="myUpdateName" value="Restored" />
+          <option name="myStatusName" value="Will be restored" />
+          <option name="mySupportsDeletion" value="false" />
+          <option name="myCanBeAbsent" value="false" />
+          <option name="myId" value="RESTORED" />
+        </FILE-GROUP>
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Modified" />
+        <option name="myStatusName" value="Modified" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MODIFIED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Skipped" />
+        <option name="myStatusName" value="Skipped" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SKIPPED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with conflicts" />
+        <option name="myStatusName" value="Will be merged with conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_CONFLICTS" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with tree conflicts" />
+        <option name="myStatusName" value="Merged with tree conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_TREE_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged with property conflicts" />
+        <option name="myStatusName" value="Will be merged with property conflicts" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED_WITH_PROPERTY_CONFLICT" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Merged" />
+        <option name="myStatusName" value="Will be merged" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="MERGED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Not in repository" />
+        <option name="myStatusName" value="Not in repository" />
+        <option name="mySupportsDeletion" value="true" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="UNKNOWN" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally added" />
+        <option name="myStatusName" value="Locally added" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_ADDED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Locally removed" />
+        <option name="myStatusName" value="Locally removed" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="LOCALLY_REMOVED" />
+      </FILE-GROUP>
+      <FILE-GROUP>
+        <option name="myUpdateName" value="Switched" />
+        <option name="myStatusName" value="Switched" />
+        <option name="mySupportsDeletion" value="false" />
+        <option name="myCanBeAbsent" value="false" />
+        <option name="myId" value="SWITCHED" />
+      </FILE-GROUP>
+    </UpdatedFiles>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -731,32 +974,49 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1054" extended-state="6" />
+    <frame x="1919" y="-1" width="1922" height="1087" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947917" weight="0.32924336" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
-      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50885415" side_tool="true" visible="true" weight="0.32878152" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.503125" side_tool="true" visible="true" weight="0.32924336" />
       <window_info anchor="bottom" id="Migrations" order="7" />
       <window_info anchor="bottom" id="Database Changes" order="7" />
-      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49947917" weight="0.32878152" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49114582" weight="0.32878152" />
       <window_info anchor="bottom" id="Version Control" order="7" weight="0.32719836" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.496875" weight="0.32924336" />
       <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Database Console" order="8" sideWeight="0.49895832" weight="0.32983193" />
+      <window_info anchor="right" id="Remote Host" order="3" />
+      <window_info anchor="bottom" id="Database Console" order="8" sideWeight="0.4984375" weight="0.32924336" />
       <window_info id="Designer" order="2" />
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984756" visible="true" weight="0.12083333" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.23541667" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.3296875" />
       <window_info id="Structure" order="1" sideWeight="0.5015244" side_tool="true" weight="0.12083333" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.490625" weight="0.39810926" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49635416" weight="0.398773" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.23541667" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.3296875" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984756" visible="true" weight="0.12083333" />
+      <window_info id="Structure" order="1" sideWeight="0.5015244" side_tool="true" weight="0.12083333" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947917" weight="0.32924336" />
+      <window_info anchor="bottom" id="Database Changes" order="7" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32719836" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49114582" weight="0.32878152" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.490625" weight="0.39810926" />
+      <window_info anchor="bottom" id="Migrations" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.50885415" side_tool="true" visible="true" weight="0.32878152" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="File Transfer" order="8" sideWeight="0.49947917" weight="0.32878152" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32924336" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -990,9 +1250,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="585">
           <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
-          <folding>
-            <element signature="e#32#53#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1040,22 +1297,22 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/base/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="186">
-          <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
+        <state relative-caret-position="780">
+          <caret line="52" column="39" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/models/User.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/config/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1515">
-          <caret line="101" column="10" lean-forward="true" selection-start-line="80" selection-start-column="8" selection-end-line="101" selection-end-column="10" />
+          <caret line="101" column="10" selection-start-line="80" selection-start-column="8" selection-end-line="101" selection-end-column="10" />
         </state>
       </provider>
     </entry>
@@ -1082,24 +1339,36 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/console.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="31" column="58" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+        <state relative-caret-position="390">
+          <caret line="26" column="8" selection-start-line="26" selection-start-column="8" selection-end-line="26" selection-end-column="8" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/symfony/dom-crawler/Crawler.php" />
-    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php" />
+    <entry file="file://$PROJECT_DIR$/vendor/symfony/dom-crawler/Crawler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5430">
+          <caret line="369" selection-start-line="369" selection-end-line="369" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/guzzlehttp/guzzle/src/Handler/CurlMultiHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="825">
+          <caret line="58" selection-start-line="58" selection-end-line="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/ErrorHandler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="97" column="28" lean-forward="true" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
+        <state relative-caret-position="1365">
+          <caret line="97" column="28" selection-start-line="97" selection-start-column="28" selection-end-line="97" selection-end-column="28" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/views/event/_detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
+        <state relative-caret-position="379">
+          <caret line="40" column="19" lean-forward="true" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -1112,11 +1381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/commands/DlController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="370">
-          <caret line="47" column="49" selection-start-line="47" selection-start-column="49" selection-end-line="47" selection-end-column="49" />
-          <folding>
-            <element signature="e#32#53#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="705">
+          <caret line="53" column="45" selection-start-line="53" selection-start-column="45" selection-end-line="53" selection-end-column="45" />
         </state>
       </provider>
     </entry>
@@ -1141,13 +1407,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/aa3c30e9-1e22-4257-8032-97e3ce09f26a/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="12" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/brian/yiiplus/EditColumn.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
@@ -1169,9 +1428,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="525">
           <caret line="83" column="14" selection-start-line="83" selection-start-column="14" selection-end-line="83" selection-end-column="14" />
-          <folding>
-            <element signature="e#7#32#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1193,6 +1449,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="14" column="23" lean-forward="true" selection-start-line="14" selection-start-column="23" selection-end-line="14" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/aa3c30e9-1e22-4257-8032-97e3ce09f26a/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="31" lean-forward="true" selection-start-column="31" selection-end-column="31" />
         </state>
       </provider>
     </entry>
