@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\models\Band;
 use app\models\Event;
 use app\models\Venue;
 use Goutte\Client;
@@ -10,9 +11,9 @@ use Yii;
 use yii\console\Controller;
 
 define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2018-07-04&end_date=2018-07-04
-define('SDREADER_LOCAL', 'http://lnoapi/tmp/Eventsearch_SanDiegoReader.html');
-define('SDREVENT_LOCAL', 'http://lnoapi/tmp/gingercowgirl.html');
-define('SDRBAND_LOCAL', 'http://lnoapi/tmp/band_gg_cowgirl.html');
+define('SDREADER_LOCAL', 'http://lnoapi/scrape/Eventsearch_SanDiegoReader.html');
+define('SDREVENT_LOCAL', 'http://lnoapi/scrape/gingercowgirl.html');
+define('SDRBAND_LOCAL', 'http://lnoapi/scrape/band_gg_cowgirl.html');
 
 /**
  * The behind the scenes magic happens here
@@ -44,7 +45,7 @@ class DlController extends Controller
         $band_client = new Client();
 //        $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
         $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
-        $crawler->filter('table.event_list tr')->each(function ($event_and_venue) use (&$records, $date_str, $event_client,$band_client) {
+        $crawler->filter('table.event_list tr')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client) {
             /** @var Crawler $event_and_venue */
             [$venue_name, $venue_href] = current($event_and_venue->filter('h5.place > a')->extract(['_text', 'href']));
             [$event_name, $event_href] = current($event_and_venue->filter('h4 > a')->extract(['_text', 'href']));
@@ -99,7 +100,24 @@ class DlController extends Controller
 //            $band_crawler = $band_client->request('GET', $band_href);
             $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
             $band_content = $band_crawler->filter('#content');
-            $band_name = $band_content->filter('div.content_title')->text();//todob here parse band
+            $name = $band_content->filter('div.content_title > h2')->text();
+            $name = strtolower($name);
+            $logo = $band_content->filter('img.lead_photo')->attr('src');
+            $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
+            $genre = strtolower(str_replace(['Genre: ',', '], ['',','], $genre));
+            $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
+            $similar_to = strtolower(str_replace(['RIYL: ',', '], ['',','], $similar_to));
+            $description = $band_content->filter('h3#history')->nextAll()->text(); here fix descripition to include all
+            $hometown_city = 'San Diego';
+            $hometown_state = 'CA';
+            $related = $band_content->filter('h3#related');
+            $website = $related->filter('a:contains("website")')->attr('href');
+            $band = new Band();
+
+            $band->setAttributes(compact(['name','logo','genre','similar_to','hometown_city','hometown_state', 'description',]));
+            $a = 1;
+
+
         });
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
     }
