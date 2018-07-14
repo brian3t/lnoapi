@@ -1,6 +1,7 @@
 <?php
 
 /* @var $this yii\web\View */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use kartik\export\ExportMenu;
@@ -22,7 +23,7 @@ $this->registerJs($search);
     <p>
         <?= Html::a('Create Band', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php 
+    <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         [
@@ -39,26 +40,28 @@ $this->registerJs($search);
         ],
         ['attribute' => 'id', 'visible' => false],
         ['attribute' => 'name',
-            'format'=>'raw',
-            'value' => function($model){
+            'format' => 'raw',
+            'contentOptions' => ['class' => 'name'],
+            'value' => function ($model) {
                 return "<a href=/band/view?id=" . $model->id . ">{$model->name}</a>";
             }],
         [
-                'attribute' => 'user_id',
-                'label' => 'User',
-                'value' => function($model){
-                    if ($model->user)
-                    {return $model->user->username;}
-                    else
-                    {return NULL;}
-                },
-                'filterType' => GridView::FILTER_SELECT2,
-                'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
-                'filterWidgetOptions' => [
-                    'pluginOptions' => ['allowClear' => true],
-                ],
-                'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
+            'attribute' => 'user_id',
+            'label' => 'User',
+            'value' => function ($model) {
+                if ($model->user) {
+                    return $model->user->username;
+                } else {
+                    return NULL;
+                }
+            },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
             ],
+            'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
+        ],
         'logo:image',
         'lno_score',
         'type',
@@ -75,7 +78,7 @@ $this->registerJs($search);
         [
             'class' => 'yii\grid\ActionColumn',
         ],
-    ]; 
+    ];
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
@@ -105,7 +108,7 @@ $this->registerJs($search);
                 'exportConfig' => [
                     ExportMenu::FORMAT_PDF => false
                 ]
-            ]) ,
+            ]),
         ],
     ]); ?>
 

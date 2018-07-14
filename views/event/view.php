@@ -42,6 +42,12 @@ $this->params['breadcrumbs'][] = $this->title;
         [
             'attribute' => 'venue.name',
             'label' => 'Venue',
+            'format'=>'html',
+            'contentOptions'=>['class'=>'name'],
+            'value' => function ($event) {
+                $venue = $event->venue;
+                return "<a target='_blank' href='/venue/view?id={$venue->id}'>{$venue->name}</a>";
+            }
         ],
         'date',
         'start_time',
@@ -73,13 +79,18 @@ if($providerBandEvent->totalCount){
             ['attribute' => 'id', 'visible' => false],
             [
                 'attribute' => 'band.name',
-                'label' => 'Band\'s name'
+                'label' => 'Band\'s name',
+                'contentOptions'=>['class'=>'name'],
+                'format'=>'html',
+                'value'=>function($bandevent){
+                    $band = $bandevent->band;
+                    return "<a target='_blank' href='/band/view?id={$band->id}'>{$band->name}</a>";
+                }
             ],
                 ];
     echo Gridview::widget([
         'dataProvider' => $providerBandEvent,
-        'pjax' => true,
-        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-band-event']],
+        'pjax' => false,
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
             'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Bands Performing'),
@@ -119,7 +130,7 @@ if($providerBandEvent->totalCount){
             'attribute' => 'name',
             'format' => 'html',
             'value' => function($model){
-                return "<a href='/venue/view?id={$model->id}'>{$model->name}</a>" ;
+                return "<a target='_blank' href='/venue/view?id={$model->id}'>{$model->name}</a>" ;
             }
         ],
         'address1',

@@ -87,6 +87,8 @@ AppAsset::register($this);
             'url' => '/event',
         ],
         ['label' => 'Raw User data', 'url' => '/user'],
+        ['label' => 'Webapp', 'url' => 'https://app.livenout.usvsolutions.com', 'linkOptions' => ['target' => '_blank'],
+        ]
     ]);
 
     echo Nav::widget([

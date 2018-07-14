@@ -12,7 +12,11 @@ class Band extends BaseBand
 {
     public function beforeValidate()
     {
-        $genre_array = \Yii::$app->request->getBodyParam('genre_array');
+        try {
+            $genre_array = \Yii::$app->request->getBodyParam('genre_array');
+        } catch (\Exception $e){
+            $genre_array = null;
+        }
         if (is_array($genre_array)){
             $this->genre = implode(',', $genre_array);
         }

@@ -3,6 +3,7 @@
 namespace app\commands;
 
 use app\models\Band;
+use app\models\BandEvent;
 use app\models\Event;
 use app\models\Venue;
 use Goutte\Client;
@@ -10,6 +11,7 @@ use Symfony\Component\DomCrawler\Crawler;
 use Yii;
 use yii\console\Controller;
 
+define('SDRCOM', 'https://www.sandiegoreader.com/');
 define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2018-07-04&end_date=2018-07-04
 define('SDREADER_LOCAL', 'http://lnoapi/scrape/Eventsearch_SanDiegoReader.html');
 define('SDREVENT_LOCAL', 'http://lnoapi/scrape/gingercowgirl.html');
@@ -43,19 +45,19 @@ class DlController extends Controller
         $client = new Client();
         $event_client = new Client();
         $band_client = new Client();
-//        $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
-        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
+        $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
+//        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
         $crawler->filter('table.event_list tr')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client) {
             /** @var Crawler $event_and_venue */
             [$venue_name, $venue_href] = current($event_and_venue->filter('h5.place > a')->extract(['_text', 'href']));
-            [$event_name, $event_href] = current($event_and_venue->filter('h4 > a')->extract(['_text', 'href']));
-            //see if it has local artist page
-            $event_crawler = $event_client->request('GET', $event_href);
-            $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
-            $has_local_artist = $h4_local_artist->count() > 0;
-            if (!$has_local_artist) {
+            if (empty($venue_name)) {
                 return;
             }
+            [$event_name, $event_href] = current($event_and_venue->filter('h4 > a')->extract(['_text', 'href']));
+            //see if it has local artist page
+            $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
+            $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
+            $has_local_artist = $h4_local_artist->count() > 0;
             //find out if venue already exists
             $venue_exist = Venue::findOne(['name' => $venue_name]);
             if (!$venue_exist instanceof Venue) {
@@ -93,31 +95,57 @@ class DlController extends Controller
                     Yii::$app->db->createCommand("UPDATE event SET `created_by` = :created_by WHERE `id` = :id")->bindValues([':created_by' => $this->SCRAPER_ID, ':id' => $event_id])->execute();
                 }
                 $records++;
+            } else {
+                $event_id = $event->id;
             }
 
+            if (!$has_local_artist) {
+                return;
+            }
             //saving band info too
             $band_href = $h4_local_artist->nextAll()->filter('div.image_grid a')->attr('href');
-//            $band_crawler = $band_client->request('GET', $band_href);
-            $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
+            $band_crawler = $band_client->request('GET', SDRCOM . $band_href);
+//            $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
             $band_content = $band_crawler->filter('#content');
             $name = $band_content->filter('div.content_title > h2')->text();
-            $name = strtolower($name);
-            $logo = $band_content->filter('img.lead_photo')->attr('src');
-            $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
-            $genre = strtolower(str_replace(['Genre: ',', '], ['',','], $genre));
-            $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
-            $similar_to = strtolower(str_replace(['RIYL: ',', '], ['',','], $similar_to));
-            $description = $band_content->filter('h3#history')->nextAll()->text(); here fix descripition to include all
-            $hometown_city = 'San Diego';
-            $hometown_state = 'CA';
-            $related = $band_content->filter('h3#related');
-            $website = $related->filter('a:contains("website")')->attr('href');
-            $band = new Band();
-
-            $band->setAttributes(compact(['name','logo','genre','similar_to','hometown_city','hometown_state', 'description',]));
-            $a = 1;
-
-
+            if (empty($name)) {
+                return;
+            }
+            try {
+                $name = strtolower($name);
+                $hometown_city = 'San Diego';
+                $hometown_state = 'CA';
+                $logo = $band_content->filter('img.lead_photo')->attr('src');
+                $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
+                $genre = strtolower(str_replace(['Genre: ', ', '], ['', ','], $genre));
+                $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
+                $similar_to = strtolower(str_replace(['RIYL: ', ', '], ['', ','], $similar_to));
+                $description = $band_content->filter('h3#history')->parents()->text();
+                $related = $band_content->filter('h3#related')->parents();
+                $website = $related->filter('a:contains("website")')->attr('href');
+                $facebook = $related->filter('a:contains("Facebook")')->attr('href');
+            } catch (\Exception $e) {
+                $band_content = null;
+                $logo = null;
+                $genre = null;
+                $similar_to = null;
+                $description = null;
+                $website = null;
+                $facebook = null;
+            }
+            $band = Band::findOne(['name' => $name]);
+            if (!$band instanceof Band) {
+                $band = new Band();
+                $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
+                $band->save();
+            }
+            $band_id = $band->id;
+            if (is_int($band_id) && is_int($event_id)) {
+                $band_event = new BandEvent();
+                $band_event->band_id = $band_id;
+                $band_event->event_id = $event_id;
+                $band_event->save();
+            }
         });
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
     }
