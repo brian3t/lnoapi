@@ -178,6 +178,7 @@ class DlController extends Controller
                 return false;
             }
             $addr = str_replace(' | Directions', '', $addr);
+            $addr = str_replace(' (NCC)', '', $addr);
             $address_variables = PHPHelper::parse_address($addr);
             $venue_wo_addr->setAttributes($address_variables);
             if ($venue_wo_addr->save()) {
