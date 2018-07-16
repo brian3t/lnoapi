@@ -36,6 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $gridColumn = [
             ['attribute' => 'id', 'visible' => false],
             'name',
+            'type',
             'address1',
             'address2',
             'city',

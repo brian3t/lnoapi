@@ -13,6 +13,7 @@ use yii\behaviors\BlameableBehavior;
  * @property integer $created_by
  * @property integer $user_id
  * @property string $name
+ * @property string $type
  * @property string $address1
  * @property string $address2
  * @property string $city
@@ -61,10 +62,10 @@ class Venue extends \yii\db\ActiveRecord
             [['created_by', 'user_id'], 'integer'],
             [['lat', 'lng', 'cost'], 'number'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook', 'sdr_name'], 'string', 'max' => 255],
+            [['type', 'description'], 'string', 'max' => 800],
             [['city'], 'string', 'max' => 80],
             [['state'], 'string', 'max' => 8],
             [['zip'], 'string', 'max' => 25],
-            [['description'], 'string', 'max' => 800],
             [['phone'], 'string', 'max' => 18],
             [['system_note'], 'string', 'max' => 8000]
         ];
@@ -87,6 +88,7 @@ class Venue extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'name' => 'Name',
+            'type' => 'Type',
             'address1' => 'Address1',
             'address2' => 'Address2',
             'city' => 'City',

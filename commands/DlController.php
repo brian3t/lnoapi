@@ -1,6 +1,7 @@
 <?php
 
 namespace app\commands;
+require_once dirname(__DIR__) . "/yii2helper/PHPHelper.php";
 
 use app\models\Band;
 use app\models\BandEvent;
@@ -10,6 +11,7 @@ use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Yii;
 use yii\console\Controller;
+use yii2helper\PHPHelper;
 
 define('SDRCOM', 'https://www.sandiegoreader.com/');
 define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2018-07-04&end_date=2018-07-04
@@ -39,7 +41,7 @@ class DlController extends Controller
      */
     public function actionScrapeSdr($days_forward = 7)
     {
-        $date = (new \DateTime())->add(new \DateInterval("P{$days_forward}D"));
+        $date = (new \DateTime())->add(new \DateInterval(";P{$days_forward}D"));
         $date_str = $date->format('Y-m-d');
         $records = 0;
         $client = new Client();
@@ -148,5 +150,41 @@ class DlController extends Controller
             }
         });
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
+    }
+
+    /**
+     * Pull address for all venues without address
+     */
+    public function actionVenueAddrSdr()
+    {
+        $updated = 0;
+        $venues_wo_addr = Venue::find()->where(['not', ['sdr_name' => null]])->andWhere(['address1' => null])->all();
+        $venue_client = new Client();
+        foreach ($venues_wo_addr as $venue_wo_addr) {
+            $sdr_url = SDRCOM . $venue_wo_addr->sdr_name;
+            $sdr_url = str_replace(SDRCOM . SDRCOM, SDRCOM, $sdr_url);//remove duplicates
+            $crawler = $venue_client->request('GET', $sdr_url);
+            $type_a = $crawler->filter('ul.categories > li:first-child > a');
+            if ($type_a instanceof Crawler) {
+                $type = $type_a->text();
+            } else {
+                $type = null;
+            }
+            $addr_a = $crawler->filter('a:contains("Directions")');
+            if ($addr_a instanceof Crawler) {
+                $addr = $addr_a->parents()->text();
+            }
+            if (empty($addr)) {
+                return false;
+            }
+            $addr = str_replace(' | Directions', '', $addr);
+            $address_variables = PHPHelper::parse_address($addr);
+            $venue_wo_addr->setAttributes($address_variables);
+            if ($venue_wo_addr->save()) {
+                $updated++;
+            }
+        }
+        echo "Updated $updated rows\n";
+        return true;
     }
 }

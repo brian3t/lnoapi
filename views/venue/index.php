@@ -42,6 +42,7 @@ $this->registerJs($search);
         [
             'class' => 'app\brian\yiiplus\EditColumn',
         ],
+        'type',
         'address1',
         'address2',
         'city',
