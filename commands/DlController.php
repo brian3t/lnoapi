@@ -41,7 +41,7 @@ class DlController extends Controller
      */
     public function actionScrapeSdr($days_forward = 7)
     {
-        $date = (new \DateTime())->add(new \DateInterval(";P{$days_forward}D"));
+        $date = (new \DateTime())->add(new \DateInterval("P{$days_forward}D"));
         $date_str = $date->format('Y-m-d');
         $records = 0;
         $client = new Client();
