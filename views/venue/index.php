@@ -48,6 +48,7 @@ $this->registerJs($search);
         'city',
         'state',
         'zip',
+        'lat',
         ['attribute' => 'description',
             'value' => function ($model) {
                 return substr($model->description, 0, 80);
