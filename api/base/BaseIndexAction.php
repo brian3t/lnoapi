@@ -13,15 +13,17 @@ class BaseIndexAction extends IndexAction
      */
     protected function prepareDataProvider()
     {
-        $modelClass=new $this->modelClass();
-        if($this->prepareDataProvider!==null)
-        {
-            return call_user_func($this->prepareDataProvider,$this);
+        $modelClass = new $this->modelClass();
+        if ($this->prepareDataProvider !== null) {
+            return call_user_func($this->prepareDataProvider, $this);
         }
 
         /* @var $modelClass \yii\db\BaseActiveRecord */
-        $ap=new ActiveDataProvider([
-            'query'=>$modelClass::find()->where(\Yii::$app->request->queryParams),
+        $params = \Yii::$app->request->queryParams;
+        $expand = $params['expand'] ?? null;
+        unset($params['expand']);
+        $ap = new ActiveDataProvider([
+            'query' => $modelClass::find()->where($params),
         ]);
         return $ap;
     }

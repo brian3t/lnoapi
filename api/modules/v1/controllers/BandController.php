@@ -47,8 +47,8 @@ FROM
 
         $dp = new ActiveDataProvider(
             [
-                'query' => Band::find(),
-//                'query' => Band::findBySql($sql, [':event_date_start' => $event_date_start, ':event_date_end' => $event_date_end]),
+//                'query' => Band::find(),
+                'query' => Band::findBySql($sql, [':event_date_start' => $event_date_start, ':event_date_end' => $event_date_end]),
                 'pagination' => [
                     'pageSize' => 1,
                 ],
