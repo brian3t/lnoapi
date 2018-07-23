@@ -130,7 +130,7 @@ require_once 'models/constants.php';
             ]),
         ],
     ];
-    /*echo kartik\tabs\TabsX::widget([
+    echo kartik\tabs\TabsX::widget([
         'items' => $forms,
         'position' => kartik\tabs\TabsX::POS_ABOVE,
         'encodeLabels' => false,
@@ -139,7 +139,7 @@ require_once 'models/constants.php';
             'sideways' => true,
             'enableCache' => false,
         ],
-    ]);*/
+    ]);
     ?>
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
