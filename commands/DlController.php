@@ -118,6 +118,9 @@ class DlController extends Controller
                 $hometown_city = 'San Diego';
                 $hometown_state = 'CA';
                 $logo = $band_content->filter('img.lead_photo')->attr('src');
+                if (empty($logo)){
+                    return;
+                }
                 $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
                 $genre = strtolower(str_replace(['Genre: ', ', '], ['', ','], $genre));
                 $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
@@ -139,6 +142,7 @@ class DlController extends Controller
             if (!$band instanceof Band) {
                 $band = new Band();
                 $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
+                $band->type='originals';
                 $band->save();
             }
             $band_id = $band->id;
