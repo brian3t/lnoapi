@@ -1,4 +1,5 @@
-delete from venue WHERE id > 2;
+delete from venue
+WHERE id > 2;
 
 update `venue`
 set system_note = replace(system_note, 'https://www.sandiegoreader.comhttps://www.sandiegoreader.com/', 'https://www.sandiegoreader.com/');
@@ -8,7 +9,8 @@ set sdr_name = replace(sdr_name, 'https://www.sandiegoreader.com', '');
 
 
 select *
-from venue where not(sdr_name is null) ;
+from venue
+where not (sdr_name is null);
 
 
 select *
@@ -25,4 +27,10 @@ FROM
 
 
 DELETE
-from band where logo is null  or logo = '';
+from band
+where logo is null or logo = '';
+
+######## assign random lno ratings for bands #########
+update band
+set lno_score = FLOOR( 5 + RAND( ) * 5 )
+WHERE lno_score is null;
