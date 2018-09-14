@@ -34,3 +34,15 @@ where logo is null or logo = '';
 update band
 set lno_score = FLOOR( 5 + RAND( ) * 5 )
 WHERE lno_score is null;
+
+
+##########
+#test
+SELECT REGEXP_REPLACE(system_note, '(?<!https:)//', '/') FROM event WHERE id=2;
+
+UPDATE event set `test` = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR)  WHERE id=2;
+
+UPDATE event SET test = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR);
+
+SELECT id,system_note, test from event WHERE id=2;
+#end TEST
