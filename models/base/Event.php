@@ -17,16 +17,21 @@ use yii\behaviors\BlameableBehavior;
  * @property string $start_time
  * @property string $end_time
  * @property string $name
+ * @property string $short_desc
  * @property string $description
+ * @property string $img
  * @property string $cost
  * @property string $min_cost
  * @property string $max_cost
  * @property integer $is_charity
+ * @property string $age_limit
  * @property string $twitter
  * @property string $facebook
  * @property string $website
  * @property string $system_note
  * @property string $sdr_name
+ * @property string $temp
+ * @property string $source
  *
  * @property \app\models\BandEvent[] $bandEvents
  * @property \app\models\User $createdBy
@@ -62,11 +67,13 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['created_at', 'updated_at', 'date', 'start_time', 'end_time'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
-            [['description'], 'string'],
+            [['short_desc', 'description', 'source'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
             [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
+            [['img'], 'string', 'max' => 800],
             [['is_charity'], 'string', 'max' => 4],
-            [['system_note'], 'string', 'max' => 8000]
+            [['age_limit'], 'string', 'max' => 20],
+            [['system_note', 'temp'], 'string', 'max' => 8000]
         ];
     }
 
@@ -91,16 +98,21 @@ class Event extends \yii\db\ActiveRecord
             'start_time' => 'Start Time',
             'end_time' => 'End Time',
             'name' => 'Name',
+            'short_desc' => 'Short Desc',
             'description' => 'Description',
+            'img' => 'Img',
             'cost' => 'Cost',
             'min_cost' => 'Min Cost',
             'max_cost' => 'Max Cost',
             'is_charity' => 'Is Charity',
+            'age_limit' => 'Age Limit',
             'twitter' => 'Twitter',
             'facebook' => 'Facebook',
             'website' => 'Website',
             'system_note' => 'System Note',
             'sdr_name' => 'Sdr Name',
+            'temp' => 'Temp',
+            'source' => 'Source',
         ];
     }
     

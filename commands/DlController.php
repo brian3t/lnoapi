@@ -83,14 +83,14 @@ class DlController extends Controller
             $event_exist = Event::findOne(['name' => $event_name]);
             if (!$event_exist instanceof Event) {
                 $event = new Event();
-                $event->setAttributes(['created_by' => $this->SCRAPER_ID, 'name' => $event_name,
+                $event->setAttributes(['created_by' => $this->SCRAPER_ID, 'name' => $event_name, 'source' => 'sdr',
                     'sdr_name' => str_replace('https://www.sandiegoreader.com/', '', $event_href), 'system_note' => $event_href]);//'https://www.sandiegoreader.com/' .
                 $time = $event_and_venue->filter('td.time')->text();
                 $city = $event_and_venue->filter('td.city>ul>li>a')->text();
-                $description = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
+                $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
                 $event->venue_id = $venue_id;
                 $event->date = $date_str;
-                $event->setAttributes(compact(['time', 'city', 'description']));
+                $event->setAttributes(compact(['time', 'city', 'short_desc']));
                 $event->save();
                 $event_id = $event->id;
                 if (is_int($event_id)) {
@@ -118,7 +118,7 @@ class DlController extends Controller
                 $hometown_city = 'San Diego';
                 $hometown_state = 'CA';
                 $logo = $band_content->filter('img.lead_photo')->attr('src');
-                if (empty($logo)){
+                if (empty($logo)) {
                     return;
                 }
                 $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
@@ -142,7 +142,7 @@ class DlController extends Controller
             if (!$band instanceof Band) {
                 $band = new Band();
                 $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
-                $band->type='originals';
+                $band->type = 'originals';
                 $band->lno_score = random_int(5, 10);
                 $band->save();
             }
@@ -192,5 +192,24 @@ class DlController extends Controller
         }
         echo "Updated $updated rows\n";
         return true;
+    }
+
+    /**
+     * Pull event info from SDR events
+     */
+    public function pullEventSdr()
+    {
+        $client = new Client();
+        $events_sdr = Event::findAll(['source' => 'sdr', 'img' => null]);
+        foreach ($events_sdr as $event_sdr) {
+//            $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
+            $crawler = $client->request('GET', 'http://lnoapi/scrape/Opera%20Appreciation%20Class%20_%20San%20Diego%20Reader.html');//todob switch to live
+            $content_info = $crawler->filter('div.content_info');
+            $img = $content_info->filter('div.thumbnail-container > img')->attr('src');
+            $description = $content_info->filter('div.thumbnail-container +div')->text();
+            $cost = $content_info->filter('ul.details > li:first-child')->text();
+            $cost = trim(str_replace('Cost:', '', $cost));
+
+        }
     }
 }

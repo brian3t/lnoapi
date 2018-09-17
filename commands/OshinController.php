@@ -19,7 +19,8 @@ class OshinController extends Controller
     public function actionCleanData()
     {
         $db = \Yii::$app->db;
-        $db->createCommand("UPDATE event SET test = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR)")->execute();
+        $db->createCommand("UPDATE event SET temp = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR)")->execute();
+        $db->createCommand("UPDATE event SET website = temp WHERE temp IS NOT NULL ")->execute();
         echo "Cleanup done" . PHP_EOL;
         return 1;
     }

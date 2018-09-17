@@ -59,6 +59,7 @@ class Band extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],
             [['lno_score'], 'number'],
+            [['type'], 'required'],
             [['type', 'description'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
