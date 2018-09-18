@@ -16,6 +16,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $date
  * @property string $start_time
  * @property string $end_time
+ * @property string $when
  * @property string $name
  * @property string $short_desc
  * @property string $description
@@ -69,9 +70,10 @@ class Event extends \yii\db\ActiveRecord
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['short_desc', 'description', 'source'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
+            [['when'], 'string', 'max' => 300],
             [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
             [['img'], 'string', 'max' => 800],
-            [['is_charity'], 'string', 'max' => 4],
+            [['is_charity'], 'number', 'max' => 4],
             [['age_limit'], 'string', 'max' => 20],
             [['system_note', 'temp'], 'string', 'max' => 8000]
         ];
@@ -97,6 +99,7 @@ class Event extends \yii\db\ActiveRecord
             'date' => 'Date',
             'start_time' => 'Start Time',
             'end_time' => 'End Time',
+            'when' => 'When',
             'name' => 'Name',
             'short_desc' => 'Short Desc',
             'description' => 'Description',

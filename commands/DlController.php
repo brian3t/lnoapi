@@ -11,6 +11,7 @@ use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Yii;
 use yii\console\Controller;
+use yii\db\Expression;
 use yii2helper\PHPHelper;
 
 define('SDRCOM', 'https://www.sandiegoreader.com/');
@@ -197,19 +198,61 @@ class DlController extends Controller
     /**
      * Pull event info from SDR events
      */
-    public function pullEventSdr()
+    public function actionPullEventSdr()
     {
         $client = new Client();
-        $events_sdr = Event::findAll(['source' => 'sdr', 'img' => null]);
+        \Yii::beginProfile('actionPullEventSdr');
+        $events_sdr = Event::find()->where(['source' => 'sdr', 'img' => null])->andWhere(['>=', 'updated_at', new Expression('DATE_SUB(CURDATE(), INTERVAL 7 DAY)')])->all();
+        \Yii::endProfile('actionPullEventSdr');
+//        $events_sdr = array_slice($events_sdr, 0, 1);//debugging
         foreach ($events_sdr as $event_sdr) {
 //            $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
-            $crawler = $client->request('GET', 'http://lnoapi/scrape/Opera%20Appreciation%20Class%20_%20San%20Diego%20Reader.html');//todob switch to live
+//            $crawler = $client->request('GET', 'http://lnoapi/scrape/Opera%20Appreciation%20Class%20_%20San%20Diego%20Reader.html');//local
+            $crawler = $client->request('GET', $event_sdr->system_note);
             $content_info = $crawler->filter('div.content_info');
-            $img = $content_info->filter('div.thumbnail-container > img')->attr('src');
-            $description = $content_info->filter('div.thumbnail-container +div')->text();
+            $img = null;
+            try {
+                $img = $content_info->filter('div.thumbnail-container > img')->attr('src');
+            } catch (\Exception $exception) {
+            }
+            $img = preg_replace('/\?[a-z0-9]+/', '', $img);//https://media.sandiegoreader.com/img/events/2017/images_3_t240.jpg?abc123
+            $description = null;
+            try {
+                $description = $content_info->filter('div.thumbnail-container +div')->text();
+            } catch (\Exception $exception) {
+            }
             $cost = $content_info->filter('ul.details > li:first-child')->text();
-            $cost = trim(str_replace('Cost:', '', $cost));
-
+            if (strpos($cost, 'Cost:') !== false) {
+                $cost = trim(str_replace('Cost:', '', $cost));
+            } else {
+                $cost = null;
+            }
+            try {
+                $cost = preg_replace('/\n\| Website/', '', $cost);
+            } catch (\Exception $e) {
+            }
+            $age_limit = null;
+            try {
+                $age_limit = $content_info->filter('ul.details > li:nth-child(2)')->text();
+            } catch (\Exception $e) {
+            }
+            if (strpos($age_limit, 'Age limit:') !== false) {
+                $age_limit = trim(str_replace('Age limit:', '', $age_limit));
+            } else {
+                $age_limit = null;
+            }
+            $when = null;
+            try {
+                $when = $content_info->filter('ul.details > li:nth-child(3)')->text();
+            } catch (\Exception $e) {
+            }
+            if (strpos($when, 'When:') !== false) {
+                $when = trim(str_replace('When:', '', $when));
+            } else {
+                $when = null;
+            }
+            $event_sdr->setAttributes(compact('img', 'description', 'cost', 'age_limit', 'when'));
+            $event_sdr->save();
         }
     }
 }

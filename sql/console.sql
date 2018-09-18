@@ -1,4 +1,10 @@
-update event set website = null  where source = 'sdr';
+SELECT *
+FROM `event`
+WHERE (`updated_at` is null or `updated_at` >= DATE_SUB(CURDATE(), INTERVAL 7 DAY));
+
+update event
+set website = null
+where source = 'sdr';
 
 delete
 from venue
@@ -58,10 +64,14 @@ WHERE system_note like '/events/%';
 ## END FIX event url
 
 ##09/17 set event source
-update event set source = 'sdr' WHERE website like 'https://www.sandiegoreader.com%';
+update event
+set source = 'sdr'
+WHERE website like 'https://www.sandiegoreader.com%';
 ##end set event source
 
 ###09/17 AFTER add short_desc: make desc -> shortdesc
-update event set short_desc = description where source='sdr';
+update event
+set short_desc = description
+where source = 'sdr';
 ###end AFTER add short_desc: make desc -> shortdesc
 
