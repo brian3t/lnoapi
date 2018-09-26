@@ -11,7 +11,6 @@ use Goutte\Client;
 use Symfony\Component\DomCrawler\Crawler;
 use Yii;
 use yii\console\Controller;
-use yii\db\Expression;
 use yii2helper\PHPHelper;
 
 define('SDRCOM', 'https://www.sandiegoreader.com/');
@@ -201,10 +200,10 @@ class DlController extends Controller
     public function actionPullEventSdr()
     {
         $client = new Client();
-        \Yii::beginProfile('actionPullEventSdr');
-        $events_sdr = Event::find()->where(['source' => 'sdr', 'img' => null])->andWhere(['>=', 'updated_at', new Expression('DATE_SUB(CURDATE(), INTERVAL 7 DAY)')])->all();
-        \Yii::endProfile('actionPullEventSdr');
-//        $events_sdr = array_slice($events_sdr, 0, 1);//debugging
+        $events_sdr = Event::find()->where(['source' => 'sdr'])->andFilterWhere(['or', ['img' => null], ['img' => '']])
+//            ->andWhere(['>=', 'updated_at', new Expression('DATE_SUB(CURDATE(), INTERVAL 7 DAY)')])
+            ->all();
+//        $events_sdr = array_slice($events_sdr, 0, 1);//todob debugging
         foreach ($events_sdr as $event_sdr) {
 //            $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
 //            $crawler = $client->request('GET', 'http://lnoapi/scrape/Opera%20Appreciation%20Class%20_%20San%20Diego%20Reader.html');//local
@@ -221,16 +220,16 @@ class DlController extends Controller
                 $description = $content_info->filter('div.thumbnail-container +div')->text();
             } catch (\Exception $exception) {
             }
-            $cost = $content_info->filter('ul.details > li:first-child')->text();
-            if (strpos($cost, 'Cost:') !== false) {
-                $cost = trim(str_replace('Cost:', '', $cost));
-            } else {
-                $cost = null;
-            }
+            $cost = null;
             try {
-                $cost = preg_replace('/\n\| Website/', '', $cost);
+                $cost = $content_info->filter('ul.details > li:first-child')->text();
             } catch (\Exception $e) {
             }
+            if (strpos($cost, 'Cost:') !== false) {
+                $cost = trim(str_replace('Cost:', '', $cost));
+            }
+                $cost = preg_replace('/\n\| Website/', '', $cost);
+            $cost = str_replace('$', '', $cost);
             $age_limit = null;
             try {
                 $age_limit = $content_info->filter('ul.details > li:nth-child(2)')->text();

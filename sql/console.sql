@@ -6,6 +6,10 @@ update event
 set website = null
 where source = 'sdr';
 
+update event
+set source = 'sdr'
+where system_note like '%https://www.sandiegoreader.com%';
+
 delete
 from venue
 WHERE id > 2;
