@@ -11,7 +11,7 @@ namespace app\models\base;
  * @property string $name
  * @property integer $user_id
  * @property string $logo
- * @property string $lno_score
+ * @property double $lno_score
  * @property string $type
  * @property string $genre
  * @property string $similar_to

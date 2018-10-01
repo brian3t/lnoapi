@@ -1,4 +1,8 @@
 <?php
+/**
+ * Event Controller REST
+ */
+
 namespace app\api\modules\v1\controllers;
 
 use app\api\base\controllers\BaseActiveController;
@@ -6,11 +10,12 @@ use app\models\Event;
 use yii\data\ActiveDataProvider;
 use yii\db\Expression;
 
-require_once realpath(dirname(dirname(dirname(dirname(__DIR__))))). "/models/constants.php";
+require_once realpath(dirname(dirname(dirname(dirname(__DIR__))))) . "/models/constants.php";
 class EventController extends BaseActiveController
 {
     // We are using the regular web app modules:
     public $modelClass = 'app\models\Event';
+
     public function actions()
     {
         $actions = parent::actions();
@@ -31,7 +36,6 @@ class EventController extends BaseActiveController
 
         $dp = new ActiveDataProvider(
             [
-//                'query' => Band::find(),
                 'query' => Event::find()->where(['>=', 'date', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_start DAY)"))]),
                 'pagination' => [
                     'pageSize' => 20,
@@ -42,7 +46,6 @@ class EventController extends BaseActiveController
             $dp->pagination = false;
         }
         return $dp;
-
     }
 
 }
