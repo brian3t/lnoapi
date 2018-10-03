@@ -2,6 +2,8 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
  * This is the base model class for table "band".
  *
@@ -11,7 +13,7 @@ namespace app\models\base;
  * @property string $name
  * @property integer $user_id
  * @property string $logo
- * @property double $lno_score
+ * @property string $lno_score
  * @property string $type
  * @property string $genre
  * @property string $similar_to
@@ -23,6 +25,8 @@ namespace app\models\base;
  * @property string $instagram
  * @property string $facebook
  * @property string $twitter
+ * @property string $source
+ * @property array $attr
  *
  * @property \app\models\User $user
  * @property \app\models\BandComment[] $bandComments
@@ -59,11 +63,11 @@ class Band extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],
             [['lno_score'], 'number'],
-            [['type'], 'required'],
-            [['type', 'description'], 'string'],
+            [['type', 'description', 'source', 'attr'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
-            [['genre', 'similar_to', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
+            [['genre', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
+            [['similar_to'], 'string', 'max' => 5000],
             [['hometown_state'], 'string', 'max' => 50],
             [['youtube'], 'string', 'max' => 800],
             [['instagram'], 'string', 'max' => 500]
@@ -100,6 +104,8 @@ class Band extends \yii\db\ActiveRecord
             'instagram' => 'Instagram',
             'facebook' => 'Facebook',
             'twitter' => 'Twitter',
+            'source' => 'Source',
+            'attr' => 'Attr',
         ];
     }
     
@@ -118,7 +124,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandComment::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-
+        
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -126,7 +132,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandEvent::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-
+        
     /**
      * @return \yii\db\ActiveQuery
      */
