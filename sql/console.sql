@@ -81,3 +81,5 @@ where source = 'sdr';
 
 
 # INSERT INTO `band` (`name`, `logo`, `genre`, `similar_to`, `hometown_city`, `hometown_state`, `description`, `website`, `facebook`, `type`, `lno_score`) VALUES ('dj artistic', NULL, NULL, NULL, 'San Diego', 'CA', NULL, NULL, NULL, 'originals', 10);
+###10 05 testing reverb
+delete * from venue where `source` = 'reverb';

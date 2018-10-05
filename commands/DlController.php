@@ -8,6 +8,7 @@ use app\models\BandEvent;
 use app\models\Event;
 use app\models\Venue;
 use Goutte\Client;
+use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
 use Yii;
 use yii\console\Controller;
@@ -228,7 +229,7 @@ class DlController extends Controller
             if (strpos($cost, 'Cost:') !== false) {
                 $cost = trim(str_replace('Cost:', '', $cost));
             }
-                $cost = preg_replace('/\n\| Website/', '', $cost);
+            $cost = preg_replace('/\n\| Website/', '', $cost);
             $cost = str_replace('$', '', $cost);
             $age_limit = null;
             try {
@@ -253,5 +254,69 @@ class DlController extends Controller
             $event_sdr->setAttributes(compact('img', 'description', 'cost', 'age_limit', 'when'));
             $event_sdr->save();
         }
+    }
+
+    /**
+     * Scrape from ReverbNation
+     */
+    public function actionScrapeReverb($per_page = 10)
+    {
+//        $IS_DEBUG = true;
+        $IS_DEBUG = false;
+        $scraped = 0;
+        $url = "https://www.reverbnation.com/main/local_scene_data?location={\"geo\":\"local\",\"country\":\"US\",\"state\":\"CA\",\"city\":\"San Diego\",\"postal_code\":\"92115\"}&page=1&range={\"type\":\"full\",\"date\":\"\"}";
+        if ($IS_DEBUG) {
+            $events = file_get_contents(dirname(__DIR__) . "/web/scrape/reverb_ev.json");
+//            var_dump($events);
+//            return true;
+        } else {
+            $params = ['per_page' => $per_page];
+            $guzzle = new GuzzleClient();
+            $events = $guzzle->request('GET', $url, $params);
+            if ($events->getStatusCode() !== 200) {
+                echo 'Failed. ' . $events->getStatusCode();
+                return false;
+            }
+            $events = $events->getBody();
+            if (!method_exists($events, 'getContents')) {
+                echo 'Bad response. Url: ' . $url;
+                return false;
+            }
+            $events = $events->getContents();
+        }
+        $events = json_decode($events);
+
+        if (isset($events->shows) && is_array($events->shows)) {
+            foreach ($events->shows as $show) {
+//                var_dump($show);
+                $event = new Event();
+                $venue = Venue::findOrCreate(['name' => $show->venue_name]);
+                /** @var $venue Venue */
+                $venue->created_by = $this->SCRAPER_ID;
+                $event->source = 'reverb';
+                $event->save();
+                $event->img = $show->image_url;
+                $show_time = \DateTime::createFromFormat('Y/m/d H:i:s', $show->showtime);
+                $event->date = $show_time->format('Y-m-d');
+                $event->start_time = $show_time->format('h:i:s');
+                $venue->city = $show->city;
+                $venue->state = $show->state;
+                $venue_attrs = ['venue_link' => $show->venue_link, 'show_id' => $show->show_id, 'artists' => $show->artists];
+                try {
+                    $venue->save();
+                } catch (\Exception $exception) {
+                    Yii::error($exception);
+                }
+                try {
+                    $event->save();
+                } catch (\Exception $exception) {
+                    Yii::error($exception);
+                }
+                return false;
+            }
+            return false;
+        }
+        echo "Pulled: $scraped events";
+        return false;
     }
 }

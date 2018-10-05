@@ -20,6 +20,7 @@
   "minimum-stability": "stable",
   "require": {
     "php": ">=7.2.0",
+    "ext-json": "*",
     "yiisoft/yii2": ">=2.0.5",
     "yiisoft/yii2-bootstrap": "*",
     "yiisoft/yii2-swiftmailer": "*",
@@ -72,6 +73,11 @@
     "asset-installer-paths": {
       "npm-asset-library": "vendor/npm",
       "bower-asset-library": "vendor/bower"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "usv\\yii2helper\\": "yii2helper/"
     }
   }
 }
