@@ -1,6 +1,7 @@
 <?php
 
 namespace app\commands;
+
 require_once dirname(__DIR__) . "/yii2helper/PHPHelper.php";
 
 use app\models\Band;
@@ -10,9 +11,9 @@ use app\models\Venue;
 use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
 use Symfony\Component\DomCrawler\Crawler;
+use usv\yii2helper\PHPHelper;
 use Yii;
 use yii\console\Controller;
-use yii2helper\PHPHelper;
 
 define('SDRCOM', 'https://www.sandiegoreader.com/');
 define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2018-07-04&end_date=2018-07-04
@@ -33,6 +34,19 @@ class DlController extends Controller
     {
         $this->SCRAPER_ID = \Yii::$app->params['scraper_id'];
         parent::init();
+    }
+
+    public function actionScrapeSdrAll()
+    {
+        $this->actionScrapeSdr();
+        $this->actionPullEventSdr();
+        $this->actionVenueAddrSdr();
+    }
+
+    public function actionScrapeReverbAll()
+    {
+        $this->actionScrapeReverb();
+        $this->actionPullBandReverb();
     }
 
     /**
@@ -185,7 +199,7 @@ class DlController extends Controller
             }
             $addr = str_replace(' | Directions', '', $addr);
             $addr = str_replace(' (NCC)', '', $addr);
-            $address_variables = PHPHelper::parse_address($addr);
+            $address_variables = PHPHelper::parseAddress($addr);
             $venue_wo_addr->setAttributes($address_variables);
             if ($venue_wo_addr->save()) {
                 $updated++;
@@ -289,34 +303,138 @@ class DlController extends Controller
         if (isset($events->shows) && is_array($events->shows)) {
             foreach ($events->shows as $show) {
 //                var_dump($show);
-                $event = new Event();
                 $venue = Venue::findOrCreate(['name' => $show->venue_name]);
                 /** @var $venue Venue */
                 $venue->created_by = $this->SCRAPER_ID;
-                $event->source = 'reverb';
-                $event->save();
-                $event->img = $show->image_url;
+                $venue->source = 'reverb';
+                $event_columns = ['venue_id' => $venue->id];
                 $show_time = \DateTime::createFromFormat('Y/m/d H:i:s', $show->showtime);
-                $event->date = $show_time->format('Y-m-d');
-                $event->start_time = $show_time->format('h:i:s');
+                $event_columns['date'] = $show_time->format('Y-m-d');
+                $event_columns['start_time'] = $show_time->format('h:i:s');
+                $event = Event::findOrCreate($event_columns);
+                $event->source = 'reverb';
+                /** @var Event $event */
+                $venue_attrs = ['venue_link' => $show->venue_link, 'show_id' => $show->show_id, 'artists' => json_encode($show->artists)];
                 $venue->city = $show->city;
                 $venue->state = $show->state;
-                $venue_attrs = ['venue_link' => $show->venue_link, 'show_id' => $show->show_id, 'artists' => $show->artists];
+                $venue->attr = $venue_attrs;
                 try {
                     $venue->save();
                 } catch (\Exception $exception) {
                     Yii::error($exception);
+                    continue;
                 }
+                if ($venue->errors) {
+                    Yii::error($venue->errors);
+                }
+                $event->img = $show->image_url;
+                $event->venue_id = $venue->id;
+                $event->name = $venue->name . ' ' . $event_columns['date'];
                 try {
                     $event->save();
                 } catch (\Exception $exception) {
                     Yii::error($exception);
+                    continue;
                 }
-                return false;
+                //now parse bands
+                foreach ($show->artists as $artist) {
+                    $band_columns = ['name' => $artist->name];
+                    $band = Band::findOrCreate($band_columns);
+                    /** @var Band $band */
+                    $band->source = 'reverb';
+                    $band->attr = ['id' => $artist->id, 'url' => $artist->url];
+                    try {
+                        $band->save();
+                    } catch (\Exception $e) {
+                        Yii::error($e);
+                        continue;
+                    }
+                    if ($band->errors) {
+                        Yii::error($band->errors);
+                    }
+                    $band_event = new BandEvent();
+                    $band_event->band_id = $band->id;
+                    $band_event->event_id = $event->id;
+                    $band_event->created_by = $this->SCRAPER_ID;
+                    try {
+                        $band_event->save();
+                    } catch (\Exception $exception) {
+                        //ignore. probably duplicate band_event
+                    }
+                }
+                $scraped++;
+//                echo "Pulled: $scraped events";
+//                return true;//todob debug
             }
-            return false;
         }
         echo "Pulled: $scraped events";
         return false;
+    }
+
+    /**
+     * Pull band details for reverbnation
+     * Getting them from https://www.reverbnation.com/api/artist/3981578
+     */
+    public function actionPullBandReverb()
+    {
+        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
+        $goutte = new Client();
+        $guzzle = new \GuzzleHttp\Client();
+        $base_api_url = 'https://www.reverbnation.com/api/artist/';
+        $scraped = 0;
+        foreach ($bands as $band) {
+            $url = $band->attr['url'];
+            if (empty($url)) {
+                continue;
+            }
+            $crawler = $goutte->request('get', $url);
+            $image_src = $crawler->filter('meta[name="image_src"]');
+            try {
+                $image_src = $image_src->attr('content');
+                $band_id = null;
+                if (preg_match("/.*\/artists\/images\/(\d+).*/", $image_src, $band_id) && isset($band_id[1])) {
+                    $band_id = $band_id[1];////https://gp1.wac.edgecastcdn.net/802892/http_public_production/artists/images/3981578/original/crop:x0y0w756h567/hash:1467524721/1461597472_E0694166-AE0B-43F0-8ED0-966218024D8C-1314-0000015D04CE333B.jpg?1467524721;
+                }
+            } catch (\Exception $exception) {
+                continue;
+            }
+            if (!is_int(intval($band_id))) {
+                continue;
+            }
+            $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
+            if ($band_api_data->getStatusCode() !== 200) {
+                echo 'Failed. ' . $band_api_data->getStatusCode();
+                continue;
+            }
+            $band_api_data = $band_api_data->getBody();
+            if (!method_exists($band_api_data, 'getContents')) {
+                echo 'Bad response. Url: ' . $url;
+                continue;
+            }
+            $band_api_data = $band_api_data->getContents();
+            try {
+                $band_api_data = json_decode($band_api_data);
+            } catch (\Exception $exception) {
+                continue;
+            }
+            $band->attr = $band_api_data;
+            $band->description = $band_api_data->bio;
+            $band->logo = $band_api_data->cover_photo->url;
+            $band->lno_score = random_int(6, 10);
+            $band->genre = implode(',', $band_api_data->genres);
+            $band->facebook = $band_api_data->fb_share_url?$band_api_data->fb_share_url:null;
+            try {
+                $band->save();
+            } catch (\Exception $exception) {
+                continue;
+            }
+            if ($band->errors) {
+                Yii::error($band->errors);
+            }
+            else {
+                $scraped++;
+            }
+        }
+        echo "Scraped $scraped bands" . PHP_EOL;
     }
 }

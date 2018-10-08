@@ -29,6 +29,8 @@ use yii\behaviors\BlameableBehavior;
  * @property string $facebook
  * @property string $system_note
  * @property string $sdr_name
+ * @property string $source
+ * @property array $attr
  *
  * @property \app\models\Event[] $events
  * @property \app\models\User $createdBy
@@ -61,6 +63,7 @@ class Venue extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['created_by', 'user_id'], 'integer'],
             [['lat', 'lng', 'cost'], 'number'],
+            [['source'], 'string'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook', 'sdr_name'], 'string', 'max' => 255],
             [['type', 'description'], 'string', 'max' => 800],
             [['city'], 'string', 'max' => 80],
@@ -104,6 +107,8 @@ class Venue extends \yii\db\ActiveRecord
             'facebook' => 'Facebook',
             'system_note' => 'System Note',
             'sdr_name' => 'Sdr Name',
+            'source' => 'Source',
+            'attr' => 'Attr',
         ];
     }
     

@@ -40,7 +40,7 @@ $this->registerJs($search);
         ],
         ['attribute' => 'id', 'visible' => false],
         [
-            'class' => 'app\brian\yiiplus\EditColumn',
+            'class' => 'usv\yii2helper\grid\EditColumn',
         ],
         [
             'attribute' => 'user_id',

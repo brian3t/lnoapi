@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Venue;
+use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * VenueController implements the CRUD actions for Venue model.
@@ -48,6 +48,7 @@ class VenueController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Venue::find(),
         ]);
+        $dataProvider->setSort(['defaultOrder' => ['created_at' => SORT_DESC]]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

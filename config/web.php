@@ -66,7 +66,7 @@ $config = [
             'file' => '@my/path/to/yii' // or an absolute path to console file
         ],
         'formatter' => [
-            'class' => 'yii\i18n\Formatter',
+            'class' => 'usv\yii2helper\i18n\ViewFormatter',
             'nullDisplay' => '',
         ],
         'view' => [

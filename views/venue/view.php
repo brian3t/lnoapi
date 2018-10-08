@@ -52,6 +52,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'facebook',
             'system_note',
             'sdr_name',
+            'source',
+            'attr:json'
+            /*['attribute' => 'attr',
+                'value' => function ($model) {
+                    return json_encode($model->attr);
+                }],*/
         ];
         echo DetailView::widget([
             'model' => $model,
@@ -74,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'start_time',
                 'end_time',
                 [
-                    'class' => 'app\brian\yiiplus\EditColumn',
+                    'class' => 'usv\yii2helper\grid\EditColumn',
                 ],
                 'description:ntext',
                 'cost',

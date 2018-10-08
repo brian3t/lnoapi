@@ -46,7 +46,12 @@ $this->params['breadcrumbs'][] = $this->title;
             'contentOptions'=>['class'=>'name'],
             'value' => function ($event) {
                 $venue = $event->venue;
-                return "<a target='_blank' href='/venue/view?id={$venue->id}'>{$venue->name}</a>";
+                if ($venue instanceof \app\models\Venue)
+                {
+                    return "<a target='_blank' href='/venue/view?id={$venue->id}'>{$venue->name}</a>";
+                } else {
+                    return "No venue found";
+                }
             }
         ],
         'date',

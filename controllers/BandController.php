@@ -2,12 +2,12 @@
 
 namespace app\controllers;
 
-use Yii;
 use app\models\Band;
+use Yii;
 use yii\data\ActiveDataProvider;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
 
 /**
  * BandController implements the CRUD actions for Band model.
@@ -48,6 +48,7 @@ class BandController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Band::find(),
         ]);
+        $dataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

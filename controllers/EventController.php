@@ -48,6 +48,7 @@ class EventController extends Controller
         $dataProvider = new ActiveDataProvider([
             'query' => Event::find(),
         ]);
+        $dataProvider->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
 
         return $this->render('index', [
             'dataProvider' => $dataProvider,

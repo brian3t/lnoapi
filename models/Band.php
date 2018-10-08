@@ -3,17 +3,19 @@
 namespace app\models;
 
 use app\models\base\Band as BaseBand;
+use usv\yii2helper\models\ModelB3tTrait;
 
 /**
  * This is the model class for table "band".
  */
 class Band extends BaseBand
 {
+    use ModelB3tTrait;
     public function beforeValidate()
     {
         try {
             $genre_array = \Yii::$app->request->getBodyParam('genre_array');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             $genre_array = null;
         }
         if (is_array($genre_array)){

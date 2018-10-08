@@ -40,7 +40,7 @@ $this->registerJs($search);
         ],
         ['attribute' => 'id', 'visible' => false],
         [
-            'class' => 'app\brian\yiiplus\EditColumn',
+            'class' => 'usv\yii2helper\grid\EditColumn',
         ],
         'type',
         'address1',
@@ -79,6 +79,7 @@ $this->registerJs($search);
             'value' => function ($model) {
                 return $model->createdBy ? $model->createdBy->username : 'N/A';
             }],
+        'created_at',
         [
             'class' => 'yii\grid\ActionColumn',
         ],

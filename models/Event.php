@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\base\Event as BaseEvent;
+use usv\yii2helper\models\ModelB3tTrait;
 use yii\helpers\ArrayHelper;
 
 /**
@@ -10,6 +11,7 @@ use yii\helpers\ArrayHelper;
  */
 class Event extends BaseEvent
 {
+    use ModelB3tTrait;
     /**
      * @return \yii\db\ActiveQuery
      */

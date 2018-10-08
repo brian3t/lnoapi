@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the base model class for table "band".
  *
@@ -63,7 +61,7 @@ class Band extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],
             [['lno_score'], 'number'],
-            [['type', 'description', 'source', 'attr'], 'string'],
+            [['type', 'description', 'source'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
             [['genre', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],

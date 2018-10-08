@@ -2,6 +2,7 @@
 
 namespace app\models\base;
 
+use Yii;
 use yii\behaviors\BlameableBehavior;
 
 /**
@@ -33,6 +34,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $sdr_name
  * @property string $temp
  * @property string $source
+ * @property array $attr
  *
  * @property \app\models\BandEvent[] $bandEvents
  * @property \app\models\User $createdBy
@@ -68,12 +70,12 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['created_at', 'updated_at', 'date', 'start_time', 'end_time'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
-            [['short_desc', 'description', 'source'], 'string'],
+            [['short_desc', 'description', 'source', 'attr'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
             [['when'], 'string', 'max' => 300],
             [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
             [['img'], 'string', 'max' => 800],
-            [['is_charity'], 'number', 'max' => 4],
+            [['is_charity'], 'string', 'max' => 4],
             [['age_limit'], 'string', 'max' => 20],
             [['system_note', 'temp'], 'string', 'max' => 8000]
         ];
@@ -116,9 +118,10 @@ class Event extends \yii\db\ActiveRecord
             'sdr_name' => 'Sdr Name',
             'temp' => 'Temp',
             'source' => 'Source',
+            'attr' => 'Attr',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -126,15 +129,19 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandEvent::className(), ['event_id' => 'id'])->inverseOf('event');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by'])->inverseOf('events');
+        $created_by_user = $this->hasOne(\app\models\User::className(), ['id' => 'created_by'])->inverseOf('events');
+        if (!$created_by_user instanceof \app\models\User) {
+            $created_by_user = \app\models\User::findOne(['id' => Yii::$app->params['scraper_id']]);
+        }
+        return $created_by_user;
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -142,7 +149,7 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\User::className(), ['id' => 'user_id'])->inverseOf('events');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -150,7 +157,7 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\Venue::className(), ['id' => 'venue_id'])->inverseOf('events');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -158,7 +165,7 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\UserEvent::className(), ['event_id' => 'id'])->inverseOf('event');
     }
-    
+
     /**
      * @inheritdoc
      * @return array mixed

@@ -56,6 +56,8 @@ $this->params['breadcrumbs'][] = $this->title;
             'instagram:url',
             'facebook',
             'twitter',
+            'source',
+            'attr:json'
         ];
         echo DetailView::widget([
             'model' => $model,

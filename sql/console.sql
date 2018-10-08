@@ -78,8 +78,16 @@ update event
 set short_desc = description
 where source = 'sdr';
 ###end AFTER add short_desc: make desc -> shortdesc
-
+alter table venue add source enum('sdr', 'ticketfly', 'other', 'unknown', 'reverb') default 'unknown' null;
 
 # INSERT INTO `band` (`name`, `logo`, `genre`, `similar_to`, `hometown_city`, `hometown_state`, `description`, `website`, `facebook`, `type`, `lno_score`) VALUES ('dj artistic', NULL, NULL, NULL, 'San Diego', 'CA', NULL, NULL, NULL, 'originals', 10);
 ###10 05 testing reverb
-delete * from venue where `source` = 'reverb';
+delete from venue where `source` = 'reverb';
+delete from venue where created_at >= '2018-10-05';
+delete from event where id >= 272;
+
+
+select *
+from event
+where venue_id = 221
+and source='reverb';
