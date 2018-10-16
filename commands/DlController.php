@@ -242,9 +242,11 @@ class DlController extends Controller
             }
             if (strpos($cost, 'Cost:') !== false) {
                 $cost = trim(str_replace('Cost:', '', $cost));
+                $cost = preg_replace('/\n\| Website/', '', $cost);
+                $cost = str_replace('$', '', $cost);
+            } else {
+                $cost = null;
             }
-            $cost = preg_replace('/\n\| Website/', '', $cost);
-            $cost = str_replace('$', '', $cost);
             $age_limit = null;
             try {
                 $age_limit = $content_info->filter('ul.details > li:nth-child(2)')->text();
