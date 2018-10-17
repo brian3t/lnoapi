@@ -41,12 +41,12 @@ class OshinController extends Controller
             if (stripos($event->cost, 'Age limit:') !== false) {
                 $event->age_limit = trim(str_replace('Age limit:', '', $event->cost));
                 $event->cost = null;
-                $event->save();
+                $event->saveAndLogError();
             }
             if (stripos($event->cost, 'When:') !== false) {
                 $event->when = trim(str_replace('When:', '', $event->cost));
                 $event->cost = null;
-                $event->save();
+                $event->saveAndLogError();
             }
         }
         echo 'Clean event done';
