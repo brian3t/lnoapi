@@ -1,40 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="227" />
-    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="105" />
+    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="241" />
+    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="119" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="Working on reverb. Venue must have source.">
-      <change afterPath="$PROJECT_DIR$/web/scrape/reverb/sample_band.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2helper/grid/EditColumn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/yii2helper/i18n/ViewFormatter.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/oshin.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/brian/yiiplus/EditColumn.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/brian/yiiplus/ViewFormatter.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/OshinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/OshinController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/console.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/console.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BandController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/VenueController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/VenueController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Band.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/base/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Band.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/base/Event.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Event.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/base/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Venue.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sql/console.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/console.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/band/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/event/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/event/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/event/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/event/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/venue/_dataEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/_dataEvent.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/venue/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/venue/view.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/view.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper/PHPHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper/PHPHelper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper/test.php" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap/" />
     <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap3-dialog/" />
@@ -149,32 +124,25 @@
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="lno8" type="feb32156:DbDataSourceImpl" />
-      </path>
-      <path>
-        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="lno8" type="feb32156:DbDataSourceImpl" />
+        <item name="lno" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="lno8" type="feb32156:DbDataSourceImpl" />
+        <item name="lno" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
-        <item name="lno8" type="feb32156:DbDataSourceImpl" />
+        <item name="lno" type="feb32156:DbDataSourceImpl" />
         <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
         <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="band: table" type="98d5ac3d:MysqlImplModel$Table" />
+        <item name="event: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="lno8" type="feb32156:DbDataSourceImpl" />
-        <item name="schemas" type="d4e8921:DatabaseStructure$FamilyGroup" />
-        <item name="lno: schema" type="c314c289:MysqlImplModel$Schema" />
-        <item name="band_event: table" type="98d5ac3d:MysqlImplModel$Table" />
       </path>
     </expand>
     <select />
@@ -187,10 +155,11 @@
           <entry key="project.open.time.0" value="17" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.2" value="3" />
+          <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.opened" value="26" />
+          <entry key="project.opened" value="27" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -200,10 +169,11 @@
           <entry key="event_tmp" value="1" />
           <entry key="html" value="3" />
           <entry key="json" value="6" />
-          <entry key="log" value="6" />
-          <entry key="php" value="74" />
+          <entry key="log" value="8" />
+          <entry key="php" value="80" />
           <entry key="phpcs" value="7" />
           <entry key="rb" value="1" />
+          <entry key="sh" value="1" />
           <entry key="sql" value="10" />
           <entry key="txt" value="1" />
           <entry key="venue" value="2" />
@@ -211,11 +181,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+          <entry key="Bash" value="1" />
           <entry key="Database Element" value="12" />
           <entry key="HTML" value="1" />
           <entry key="JSON" value="6" />
-          <entry key="PHP" value="81" />
-          <entry key="PLAIN_TEXT" value="6" />
+          <entry key="PHP" value="87" />
+          <entry key="PLAIN_TEXT" value="8" />
           <entry key="Ruby" value="1" />
           <entry key="SQL" value="4" />
           <entry key="Scratch" value="9" />
@@ -225,15 +196,17 @@
         <counts>
           <entry key="json" value="69" />
           <entry key="log" value="25" />
-          <entry key="php" value="7713" />
+          <entry key="php" value="8104" />
+          <entry key="sh" value="65" />
           <entry key="sql" value="1250" />
           <entry key="txt" value="139" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
+          <entry key="Bash" value="65" />
           <entry key="JSON" value="69" />
-          <entry key="PHP" value="7713" />
+          <entry key="PHP" value="8104" />
           <entry key="PLAIN_TEXT" value="146" />
           <entry key="SQL" value="1250" />
           <entry key="Scratch" value="18" />
@@ -247,163 +220,99 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.38455772">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/commands/DlController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="346">
-                  <caret line="395" column="28" selection-start-line="395" selection-start-column="28" selection-end-line="395" selection-end-column="28" />
-                  <folding>
-                    <element signature="e#93#113#0#PHP" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/web/scrape/reverb/sample_band.json">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="225">
-                  <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_8.txt">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="244">
-                  <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-                  <folding>
-                    <element signature="n#style#0;n#iframe#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="e#15478#15484#1" expanded="true" />
-                    <element signature="e#15769#15775#0" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#1;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#2;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="e#26500#26506#0" expanded="true" />
-                    <element signature="e#31660#31666#0" expanded="true" />
-                    <element signature="e#34739#34745#0" expanded="true" />
-                    <element signature="e#39759#39765#0" expanded="true" />
-                    <element signature="e#42620#42626#1" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="e#50823#50829#1" expanded="true" />
-                    <element signature="e#50871#50877#1" expanded="true" />
-                    <element signature="e#51452#51458#1" expanded="true" />
-                    <element signature="e#51500#51506#1" expanded="true" />
-                    <element signature="e#51548#51554#1" expanded="true" />
-                    <element signature="e#51596#51602#1" expanded="true" />
-                    <element signature="e#51644#51650#1" expanded="true" />
-                    <element signature="e#52298#52304#1" expanded="true" />
-                    <element signature="e#52346#52352#1" expanded="true" />
-                    <element signature="e#52394#52400#1" expanded="true" />
-                    <element signature="e#52442#52448#1" expanded="true" />
-                    <element signature="e#52490#52496#1" expanded="true" />
-                    <element signature="e#53499#53505#1" expanded="true" />
-                    <element signature="e#53864#53869#0" expanded="true" />
-                    <element signature="e#54390#54396#1" expanded="true" />
-                    <element signature="e#59292#59297#0" expanded="true" />
-                    <element signature="e#60616#60622#1" expanded="true" />
-                    <element signature="e#64818#64823#0" expanded="true" />
-                    <element signature="n#style#0;n#select#0;n#form#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="e#73233#73238#0" expanded="true" />
-                    <element signature="n#src#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#a#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="e#746#752#0" expanded="true" />
-                    <element signature="e#1182#1188#0" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#info-box-map#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="e#1606#1612#0" expanded="true" />
-                    <element signature="e#1259#1266#0" expanded="true" />
-                    <element signature="e#2262#2269#0" expanded="true" />
-                    <element signature="e#2622#2629#0" expanded="true" />
-                    <element signature="e#483#489#0" expanded="true" />
-                    <element signature="e#493#499#0" expanded="true" />
-                    <element signature="e#837#843#0" expanded="true" />
-                    <element signature="e#846#852#0" expanded="true" />
-                    <element signature="e#1169#1175#0" expanded="true" />
-                    <element signature="e#1179#1185#0" expanded="true" />
-                    <element signature="e#1187#1193#0" expanded="true" />
-                    <element signature="e#1200#1206#0" expanded="true" />
-                    <element signature="e#1239#1246#0" expanded="true" />
-                    <element signature="e#1681#1688#0" expanded="true" />
-                    <element signature="e#1847#1854#0" expanded="true" />
-                    <element signature="e#1302#1308#0" expanded="true" />
-                    <element signature="e#1476#1482#0" expanded="true" />
-                    <element signature="e#1712#1718#0" expanded="true" />
-                    <element signature="e#666#672#0" expanded="true" />
-                    <element signature="e#1692#1699#0" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                    <element signature="e#6907#6913#1" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/views/band/view.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="60" column="10" lean-forward="true" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="52" lean-forward="true" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-                  <folding>
-                    <element signature="e#6#116#0#PHP" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/yii2helper/i18n/ViewFormatter.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#9#15#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/commands/DlController.php">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="389">
-                  <caret line="409" column="45" selection-start-line="409" selection-start-column="45" selection-end-line="409" selection-end-column="45" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commands/DlController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="159">
+              <caret line="294" column="13" lean-forward="true" selection-start-line="294" selection-start-column="13" selection-end-line="294" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commands/OshinController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+              <folding>
+                <element signature="e#32#53#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/Event.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="195">
+              <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+              <folding>
+                <element signature="e#30#69#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/models/base/Event.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1020">
+              <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="174">
+              <caret line="668" selection-start-line="668" selection-end-line="668" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+              <folding>
+                <element signature="e#6#116#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commands/oshin.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/runtime/logs/console.log">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/console.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -449,7 +358,7 @@
   </component>
   <component name="Git.Settings">
     <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/yii2helper" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/yii2helper" value="ff26d880a803a3c501a141013cb8379c1a60636c" />
@@ -459,7 +368,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.html" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.html" />
         <option value="$PROJECT_DIR$/web/less/sass/custom.scss" />
         <option value="$PROJECT_DIR$/views/venue/_form.php" />
@@ -487,20 +395,16 @@
         <option value="$PROJECT_DIR$/controllers/VenueController.php" />
         <option value="$PROJECT_DIR$/models/Event.php" />
         <option value="$PROJECT_DIR$/views/event/view.php" />
-        <option value="$PROJECT_DIR$/commands/OshinController.php" />
         <option value="$PROJECT_DIR$/controllers/EventController.php" />
         <option value="$PROJECT_DIR$/sql/console.sql" />
-        <option value="$PROJECT_DIR$/config/console.php" />
         <option value="$PROJECT_DIR$/models/base/Venue.php" />
         <option value="$PROJECT_DIR$/yii2helper/grid/EditColumn.php" />
-        <option value="$PROJECT_DIR$/models/base/Event.php" />
         <option value="$PROJECT_DIR$/config/web.php" />
         <option value="$PROJECT_DIR$/yii2helper/test.php" />
         <option value="$PROJECT_DIR$/yii2helper/PHPHelper.php" />
         <option value="$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php" />
         <option value="$PROJECT_DIR$/views/venue/view.php" />
         <option value="$PROJECT_DIR$/controllers/BandController.php" />
-        <option value="$PROJECT_DIR$/runtime/logs/app.log" />
         <option value="$PROJECT_DIR$/models/base/Band.php" />
         <option value="$PROJECT_DIR$/models/Band.php" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_8.txt" />
@@ -508,8 +412,13 @@
         <option value="$PROJECT_DIR$/web/scrape/reverb/sample_band.json" />
         <option value="$PROJECT_DIR$/views/band/view.php" />
         <option value="$PROJECT_DIR$/yii2helper/i18n/ViewFormatter.php" />
-        <option value="$PROJECT_DIR$/runtime/logs/console.log" />
         <option value="$PROJECT_DIR$/commands/DlController.php" />
+        <option value="$PROJECT_DIR$/runtime/logs/app.log" />
+        <option value="$PROJECT_DIR$/commands/oshin.sh" />
+        <option value="$PROJECT_DIR$/runtime/logs/console.log" />
+        <option value="$PROJECT_DIR$/config/console.php" />
+        <option value="$PROJECT_DIR$/commands/OshinController.php" />
+        <option value="$PROJECT_DIR$/models/base/Event.php" />
       </list>
     </option>
   </component>
@@ -521,8 +430,17 @@
   </component>
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths>
-      <path value="$PROJECT_DIR$/web/assets/1abf5752/package.json" />
-      <path value="$PROJECT_DIR$/web/assets/f63d119a/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/220e2e4f/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/6511cc0d/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/980d9e62/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/9c09ee1c/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/a0a4337c/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/b87978db/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/bfd97dc7/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/c56c2c13/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/d1571b8e/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/e2794e30/package.json" />
+      <path value="$PROJECT_DIR$/web/assets/f145f2c1/package.json" />
     </packageJsonPaths>
   </component>
   <component name="PhpServers">
@@ -675,7 +593,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -709,11 +626,6 @@
               <item name="modules" type="462c0819:PsiDirectoryNode" />
               <item name="v1" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="brian" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -813,7 +725,7 @@
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
               <item name="yii2" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
+              <item name="db" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -865,18 +777,6 @@
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
               <item name="yii2helper" type="462c0819:PsiDirectoryNode" />
-              <item name="grid" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="yii2helper" type="462c0819:PsiDirectoryNode" />
-              <item name="i18n" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="yii2helper" type="462c0819:PsiDirectoryNode" />
               <item name="models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -898,21 +798,11 @@
               <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
               <item name="aa3c30e9-1e22-4257-8032-97e3ce09f26a" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
             </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-              <item name="b7d890f6-f61f-45b5-8dac-fa908824cafa" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -955,7 +845,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Script.dl pull reverb bands">
+  <component name="RunManager" selected="Bash.oshin all">
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -969,6 +859,16 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration name="oshin all" type="BashConfigurationType" factoryName="Bash">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/commands/oshin.sh" />
+      <option name="PARAMETERS" value="" />
+      <module name="" />
+      <method v="2" />
     </configuration>
     <configuration name="dl pull event sdr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/pull-event-sdr">
       <method v="2">
@@ -993,20 +893,21 @@
     <configuration name="dl venaddr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/venue-addr-sdr">
       <method v="2" />
     </configuration>
-    <configuration name="oshin" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="oshin/clean-data">
+    <configuration name="oshin clean-data" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="oshin/clean-data">
       <method v="2" />
     </configuration>
     <configuration name="pull lat lng" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-lat-lng">
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Bash.oshin all" />
       <item itemvalue="PHP Script.dl scrape sdr" />
       <item itemvalue="PHP Script.dl scrape reverb" />
       <item itemvalue="PHP Script.dl pull reverb bands" />
       <item itemvalue="PHP Script.dl pull event sdr" />
       <item itemvalue="PHP Script.dl venaddr" />
       <item itemvalue="PHP Script.pull lat lng" />
-      <item itemvalue="PHP Script.oshin" />
+      <item itemvalue="PHP Script.oshin clean-data" />
     </list>
   </component>
   <component name="TaskManager">
@@ -1171,17 +1072,17 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1056" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1061" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984756" visible="true" weight="0.14802982" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4984756" visible="true" weight="0.13045794" />
       <window_info id="Structure" order="1" sideWeight="0.5015244" side_tool="true" weight="0.12083333" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47550586" visible="true" weight="0.28418803" />
-      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4802982" weight="0.36324787" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.47550586" visible="true" weight="0.2838983" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4802982" weight="0.36228815" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49947917" weight="0.31979167" />
@@ -1196,7 +1097,7 @@
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="Remote Host" order="3" weight="0.3296875" />
-      <window_info anchor="right" id="Database" order="4" sideWeight="0.4989518" visible="true" weight="0.14164004" />
+      <window_info anchor="right" id="Database" order="4" sideWeight="0.4989518" visible="true" weight="0.12353568" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" x="0" y="0" width="430" height="856" id="Documentation" order="6" sideWeight="0.5010482" side_tool="true" visible="true" weight="0.23541667" />
       <window_info anchor="right" id="Maven Projects" order="7" />
@@ -1329,6 +1230,11 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>$event-&gt;errors</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>$band_api_data-&gt;fb_share_url?$band_api_data-&gt;fb_share_url:null</expression-string>
         <language-id>PHP</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -1368,21 +1274,9 @@
         <language-id>PHP</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>preg_match(&quot;/.*\/artists\/(\d+).*/&quot;, $image_src, $band_id)</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/api/modules/v1/controllers/BandController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="47" column="35" selection-start-line="47" selection-start-column="35" selection-end-line="47" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/band" />
     <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/event" />
     <entry file="das://aa3c30e9-1e22-4257-8032-97e3ce09f26a/schema/lno/table/event">
@@ -1416,13 +1310,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/mpdf/mpdf/utils/image_details.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="193">
-          <caret line="445" column="9" selection-start-line="445" selection-start-column="9" selection-end-line="445" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/mpdf/mpdf/utils/image_details.php" />
     <entry file="file://$PROJECT_DIR$/web/scrape/reverb_ev.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
@@ -1479,23 +1367,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="22" selection-start-line="13" selection-start-column="22" selection-end-line="13" selection-end-column="22" />
-          <folding>
-            <element signature="e#30#69#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commands/OshinController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="23" column="61" selection-start-line="23" selection-start-column="61" selection-end-line="23" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/Venue.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
@@ -1524,20 +1395,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="9885">
-          <caret line="672" selection-start-line="672" selection-end-line="672" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/console.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="23" column="20" selection-start-line="23" selection-start-column="20" selection-end-line="23" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/sql/console.sql">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1365">
@@ -1552,9 +1409,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql" />
     <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/venue">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -1572,16 +1427,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yii2helper/grid/EditColumn.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="13" lean-forward="true" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-          <folding>
-            <element signature="e#29#48#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/yii2helper/grid/EditColumn.php" />
     <entry file="file://$PROJECT_DIR$/config/web.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="327">
@@ -1610,22 +1456,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/base/Event.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="133" column="34" lean-forward="true" selection-start-line="133" selection-start-column="34" selection-end-line="133" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/BandController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
           <caret line="52" column="39" lean-forward="true" selection-start-line="52" selection-start-column="39" selection-end-line="52" selection-end-column="39" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/models/base/Band.php">
       <provider selected="true" editor-type-id="text-editor">
@@ -1638,9 +1474,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
           <caret line="10" column="27" lean-forward="true" selection-start-line="10" selection-start-column="27" selection-end-line="10" selection-end-column="27" />
-          <folding>
-            <element signature="e#30#67#0#PHP" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1651,20 +1484,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/web/scrape/reverb/sample_band.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="23" lean-forward="true" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_8.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="25" lean-forward="true" selection-start-column="25" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_8.txt" />
     <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/View.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -1679,116 +1499,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yii2helper/i18n/ViewFormatter.php">
+    <entry file="file://$PROJECT_DIR$/yii2helper/i18n/ViewFormatter.php" />
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html" />
+    <entry file="file://$PROJECT_DIR$/views/band/view.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding>
-            <element signature="e#9#15#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="300">
+          <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php">
+    <entry file="file://$PROJECT_DIR$/web/scrape/reverb/sample_band.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="52" lean-forward="true" selection-start-line="21" selection-start-column="52" selection-end-line="21" selection-end-column="52" />
-          <folding>
-            <element signature="e#6#116#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/commands/DlController.php">
+    <entry file="file://$PROJECT_DIR$/commands/oshin.sh">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="395" column="28" selection-start-line="395" selection-start-column="28" selection-end-line="395" selection-end-column="28" />
-          <folding>
-            <element signature="e#93#113#0#PHP" expanded="true" />
-          </folding>
+        <state relative-caret-position="30">
+          <caret line="2" column="41" lean-forward="true" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html">
+    <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/console.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
-          <folding>
-            <element signature="n#style#0;n#iframe#0;n#noscript#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#15478#15484#1" expanded="true" />
-            <element signature="e#15769#15775#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#0;n#noscript#1;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#26500#26506#0" expanded="true" />
-            <element signature="e#31660#31666#0" expanded="true" />
-            <element signature="e#34739#34745#0" expanded="true" />
-            <element signature="e#39759#39765#0" expanded="true" />
-            <element signature="e#42620#42626#1" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#7;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#50823#50829#1" expanded="true" />
-            <element signature="e#50871#50877#1" expanded="true" />
-            <element signature="e#51452#51458#1" expanded="true" />
-            <element signature="e#51500#51506#1" expanded="true" />
-            <element signature="e#51548#51554#1" expanded="true" />
-            <element signature="e#51596#51602#1" expanded="true" />
-            <element signature="e#51644#51650#1" expanded="true" />
-            <element signature="e#52298#52304#1" expanded="true" />
-            <element signature="e#52346#52352#1" expanded="true" />
-            <element signature="e#52394#52400#1" expanded="true" />
-            <element signature="e#52442#52448#1" expanded="true" />
-            <element signature="e#52490#52496#1" expanded="true" />
-            <element signature="e#53499#53505#1" expanded="true" />
-            <element signature="e#53864#53869#0" expanded="true" />
-            <element signature="e#54390#54396#1" expanded="true" />
-            <element signature="e#59292#59297#0" expanded="true" />
-            <element signature="e#60616#60622#1" expanded="true" />
-            <element signature="e#64818#64823#0" expanded="true" />
-            <element signature="n#style#0;n#select#0;n#form#0;n#div#3;n#div#0;n#div#0;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#73233#73238#0" expanded="true" />
-            <element signature="n#src#0;n#img#0;n#a#0;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#2;n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#9;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#746#752#0" expanded="true" />
-            <element signature="e#1182#1188#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#info-box-map#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#1606#1612#0" expanded="true" />
-            <element signature="e#1259#1266#0" expanded="true" />
-            <element signature="e#2262#2269#0" expanded="true" />
-            <element signature="e#2622#2629#0" expanded="true" />
-            <element signature="e#483#489#0" expanded="true" />
-            <element signature="e#493#499#0" expanded="true" />
-            <element signature="e#837#843#0" expanded="true" />
-            <element signature="e#846#852#0" expanded="true" />
-            <element signature="e#1169#1175#0" expanded="true" />
-            <element signature="e#1179#1185#0" expanded="true" />
-            <element signature="e#1187#1193#0" expanded="true" />
-            <element signature="e#1200#1206#0" expanded="true" />
-            <element signature="e#1239#1246#0" expanded="true" />
-            <element signature="e#1681#1688#0" expanded="true" />
-            <element signature="e#1847#1854#0" expanded="true" />
-            <element signature="e#1302#1308#0" expanded="true" />
-            <element signature="e#1476#1482#0" expanded="true" />
-            <element signature="e#1712#1718#0" expanded="true" />
-            <element signature="e#666#672#0" expanded="true" />
-            <element signature="e#1692#1699#0" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="e#6907#6913#1" expanded="true" />
-          </folding>
+        <state relative-caret-position="375">
+          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/runtime/logs/console.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/band/view.php">
+    <entry file="file://$PROJECT_DIR$/commands/DlController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="60" column="10" lean-forward="true" selection-start-line="60" selection-start-column="10" selection-end-line="60" selection-end-column="10" />
+        <state relative-caret-position="159">
+          <caret line="294" column="13" lean-forward="true" selection-start-line="294" selection-start-column="13" selection-end-line="294" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/BaseActiveRecord.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="174">
+          <caret line="668" selection-start-line="668" selection-end-line="668" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/OshinController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="47" column="36" selection-start-line="47" selection-start-column="36" selection-end-line="47" selection-end-column="36" />
+          <folding>
+            <element signature="e#32#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/base/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1020">
+          <caret line="77" column="38" selection-start-line="77" selection-start-column="38" selection-end-line="77" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/Event.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="12" lean-forward="true" selection-start-line="13" selection-start-column="12" selection-end-line="13" selection-end-column="12" />
+          <folding>
+            <element signature="e#30#69#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" column="51" lean-forward="true" selection-start-line="26" selection-start-column="51" selection-end-line="26" selection-end-column="51" />
+          <folding>
+            <element signature="e#6#116#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

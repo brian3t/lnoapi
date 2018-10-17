@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\models\Event;
 use yii\console\Controller;
 use yii\db\Exception;
 
@@ -25,5 +26,29 @@ class OshinController extends Controller
         $db->createCommand("update event set created_by = 35 where created_by is null;")->execute();
         echo "Cleanup done" . PHP_EOL;
         return 1;
+    }
+
+
+    /**
+     * Clean event SDR
+     */
+    public function actionCleanEvent()
+    {
+        \Yii::beginProfile('select');
+        $events = Event::find()->where(['not', ['cost' => null]])->all();
+        \Yii::endProfile('select');
+        foreach ($events as $event) {
+            if (stripos($event->cost, 'Age limit:') !== false) {
+                $event->age_limit = trim(str_replace('Age limit:', '', $event->cost));
+                $event->cost = null;
+                $event->save();
+            }
+            if (stripos($event->cost, 'When:') !== false) {
+                $event->when = trim(str_replace('When:', '', $event->cost));
+                $event->cost = null;
+                $event->save();
+            }
+        }
+        echo 'Clean event done';
     }
 }

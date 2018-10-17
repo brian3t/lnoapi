@@ -75,7 +75,7 @@ class Event extends \yii\db\ActiveRecord
             [['when'], 'string', 'max' => 300],
             [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
             [['img'], 'string', 'max' => 800],
-            [['is_charity'], 'string', 'max' => 4],
+            [['is_charity'], 'integer'],
             [['age_limit'], 'string', 'max' => 20],
             [['system_note', 'temp'], 'string', 'max' => 8000]
         ];
