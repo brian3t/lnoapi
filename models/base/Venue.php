@@ -33,6 +33,7 @@ use yii\behaviors\BlameableBehavior;
  * @property array $attr
  *
  * @property \app\models\Event[] $events
+ * @property \app\models\Event[] $eventsNonInverse
  * @property \app\models\User $createdBy
  * @property \app\models\User $user
  */
@@ -119,7 +120,17 @@ class Venue extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\Event::className(), ['venue_id' => 'id'])->inverseOf('venue');
     }
-        
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEventsNonInverse()
+    {
+        $events_array = $this->hasMany(\app\models\Event::className(), ['venue_id' => 'id']);
+        $events_array->asArray = true;
+        return $events_array;
+    }
+
     /**
      * @return \yii\db\ActiveQuery
      */
