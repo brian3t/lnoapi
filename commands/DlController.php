@@ -75,6 +75,9 @@ class DlController extends Controller
             $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
             $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
             $has_local_artist = $h4_local_artist->count() > 0;
+            if (!$has_local_artist) {
+                return;
+            }
             //find out if venue already exists
             $venue_exist = Venue::findOne(['name' => $venue_name]);
             if (!$venue_exist instanceof Venue) {
@@ -424,7 +427,7 @@ class DlController extends Controller
             $band->logo = $band_api_data->cover_photo->url;
             $band->lno_score = random_int(6, 10);
             $band->genre = implode(',', $band_api_data->genres);
-            $band->facebook = $band_api_data->fb_share_url?$band_api_data->fb_share_url:null;
+            $band->facebook = $band_api_data->fb_share_url ? $band_api_data->fb_share_url : null;
             try {
                 $band->save();
             } catch (\Exception $exception) {
@@ -432,8 +435,7 @@ class DlController extends Controller
             }
             if ($band->errors) {
                 Yii::error($band->errors);
-            }
-            else {
+            } else {
                 $scraped++;
             }
         }
