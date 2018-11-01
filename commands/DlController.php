@@ -334,7 +334,8 @@ class DlController extends Controller
                 }
                 $event->img = $show->image_url;
                 $event->venue_id = $venue->id;
-                $event->name = $venue->name . ' ' . $event_columns['date'];
+                $event->name = $venue->name;
+                $event->date = $event_columns['date'];
                 try {
                     $event->save();
                 } catch (\Exception $exception) {
