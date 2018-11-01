@@ -95,10 +95,15 @@ and source='reverb';
 ## delete events without band
 select * FROM band_event join event e on band_event.event_id = e.id;
 
-create temporary table ev_wo_band (select e.id from event e left outer join band_event be on e.id = be.event_id WHERE be.id is null);
-# select * from ev_wo_band;
-delete from event WHERE id in (select id FROM ev_wo_band);
+# create temporary table ev_wo_band (select e.id from event e left outer join band_event be on e.id = be.event_id WHERE be.id is null);
+select * from ev_wo_band;
+# delete from event WHERE id in (select id FROM ev_wo_band);
 
 select * from event inner join band_event be on event.id = be.event_id;
 
 select count(*) from event;
+
+#11/01
+#remove dates from events
+UPDATE event SET name = TRIM(REGEXP_REPLACE(name,'[:digit:]{4}\-[:digit:]{2}\-[:digit:]{2}',''));
+# SELECT name FROM event;
