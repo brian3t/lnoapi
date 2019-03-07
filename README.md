@@ -15,3 +15,11 @@ Changelog
 Screenshot:
 
 ![alt tag](http://i.imgur.com/NyNASU9.png)
+
++ Steps to scrape SDR:
+    + dl/scrape-sdr
+    + dl/pull-event-sdr
+    + dl/venue-addr-sdr
+    + magic/pull-lat-lng
+    
++ Steps to scrape Reverb:
