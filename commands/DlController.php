@@ -75,12 +75,12 @@ class DlController extends Controller
             $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
             $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
             $has_local_artist = $h4_local_artist->count() > 0;
-            if (!$has_local_artist) {
+            if (! $has_local_artist) {
                 return;
             }
             //find out if venue already exists
             $venue_exist = Venue::findOne(['name' => $venue_name]);
-            if (!$venue_exist instanceof Venue) {
+            if (! $venue_exist instanceof Venue) {
                 $venue = new Venue();
                 $venue->setAttributes(['name' => $venue_name,
                     'sdr_name' => str_replace('https://www.sandiegoreader.com', '', $venue_href),
@@ -90,7 +90,7 @@ class DlController extends Controller
             } else {
                 $venue_id = $venue_exist->id;
             }
-            if (!is_int($venue_id)) {
+            if (! is_int($venue_id)) {
                 return;//when failed saving new venue / pulling existing venue
             }
             Yii::$app->db->createCommand("UPDATE venue SET `created_by` = :created_by WHERE `id` = :venue_id")
@@ -99,7 +99,7 @@ class DlController extends Controller
             //find out if event already exists
             $event = new Event();
             $event_exist = Event::findOne(['name' => $event_name]);
-            if (!$event_exist instanceof Event) {
+            if (! $event_exist instanceof Event) {
                 $event = new Event();
                 $event->setAttributes(['created_by' => $this->SCRAPER_ID, 'name' => $event_name, 'source' => 'sdr',
                     'sdr_name' => str_replace('https://www.sandiegoreader.com/', '', $event_href), 'system_note' => $event_href]);//'https://www.sandiegoreader.com/' .
@@ -119,7 +119,7 @@ class DlController extends Controller
                 $event_id = $event->id;
             }
 
-            if (!$has_local_artist) {
+            if (! $has_local_artist) {
                 return;
             }
             //saving band info too
@@ -157,7 +157,7 @@ class DlController extends Controller
                 $facebook = null;
             }
             $band = Band::findOne(['name' => $name]);
-            if (!$band instanceof Band) {
+            if (! $band instanceof Band) {
                 $band = new Band();
                 $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
                 $band->type = 'originals';
@@ -277,13 +277,17 @@ class DlController extends Controller
 
     /**
      * Scrape from ReverbNation
+     * @param $per_page int per page
+     * @return boolean result
+     * @throws
      */
     public function actionScrapeReverb($per_page = 10)
     {
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $scraped = 0;
-        $url = "https://www.reverbnation.com/main/local_scene_data?location={\"geo\":\"local\",\"country\":\"US\",\"state\":\"CA\",\"city\":\"San Diego\",\"postal_code\":\"92115\"}&page=1&range={\"type\":\"full\",\"date\":\"\"}";
+        $location = "{\"geo\":\"local\",\"country\":\"US\",\"state\":\"CA\",\"city\":\"San Diego\",\"postal_code\":\"92115\"}";
+        $url = "https://www.reverbnation.com/main/local_scene_data?location=$location&page=1&range={\"type\":\"full\",\"date\":\"\"}";
         if ($IS_DEBUG) {
             $events = file_get_contents(dirname(__DIR__) . "/web/scrape/reverb_ev.json");
 //            var_dump($events);
@@ -297,7 +301,7 @@ class DlController extends Controller
                 return false;
             }
             $events = $events->getBody();
-            if (!method_exists($events, 'getContents')) {
+            if (! method_exists($events, 'getContents')) {
                 echo 'Bad response. Url: ' . $url;
                 return false;
             }
@@ -404,7 +408,7 @@ class DlController extends Controller
             } catch (\Exception $exception) {
                 continue;
             }
-            if (!is_int(intval($band_id))) {
+            if (! is_int(intval($band_id))) {
                 continue;
             }
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
@@ -413,7 +417,7 @@ class DlController extends Controller
                 continue;
             }
             $band_api_data = $band_api_data->getBody();
-            if (!method_exists($band_api_data, 'getContents')) {
+            if (! method_exists($band_api_data, 'getContents')) {
                 echo 'Bad response. Url: ' . $url;
                 continue;
             }
@@ -425,7 +429,9 @@ class DlController extends Controller
             }
             $band->attr = $band_api_data;
             $band->description = $band_api_data->bio;
-            $band->logo = $band_api_data->cover_photo->url;
+            if (property_exists($band_api_data, 'cover_photo')) {
+                $band->logo = $band_api_data->cover_photo->url;
+            }
             $band->lno_score = random_int(6, 10);
             $band->genre = implode(',', $band_api_data->genres);
             $band->facebook = $band_api_data->fb_share_url ? $band_api_data->fb_share_url : null;
@@ -440,6 +446,45 @@ class DlController extends Controller
                 $scraped++;
             }
         }
+        echo "Scraped $scraped bands" . PHP_EOL;
+    }
+
+    /**
+     * Pull from https://www.songkick.com/metro_areas/11086-us-san-diego
+     */
+    public function actionPullSongkick()
+    {
+        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
+        $goutte = new Client();
+        $guzzle = new \GuzzleHttp\Client();
+        $base_api_url = 'https://www.songkick.com/metro_areas/';
+        $metro = '11086-us-san-diego';
+
+        //        $IS_DEBUG = true;
+        $IS_DEBUG = false;
+        $scraped = 0;
+        $url = "";
+        if ($IS_DEBUG) {
+            $events = file_get_contents(dirname(__DIR__) . "/web/scrape/reverb_ev.json");
+//            var_dump($events);
+//            return true;
+        } else {
+            $params = ['per_page' => $per_page];
+            $guzzle = new GuzzleClient();
+            $events = $guzzle->request('GET', $url, $params);
+            if ($events->getStatusCode() !== 200) {
+                echo 'Failed. ' . $events->getStatusCode();
+                return false;
+            }
+            $events = $events->getBody();
+            if (! method_exists($events, 'getContents')) {
+                echo 'Bad response. Url: ' . $url;
+                return false;
+            }
+            $events = $events->getContents();
+        }
+        $events = json_decode($events);
+
         echo "Scraped $scraped bands" . PHP_EOL;
     }
 }
