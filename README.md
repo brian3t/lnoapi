@@ -23,4 +23,4 @@ Screenshot:
     + magic/pull-lat-lng
     
 + Steps to scrape Reverb:
-    +  dl/scrape-reverb-all
+    +  dl/scrape-reverb-allcities

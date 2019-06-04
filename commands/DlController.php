@@ -275,25 +275,38 @@ class DlController extends Controller
         }
     }
 
+    public function actionScrapeReverbAllcities()
+    {
+        require_once dirname(__DIR__). "/config/reverb/constant.php";
+        $location = BASE_LOC_ARRAY;
+        foreach (LOCATIONS as $LOCATION){
+            $location['state'] = $LOCATION[0];
+            $location['city'] = $LOCATION[1];
+            $location['postal_code'] = $LOCATION[2];
+            $this->actionScrapeReverb($location);
+        }
+
+    }
+
     /**
      * Scrape from ReverbNation
+     * @param $location array e.g. San Diego
      * @param $per_page int per page
      * @return boolean result
      * @throws
      */
-    public function actionScrapeReverb($per_page = 10)
+    public function actionScrapeReverb($location, $per_page = 10)
     {
+
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $scraped = 0;
-        $location = "{\"geo\":\"local\",\"country\":\"US\",\"state\":\"CA\",\"city\":\"San Diego\",\"postal_code\":\"92115\"}";
-        $url = "https://www.reverbnation.com/main/local_scene_data?location=$location&page=1&range={\"type\":\"full\",\"date\":\"\"}";
+        $url = "https://www.reverbnation.com/main/local_scene_data?page=1&range={\"type\":\"full\",\"date\":\"\"}";
         if ($IS_DEBUG) {
             $events = file_get_contents(dirname(__DIR__) . "/web/scrape/reverb_ev.json");
-//            var_dump($events);
-//            return true;
         } else {
-            $params = ['per_page' => $per_page];
+            $params = ['per_page' => $per_page, 'location'=>json_encode($location)];
+            $url .= "&" . http_build_query($params);
             $guzzle = new GuzzleClient();
             $events = $guzzle->request('GET', $url, $params);
             if ($events->getStatusCode() !== 200) {
@@ -469,7 +482,7 @@ class DlController extends Controller
 //            var_dump($events);
 //            return true;
         } else {
-            $params = ['per_page' => $per_page];
+            $params = [];
             $guzzle = new GuzzleClient();
             $events = $guzzle->request('GET', $url, $params);
             if ($events->getStatusCode() !== 200) {
@@ -486,5 +499,6 @@ class DlController extends Controller
         $events = json_decode($events);
 
         echo "Scraped $scraped bands" . PHP_EOL;
+        return true;
     }
 }
