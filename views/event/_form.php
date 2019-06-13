@@ -1,6 +1,5 @@
 <?php
 
-use kartik\time\TimePicker;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -64,16 +63,18 @@ use yii\widgets\ActiveForm;
     ]); ?>
 
     <?php
-    echo $form->field($model, 'start_time')->widget(TimePicker::classname(), []);
-    ?>
+/*    echo $form->field($model, 'start_time')->widget(TimePicker::classname(), []);
+    */?>
 
     <?php
-    echo $form->field($model, 'end_time')->widget(TimePicker::classname(), []);
+//    echo $form->field($model, 'end_time')->widget(TimePicker::classname(), []);
     ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
 
     <?= $form->field($model, 'description')->textarea(['rows' => 6]) ?>
+
+    <?= $form->field($model, 'img')->textInput(['maxlength' => true, 'placeholder' => 'Img']) ?>
 
     <?= $form->field($model, 'cost')->textInput(['maxlength' => true, 'placeholder' => 'Cost']) ?>
 

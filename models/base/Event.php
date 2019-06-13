@@ -137,7 +137,7 @@ class Event extends \yii\db\ActiveRecord
     {
         $created_by_user = $this->hasOne(\app\models\User::className(), ['id' => 'created_by'])->inverseOf('events');
         if (!$created_by_user instanceof \app\models\User) {
-            $created_by_user = \app\models\User::findOne(['id' => Yii::$app->params['scraper_id']]);
+            $created_by_user = \app\models\User::find()->where(['id' => Yii::$app->params['scraper_id']]);
         }
         return $created_by_user;
     }

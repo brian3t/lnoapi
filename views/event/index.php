@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+/* @var $searchModel app\models\EventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use kartik\export\ExportMenu;
@@ -19,10 +20,15 @@ $this->registerJs($search);
 <div class="event-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Event', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Advance Search', '#', ['class' => 'btn btn-info search-button']) ?>
     </p>
+    <div class="search-form" style="display:none">
+        <?= $this->render('_search', ['model' => $searchModel]); ?>
+    </div>
     <?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
