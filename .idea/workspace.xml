@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="244" />
+    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="245" />
     <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="122" />
-    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="473" />
+    <bookmark url="file://$PROJECT_DIR$/commands/DlController.php" line="474" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="Enable event search">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="update composer lock with `composer update --lock`">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/MagicController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/MagicController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mp/Agent.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sql/console.sql" beforeDir="false" afterPath="$PROJECT_DIR$/sql/console.sql" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap/" />
     <ignored path="$PROJECT_DIR$/vendor/bower/bootstrap3-dialog/" />
@@ -125,6 +128,15 @@
     <expand>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="lno8" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="lno8" type="feb32156:DbDataSourceImpl" />
+        <item name="lno: schema" type="76f4a085:MysqlImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="usv" type="feb32156:DbDataSourceImpl" />
       </path>
       <path>
@@ -137,98 +149,71 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/_search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="19" selection-start-line="19" selection-end-line="19" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/update.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/_form.php">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/commands/DlController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="229">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
+              <caret line="68" column="57" lean-forward="true" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
               <folding>
-                <element signature="e#7#28#0#PHP" expanded="true" />
+                <element signature="e#94#114#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/19081506-98ae-47eb-8b48-0d263e125b74/console.sql">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/commands/MagicController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="348">
+              <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+              <folding>
+                <element signature="e#267#288#0#PHP" expanded="true" />
+              </folding>
+            </state>
+          </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="das://19081506-98ae-47eb-8b48-0d263e125b74/schema/lno/table/band">
+        <entry file="file://$PROJECT_DIR$/commands/oshin.sh">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/sql/console.sql">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="455">
+              <caret line="108" column="25" lean-forward="true" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/commands/OshinController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="810">
+              <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/band">
           <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="c4cd8c89-1286-4db4-a304-d765e76c4cba">
-              <filtering>
-                <filter text="" />
-              </filtering>
-              <column-attributes>
-                <column name="attr" languageId="JSON" position="20" />
-              </column-attributes>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="das://19081506-98ae-47eb-8b48-0d263e125b74/schema/lno/table/band_event">
-          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-            <state projectRestartId="c4cd8c89-1286-4db4-a304-d765e76c4cba">
-              <filtering>
-                <filter text="" />
-              </filtering>
+            <state projectRestartId="bec700fe-907e-4ac9-8df2-9b7e7c1b6e96">
+              <filtering />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/event/view.php">
+        <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1890">
-              <caret line="128" column="32" selection-start-line="128" selection-start-column="32" selection-end-line="128" selection-end-column="32" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/base/Event.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2070">
-              <caret line="139" column="106" selection-start-line="139" selection-start-column="106" selection-end-line="139" selection-end-column="106" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/band/_search.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="19" column="33" selection-start-line="19" selection-end-line="20" />
+            <state relative-caret-position="15">
+              <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
             </state>
           </provider>
         </entry>
@@ -237,9 +222,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>end_t</find>
-      <find>is_charity</find>
-      <find>todob</find>
       <find>interval</find>
       <find>curdate()</find>
       <find>lno_sc</find>
@@ -267,6 +249,9 @@
       <find>descr</find>
       <find>createdby</find>
       <find>start</find>
+      <find>scraper_id</find>
+      <find>GuzzleClient</find>
+      <find>filter</find>
     </findStrings>
     <replaceStrings>
       <replace>div class=&quot;col-md-6&quot;</replace>
@@ -290,7 +275,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/api/modules/v1/controllers/BandController.php" />
         <option value="$PROJECT_DIR$/views/band/_form.php" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/aa3c30e9-1e22-4257-8032-97e3ce09f26a/console.sql" />
         <option value="$PROJECT_DIR$/views/layouts/main.php" />
@@ -324,15 +308,11 @@
         <option value="$PROJECT_DIR$/api/modules/v1/controllers/VenueController.php" />
         <option value="$PROJECT_DIR$/models/base/Venue.php" />
         <option value="$PROJECT_DIR$/models/Venue.php" />
-        <option value="$PROJECT_DIR$/sql/console.sql" />
         <option value="$PROJECT_DIR$/runtime/logs/api.log" />
         <option value="$PROJECT_DIR$/runtime/logs/console.log" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_27.json" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_26.json" />
-        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql" />
-        <option value="$PROJECT_DIR$/commands/DlController.php" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/config/reverb/constant.php" />
         <option value="$PROJECT_DIR$/commands/OshinController.php" />
         <option value="$PROJECT_DIR$/controllers/BandController.php" />
         <option value="$PROJECT_DIR$/views/band/index.php" />
@@ -341,6 +321,11 @@
         <option value="$PROJECT_DIR$/views/event/_search.php" />
         <option value="$PROJECT_DIR$/models/base/Event.php" />
         <option value="$PROJECT_DIR$/views/event/_form.php" />
+        <option value="$PROJECT_DIR$/config/reverb/constant.php" />
+        <option value="$PROJECT_DIR$/commands/DlController.php" />
+        <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql" />
+        <option value="$PROJECT_DIR$/sql/console.sql" />
+        <option value="$PROJECT_DIR$/commands/MagicController.php" />
       </list>
     </option>
   </component>
@@ -468,7 +453,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -480,44 +464,6 @@
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
               <item name="commands" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
-              <item name="reverb" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-              <item name="base" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="runtime" type="462c0819:PsiDirectoryNode" />
-              <item name="logs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -538,27 +484,6 @@
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
-              <item name="psr7" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
-              <item name="guzzlehttp" type="462c0819:PsiDirectoryNode" />
-              <item name="psr7" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
-              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
-              <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -567,6 +492,14 @@
               <item name="vendor" type="462c0819:PsiDirectoryNode" />
               <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
               <item name="yii2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="lnoapi" type="462c0819:PsiDirectoryNode" />
+              <item name="vendor" type="462c0819:PsiDirectoryNode" />
+              <item name="yiisoft" type="462c0819:PsiDirectoryNode" />
+              <item name="yii2" type="462c0819:PsiDirectoryNode" />
+              <item name="base" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
@@ -621,12 +554,19 @@
             <path>
               <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Database Consoles" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+              <item name="19081506-98ae-47eb-8b48-0d263e125b74" type="1e004dc1:ScratchProjectViewPane$MyRootNode$1$1" />
+            </path>
+            <path>
+              <item name="lnoapi" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
               <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -672,7 +612,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="PHP Script.dl scrape reverb all cities">
+  <component name="RunManager" selected="PHP Script.magic pull genres from gg">
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -721,6 +661,11 @@
     <configuration name="dl venaddr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/venue-addr-sdr">
       <method v="2" />
     </configuration>
+    <configuration name="magic pull genres from gg" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-genre-from-google">
+      <method v="2">
+        <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_mysql" />
+      </method>
+    </configuration>
     <configuration name="oshin clean-data" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="oshin/clean-data">
       <method v="2" />
     </configuration>
@@ -731,6 +676,7 @@
       <item itemvalue="Bash.oshin all" />
       <item itemvalue="PHP Script.dl scrape sdr" />
       <item itemvalue="PHP Script.dl scrape reverb all cities" />
+      <item itemvalue="PHP Script.magic pull genres from gg" />
       <item itemvalue="PHP Script.dl pull reverb bands" />
       <item itemvalue="PHP Script.dl pull event sdr" />
       <item itemvalue="PHP Script.dl venaddr" />
@@ -914,7 +860,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560459967135</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="update composer lock with `composer update --lock`">
+      <created>1560524413768</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1560524413768</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TodoView">
@@ -931,8 +884,8 @@
     <frame x="-1" y="0" width="1922" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48735243" visible="true" weight="0.1512247" />
-      <window_info id="Structure" order="1" sideWeight="0.51264757" side_tool="true" visible="true" weight="0.1512247" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4856661" visible="true" weight="0.1544196" />
+      <window_info id="Structure" order="1" sideWeight="0.5143339" side_tool="true" visible="true" weight="0.1544196" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -948,7 +901,7 @@
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.51970184" side_tool="true" weight="0.36354166" />
       <window_info anchor="bottom" id="Version Control" order="11" weight="0.3258547" />
       <window_info anchor="bottom" id="Database Console" order="12" sideWeight="0.4946752" weight="0.32004312" />
-      <window_info anchor="bottom" id="File Transfer" order="13" sideWeight="0.49947917" weight="0.32878152" />
+      <window_info anchor="bottom" id="File Transfer" order="13" sideWeight="0.49947917" weight="0.3286638" />
       <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -1062,10 +1015,25 @@
     <MESSAGE value="reverbnation: can now pull other places" />
     <MESSAGE value="Enable band search" />
     <MESSAGE value="Enable event search" />
-    <option name="LAST_COMMIT_MESSAGE" value="Enable event search" />
+    <MESSAGE value="update composer lock with `composer update --lock`" />
+    <option name="LAST_COMMIT_MESSAGE" value="update composer lock with `composer update --lock`" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/commands/MagicController.php</url>
+          <line>70</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/commands/MagicController.php</url>
+          <line>69</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
         <watch expression="$events-&gt;createCommand()-&gt;rawSql" language="PHP" />
@@ -1104,6 +1072,21 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>$crawler-&gt;get</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>$crawler-&gt;getBody()-&gt;getContents()</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>$crawler-&gt;getBody()</expression-string>
+        <language-id>PHP</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>\app\models\User::findOne(['id' =&gt; Yii::$app-&gt;params['scraper_id']])</expression-string>
         <language-id>PHP</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
@@ -1138,56 +1121,9 @@
         <language-id>PHP</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
-      <expression>
-        <expression-string>$band_api_data-&gt;fb_share_url?$band_api_data-&gt;fb_share_url:null</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$band_api_data-&gt;fb_share_url?'yes':null</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/Widget.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yii2helper/i18n/ViewFormatter.php" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.html" />
-    <entry file="file://$PROJECT_DIR$/views/band/view.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="75" column="20" selection-start-line="75" selection-start-column="20" selection-end-line="75" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/scrape/reverb/sample_band.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/yii2helper/models/ModelB3tTrait.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="36" column="1" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commands/oshin.sh">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runtime/logs/app.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1289,13 +1225,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/sql/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1065">
-          <caret line="71" column="18" selection-start-line="71" selection-start-column="18" selection-end-line="71" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/runtime/logs/console.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1303,27 +1232,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="233">
           <caret line="573" column="9" selection-start-line="573" selection-start-column="9" selection-end-line="573" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/band">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="4ee7ec8f-32dd-4f80-b2fc-a1be7bf59484">
-          <filtering />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commands/DlController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4065">
-          <caret line="280" column="35" selection-start-line="280" selection-start-column="35" selection-end-line="280" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="37" selection-start-column="37" selection-end-column="37" />
         </state>
       </provider>
     </entry>
@@ -1341,20 +1249,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="24" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/reverb/constant.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="2" selection-start-line="21" selection-start-column="2" selection-end-line="21" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/commands/OshinController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="810">
-          <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -1414,13 +1308,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/event/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/event/_search.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1428,10 +1315,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/event/update.php">
+    <entry file="file://$PROJECT_DIR$/views/event/_form.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        <state relative-caret-position="1005">
+          <caret line="67" selection-start-line="67" selection-end-line="67" />
+          <folding>
+            <element signature="e#7#28#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1456,22 +1346,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/event/_form.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-          <folding>
-            <element signature="e#7#28#0#PHP" expanded="true" />
-          </folding>
+    <entry file="das://19081506-98ae-47eb-8b48-0d263e125b74/schema/lno/table/band_event">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="453e0eaa-45e5-4918-90f1-55b50b10c8a7">
+          <filtering>
+            <filter text="" />
+          </filtering>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/19081506-98ae-47eb-8b48-0d263e125b74/console.sql">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="das://19081506-98ae-47eb-8b48-0d263e125b74/schema/lno/table/band">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="c4cd8c89-1286-4db4-a304-d765e76c4cba">
+        <state projectRestartId="453e0eaa-45e5-4918-90f1-55b50b10c8a7">
           <filtering>
             <filter text="" />
           </filtering>
@@ -1481,12 +1367,121 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://19081506-98ae-47eb-8b48-0d263e125b74/schema/lno/table/band_event">
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/19081506-98ae-47eb-8b48-0d263e125b74/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/event/update.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="26" selection-start-line="12" selection-start-column="26" selection-end-line="12" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/event/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/reverb/constant.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" lean-forward="true" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/user">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state projectRestartId="c4cd8c89-1286-4db4-a304-d765e76c4cba">
+        <state projectRestartId="453e0eaa-45e5-4918-90f1-55b50b10c8a7">
           <filtering>
             <filter text="" />
           </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/params.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://19081506-98ae-47eb-8b48-0d263e125b74/schema/lno/table/user">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="453e0eaa-45e5-4918-90f1-55b50b10c8a7">
+          <filtering>
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/OshinController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="810">
+          <caret line="56" column="42" selection-start-line="56" selection-start-column="42" selection-end-line="56" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="das://b7d890f6-f61f-45b5-8dac-fa908824cafa/schema/lno/table/band">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state projectRestartId="bec700fe-907e-4ac9-8df2-9b7e7c1b6e96">
+          <filtering />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/b7d890f6-f61f-45b5-8dac-fa908824cafa/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/oshin.sh">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="41" selection-start-line="2" selection-start-column="41" selection-end-line="2" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/db/Command.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="406" column="105" selection-start-line="406" selection-start-column="105" selection-end-line="406" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sql/console.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="108" column="25" lean-forward="true" selection-start-line="108" selection-start-column="25" selection-end-line="108" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/yiisoft/yii2/base/ErrorHandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="188">
+          <caret line="90" selection-start-line="90" selection-end-line="90" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/MagicController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="68" column="37" selection-start-line="68" selection-start-column="37" selection-end-line="68" selection-end-column="37" />
+          <folding>
+            <element signature="e#267#288#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/commands/DlController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="68" column="57" lean-forward="true" selection-start-line="68" selection-start-column="57" selection-end-line="68" selection-end-column="57" />
+          <folding>
+            <element signature="e#94#114#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

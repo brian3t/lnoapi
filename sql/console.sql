@@ -107,3 +107,6 @@ select count(*) from event;
 #remove dates from events
 UPDATE event SET name = TRIM(REGEXP_REPLACE(name,'[:digit:]{4}\-[:digit:]{2}\-[:digit:]{2}',''));
 # SELECT name FROM event;
+
+#0621 bands without genre
+SELECT * FROM lno.band WHERE genre IS NULL OR genre = '';

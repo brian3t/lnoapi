@@ -162,6 +162,7 @@ class DlController extends Controller
                 $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
                 $band->type = 'originals';
                 $band->lno_score = random_int(5, 10);
+                $band->source = 'sdr';
                 $band->save();
             }
             $band_id = $band->id;
