@@ -68,4 +68,21 @@ class OshinController extends Controller
         \Yii::$app->db->createCommand("DELETE FROM event WHERE date < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ");
         echo 'Prune events done';
     }
+
+    /**
+     * Clean up data
+     * Clean up sdr systemnote url
+     * @throws Exception
+     */
+    public function actionPruneData()
+    {
+        $db = \Yii::$app->db;
+        $db->createCommand("DELETE FROM event WHERE date < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ")->execute();
+        echo "Prune done" . PHP_EOL;
+        return 1;
+    }
+
+
 }
+
+
