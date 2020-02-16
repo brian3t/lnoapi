@@ -31,8 +31,8 @@ class EventController extends BaseActiveController
     public function indexLastMonthPrepareDataProvider()
     {
         $params = \Yii::$app->getRequest()->getQueryParams();
-        $date_start = $params['date_start'] ?? 60;
-        $date_end = $params['date_end'] ?? 60;
+        $date_start = $params['date_start'] ?? 0;
+        $date_end = $params['date_end'] ?? 21;
 
         $dp = new ActiveDataProvider(
             [

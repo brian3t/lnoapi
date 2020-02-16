@@ -30,8 +30,8 @@ class BandController extends BaseActiveController
     public function haseventPrepareDataProvider()
     {
         $params = \Yii::$app->getRequest()->getQueryParams();
-        $event_date_start = $params['event_date_start'] ?? 60;
-        $event_date_end = $params['event_date_end'] ?? 60;
+        $event_date_start = $params['event_date_start'] ?? 0;
+        $event_date_end = $params['event_date_end'] ?? 21;
         $sql = '
         select *
 FROM

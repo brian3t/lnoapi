@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="update composer lock with `composer update --lock`">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="default">
+      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/OshinController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/OshinController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/oshin.sh" beforeDir="false" afterPath="$PROJECT_DIR$/commands/oshin.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/BandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/BandController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -258,7 +259,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML&#10;JSON&#10;TEXT" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs" />
-    <property name="settings.editor.selected.configurable" value="Errors" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -334,6 +335,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Bash.oshin all" />
       <item itemvalue="PHP Script.dl scrape sdr" />
       <item itemvalue="PHP Script.dl scrape reverb all cities" />
       <item itemvalue="PHP Script.magic pull genres from gg" />
@@ -527,7 +529,14 @@
       <option name="project" value="LOCAL" />
       <updated>1560524413768</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="oshin prune data">
+      <created>1581815406034</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1581815406034</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TodoView">
@@ -575,7 +584,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Minor fix" />
     <MESSAGE value="Minor fixes" />
     <MESSAGE value="Able to add events" />
     <MESSAGE value="SQL: band to have genre" />
@@ -600,7 +608,8 @@
     <MESSAGE value="Enable band search" />
     <MESSAGE value="Enable event search" />
     <MESSAGE value="update composer lock with `composer update --lock`" />
-    <option name="LAST_COMMIT_MESSAGE" value="update composer lock with `composer update --lock`" />
+    <MESSAGE value="oshin prune data" />
+    <option name="LAST_COMMIT_MESSAGE" value="oshin prune data" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -608,14 +617,26 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="555" y="192" width="808" height="685" key="#Plugins/0.0.1920.1059@0.0.1920.1059" timestamp="1581814583453" />
-    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2" timestamp="1581815404733">
+    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2" timestamp="1581827929232">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581815404733" />
-    <state x="626" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1581814625653">
+    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581827929232" />
+    <state x="449" y="165" width="1022" height="738" key="SettingsEditor" timestamp="1581821498051">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state x="626" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581814625653" />
+    <state x="449" y="165" width="1022" height="738" key="SettingsEditor/0.0.1920.1059@0.0.1920.1059" timestamp="1581821498051" />
+    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2" timestamp="1581815748506">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581815748506" />
+    <state x="626" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1581816637659">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="626" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581816637659" />
+    <state x="825" y="426" width="267" height="216" key="publish.login" timestamp="1581821477513">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="825" y="426" width="267" height="216" key="publish.login/0.0.1920.1059@0.0.1920.1059" timestamp="1581821477513" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
