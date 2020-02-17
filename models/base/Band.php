@@ -25,6 +25,7 @@ namespace app\models\base;
  * @property string $twitter
  * @property string $source
  * @property array $attr
+ * @property string $scrape_status
  *
  * @property \app\models\User $user
  * @property \app\models\BandComment[] $bandComments
@@ -61,7 +62,7 @@ class Band extends \yii\db\ActiveRecord
             [['created_at', 'updated_at'], 'safe'],
             [['user_id'], 'integer'],
             [['lno_score'], 'number'],
-            [['type', 'description', 'source'], 'string'],
+            [['type', 'description', 'source', 'attr', 'scrape_status'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
             [['genre', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
@@ -104,6 +105,7 @@ class Band extends \yii\db\ActiveRecord
             'twitter' => 'Twitter',
             'source' => 'Source',
             'attr' => 'Attr',
+            'scrape_status' => 'Scrape Status',
         ];
     }
     

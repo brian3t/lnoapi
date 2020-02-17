@@ -296,7 +296,7 @@ class DlController extends Controller
      * @return boolean result
      * @throws
      */
-    public function actionScrapeReverb($location, $per_page = 10)
+    public function actionScrapeReverb($location=["geo"=>"local","country"=>"US","state"=>"CA","city"=>"San%20Diego","postal_code"=>"92115"], $per_page = 10)
     {
 
 //        $IS_DEBUG = true;
@@ -401,14 +401,20 @@ class DlController extends Controller
      */
     public function actionPullBandReverb()
     {
-        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
+        $K_LIMIT = 5;
+//        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
+        $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status`='init' AND `source`='reverb' 
+            AND COALESCE(`logo`,'')='' LIMIT :limit ",[':limit' => $K_LIMIT]) ->all();
         $goutte = new Client();
         $guzzle = new \GuzzleHttp\Client();
         $base_api_url = 'https://www.reverbnation.com/api/artist/';
         $scraped = 0;
         foreach ($bands as $band) {
-            $url = $band->attr['url'];
+            $attr = $band->attr;
+            $url = ($attr['url'] ?? $band->website);
             if (empty($url)) {
+                $band->scrape_status='url_miss';
+                $band->saveAndLogError();
                 continue;
             }
             $crawler = $goutte->request('get', $url);

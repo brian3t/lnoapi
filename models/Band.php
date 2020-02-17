@@ -21,6 +21,7 @@ class Band extends BaseBand
         if (is_array($genre_array)){
             $this->genre = implode(',', $genre_array);
         }
+//        if (is_array($this->attr)) $this->attr=json_encode($this->attr);
         return parent::beforeValidate();
     }
     /**

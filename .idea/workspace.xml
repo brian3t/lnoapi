@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="default">
-      <change beforePath="$PROJECT_DIR$/.idea/deployment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deployment.xml" afterDir="false" />
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="0215: reducing data load">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/BandController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/BandController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Band.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Band.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +18,11 @@
     <execution>
       <executable />
     </execution>
+  </component>
+  <component name="DatabaseLocalColorSettings">
+    <colors>
+      <entry key="312e07f0-ed1c-467e-b666-d512f8303834" value="Rose" />
+    </colors>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -54,62 +59,34 @@
       </path>
       <path>
         <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mobe3repo btp" type="feb32156:DbDataSourceImpl" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mobe3repo btp" type="feb32156:DbDataSourceImpl" />
+        <item name="btp887Repo: database" type="ccb7ac2a:MsImplModel$Database" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
+        <item name="mobe3repo btp" type="feb32156:DbDataSourceImpl" />
+        <item name="btp887Repo: database" type="ccb7ac2a:MsImplModel$Database" />
+        <item name="btp887: schema" type="2865ee2e:MsImplModel$Schema" />
+      </path>
+      <path>
+        <item name="Database" type="3277223f:DatabaseStructure$DbRootGroup" />
         <item name="usv" type="feb32156:DbDataSourceImpl" />
       </path>
     </expand>
     <select />
   </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>scraper_ID</find>
-      <find>update</find>
-      <find>json</find>
-      <find>EditColumn</find>
-      <find>detail</find>
-      <find>DetailView</find>
-      <find>SCRAPER_ID</find>
-      <find>date_time_format</find>
-      <find>array_key_to_underscore</find>
-      <find>steal_value</find>
-      <find>parse_address</find>
-      <find>parseAdd</find>
-      <find>/api/</find>
-      <find>447994</find>
-      <find>twitt</find>
-      <find>function toarray</find>
-      <find>band_w</find>
-      <find>$event_id</find>
-      <find>\&quot;</find>
-      <find>search-form</find>
-      <find>descr</find>
-      <find>createdby</find>
-      <find>start</find>
-      <find>scraper_id</find>
-      <find>GuzzleClient</find>
-      <find>filter</find>
-      <find>-&gt;extra</find>
-      <find>genre</find>
-      <find>Heavy metal</find>
-      <find>statement</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>div class=&quot;col-md-6&quot;</replace>
-      <replace>$1,</replace>
-      <replace>/scrape</replace>
-      <replace>&quot;</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$</dir>
-    </dirStrings>
-  </component>
   <component name="Git.Settings">
-    <option name="ROOT_SYNC" value="DONT_SYNC" />
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$/yii2helper" value="ff26d880a803a3c501a141013cb8379c1a60636c" />
       </map>
     </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="IgnoredFileRootStore">
     <option name="generatedRoots">
@@ -118,6 +95,7 @@
       </set>
     </option>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="lnoapi" id="f76bb65f-013f-4377-b831-2e301747acf6" name="lnoapi" />
@@ -249,7 +227,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="WebServerToolWindowFactoryState" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.mappings" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.highlight.symlinks" value="true" />
     <property name="WebServerToolWindowPanel.toolwindow.show.date" value="false" />
@@ -274,7 +252,7 @@
       <recent name="$PROJECT_DIR$/usv" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.magic pull genres from gg">
+  <component name="RunManager" selected="PHP Script.dl pull reverb bands">
     <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -345,6 +323,33 @@
       <item itemvalue="PHP Script.pull lat lng" />
       <item itemvalue="PHP Script.oshin clean-data" />
     </list>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:lno" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:lno" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@5016ca67" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+              <path>
+                <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
+                <item name="root:lno" type="7427dc5b:ServiceModel$ServiceGroupNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@2e91150d" type="9fbbdea:ServiceModel$ServiceNode" />
+              </path>
+            </expand>
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -536,7 +541,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581815406034</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="0215: reducing data load">
+      <created>1581827948557</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1581827948557</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TodoView">
@@ -584,7 +596,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Minor fixes" />
     <MESSAGE value="Able to add events" />
     <MESSAGE value="SQL: band to have genre" />
     <MESSAGE value="Band api hasEvent" />
@@ -609,7 +620,8 @@
     <MESSAGE value="Enable event search" />
     <MESSAGE value="update composer lock with `composer update --lock`" />
     <MESSAGE value="oshin prune data" />
-    <option name="LAST_COMMIT_MESSAGE" value="oshin prune data" />
+    <MESSAGE value="0215: reducing data load" />
+    <option name="LAST_COMMIT_MESSAGE" value="0215: reducing data load" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -617,18 +629,86 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="555" y="192" width="808" height="685" key="#Plugins/0.0.1920.1059@0.0.1920.1059" timestamp="1581814583453" />
-    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2" timestamp="1581827929232">
+    <state x="753" y="237" key="#xdebugger.evaluate" timestamp="1581901508275">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581827929232" />
+    <state x="753" y="237" key="#xdebugger.evaluate/0.0.1920.1059@0.0.1920.1059" timestamp="1581901508275" />
+    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2" timestamp="1581876812128">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581876812128" />
+    <state width="1294" height="280" key="GridCell.Tab.0.bottom" timestamp="1581901631640">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1294" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
+    <state width="1294" height="280" key="GridCell.Tab.0.center" timestamp="1581901631640">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1294" height="280" key="GridCell.Tab.0.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
+    <state width="1294" height="280" key="GridCell.Tab.0.left" timestamp="1581901631640">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1294" height="280" key="GridCell.Tab.0.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
+    <state width="1294" height="280" key="GridCell.Tab.0.right" timestamp="1581901631640">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1294" height="280" key="GridCell.Tab.0.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
+    <state width="1878" height="416" key="GridCell.Tab.1.bottom" timestamp="1581901540901">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.1.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540901" />
+    <state width="1878" height="416" key="GridCell.Tab.1.center" timestamp="1581901540901">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.1.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540901" />
+    <state width="1878" height="416" key="GridCell.Tab.1.left" timestamp="1581901540900">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.1.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540900" />
+    <state width="1878" height="416" key="GridCell.Tab.1.right" timestamp="1581901540901">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.1.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540901" />
+    <state width="1878" height="416" key="GridCell.Tab.2.bottom" timestamp="1581901540902">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.2.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
+    <state width="1878" height="416" key="GridCell.Tab.2.center" timestamp="1581901540902">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.2.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
+    <state width="1878" height="416" key="GridCell.Tab.2.left" timestamp="1581901540902">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.2.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
+    <state width="1878" height="416" key="GridCell.Tab.2.right" timestamp="1581901540902">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="1878" height="416" key="GridCell.Tab.2.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
     <state x="449" y="165" width="1022" height="738" key="SettingsEditor" timestamp="1581821498051">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="449" y="165" width="1022" height="738" key="SettingsEditor/0.0.1920.1059@0.0.1920.1059" timestamp="1581821498051" />
-    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2" timestamp="1581815748506">
+    <state width="615" height="445" key="SwitcherDM" timestamp="1581900931608">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581815748506" />
+    <state width="615" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581900931608" />
+    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2" timestamp="1581827949779">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581827949779" />
+    <state width="961" height="532" key="XDebugger.FullValuePopup" timestamp="1581877325016">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state width="961" height="532" key="XDebugger.FullValuePopup/0.0.1920.1059@0.0.1920.1059" timestamp="1581877325016" />
+    <state x="717" y="286" width="484" height="494" key="com.intellij.database.run.ParametersPanel.Standalone" timestamp="1581900308255">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="717" y="286" width="484" height="494" key="com.intellij.database.run.ParametersPanel.Standalone/0.0.1920.1059@0.0.1920.1059" timestamp="1581900308255" />
+    <state x="672" y="161" width="574" height="745" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog" timestamp="1581899526214">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="672" y="161" width="574" height="745" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581899526214" />
     <state x="626" y="358" key="com.intellij.ide.util.TipDialog" timestamp="1581816637659">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
@@ -637,6 +717,10 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="825" y="426" width="267" height="216" key="publish.login/0.0.1920.1059@0.0.1920.1059" timestamp="1581821477513" />
+    <state x="624" y="174" width="672" height="676" key="search.everywhere.popup" timestamp="1581900711271">
+      <screen x="0" y="0" width="1920" height="1059" />
+    </state>
+    <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581900711271" />
   </component>
   <component name="XDebuggerManager">
     <watches-manager>
@@ -649,79 +733,6 @@
         <watch expression="$show-&gt;showtime" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="breakpointCondition">
-      <expression>
-        <expression-string>$event_name=='Flipside Burners'</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="watch">
-      <expression>
-        <expression-string>$event_sdr-&gt;errors</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$this-&gt;genre</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$events-&gt;createCommand()-&gt;rawSql</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
-    <expressions id="evaluateExpression">
-      <expression>
-        <expression-string>$genre_span-&gt;siblings()-&gt;text()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$genre_span-&gt;siblings()-&gt;html()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$genre_span-&gt;parents()-&gt;html()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$genre_span-&gt;parents()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$try_genre-&gt;parents()-&gt;text()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$try_genre-&gt;parents()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$try_genre-&gt;siblings()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$try_genre-&gt;siblings()-&gt;html()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>$try_genre-&gt;siblings()-&gt;children()</expression-string>
-        <language-id>PHP</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
   <component name="masterDetails">
     <states>

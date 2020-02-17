@@ -36,7 +36,7 @@ class EventController extends BaseActiveController
 
         $dp = new ActiveDataProvider(
             [
-                'query' => Event::find()->where(['>=', 'date', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_start DAY)"))]),
+                'query' => Event::find()->where(['>=', 'date', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))]),
                 'pagination' => [
                     'pageSize' => 20,
                 ],
