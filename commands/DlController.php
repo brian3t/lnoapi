@@ -401,7 +401,7 @@ class DlController extends Controller
      */
     public function actionPullBandReverb()
     {
-        $K_LIMIT = 5;
+        $K_LIMIT = 1000;
 //        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status`='init' AND `source`='reverb' 
             AND COALESCE(`logo`,'')='' LIMIT :limit ",[':limit' => $K_LIMIT]) ->all();
@@ -428,7 +428,7 @@ class DlController extends Controller
             } catch (\Exception $exception) {
                 continue;
             }
-            if (! is_int(intval($band_id))) {
+            if (! is_int(intval($band_id)) || !is_string($band_id)) {
                 continue;
             }
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
@@ -451,6 +451,9 @@ class DlController extends Controller
             $band->description = $band_api_data->bio;
             if (property_exists($band_api_data, 'cover_photo')) {
                 $band->logo = $band_api_data->cover_photo->url;
+            }
+            if (empty($band->logo)){
+                $band->logo = property_exists($band_api_data, 'image') ? ('https:' . $band_api_data->image) : null;
             }
             $band->lno_score = random_int(6, 10);
             $band->genre = implode(',', $band_api_data->genres);

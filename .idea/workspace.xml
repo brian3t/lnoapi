@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="0215: reducing data load">
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="todo: why saving attr failed. Research existing code">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Band.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/base/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Band.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -95,7 +93,6 @@
       </set>
     </option>
   </component>
-  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="lnoapi" id="f76bb65f-013f-4377-b831-2e301747acf6" name="lnoapi" />
@@ -234,10 +231,10 @@
     <property name="WebServerToolWindowPanel.toolwindow.show.permissions" value="false" />
     <property name="WebServerToolWindowPanel.toolwindow.show.size" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/runtime/logs/app.log&#10;/var/www/lnoapi/runtime/logs/console.log" />
-    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="HTML&#10;JSON&#10;TEXT" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON&#10;HTML&#10;TEXT" />
     <property name="database.console.LAST_STATE" value="true" />
     <property name="last_opened_file_path" value="$USER_HOME$/.composer/vendor/squizlabs/php_codesniffer/bin/phpcs" />
-    <property name="settings.editor.selected.configurable" value="reference.settings.deploy.options" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -337,12 +334,12 @@
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:lno" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@5016ca67" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@b98e4bb" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
               <path>
                 <item name="services root" type="e789fda9:ObjectUtils$Sentinel" />
                 <item name="root:lno" type="7427dc5b:ServiceModel$ServiceGroupNode" />
-                <item name="com.intellij.database.console.session.MessageBusSession@2e91150d" type="9fbbdea:ServiceModel$ServiceNode" />
+                <item name="com.intellij.database.console.session.MessageBusSession@1aa54791" type="9fbbdea:ServiceModel$ServiceNode" />
               </path>
             </expand>
             <select />
@@ -548,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581827948557</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="todo: why saving attr failed. Research existing code">
+      <created>1581917597800</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1581917597800</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TodoView">
@@ -596,7 +600,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Able to add events" />
     <MESSAGE value="SQL: band to have genre" />
     <MESSAGE value="Band api hasEvent" />
     <MESSAGE value="1.  We need to download a genre table to pre-populate: Done 06/25&#10;2. Band page - missing YouTube to link to their videos (only need to link to one video): Done 06/25" />
@@ -621,7 +624,8 @@
     <MESSAGE value="update composer lock with `composer update --lock`" />
     <MESSAGE value="oshin prune data" />
     <MESSAGE value="0215: reducing data load" />
-    <option name="LAST_COMMIT_MESSAGE" value="0215: reducing data load" />
+    <MESSAGE value="todo: why saving attr failed. Research existing code" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo: why saving attr failed. Research existing code" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -633,70 +637,80 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="753" y="237" key="#xdebugger.evaluate/0.0.1920.1059@0.0.1920.1059" timestamp="1581901508275" />
-    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2" timestamp="1581876812128">
+    <state x="568" y="117" width="781" height="833" key="CommitChangelistDialog2" timestamp="1582006837224">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state x="568" y="117" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1582006837224" />
+    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917597655" />
+    <state x="95" y="95" width="1730" height="859" key="DiffContextDialog" timestamp="1582005544255">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state x="95" y="95" width="1730" height="859" key="DiffContextDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1582005544255" />
+    <state width="1872" height="233" key="GridCell.Tab.0.bottom" timestamp="1582006752533">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state width="1872" height="233" key="GridCell.Tab.0.bottom/0.0.1920.1049@0.0.1920.1049" timestamp="1582006752533" />
+    <state width="1878" height="416" key="GridCell.Tab.0.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604925" />
+    <state width="1872" height="233" key="GridCell.Tab.0.center" timestamp="1582006752533">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state width="1872" height="233" key="GridCell.Tab.0.center/0.0.1920.1049@0.0.1920.1049" timestamp="1582006752533" />
+    <state width="1878" height="416" key="GridCell.Tab.0.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604924" />
+    <state width="1872" height="233" key="GridCell.Tab.0.left" timestamp="1582006752532">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state width="1872" height="233" key="GridCell.Tab.0.left/0.0.1920.1049@0.0.1920.1049" timestamp="1582006752532" />
+    <state width="1878" height="416" key="GridCell.Tab.0.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604923" />
+    <state width="1872" height="233" key="GridCell.Tab.0.right" timestamp="1582006752533">
+      <screen x="0" y="0" width="1920" height="1049" />
+    </state>
+    <state width="1872" height="233" key="GridCell.Tab.0.right/0.0.1920.1049@0.0.1920.1049" timestamp="1582006752533" />
+    <state width="1878" height="416" key="GridCell.Tab.0.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604925" />
+    <state width="1878" height="416" key="GridCell.Tab.1.bottom" timestamp="1581917604927">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581876812128" />
-    <state width="1294" height="280" key="GridCell.Tab.0.bottom" timestamp="1581901631640">
+    <state width="1878" height="416" key="GridCell.Tab.1.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604927" />
+    <state width="1878" height="416" key="GridCell.Tab.1.center" timestamp="1581917604926">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1294" height="280" key="GridCell.Tab.0.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
-    <state width="1294" height="280" key="GridCell.Tab.0.center" timestamp="1581901631640">
+    <state width="1878" height="416" key="GridCell.Tab.1.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604926" />
+    <state width="1878" height="416" key="GridCell.Tab.1.left" timestamp="1581917604926">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1294" height="280" key="GridCell.Tab.0.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
-    <state width="1294" height="280" key="GridCell.Tab.0.left" timestamp="1581901631640">
+    <state width="1878" height="416" key="GridCell.Tab.1.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604926" />
+    <state width="1878" height="416" key="GridCell.Tab.1.right" timestamp="1581917604927">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1294" height="280" key="GridCell.Tab.0.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
-    <state width="1294" height="280" key="GridCell.Tab.0.right" timestamp="1581901631640">
+    <state width="1878" height="416" key="GridCell.Tab.1.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604927" />
+    <state width="1878" height="416" key="GridCell.Tab.2.bottom" timestamp="1581917604929">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1294" height="280" key="GridCell.Tab.0.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581901631640" />
-    <state width="1878" height="416" key="GridCell.Tab.1.bottom" timestamp="1581901540901">
+    <state width="1878" height="416" key="GridCell.Tab.2.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604929" />
+    <state width="1878" height="416" key="GridCell.Tab.2.center" timestamp="1581917604928">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1878" height="416" key="GridCell.Tab.1.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540901" />
-    <state width="1878" height="416" key="GridCell.Tab.1.center" timestamp="1581901540901">
+    <state width="1878" height="416" key="GridCell.Tab.2.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604928" />
+    <state width="1878" height="416" key="GridCell.Tab.2.left" timestamp="1581917604928">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1878" height="416" key="GridCell.Tab.1.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540901" />
-    <state width="1878" height="416" key="GridCell.Tab.1.left" timestamp="1581901540900">
+    <state width="1878" height="416" key="GridCell.Tab.2.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604928" />
+    <state width="1878" height="416" key="GridCell.Tab.2.right" timestamp="1581917604928">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state width="1878" height="416" key="GridCell.Tab.1.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540900" />
-    <state width="1878" height="416" key="GridCell.Tab.1.right" timestamp="1581901540901">
-      <screen x="0" y="0" width="1920" height="1059" />
+    <state width="1878" height="416" key="GridCell.Tab.2.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604928" />
+    <state x="449" y="163" width="1022" height="734" key="SettingsEditor" timestamp="1582006361538">
+      <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="1878" height="416" key="GridCell.Tab.1.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540901" />
-    <state width="1878" height="416" key="GridCell.Tab.2.bottom" timestamp="1581901540902">
-      <screen x="0" y="0" width="1920" height="1059" />
-    </state>
-    <state width="1878" height="416" key="GridCell.Tab.2.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
-    <state width="1878" height="416" key="GridCell.Tab.2.center" timestamp="1581901540902">
-      <screen x="0" y="0" width="1920" height="1059" />
-    </state>
-    <state width="1878" height="416" key="GridCell.Tab.2.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
-    <state width="1878" height="416" key="GridCell.Tab.2.left" timestamp="1581901540902">
-      <screen x="0" y="0" width="1920" height="1059" />
-    </state>
-    <state width="1878" height="416" key="GridCell.Tab.2.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
-    <state width="1878" height="416" key="GridCell.Tab.2.right" timestamp="1581901540902">
-      <screen x="0" y="0" width="1920" height="1059" />
-    </state>
-    <state width="1878" height="416" key="GridCell.Tab.2.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581901540902" />
-    <state x="449" y="165" width="1022" height="738" key="SettingsEditor" timestamp="1581821498051">
-      <screen x="0" y="0" width="1920" height="1059" />
-    </state>
+    <state x="449" y="163" width="1022" height="734" key="SettingsEditor/0.0.1920.1049@0.0.1920.1049" timestamp="1582006361538" />
     <state x="449" y="165" width="1022" height="738" key="SettingsEditor/0.0.1920.1059@0.0.1920.1059" timestamp="1581821498051" />
     <state width="615" height="445" key="SwitcherDM" timestamp="1581900931608">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state width="615" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581900931608" />
-    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2" timestamp="1581827949779">
+    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2" timestamp="1581917598684">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
-    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581827949779" />
+    <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917598684" />
     <state width="961" height="532" key="XDebugger.FullValuePopup" timestamp="1581877325016">
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
