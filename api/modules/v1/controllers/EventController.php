@@ -33,15 +33,20 @@ class EventController extends BaseActiveController
         $params = \Yii::$app->getRequest()->getQueryParams();
         $date_start = $params['date_start'] ?? 0;
         $date_end = $params['date_end'] ?? 21;
+//        $searchModel = new EventSearch();
+//        $searchModel->search($params);
+//        $dataProvider = $searchModel->search($params);
 
         $dp = new ActiveDataProvider(
             [
-                'query' => Event::find()->where(['>=', 'date', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))]),
+                'query' => Event::find()->where(['>=', 'date', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))])
+                ->andWhere(['source'=>$params['source']]),
                 'pagination' => [
                     'pageSize' => 20,
                 ],
             ]
         );
+        $dp->setSort(['defaultOrder' => ['id' => SORT_DESC]]);
         if (YII_DEBUG) {
             $dp->pagination = false;
         }
