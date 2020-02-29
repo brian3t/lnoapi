@@ -1,0 +1,2266 @@
+{
+  "data": {
+    "products": {
+      "happyLintAttractionId": null,
+      "happyLintVenueId": null,
+      "attractionId": null,
+      "venueId": null,
+      "page": {
+        "__typename": "Page_Event",
+        "totalElements": 20,
+        "size": 10,
+        "totalPages": 2,
+        "number": 0
+      },
+      "__typename": "PaginationResponse_Event",
+      "items": [
+        {
+          "happyLintId": "vvG1IZ4zRboy-u",
+          "__typename": "Event",
+          "id": "vvG1IZ4zRboy-u",
+          "name": "Overkill",
+          "eventUrlLink": "https://concerts.livenation.com/overkill-san-diego-california-02-29-2020/event/0A00578BD847984D",
+          "seoName": "overkill",
+          "genreName": "Metal",
+          "segmentName": "Music",
+          "tmId": "0A00578BD847984D",
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 6:00pm",
+            "venueDateTime": "2020-02-29T18:00:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 6pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T02:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2019-12-20T18:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T02:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": [
+              {
+                "endDateTime": "2019-12-20T06:00:00Z",
+                "name": "Citi® Cardmember Presale",
+                "startDateTime": "2019-12-17T17:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2020-02-02T06:00:00Z",
+                "name": "Citi® Cardmember Preferred Tickets",
+                "startDateTime": "2019-12-20T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-12-20T06:00:00Z",
+                "name": "Live Nation Presale",
+                "startDateTime": "2019-12-18T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-12-20T06:00:00Z",
+                "name": "Live Nation Mobile App Presale",
+                "startDateTime": "2019-12-18T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-12-20T06:00:00Z",
+                "name": "Songkick Presale",
+                "startDateTime": "2019-12-18T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-12-20T06:00:00Z",
+                "name": "Official Platinum Presale",
+                "startDateTime": "2019-12-17T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2020-03-01T02:00:00Z",
+                "name": "Official Platinum",
+                "startDateTime": "2019-12-20T18:00:00Z",
+                "__typename": "Presale"
+              }
+            ],
+            "__typename": "EventSalesDates"
+          },
+          "products": [
+            {
+              "id": "vvG1IZ4zBy2Suk",
+              "name": "House of Blues Pass the Line",
+              "type": "Upsell",
+              "url": "https://concerts.livenation.com/house-of-blues-pass-the-line-san-diego-california-02-29-2020/event/0A00578EB93F3346",
+              "__typename": "Product"
+            }
+          ],
+          "venues": [
+            {
+              "id": "KovZpZAEAltA",
+              "name": "House of Blues San Diego presented by Cricket Wireless",
+              "seoLink": "/house-of-blues-san-diego-presented-by-cricket-wireless-tickets-san-diego/venue/82551",
+              "postalCode": "92101",
+              "address": {
+                "line1": "1055 5th Avenue",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": [
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ91715x7",
+              "name": "Overkill",
+              "seoUrl": "/overkill-tickets/artist/735807",
+              "url": "https://concerts.livenation.com/overkill-tickets/artist/735807",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            },
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917uEc0",
+              "name": "Exhorder",
+              "seoUrl": "/exhorder-tickets/artist/740850",
+              "url": "https://www.ticketmaster.com.mx/exhorder-tickets/artist/740850",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            },
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/c/e7c/86478562-7218-4e8f-b9d4-8080fe168e7c_105581_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/e7c/86478562-7218-4e8f-b9d4-8080fe168e7c_105581_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/e7c/86478562-7218-4e8f-b9d4-8080fe168e7c_105581_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/e7c/86478562-7218-4e8f-b9d4-8080fe168e7c_105581_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/e7c/86478562-7218-4e8f-b9d4-8080fe168e7c_105581_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917bnMf",
+              "name": "Hydraform",
+              "seoUrl": "/hydraform-tickets/artist/2713670",
+              "url": "http://www.ticketmaster.com.au/Hydraform-tickets/artist/2713670",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            }
+          ],
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 25,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "vvG1IZ4zRboy-u",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Overkill",
+            "image": "https://s1.ticketm.net/dam/a/4e6/ef4e40eb-4f5a-444e-a0ad-716e64f194e6_954811_RETINA_PORTRAIT_16_9.jpg",
+            "startDate": "2020-02-29T18:00:00-08:00",
+            "url": "https://concerts.livenation.com/overkill-san-diego-california-02-29-2020/event/0A00578BD847984D",
+            "description": "Overkill | Sat 2/29 @ 6pm | House of Blues San Diego presented by Cricket Wireless, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "House of Blues San Diego presented by Cricket Wireless",
+              "sameAs": "https://www.ticketmaster.com/house-of-blues-san-diego-presented-by-cricket-wireless-tickets-san-diego/venue/82551",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "1055 5th Avenue",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://concerts.livenation.com/overkill-san-diego-california-02-29-2020/event/0A00578BD847984D",
+              "availabilityStarts": "2019-12-20T18:00:00Z",
+              "priceCurrency": "USD",
+              "price": "25",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [
+              {
+                "type": "MusicGroup",
+                "name": "Overkill",
+                "sameAs": "https://www.ticketmaster.com/overkill-tickets/artist/735807",
+                "__typename": "PerformerJsonLd"
+              },
+              {
+                "type": "MusicGroup",
+                "name": "Exhorder",
+                "sameAs": "https://www.ticketmaster.com/exhorder-tickets/artist/740850",
+                "__typename": "PerformerJsonLd"
+              },
+              {
+                "type": "MusicGroup",
+                "name": "Hydraform",
+                "sameAs": "https://www.ticketmaster.com/hydraform-tickets/artist/2713670",
+                "__typename": "PerformerJsonLd"
+              }
+            ],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "vvG1iZ4URu1v_L",
+          "__typename": "Event",
+          "id": "vvG1iZ4URu1v_L",
+          "name": "Olivia O'Brien - It Was A Sad F**King Tour",
+          "eventUrlLink": "https://www.ticketmaster.com/olivia-obrien-it-was-a-sad-fking-tour/event/0B00576BCD28165F",
+          "seoName": "olivia-obrien-it-was-a-sad-fking-tour",
+          "genreName": "Pop",
+          "segmentName": "Music",
+          "tmId": "0B00576BCD28165F",
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 7:00pm",
+            "venueDateTime": "2020-02-29T19:00:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 7pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T03:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2019-11-22T18:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T03:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": [
+              {
+                "endDateTime": "2019-11-22T06:00:00Z",
+                "name": "Artist Presale",
+                "startDateTime": "2019-11-15T19:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-11-22T06:00:00Z",
+                "name": "Spotify Presale",
+                "startDateTime": "2019-11-18T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-11-22T06:00:00Z",
+                "name": "Songkick Presale",
+                "startDateTime": "2019-11-18T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-11-22T06:00:00Z",
+                "name": "Venue Presale",
+                "startDateTime": "2019-11-21T18:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-11-22T06:00:00Z",
+                "name": "Citi® Cardmember Presale",
+                "startDateTime": "2019-11-21T18:00:00Z",
+                "__typename": "Presale"
+              }
+            ],
+            "__typename": "EventSalesDates"
+          },
+          "products": [
+            {
+              "id": "vvG1iZ4yhoq3XQ",
+              "name": "The Observatory North Park - Fast Lane Pass",
+              "type": "Special Entry",
+              "url": "/the-observatory-north-park-fast-lane-san-diego-california-02-29-2020/event/0B005796D1752F9A",
+              "__typename": "Product"
+            },
+            {
+              "id": "vvG1iZp73WVdVW",
+              "name": "PSS and Night of Show Upsells - Olivia O'Brien",
+              "type": "VIP",
+              "url": "/pss-and-night-of-show-upsells-san-diego-california-02-29-2020/event/0B005844BDD03D3D",
+              "__typename": "Product"
+            }
+          ],
+          "venues": [
+            {
+              "id": "KovZ917AxAB",
+              "name": "The Observatory North Park",
+              "seoLink": "/the-observatory-north-park-tickets-san-diego/venue/90384",
+              "postalCode": "92104",
+              "address": {
+                "line1": "2891 University Ave",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": [
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917p4pV",
+              "name": "Olivia O'Brien",
+              "seoUrl": "/olivia-obrien-tickets/artist/2417855",
+              "url": "https://www.ticketmaster.com/olivia-obrien-tickets/artist/2417855",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            },
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/a/7bc/0ff5b026-7bfc-4b2a-9826-306ec5bd67bc_366341_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/7bc/0ff5b026-7bfc-4b2a-9826-306ec5bd67bc_366341_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/7bc/0ff5b026-7bfc-4b2a-9826-306ec5bd67bc_366341_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/7bc/0ff5b026-7bfc-4b2a-9826-306ec5bd67bc_366341_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/7bc/0ff5b026-7bfc-4b2a-9826-306ec5bd67bc_366341_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917Kph7",
+              "name": "Hey Violet",
+              "seoUrl": "/hey-violet-tickets/artist/2107730",
+              "url": "https://www.ticketmaster.com/hey-violet-tickets/artist/2107730",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            },
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/c/4f2/0109888a-61b5-4525-8432-b026ef04f4f2_105631_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/4f2/0109888a-61b5-4525-8432-b026ef04f4f2_105631_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/4f2/0109888a-61b5-4525-8432-b026ef04f4f2_105631_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/4f2/0109888a-61b5-4525-8432-b026ef04f4f2_105631_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/4f2/0109888a-61b5-4525-8432-b026ef04f4f2_105631_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917bR_0",
+              "name": "Drumaq",
+              "seoUrl": "/drumaq-tickets/artist/2724678",
+              "url": "https://www.ticketmaster.com/drumaq-tickets/artist/2724678",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            }
+          ],
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 30,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "vvG1iZ4URu1v_L",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Olivia O'Brien - It Was A Sad F**King Tour",
+            "image": "https://s1.ticketm.net/dam/a/03c/4afee240-b14e-4a69-8e34-d4db32de703c_929601_RECOMENDATION_16_9.jpg",
+            "startDate": "2020-02-29T19:00:00-08:00",
+            "url": "https://www.ticketmaster.com/olivia-obrien-it-was-a-sad-san-diego-california-02-29-2020/event/0B00576BCD28165F",
+            "description": "Olivia O'Brien - It Was A Sad F**King Tour | Sat 2/29 @ 7pm | The Observatory North Park, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "The Observatory North Park",
+              "sameAs": "https://www.ticketmaster.com/the-observatory-north-park-tickets-san-diego/venue/90384",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "2891 University Ave",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92104",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketmaster.com/olivia-obrien-it-was-a-sad-san-diego-california-02-29-2020/event/0B00576BCD28165F",
+              "availabilityStarts": "2019-11-22T18:00:00Z",
+              "priceCurrency": "USD",
+              "price": "30",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [
+              {
+                "type": "MusicGroup",
+                "name": "Olivia O'Brien",
+                "sameAs": "https://www.ticketmaster.com/olivia-obrien-tickets/artist/2417855",
+                "__typename": "PerformerJsonLd"
+              },
+              {
+                "type": "MusicGroup",
+                "name": "Hey Violet",
+                "sameAs": "https://www.ticketmaster.com/hey-violet-tickets/artist/2107730",
+                "__typename": "PerformerJsonLd"
+              },
+              {
+                "type": "MusicGroup",
+                "name": "Drumaq",
+                "sameAs": "https://www.ticketmaster.com/drumaq-tickets/artist/2724678",
+                "__typename": "PerformerJsonLd"
+              }
+            ],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "vvG1iZ4wNdrvc0",
+          "__typename": "Event",
+          "id": "vvG1iZ4wNdrvc0",
+          "name": "Colin Hay",
+          "eventUrlLink": "https://concerts.livenation.com/colin-hay-el-cajon-california-02-29-2020/event/0B005728C3781B64",
+          "seoName": "colin-hay",
+          "genreName": "Rock",
+          "segmentName": "Music",
+          "tmId": "0B005728C3781B64",
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 7:00pm",
+            "venueDateTime": "2020-02-29T19:00:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 7pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T03:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2019-09-13T17:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T03:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": [
+              {
+                "endDateTime": "2019-09-13T05:00:00Z",
+                "name": "Citi® Cardmember Presale",
+                "startDateTime": "2019-09-10T17:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-09-13T05:00:00Z",
+                "name": "Live Nation Presale",
+                "startDateTime": "2019-09-11T17:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-09-13T05:00:00Z",
+                "name": "Belly Up Presale",
+                "startDateTime": "2019-09-11T17:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-09-13T05:00:00Z",
+                "name": "Official Platinum Presale",
+                "startDateTime": "2019-09-10T17:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2020-03-01T03:00:00Z",
+                "name": "Official Platinum",
+                "startDateTime": "2019-09-13T17:00:00Z",
+                "__typename": "Presale"
+              },
+              {
+                "endDateTime": "2019-09-13T05:00:00Z",
+                "name": "Live Nation Mobile App Presale",
+                "startDateTime": "2019-09-11T17:00:00Z",
+                "__typename": "Presale"
+              }
+            ],
+            "__typename": "EventSalesDates"
+          },
+          "products": [
+            {
+              "id": "vvG1iZ4S5RwSh8",
+              "name": "The Magnolia   VIP Club Access",
+              "type": "Club Access",
+              "url": "https://concerts.livenation.com/the-magnolia-vip-club-access-el-cajon-california-02-29-2020/event/0B005732EFCB36D0",
+              "__typename": "Product"
+            },
+            {
+              "id": "vvG1iZ4MbpzA6g",
+              "name": "Colin Hay Meet & Greet Experience Package Upgrade",
+              "type": "VIP",
+              "url": "https://concerts.livenation.com/colin-hay-meet-greet-experience-package-el-cajon-california-02-29-2020/event/0B00577616E051F5",
+              "__typename": "Product"
+            },
+            {
+              "id": "vvG1iZpdhq4AfF",
+              "name": "The Magnolia - Fast Lane Pass",
+              "type": "Upsell",
+              "url": "https://concerts.livenation.com/the-magnolia-fast-lane-pass-el-cajon-california-02-29-2020/event/0B005836DD545508",
+              "__typename": "Product"
+            }
+          ],
+          "venues": [
+            {
+              "id": "KovZ917AOww",
+              "name": "The Magnolia",
+              "seoLink": "/the-magnolia-tickets-el-cajon/venue/90381",
+              "postalCode": "92020",
+              "address": {
+                "line1": "210 E Main Street",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "El Cajon",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": [
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ9171JN0",
+              "name": "Colin Hay",
+              "seoUrl": "/colin-hay-tickets/artist/769308",
+              "url": "https://www.ticketmaster.com/colin-hay-tickets/artist/769308",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            }
+          ],
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 45,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "vvG1iZ4wNdrvc0",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Colin Hay",
+            "image": "https://s1.ticketm.net/dam/a/646/779f3dc6-b56e-484a-bb73-7bac3f689646_232381_RECOMENDATION_16_9.jpg",
+            "startDate": "2020-02-29T19:00:00-08:00",
+            "url": "https://concerts.livenation.com/colin-hay-el-cajon-california-02-29-2020/event/0B005728C3781B64",
+            "description": "Colin Hay | Sat 2/29 @ 7pm | The Magnolia, El Cajon, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "The Magnolia",
+              "sameAs": "https://www.ticketmaster.com/the-magnolia-tickets-el-cajon/venue/90381",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "210 E Main Street",
+                "addressLocality": "El Cajon",
+                "addressRegion": "CA",
+                "postalCode": "92020",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://concerts.livenation.com/colin-hay-el-cajon-california-02-29-2020/event/0B005728C3781B64",
+              "availabilityStarts": "2019-09-13T17:00:00Z",
+              "priceCurrency": "USD",
+              "price": "45",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [
+              {
+                "type": "MusicGroup",
+                "name": "Colin Hay",
+                "sameAs": "https://www.ticketmaster.com/colin-hay-tickets/artist/769308",
+                "__typename": "PerformerJsonLd"
+              }
+            ],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "rZ7HnEZ1A8FIv4",
+          "__typename": "Event",
+          "id": "rZ7HnEZ1A8FIv4",
+          "name": "SOBxRBE",
+          "eventUrlLink": "https://www.ticketweb.com/event/sobxrbe-soma-mainstage-tickets/10228055",
+          "seoName": "sobxrbe",
+          "genreName": "Hip-Hop/Rap",
+          "segmentName": "Music",
+          "tmId": null,
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 8:00pm",
+            "venueDateTime": "2020-02-29T20:00:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 8pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T04:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2019-12-19T18:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T06:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "KovZpZA1teEA",
+              "name": "Soma",
+              "seoLink": "/soma-tickets-san-diego/venue/82073",
+              "postalCode": "92110",
+              "address": {
+                "line1": "3350 Sports Arena Blvd",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": [
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ9174lC7",
+              "name": "SOB X RBE",
+              "seoUrl": "/sob-x-rbe-tickets/artist/2317870",
+              "url": "https://www.ticketmaster.com/sob-x-rbe-tickets/artist/2317870",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            }
+          ],
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 25,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "rZ7HnEZ1A8FIv4",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "SOBxRBE",
+            "image": "https://s1.ticketm.net/dam/a/845/ab364754-0453-417e-b610-e40192bf1845_1243271_RECOMENDATION_16_9.jpg",
+            "startDate": "2020-02-29T20:00:00-08:00",
+            "url": "https://www.ticketweb.com/event/sobxrbe-soma-mainstage-tickets/10228055",
+            "description": "SOBxRBE | Sat 2/29 @ 8pm | Soma, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "Soma",
+              "sameAs": "https://www.ticketmaster.com/soma-tickets-san-diego/venue/82073",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "3350 Sports Arena Blvd",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92110",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketweb.com/event/sobxrbe-soma-mainstage-tickets/10228055",
+              "availabilityStarts": "2019-12-19T18:00:00Z",
+              "priceCurrency": "USD",
+              "price": "25",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [
+              {
+                "type": "MusicGroup",
+                "name": "SOB X RBE",
+                "sameAs": "https://www.ticketmaster.com/sob-x-rbe-tickets/artist/2317870",
+                "__typename": "PerformerJsonLd"
+              }
+            ],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "rZ7HnEZ1A8FN7P",
+          "__typename": "Event",
+          "id": "rZ7HnEZ1A8FN7P",
+          "name": "Los Pericos, Los Estramboticos, El Conjunto Nueva Ola",
+          "eventUrlLink": "https://www.ticketweb.com/event/los-pericos-los-estramboticos-el-music-box-tickets/10223125",
+          "seoName": "los-pericos-los-estramboticos-el-conjunto-nueva-ola",
+          "genreName": "World",
+          "segmentName": "Music",
+          "tmId": null,
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 9:00pm",
+            "venueDateTime": "2020-02-29T21:00:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 9pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T05:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2019-07-05T17:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T06:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "KovZ917AfM7",
+              "name": "The Music Box",
+              "seoLink": "/the-music-box-tickets-san-diego/venue/82801",
+              "postalCode": "92101",
+              "address": {
+                "line1": "1337 India Street",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": [
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ9175owf",
+              "name": "Los Pericos",
+              "seoUrl": "/los-pericos-tickets/artist/782857",
+              "url": "https://www.ticketmaster.ie/Los-Pericos-tickets/artist/782857",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            },
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917G6Wf",
+              "name": "Los Estramboticos",
+              "seoUrl": "/los-estramboticos-tickets/artist/1171036",
+              "url": "http://www.ticketmaster.com.mx/los-estramboticos-tickets/artist/1171036",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            },
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/fbc/b293c0ad-c904-4215-bc59-8d7f2414dfbc_106141_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917CJn7",
+              "name": "El Conjunto Nueva Ola",
+              "seoUrl": "/el-conjunto-nueva-ola-tickets/artist/1607156",
+              "url": "https://www.ticketmaster.ie/El-Conjunto-Nueva-Ola-tickets/artist/1607156",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            }
+          ],
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 39.5,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "rZ7HnEZ1A8FN7P",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Los Pericos, Los Estramboticos, El Conjunto Nueva Ola",
+            "image": "https://s1.ticketm.net/dam/a/c15/90afcac7-f4e8-404e-b48f-fe348ac48c15_831301_RETINA_PORTRAIT_16_9.jpg",
+            "startDate": "2020-02-29T21:00:00-08:00",
+            "url": "https://www.ticketweb.com/event/los-pericos-los-estramboticos-el-music-box-tickets/10223125",
+            "description": "Los Pericos, Los Estramboticos, El Conjunto Nueva Ola | Sat 2/29 @ 9pm | The Music Box, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "The Music Box",
+              "sameAs": "https://www.ticketmaster.com/the-music-box-tickets-san-diego/venue/82801",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "1337 India Street",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketweb.com/event/los-pericos-los-estramboticos-el-music-box-tickets/10223125",
+              "availabilityStarts": "2019-07-05T17:00:00Z",
+              "priceCurrency": "USD",
+              "price": "39.5",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [
+              {
+                "type": "MusicGroup",
+                "name": "Los Pericos",
+                "sameAs": "https://www.ticketmaster.com/los-pericos-tickets/artist/782857",
+                "__typename": "PerformerJsonLd"
+              },
+              {
+                "type": "MusicGroup",
+                "name": "Los Estramboticos",
+                "sameAs": "https://www.ticketmaster.com/los-estramboticos-tickets/artist/1171036",
+                "__typename": "PerformerJsonLd"
+              },
+              {
+                "type": "MusicGroup",
+                "name": "El Conjunto Nueva Ola",
+                "sameAs": "https://www.ticketmaster.com/el-conjunto-nueva-ola-tickets/artist/1607156",
+                "__typename": "PerformerJsonLd"
+              }
+            ],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "Z7r9jZ1AeOye8",
+          "__typename": "Event",
+          "id": "Z7r9jZ1AeOye8",
+          "name": "Sudan Archives",
+          "eventUrlLink": "https://www1.ticketmaster.com/event/Z7r9jZ1AeOye8?tmrid=TMR-2839090&routing=y",
+          "seoName": "sudan-archives",
+          "genreName": "Other",
+          "segmentName": "Music",
+          "tmId": null,
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 9:30pm",
+            "venueDateTime": "2020-02-29T21:30:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 9pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T05:30:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "1900-01-01T06:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T05:30:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "Z6r9jZd1ee",
+              "name": "Casbah-San Diego",
+              "seoLink": "/casbah-san-diego-tickets-san-diego/venue/Z6r9jZd1ee",
+              "postalCode": "92101",
+              "address": {
+                "line1": "2501 Kettner Blvd",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": [
+            {
+              "imagesFiltered": [
+                {
+                  "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RECOMENDATION_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_LANDSCAPE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                },
+                {
+                  "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_PORTRAIT_16_9.jpg",
+                  "id": null,
+                  "__typename": "Image"
+                }
+              ],
+              "id": "K8vZ917p-qf",
+              "name": "Sudan Archives",
+              "seoUrl": "/sudan-archives-tickets/artist/2442031",
+              "url": "http://www.ticketmaster.com.au/Sudan-Archives-tickets/artist/2442031",
+              "classification": {
+                "segment": {
+                  "id": "KZFzniwnSyZfZ7v7nJ",
+                  "name": "Music",
+                  "__typename": "Segment"
+                },
+                "__typename": "Classification"
+              },
+              "__typename": "Attraction"
+            }
+          ],
+          "priceRanges": null,
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "Z7r9jZ1AeOye8",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Sudan Archives",
+            "image": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RECOMENDATION_16_9.jpg",
+            "startDate": "2020-02-29T21:30:00-08:00",
+            "url": "http://www.ticketsnow.com/InventoryBrowse/TicketList.aspx?PID=2839090",
+            "description": "Sudan Archives | Sun 3/1 @ 5am | Casbah-San Diego, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "Casbah-San Diego",
+              "sameAs": "https://www.ticketmaster.com/casbah-san-diego-tickets-san-diego/venue/Z6r9jZd1ee",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "2501 Kettner Blvd",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "http://www.ticketsnow.com/InventoryBrowse/TicketList.aspx?PID=2839090",
+              "availabilityStarts": "1900-01-01T06:00:00Z",
+              "priceCurrency": "",
+              "price": "",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [
+              {
+                "type": "MusicGroup",
+                "name": "Sudan Archives",
+                "sameAs": "https://www.ticketmaster.com/sudan-archives-tickets/artist/2442031",
+                "__typename": "PerformerJsonLd"
+              }
+            ],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "1Ae0ZpeGkR30Ssh",
+          "__typename": "Event",
+          "id": "1Ae0ZpeGkR30Ssh",
+          "name": "Free Weekend Guest List",
+          "eventUrlLink": "https://www.ticketweb.com/event/free-weekend-guest-list-tin-roof-san-tickets/10311735?REFERRAL_ID=tmfeed",
+          "seoName": "free-weekend-guest-list",
+          "genreName": "Other",
+          "segmentName": "Music",
+          "tmId": "2900582BD2933C5B",
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Feb 29",
+            "dateSubTitle": "Sat 10:00pm",
+            "venueDateTime": "2020-02-29T22:00:00-08:00",
+            "venueDateTimeFormatted": "Sat 2/29 @ 10pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-02-29",
+              "dateTime": "2020-03-01T06:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2020-01-11T17:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T05:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "KovZpa2FOe",
+              "name": "Tin Roof - San Diego",
+              "seoLink": "/tin-roof-san-diego-tickets-san-diego/venue/342363",
+              "postalCode": "92101",
+              "address": {
+                "line1": "401 G St",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": null,
+          "priceRanges": null,
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "1Ae0ZpeGkR30Ssh",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Free Weekend Guest List",
+            "image": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RECOMENDATION_16_9.jpg",
+            "startDate": "2020-02-29T22:00:00-08:00",
+            "url": "https://www.ticketweb.com/event/free-weekend-guest-list-tin-roof-san-tickets/10311735?REFERRAL_ID=tmfeed",
+            "description": "Free Weekend Guest List | Sat 2/29 @ 10pm | Tin Roof - San Diego, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "Tin Roof - San Diego",
+              "sameAs": "https://www.ticketmaster.com/tin-roof-san-diego-tickets-san-diego/venue/342363",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "401 G St",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketweb.com/event/free-weekend-guest-list-tin-roof-san-tickets/10311735?REFERRAL_ID=tmfeed",
+              "availabilityStarts": "2020-01-11T17:00:00Z",
+              "priceCurrency": "",
+              "price": "",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "rZ7HnEZ1A8asPP",
+          "__typename": "Event",
+          "id": "rZ7HnEZ1A8asPP",
+          "name": "Synful Sundayz",
+          "eventUrlLink": "https://www.ticketweb.com/event/synful-sundayz-music-box-tickets/10271965",
+          "seoName": "synful-sundayz",
+          "genreName": "Dance/Electronic",
+          "segmentName": "Music",
+          "tmId": null,
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Mar 1",
+            "dateSubTitle": "Sun 1:00pm",
+            "venueDateTime": "2020-03-01T13:00:00-08:00",
+            "venueDateTimeFormatted": "Sun 3/1 @ 1pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-03-01",
+              "dateTime": "2020-03-01T21:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2020-01-04T18:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T22:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "KovZ917AfM7",
+              "name": "The Music Box",
+              "seoLink": "/the-music-box-tickets-san-diego/venue/82801",
+              "postalCode": "92101",
+              "address": {
+                "line1": "1337 India Street",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": null,
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 10,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "rZ7HnEZ1A8asPP",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Synful Sundayz",
+            "image": "https://s1.ticketm.net/dam/c/df8/81eadad8-4449-412e-a2b1-3d8bbb78edf8_106181_RETINA_PORTRAIT_16_9.jpg",
+            "startDate": "2020-03-01T13:00:00-08:00",
+            "url": "https://www.ticketweb.com/event/synful-sundayz-music-box-tickets/10271965",
+            "description": "Synful Sundayz | Sun 3/1 @ 1pm | The Music Box, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "The Music Box",
+              "sameAs": "https://www.ticketmaster.com/the-music-box-tickets-san-diego/venue/82801",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "1337 India Street",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92101",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketweb.com/event/synful-sundayz-music-box-tickets/10271965",
+              "availabilityStarts": "2020-01-04T18:00:00Z",
+              "priceCurrency": "USD",
+              "price": "10",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "1k18vb4eGAC5650",
+          "__typename": "Event",
+          "id": "1k18vb4eGAC5650",
+          "name": "Karaoke",
+          "eventUrlLink": "https://www.ticketweb.com/event/karaoke-the-merrow-tickets/10475205?REFERRAL_ID=tmfeed",
+          "seoName": "karaoke",
+          "genreName": "Other",
+          "segmentName": "Music",
+          "tmId": "290058542E2C72E4",
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Mar 1",
+            "dateSubTitle": "Sun 2:00pm",
+            "venueDateTime": "2020-03-01T14:00:00-08:00",
+            "venueDateTimeFormatted": "Sun 3/1 @ 2pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-03-01",
+              "dateTime": "2020-03-01T22:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2020-02-21T03:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-01T22:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "KovZpZAJF17A",
+              "name": "The Merrow",
+              "seoLink": "/the-merrow-tickets-san-diego/venue/338515",
+              "postalCode": "92103",
+              "address": {
+                "line1": "1271 University Avenue",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "San Diego",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": null,
+          "priceRanges": null,
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "1k18vb4eGAC5650",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Karaoke",
+            "image": "https://s1.ticketm.net/dam/c/060/c5c08e7a-9912-456c-a060-2758be94e060_105881_RECOMENDATION_16_9.jpg",
+            "startDate": "2020-03-01T14:00:00-08:00",
+            "url": "https://www.ticketweb.com/event/karaoke-the-merrow-tickets/10475205?REFERRAL_ID=tmfeed",
+            "description": "Karaoke | Sun 3/1 @ 2pm | The Merrow, San Diego, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "The Merrow",
+              "sameAs": "https://www.ticketmaster.com/the-merrow-tickets-san-diego/venue/338515",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "1271 University Avenue",
+                "addressLocality": "San Diego",
+                "addressRegion": "CA",
+                "postalCode": "92103",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketweb.com/event/karaoke-the-merrow-tickets/10475205?REFERRAL_ID=tmfeed",
+              "availabilityStarts": "2020-02-21T03:00:00Z",
+              "priceCurrency": "",
+              "price": "",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [],
+            "__typename": "EventJsonLd"
+          }
+        },
+        {
+          "happyLintId": "vvG1IZ4MtXNsG2",
+          "__typename": "Event",
+          "id": "vvG1IZ4MtXNsG2",
+          "name": "Nu Cuoi Dau Xuan",
+          "eventUrlLink": "https://www.ticketmaster.com/nu-cuoi-dau-xuan/event/0A00577A7E8F130F",
+          "seoName": "nu-cuoi-dau-xuan",
+          "genreName": "World",
+          "segmentName": "Music",
+          "tmId": "0A00577A7E8F130F",
+          "ticketExchangeUrl": null,
+          "imagesFiltered": [
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_RETINA_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_TABLET_LANDSCAPE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_RETINA_PORTRAIT_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_TABLET_LANDSCAPE_LARGE_16_9.jpg",
+              "__typename": "Image"
+            },
+            {
+              "id": null,
+              "url": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_RECOMENDATION_16_9.jpg",
+              "__typename": "Image"
+            }
+          ],
+          "datesFormatted": {
+            "dateTitle": "Mar 1",
+            "dateSubTitle": "Sun 6:00pm",
+            "venueDateTime": "2020-03-01T18:00:00-08:00",
+            "venueDateTimeFormatted": "Sun 3/1 @ 6pm",
+            "__typename": "Dates"
+          },
+          "dates": {
+            "spanMultipleDays": false,
+            "start": {
+              "dateTBA": false,
+              "timeTBA": false,
+              "localDate": "2020-03-01",
+              "dateTime": "2020-03-02T02:00:00Z",
+              "noSpecificTime": false,
+              "__typename": "StartDates"
+            },
+            "status": {
+              "code": "onsale",
+              "__typename": "EventStatus"
+            },
+            "__typename": "EventDates"
+          },
+          "sales": {
+            "public": {
+              "startDateTime": "2019-12-19T23:00:00Z",
+              "startTBD": false,
+              "endDateTime": "2020-03-02T01:00:00Z",
+              "__typename": "PublicSaleDates"
+            },
+            "presales": null,
+            "__typename": "EventSalesDates"
+          },
+          "products": null,
+          "venues": [
+            {
+              "id": "KovZpZA1vvlA",
+              "name": "Pechanga Resort and Casino",
+              "seoLink": "/pechanga-resort-and-casino-tickets-temecula/venue/82225",
+              "postalCode": "92592",
+              "address": {
+                "line1": "45000 Pechanga Parkway",
+                "__typename": "Address"
+              },
+              "city": {
+                "name": "Temecula",
+                "__typename": "City"
+              },
+              "state": {
+                "stateCode": "CA",
+                "name": "California",
+                "__typename": "State"
+              },
+              "country": {
+                "countryCode": "US",
+                "name": "United States Of America",
+                "__typename": "Country"
+              },
+              "__typename": "Venue"
+            }
+          ],
+          "attractions": null,
+          "priceRanges": [
+            {
+              "currency": "USD",
+              "min": 58,
+              "__typename": "PriceRange"
+            }
+          ],
+          "classification": {
+            "segment": {
+              "id": "KZFzniwnSyZfZ7v7nJ",
+              "name": "Music",
+              "__typename": "Segment"
+            },
+            "__typename": "Classification"
+          },
+          "jsonLdId": "vvG1IZ4MtXNsG2",
+          "jsonLd": {
+            "context": "http://schema.org",
+            "type": "MusicEvent",
+            "name": "Nu Cuoi Dau Xuan",
+            "image": "https://s1.ticketm.net/dam/c/548/5fefbd1c-973b-4b0e-9b2e-d78e4ce37548_106111_RETINA_PORTRAIT_16_9.jpg",
+            "startDate": "2020-03-01T18:00:00-08:00",
+            "url": "https://www.ticketmaster.com/nu-cuoi-dau-xuan-temecula-california-03-01-2020/event/0A00577A7E8F130F",
+            "description": "Nu Cuoi Dau Xuan | Sun 3/1 @ 6pm | Pechanga Resort and Casino, Temecula, CA",
+            "eventStatus": "EventOnsale",
+            "location": {
+              "type": "Place",
+              "name": "Pechanga Resort and Casino",
+              "sameAs": "https://www.ticketmaster.com/pechanga-resort-and-casino-tickets-temecula/venue/82225",
+              "address": {
+                "type": "PostalAddress",
+                "streetAddress": "45000 Pechanga Parkway",
+                "addressLocality": "Temecula",
+                "addressRegion": "CA",
+                "postalCode": "92592",
+                "addressCountry": "US",
+                "__typename": "PostalAddressJsonLd"
+              },
+              "__typename": "PlaceJsonLd"
+            },
+            "offers": {
+              "type": "Offer",
+              "url": "https://www.ticketmaster.com/nu-cuoi-dau-xuan-temecula-california-03-01-2020/event/0A00577A7E8F130F",
+              "availabilityStarts": "2019-12-19T23:00:00Z",
+              "priceCurrency": "USD",
+              "price": "58",
+              "__typename": "OfferJsonLd"
+            },
+            "performer": [],
+            "__typename": "EventJsonLd"
+          }
+        }
+      ]
+    }
+  }
+}

@@ -403,20 +403,20 @@ class DlController extends Controller
      * @return boolean result
      * @throws
      */
-    public function actionScrapeTickMas($per_page = 10, $variables = [])
+    public function actionScrapeTickmas($per_page = 10, $variables = [])
     {
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $today=new \DateTime();
-        $today_str=$today->format('YYYY-MM-DD');
-        $nextweek_str=$today->add(new \DateInterval('7D'))->format('YYYY-MM-DD');
-        $timerange="${today_str}T00=>00=>00,${nextweek_str}T23=>59=>59";
+        $today_str=$today->format('Y-m-d');
+        $nextweek_str=$today->add(new \DateInterval('P7D'))->format('Y-m-d');
+        $timerange="${today_str}T00:00:00,${nextweek_str}T23:59:59";
         $scraped = 0;
         $url = TICKMAS;
         if ($IS_DEBUG) {
             $events = file_get_contents(dirname(__DIR__) . "/web/scrape/tickmas.json");
         } else {
-            $params = ["locale" => "en-us",
+            $params = ['variables' => ["locale" => "en-us",
                 "sort" => "date,asc",
                 "page" => 0,
                 "size" => $per_page,
@@ -429,7 +429,8 @@ class DlController extends Controller
                 "segmentId" => "KZFzniwnSyZfZ7v7nJ",
                 "localeStr" => "en-us",
                 "type" => "event",
-                "localStartEndDateTime" => $timerange];
+                "localStartEndDateTime" => $timerange]
+            ];
             $url .= "&" . http_build_query($params);
             $guzzle = new GuzzleClient();
             $events = $guzzle->request('GET', $url, $params);
@@ -445,6 +446,10 @@ class DlController extends Controller
             $events = $events->getContents();
         }
         $events = json_decode($events);
+        if (!method_exists($events,'data')) {echo 'events no data'; return false;}
+        $events=$events->data;
+        if (!method_exists($events,'products')) {echo 'events data no products'; return false;}
+        $events=$events->products;
 
         if (isset($events->shows) && is_array($events->shows)) {
             foreach ($events->shows as $show) {
