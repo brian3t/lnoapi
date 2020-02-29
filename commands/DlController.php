@@ -20,6 +20,7 @@ define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre
 define('SDREADER_LOCAL', 'http://lnoapi/scrape/Eventsearch_SanDiegoReader.html');
 define('SDREVENT_LOCAL', 'http://lnoapi/scrape/gingercowgirl.html');
 define('SDRBAND_LOCAL', 'http://lnoapi/scrape/band_gg_cowgirl.html');
+define('TICKMAS', 'https://www.ticketmaster.com/api/next/graphql?operationName=CategorySearch&extensions={"persistedQuery":{"version":1,"sha256Hash":"e6feb139aaeaa5a2bbcf9a37e6ee6bb29cca1d6dce85fb7746f25f859041c2b4"}}');
 
 /**
  * The behind the scenes magic happens here
@@ -278,9 +279,9 @@ class DlController extends Controller
 
     public function actionScrapeReverbAllcities()
     {
-        require_once dirname(__DIR__). "/config/reverb/constant.php";
+        require_once dirname(__DIR__) . "/config/reverb/constant.php";
         $location = BASE_LOC_ARRAY;
-        foreach (LOCATIONS as $LOCATION){
+        foreach (LOCATIONS as $LOCATION) {
             $location['state'] = $LOCATION[0];
             $location['city'] = $LOCATION[1];
             $location['postal_code'] = $LOCATION[2];
@@ -296,7 +297,7 @@ class DlController extends Controller
      * @return boolean result
      * @throws
      */
-    public function actionScrapeReverb($location=["geo"=>"local","country"=>"US","state"=>"CA","city"=>"San%20Diego","postal_code"=>"92115"], $per_page = 10)
+    public function actionScrapeReverb($location = ["geo" => "local", "country" => "US", "state" => "CA", "city" => "San%20Diego", "postal_code" => "92115"], $per_page = 10)
     {
 
 //        $IS_DEBUG = true;
@@ -306,7 +307,128 @@ class DlController extends Controller
         if ($IS_DEBUG) {
             $events = file_get_contents(dirname(__DIR__) . "/web/scrape/reverb_ev.json");
         } else {
-            $params = ['per_page' => $per_page, 'location'=>json_encode($location)];
+            $params = ['per_page' => $per_page, 'location' => json_encode($location)];
+            $url .= "&" . http_build_query($params);
+            $guzzle = new GuzzleClient();
+            $events = $guzzle->request('GET', $url, $params);
+            if ($events->getStatusCode() !== 200) {
+                echo 'Failed. ' . $events->getStatusCode();
+                return false;
+            }
+            $events = $events->getBody();
+            if (! method_exists($events, 'getContents')) {
+                echo 'Bad response. Url: ' . $url;
+                return false;
+            }
+            $events = $events->getContents();
+        }
+        $events = json_decode($events);
+
+        if (isset($events->shows) && is_array($events->shows)) {
+            foreach ($events->shows as $show) {
+//                var_dump($show);
+                $venue = Venue::findOrCreate(['name' => $show->venue_name]);
+                /** @var $venue Venue */
+                $venue->created_by = $this->SCRAPER_ID;
+                $venue->source = 'reverb';
+                $event_columns = ['venue_id' => $venue->id];
+                $show_time = \DateTime::createFromFormat('Y/m/d H:i:s', $show->showtime);
+                $event_columns['date'] = $show_time->format('Y-m-d');
+                $event_columns['start_time'] = $show_time->format('h:i:s');
+                $event = Event::findOrCreate($event_columns);
+                $event->source = 'reverb';
+                /** @var Event $event */
+                $venue_attrs = ['venue_link' => $show->venue_link, 'show_id' => $show->show_id, 'artists' => json_encode($show->artists)];
+                $venue->city = $show->city;
+                $venue->state = $show->state;
+                $venue->attr = $venue_attrs;
+                try {
+                    $venue->save();
+                } catch (\Exception $exception) {
+                    Yii::error($exception);
+                    continue;
+                }
+                if ($venue->errors) {
+                    Yii::error($venue->errors);
+                }
+                $event->img = $show->image_url;
+                $event->venue_id = $venue->id;
+                $event->name = $venue->name;
+                $event->date = $event_columns['date'];
+                try {
+                    $event->save();
+                } catch (\Exception $exception) {
+                    Yii::error($exception);
+                    continue;
+                }
+                //now parse bands
+                foreach ($show->artists as $artist) {
+                    $band_columns = ['name' => $artist->name];
+                    $band = Band::findOrCreate($band_columns);
+                    /** @var Band $band */
+                    $band->source = 'reverb';
+                    $band->attr = ['id' => $artist->id, 'url' => $artist->url];
+                    try {
+                        $band->save();
+                    } catch (\Exception $e) {
+                        Yii::error($e);
+                        continue;
+                    }
+                    if ($band->errors) {
+                        Yii::error($band->errors);
+                    }
+                    $band_event = new BandEvent();
+                    $band_event->band_id = $band->id;
+                    $band_event->event_id = $event->id;
+                    $band_event->created_by = $this->SCRAPER_ID;
+                    try {
+                        $band_event->save();
+                    } catch (\Exception $exception) {
+                        //ignore. probably duplicate band_event
+                    }
+                }
+                $scraped++;
+//                echo "Pulled: $scraped events";
+//                return true;//todob debug
+            }
+        }
+        echo "Pulled: $scraped events";
+        return false;
+    }
+
+    /**
+     * Scrape from Ticket Master
+     * @param $variables array
+     * @param $per_page int per page
+     * @return boolean result
+     * @throws
+     */
+    public function actionScrapeTickMas($per_page = 10, $variables = [])
+    {
+//        $IS_DEBUG = true;
+        $IS_DEBUG = false;
+        $today=new \DateTime();
+        $today_str=$today->format('YYYY-MM-DD');here next week
+        $timerange="${today_str}T00=>00=>00,2020-03-04T23=>59=>59";
+        $scraped = 0;
+        $url = TICKMAS;
+        if ($IS_DEBUG) {
+            $events = file_get_contents(dirname(__DIR__) . "/web/scrape/tickmas.json");
+        } else {
+            $params = ["locale" => "en-us",
+                "sort" => "date,asc",
+                "page" => 0,
+                "size" => $per_page,
+                "lineupImages" => true,
+                "includeDateRange" => true,
+                "withSeoEvents" => false,
+                "radius" => "50",
+                "geoHash" => "9mud",
+                "unit" => "miles",
+                "segmentId" => "KZFzniwnSyZfZ7v7nJ",
+                "localeStr" => "en-us",
+                "type" => "event",
+                "localStartEndDateTime" => $timerange];
             $url .= "&" . http_build_query($params);
             $guzzle = new GuzzleClient();
             $events = $guzzle->request('GET', $url, $params);
@@ -404,7 +526,7 @@ class DlController extends Controller
         $K_LIMIT = 1000;
 //        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status`='init' AND `source`='reverb' 
-            AND COALESCE(`logo`,'')='' LIMIT :limit ",[':limit' => $K_LIMIT]) ->all();
+            AND COALESCE(`logo`,'')='' LIMIT :limit ", [':limit' => $K_LIMIT])->all();
         $goutte = new Client();
         $guzzle = new \GuzzleHttp\Client();
         $base_api_url = 'https://www.reverbnation.com/api/artist/';
@@ -413,7 +535,7 @@ class DlController extends Controller
             $attr = $band->attr;
             $url = ($attr['url'] ?? $band->website);
             if (empty($url)) {
-                $band->scrape_status='url_miss';
+                $band->scrape_status = 'url_miss';
                 $band->saveAndLogError();
                 continue;
             }
@@ -428,7 +550,7 @@ class DlController extends Controller
             } catch (\Exception $exception) {
                 continue;
             }
-            if (! is_int(intval($band_id)) || !is_string($band_id)) {
+            if (! is_int(intval($band_id)) || ! is_string($band_id)) {
                 continue;
             }
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
@@ -452,7 +574,7 @@ class DlController extends Controller
             if (property_exists($band_api_data, 'cover_photo')) {
                 $band->logo = $band_api_data->cover_photo->url;
             }
-            if (empty($band->logo)){
+            if (empty($band->logo)) {
                 $band->logo = property_exists($band_api_data, 'image') ? ('https:' . $band_api_data->image) : null;
             }
             $band->lno_score = random_int(6, 10);

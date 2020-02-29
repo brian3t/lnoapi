@@ -40,7 +40,7 @@ class EventController extends BaseActiveController
         $dp = new ActiveDataProvider(
             [
                 'query' => Event::find()->where(['>=', 'date', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))])
-                ->andWhere(['source'=>$params['source']]),
+                ->andWhere(['source'=>($params['source']??null)]),
                 'pagination' => [
                     'pageSize' => 20,
                 ],
