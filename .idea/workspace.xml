@@ -2,12 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="todo: why saving attr failed. Research existing code">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/lnoapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lnoapi.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/event/_search.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/event/_search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/event/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/event/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yii2helper/grid/EditColumn.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper/grid/EditColumn.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +73,7 @@
       </set>
     </option>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="PhpServers">
     <servers>
       <server host="lnoapi" id="f76bb65f-013f-4377-b831-2e301747acf6" name="lnoapi" />
@@ -85,7 +88,6 @@
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
       <path value="$PROJECT_DIR$/vendor/bower/punycode" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-switchinput" />
-      <path value="$PROJECT_DIR$/vendor/bower/typeahead.js" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-sidenav" />
       <path value="$PROJECT_DIR$/vendor/bower/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-sortable" />
@@ -93,7 +95,6 @@
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-grid" />
       <path value="$PROJECT_DIR$/vendor/bower/jquery" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-spinner" />
-      <path value="$PROJECT_DIR$/vendor/bower/bootstrap3-dialog" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-dialog" />
       <path value="$PROJECT_DIR$/vendor/composer" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput" />
@@ -177,6 +178,13 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
+      <path value="$PROJECT_DIR$/vendor/select2/select2" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XrqSXr8rmV9L53Z2JJmkBFR2nL" />
@@ -281,6 +289,17 @@
     <configuration name="pull lat lng" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-lat-lng">
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Bash.oshin all" />
+      <item itemvalue="PHP Script.dl scrape sdr" />
+      <item itemvalue="PHP Script.dl scrape reverb all cities" />
+      <item itemvalue="PHP Script.magic pull genres from gg" />
+      <item itemvalue="PHP Script.dl pull reverb bands" />
+      <item itemvalue="PHP Script.dl pull event sdr" />
+      <item itemvalue="PHP Script.dl venaddr" />
+      <item itemvalue="PHP Script.pull lat lng" />
+      <item itemvalue="PHP Script.oshin clean-data" />
+    </list>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -719,12 +738,13 @@
       <screen x="0" y="0" width="1920" height="1059" />
     </state>
     <state x="672" y="161" width="574" height="745" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581899526214" />
-    <state x="626" y="355" key="com.intellij.ide.util.TipDialog" timestamp="1582950833026">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="835" y="477" key="com.intellij.ide.util.TipDialog" timestamp="1582995961187">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="626" y="355" key="com.intellij.ide.util.TipDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1582518359707" />
     <state x="626" y="355" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1582950833026" />
     <state x="626" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581816637659" />
+    <state x="835" y="477" key="com.intellij.ide.util.TipDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1582995961187" />
     <state x="667" y="281" width="586" height="488" key="find.popup" timestamp="1582949718170">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -739,13 +759,23 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1582006907019" />
     <state x="619" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952124615" />
-    <state x="624" y="173" width="672" height="671" key="search.everywhere.popup" timestamp="1582952132000">
-      <screen x="0" y="0" width="1920" height="1050" />
+    <state x="832" y="232" width="896" height="902" key="search.everywhere.popup" timestamp="1582997500056">
+      <screen x="0" y="0" width="2560" height="1410" />
     </state>
     <state x="624" y="173" width="672" height="671" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952132000" />
     <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581900711271" />
+    <state x="832" y="232" width="896" height="902" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1582997500056" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/commands/DlController.php</url>
+          <line>413</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="index.php">
         <watch expression="$events-&gt;createCommand()-&gt;rawSql" />

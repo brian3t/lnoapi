@@ -408,8 +408,9 @@ class DlController extends Controller
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $today=new \DateTime();
-        $today_str=$today->format('YYYY-MM-DD');here next week
-        $timerange="${today_str}T00=>00=>00,2020-03-04T23=>59=>59";
+        $today_str=$today->format('YYYY-MM-DD');
+        $nextweek_str=$today->add(new \DateInterval('7D'))->format('YYYY-MM-DD');
+        $timerange="${today_str}T00=>00=>00,${nextweek_str}T23=>59=>59";
         $scraped = 0;
         $url = TICKMAS;
         if ($IS_DEBUG) {
