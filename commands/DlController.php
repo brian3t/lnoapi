@@ -409,33 +409,34 @@ class DlController extends Controller
         $IS_DEBUG = false;
         $today = new \DateTime();
         $today_str = $today->format('Y-m-d');
+        $todaytime_str = $today->format('Ymd_His');
         $nextweek_str = $today->add(new \DateInterval('P7D'))->format('Y-m-d');
         $timerange = "${today_str}T00:00:00,${nextweek_str}T23:59:59";
         $scraped = 0;
-        $url = TICKMAS;
+        $guzzle = new GuzzleClient();
         $page = 0;
         $scrape_next_page = false;
         do {
             if ($IS_DEBUG) {
                 $events = file_get_contents(dirname(__DIR__) . "/web/scrape/tickmas.json");
             } else {
-                $params = ['variables' => ["locale" => "en-us",
+                $params = ['variables' => json_encode(["locale" => "en-us",
                     "sort" => "date,asc",
                     "page" => $page,
                     "size" => $per_page,
                     "lineupImages" => true,
                     "includeDateRange" => true,
-                    "withSeoEvents" => false,
+                    "withSeoEvents" => true,
                     "radius" => "50",
                     "geoHash" => "9mud",
                     "unit" => "miles",
                     "segmentId" => "KZFzniwnSyZfZ7v7nJ",
                     "localeStr" => "en-us",
                     "type" => "event",
-                    "localStartEndDateTime" => $timerange]
+                    "localStartEndDateTime" => $timerange])
                 ];
-                $url .= "&" . http_build_query($params);
-                $guzzle = new GuzzleClient();
+                $url = TICKMAS;
+                $url .= "&variables=${params['variables']}";
                 $events = $guzzle->request('GET', $url, $params);
                 if ($events->getStatusCode() !== 200) {
                     echo 'Failed. ' . $events->getStatusCode();
@@ -447,6 +448,8 @@ class DlController extends Controller
                     return false;
                 }
                 $events = $events->getContents();
+                $raw_file = dirname(__DIR__) . "/web/scrape/tickmas/rawdl_${todaytime_str}.json";
+//                file_put_contents($raw_file, $events); //zsdf
             }
             $events = json_decode($events);
             if (! property_exists($events, 'data')) {
@@ -461,13 +464,13 @@ class DlController extends Controller
             $events = $events->products;
             $page_count = $events->page->totalPages ?? null;
             if (is_int($page_count) && ($page < $page_count)) {
-                $page++;
+                $page = intval($page + 1);
                 $scrape_next_page = true;
             } else {
                 $scrape_next_page = false;
             }
-            if (! property_exists($events, 'items')) {
-                echo 'products no items';
+            if (!is_object($events) || ! property_exists($events, 'items')) {
+                echo 'products not obj or products no items';
                 return false;
             }
             $events = $events->items;
@@ -476,58 +479,115 @@ class DlController extends Controller
                 return false;
             }
             foreach ($events as $e) {
-//                var_dump($show);
-                $m = Event::findOrCreate(['name' => $e->name]);
-                /** @var $m Event */
-                $m->created_by = $this->SCRAPER_ID;
-                $m->source = 'tickmas';
-                $date_t_format=$e->dates->start->dateTime??'null';
-                $start_date_time=\DateTime::createFromFormat(\DateTime::ISO8601, $date_t_format);
-                $m->start_datetime_utc=$start_date_time->format('Y-m-d H:i:s');//2020-03-01T03:00:00Z
+                $em = Event::findOrCreate(['name' => $e->name]);
+                /** @var $em Event */
+                $em->created_by = $this->SCRAPER_ID;
+                $em->source = 'tickmas';
+                $date_t_format = $e->dates->start->dateTime ?? 'null';
+                $start_date_time = \DateTime::createFromFormat(\DateTime::ISO8601, $date_t_format);
+                $em->start_datetime_utc = $start_date_time->format('Y-m-d H:i:s');//2020-03-01T03:00:00Z
+                if ($e->name) {
+                    $em->name = $e->name;
+                } else continue;
+                if (! property_exists($e, 'jsonLd')) {
+                    echo 'item miss jsonLd';
+                    continue;
+                }
+                $json = $e->jsonLd;
+                $em->short_desc = ($json->description) ?? '';
+                $em->description = $em->short_desc;
+                $images_filtered = $e->imagesFiltered;
+                if (! empty($images_filtered)) {
+                    $large_imgs = array_filter($images_filtered, function ($i) {
+                        return strpos($i->url, 'LARGE') !== false;
+                    });
+                    $em->img = (array_pop($large_imgs))->url ?? null;
+                }
 
+                $em->min_cost = $e->priceRanges->min ?? null;
+                $em->website = $e->eventUrlLink ?? null;
+                $em->genre = $e->genreName;
+                $em->system_note = json_encode(['id' => $e->id]);
                 try {
-//                    $m->save();
+                    $em->save();
                 } catch (\Exception $exception) {
                     Yii::error($exception);
                     continue;
                 }
-                if ($m->errors) {
-                    Yii::error($m->errors);
+                if ($em->errors) {
+                    Yii::error($em->errors);
+                    continue;
                 }
-                               //now parse bands
-//                foreach ($show->artists as $artist) {
-//                    $band_columns = ['name' => $artist->name];
-//                    $band = Band::findOrCreate($band_columns);
-//                    /** @var Band $band */
-//                    $band->source = 'reverb';
-//                    $band->attr = ['id' => $artist->id, 'url' => $artist->url];
-//                    try {
-//                        $band->save();
-//                    } catch (\Exception $e) {
-//                        Yii::error($e);
-//                        continue;
-//                    }
-//                    if ($band->errors) {
-//                        Yii::error($band->errors);
-//                    }
-//                    $band_event = new BandEvent();
-//                    $band_event->band_id = $band->id;
-//                    $band_event->event_id = $event->id;
-//                    $band_event->created_by = $this->SCRAPER_ID;
-//                    try {
-//                        $band_event->save();
-//                    } catch (\Exception $exception) {
-//                        //ignore. probably duplicate band_event
-//                    }
-//                }
+                if (! property_exists($json, 'location')) {
+                    echo 'json no location';
+                    continue;
+                }
+                $l = $json->location;
+                $v = Venue::findOrCreate(['name' => $l->name]);
+                /** @var $v Venue */
+                $v->source = 'tickmas';
+                $v->website = $l->sameAs ?? null;
+                if (property_exists($l, 'address')) {
+                    $v->address1 = $l->address->streetAddress ?? null;
+                    $v->city = $l->address->addressLocality ?? null;
+                    $v->state = $l->address->addressRegion ?? null;
+                    $v->zip = $l->address->postalCode ?? null;
+                    $first_venue = array_pop($e->venues) ?? null;
+                    if (is_object($first_venue) && $first_venue) {
+                        $v->attr = ['id' => $first_venue->id, 'seoLink' => $first_venue->seoLink];
+                    }
+                }
+                try {
+                    $v->save();
+                } catch (\Exception $exception) {
+                    Yii::error($exception);
+                    continue;
+                }
+                if ($v->errors) {
+                    Yii::error($v->errors);
+                    continue;
+                }
+                $em->venue_id = $v->id;
+                //now parse bands
+                if (! property_exists($json, 'performer')) {
+                    echo 'json no performer';
+                    continue;
+                }
+                foreach ($json->performer as $b) {
+                    $bm = Band::findOrCreate(['name' => $b->name]);
+                    /** @var Band $bm */
+                    $bm->source = 'tickmas';
+                    $bm->website = $b->sameAs;
+                    $bm->logo = $em->img;
+                    try {
+                        $bm->save();
+                    } catch (\Exception $e) {
+                        Yii::error($e);
+                        continue;
+                    }
+                    if ($bm->errors) {
+                        Yii::error($bm->errors);
+                        continue;
+                    }
+                    $band_event = new BandEvent();
+                    $band_event->band_id = $bm->id;
+                    $band_event->event_id = $em->id;
+                    $band_event->created_by = $this->SCRAPER_ID;
+
+                    try {
+                        $band_event->save();
+                    } catch (\Exception $exception) {
+                        //ignore. probably duplicate band_event
+                    }
+                    if ($band_event->errors) {
+                        Yii::error($band_event->errors);
+                    }
+                }
                 $scraped++;
-//                echo "Pulled: $scraped events";
-//                return true;//todob debug
             }
         } while ($scrape_next_page);
-
         echo "Pulled: $scraped events";
-        return false;
+        return true;
     }
 
     /**

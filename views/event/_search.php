@@ -27,7 +27,7 @@ use yii\widgets\ActiveForm;
     ]); */?>
 
     <?= $form->field($model, 'source')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => ['sdr'=>'San Diego Reader (sdr)',''],
+        'data' => ['sdr'=>'San Diego Reader (sdr)','ticketfly'=>'TicketFly','reverb'=>'Reverb','tickmas'=>'Ticket Master (tickmas)','other'=>'Other','unknown'=>'Unknown'],
         'options' => ['placeholder' => 'Choose Source'],
         'pluginOptions' => [
             'allowClear' => true
