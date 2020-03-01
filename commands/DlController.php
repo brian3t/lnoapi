@@ -449,7 +449,7 @@ class DlController extends Controller
                 }
                 $events = $events->getContents();
                 $raw_file = dirname(__DIR__) . "/web/scrape/tickmas/rawdl_${todaytime_str}.json";
-                file_put_contents($raw_file, $events); //asdf
+//                file_put_contents($raw_file, $events); //zsdf
             }
             $events = json_decode($events);
             if (! property_exists($events, 'data')) {
