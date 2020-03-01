@@ -409,7 +409,6 @@ class DlController extends Controller
         $IS_DEBUG = false;
         $today = new \DateTime();
         $today_str = $today->format('Y-m-d');
-        $todaytime_str = $today->format('Ymd_His');
         $nextweek_str = $today->add(new \DateInterval('P7D'))->format('Y-m-d');
         $timerange = "${today_str}T00:00:00,${nextweek_str}T23:59:59";
         $scraped = 0;
@@ -417,6 +416,7 @@ class DlController extends Controller
         $page = 0;
         $scrape_next_page = false;
         do {
+            $todaytime_str = (new \DateTime())->format('Ymd_His');
             if ($IS_DEBUG) {
                 $events = file_get_contents(dirname(__DIR__) . "/web/scrape/tickmas.json");
             } else {
@@ -449,7 +449,7 @@ class DlController extends Controller
                 }
                 $events = $events->getContents();
                 $raw_file = dirname(__DIR__) . "/web/scrape/tickmas/rawdl_${todaytime_str}.json";
-//                file_put_contents($raw_file, $events); //zsdf
+                file_put_contents($raw_file, $events); //asdf
             }
             $events = json_decode($events);
             if (! property_exists($events, 'data')) {
@@ -463,6 +463,7 @@ class DlController extends Controller
             }
             $events = $events->products;
             $page_count = $events->page->totalPages ?? null;
+            $page_count--;
             if (is_int($page_count) && ($page < $page_count)) {
                 $page = intval($page + 1);
                 $scrape_next_page = true;
