@@ -35,6 +35,10 @@ use yii\behaviors\BlameableBehavior;
  * @property string $temp
  * @property string $source
  * @property array $attr
+ * @property string $genre
+ * @property string $date_utc
+ * @property string $start_datetime_utc
+ * @property string $start_time_utc
  *
  * @property \app\models\BandEvent[] $bandEvents
  * @property \app\models\User $createdBy
@@ -68,12 +72,12 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'date', 'start_time', 'end_time'], 'safe'],
+            [['created_at', 'updated_at', 'date', 'start_time', 'start_time_utc', 'end_time', 'date_utc', 'start_datetime_utc'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['short_desc', 'description', 'source', 'attr'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
             [['when'], 'string', 'max' => 300],
-            [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name'], 'string', 'max' => 255],
+            [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name', 'genre'], 'string', 'max' => 255],
             [['img'], 'string', 'max' => 800],
             [['is_charity'], 'integer'],
             [['age_limit'], 'string', 'max' => 20],
@@ -119,6 +123,10 @@ class Event extends \yii\db\ActiveRecord
             'temp' => 'Temp',
             'source' => 'Source',
             'attr' => 'Attr',
+            'genre' => 'Genre',
+            'date_utc' => 'Date Utc',
+            'start_datetime_utc' => 'Start Datetime Utc',
+            'start_time_utc' => 'Start Time Utc',
         ];
     }
 

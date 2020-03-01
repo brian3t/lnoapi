@@ -12,6 +12,7 @@ use yii\helpers\ArrayHelper;
 class Event extends BaseEvent
 {
     use ModelB3tTrait;
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -24,5 +25,13 @@ class Event extends BaseEvent
     {
 //        return parent::fields();
         return ArrayHelper::merge(parent::fields(), ['bands' => 'bands', 'venue']);
+    }
+
+    public function beforeSave($insert)
+    {
+        if ($this->start_datetime_utc != null && $this->start_time == null) {
+            $this->start_time_utc = (new \DateTime($this->start_datetime_utc))->format('H:i:s');
+        }
+        return parent::beforeSave($insert);
     }
 }

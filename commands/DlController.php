@@ -407,118 +407,125 @@ class DlController extends Controller
     {
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
-        $today=new \DateTime();
-        $today_str=$today->format('Y-m-d');
-        $nextweek_str=$today->add(new \DateInterval('P7D'))->format('Y-m-d');
-        $timerange="${today_str}T00:00:00,${nextweek_str}T23:59:59";
+        $today = new \DateTime();
+        $today_str = $today->format('Y-m-d');
+        $nextweek_str = $today->add(new \DateInterval('P7D'))->format('Y-m-d');
+        $timerange = "${today_str}T00:00:00,${nextweek_str}T23:59:59";
         $scraped = 0;
         $url = TICKMAS;
-        if ($IS_DEBUG) {
-            $events = file_get_contents(dirname(__DIR__) . "/web/scrape/tickmas.json");
-        } else {
-            $params = ['variables' => ["locale" => "en-us",
-                "sort" => "date,asc",
-                "page" => 0,
-                "size" => $per_page,
-                "lineupImages" => true,
-                "includeDateRange" => true,
-                "withSeoEvents" => false,
-                "radius" => "50",
-                "geoHash" => "9mud",
-                "unit" => "miles",
-                "segmentId" => "KZFzniwnSyZfZ7v7nJ",
-                "localeStr" => "en-us",
-                "type" => "event",
-                "localStartEndDateTime" => $timerange]
-            ];
-            $url .= "&" . http_build_query($params);
-            $guzzle = new GuzzleClient();
-            $events = $guzzle->request('GET', $url, $params);
-            if ($events->getStatusCode() !== 200) {
-                echo 'Failed. ' . $events->getStatusCode();
+        $page = 0;
+        $scrape_next_page = false;
+        do {
+            if ($IS_DEBUG) {
+                $events = file_get_contents(dirname(__DIR__) . "/web/scrape/tickmas.json");
+            } else {
+                $params = ['variables' => ["locale" => "en-us",
+                    "sort" => "date,asc",
+                    "page" => $page,
+                    "size" => $per_page,
+                    "lineupImages" => true,
+                    "includeDateRange" => true,
+                    "withSeoEvents" => false,
+                    "radius" => "50",
+                    "geoHash" => "9mud",
+                    "unit" => "miles",
+                    "segmentId" => "KZFzniwnSyZfZ7v7nJ",
+                    "localeStr" => "en-us",
+                    "type" => "event",
+                    "localStartEndDateTime" => $timerange]
+                ];
+                $url .= "&" . http_build_query($params);
+                $guzzle = new GuzzleClient();
+                $events = $guzzle->request('GET', $url, $params);
+                if ($events->getStatusCode() !== 200) {
+                    echo 'Failed. ' . $events->getStatusCode();
+                    return false;
+                }
+                $events = $events->getBody();
+                if (! method_exists($events, 'getContents')) {
+                    echo 'Bad response. Url: ' . $url;
+                    return false;
+                }
+                $events = $events->getContents();
+            }
+            $events = json_decode($events);
+            if (! property_exists($events, 'data')) {
+                echo 'events no data';
                 return false;
             }
-            $events = $events->getBody();
-            if (! method_exists($events, 'getContents')) {
-                echo 'Bad response. Url: ' . $url;
+            $events = $events->data;
+            if (! property_exists($events, 'products')) {
+                echo 'events data no products';
                 return false;
             }
-            $events = $events->getContents();
-        }
-        $events = json_decode($events);
-        if (!method_exists($events,'data')) {echo 'events no data'; return false;}
-        $events=$events->data;
-        if (!method_exists($events,'products')) {echo 'events data no products'; return false;}
-        $events=$events->products;
-
-        if (isset($events->shows) && is_array($events->shows)) {
-            foreach ($events->shows as $show) {
+            $events = $events->products;
+            $page_count = $events->page->totalPages ?? null;
+            if (is_int($page_count) && ($page < $page_count)) {
+                $page++;
+                $scrape_next_page = true;
+            } else {
+                $scrape_next_page = false;
+            }
+            if (! property_exists($events, 'items')) {
+                echo 'products no items';
+                return false;
+            }
+            $events = $events->items;
+            if (! is_array($events)) {
+                echo 'items not array';
+                return false;
+            }
+            foreach ($events as $e) {
 //                var_dump($show);
-                $venue = Venue::findOrCreate(['name' => $show->venue_name]);
-                /** @var $venue Venue */
-                $venue->created_by = $this->SCRAPER_ID;
-                $venue->source = 'reverb';
-                $event_columns = ['venue_id' => $venue->id];
-                $show_time = \DateTime::createFromFormat('Y/m/d H:i:s', $show->showtime);
-                $event_columns['date'] = $show_time->format('Y-m-d');
-                $event_columns['start_time'] = $show_time->format('h:i:s');
-                $event = Event::findOrCreate($event_columns);
-                $event->source = 'reverb';
-                /** @var Event $event */
-                $venue_attrs = ['venue_link' => $show->venue_link, 'show_id' => $show->show_id, 'artists' => json_encode($show->artists)];
-                $venue->city = $show->city;
-                $venue->state = $show->state;
-                $venue->attr = $venue_attrs;
+                $m = Event::findOrCreate(['name' => $e->name]);
+                /** @var $m Event */
+                $m->created_by = $this->SCRAPER_ID;
+                $m->source = 'tickmas';
+                $date_t_format=$e->dates->start->dateTime??'null';
+                $start_date_time=\DateTime::createFromFormat(\DateTime::ISO8601, $date_t_format);
+                $m->start_datetime_utc=$start_date_time->format('Y-m-d H:i:s');//2020-03-01T03:00:00Z
+
                 try {
-                    $venue->save();
+//                    $m->save();
                 } catch (\Exception $exception) {
                     Yii::error($exception);
                     continue;
                 }
-                if ($venue->errors) {
-                    Yii::error($venue->errors);
+                if ($m->errors) {
+                    Yii::error($m->errors);
                 }
-                $event->img = $show->image_url;
-                $event->venue_id = $venue->id;
-                $event->name = $venue->name;
-                $event->date = $event_columns['date'];
-                try {
-                    $event->save();
-                } catch (\Exception $exception) {
-                    Yii::error($exception);
-                    continue;
-                }
-                //now parse bands
-                foreach ($show->artists as $artist) {
-                    $band_columns = ['name' => $artist->name];
-                    $band = Band::findOrCreate($band_columns);
-                    /** @var Band $band */
-                    $band->source = 'reverb';
-                    $band->attr = ['id' => $artist->id, 'url' => $artist->url];
-                    try {
-                        $band->save();
-                    } catch (\Exception $e) {
-                        Yii::error($e);
-                        continue;
-                    }
-                    if ($band->errors) {
-                        Yii::error($band->errors);
-                    }
-                    $band_event = new BandEvent();
-                    $band_event->band_id = $band->id;
-                    $band_event->event_id = $event->id;
-                    $band_event->created_by = $this->SCRAPER_ID;
-                    try {
-                        $band_event->save();
-                    } catch (\Exception $exception) {
-                        //ignore. probably duplicate band_event
-                    }
-                }
+                               //now parse bands
+//                foreach ($show->artists as $artist) {
+//                    $band_columns = ['name' => $artist->name];
+//                    $band = Band::findOrCreate($band_columns);
+//                    /** @var Band $band */
+//                    $band->source = 'reverb';
+//                    $band->attr = ['id' => $artist->id, 'url' => $artist->url];
+//                    try {
+//                        $band->save();
+//                    } catch (\Exception $e) {
+//                        Yii::error($e);
+//                        continue;
+//                    }
+//                    if ($band->errors) {
+//                        Yii::error($band->errors);
+//                    }
+//                    $band_event = new BandEvent();
+//                    $band_event->band_id = $band->id;
+//                    $band_event->event_id = $event->id;
+//                    $band_event->created_by = $this->SCRAPER_ID;
+//                    try {
+//                        $band_event->save();
+//                    } catch (\Exception $exception) {
+//                        //ignore. probably duplicate band_event
+//                    }
+//                }
                 $scraped++;
 //                echo "Pulled: $scraped events";
 //                return true;//todob debug
             }
-        }
+        } while ($scrape_next_page);
+
         echo "Pulled: $scraped events";
         return false;
     }
