@@ -38,7 +38,7 @@ $config = [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
                 'username' => 'someids@gmail.com',
-                'password' => 'sTrapok01',
+                'password' => 'sTrapok02',
                 'port' => 587,
                 'encryption' => 'tls',
             ],
@@ -51,7 +51,7 @@ $config = [
                     'levels' => ['error', 'warning'],
                 ],
             ],
-        
+
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
@@ -113,16 +113,16 @@ $config = [
                 \kartik\datecontrol\Module::FORMAT_TIME => 'HH:mm:ss a',
                 \kartik\datecontrol\Module::FORMAT_DATETIME => 'dd-MM-yyyy HH:mm:ss a',
             ],
-            
+
             // use ajax conversion for processing dates from display format to save format.
             'ajaxConversion' => true,
-            
+
             'saveSettings' => [
                 \kartik\datecontrol\Module::FORMAT_DATE => 'php:Y-m-d', // saves as unix timestamp
                 \kartik\datecontrol\Module::FORMAT_TIME => 'php:H:i:s',
                 \kartik\datecontrol\Module::FORMAT_DATETIME => 'php:Y-m-d H:i:s',
             ],
-        
+
         ],
         // If you use tree table
         'treemanager' => [
@@ -130,7 +130,7 @@ $config = [
             // see settings on http://demos.krajee.com/tree-manager#module
         ],
     ],
-    
+
     'params' => $params,
 ];
 
