@@ -32,6 +32,9 @@ class Event extends BaseEvent
         if ($this->start_datetime_utc != null && $this->start_time == null) {
             $this->start_time_utc = (new \DateTime($this->start_datetime_utc))->format('H:i:s');
         }
-        return parent::beforeSave($insert);
+        if ($this->start_datetime_utc != null && $this->date_utc == null) {
+            $this->date_utc = (new \DateTime($this->start_datetime_utc))->format('Y-m-d');
+        }
+            return parent::beforeSave($insert);
     }
 }

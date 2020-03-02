@@ -109,6 +109,7 @@ class DlController extends Controller
                 $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
                 $event->venue_id = $venue_id;
                 $event->date = $date_str;
+                $event->date_utc = $date_str;
                 $event->setAttributes(compact(['time', 'city', 'short_desc']));
                 $event->save();
                 $event_id = $event->id;
