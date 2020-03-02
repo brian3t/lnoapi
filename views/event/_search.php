@@ -54,18 +54,6 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'start_time')->widget(\kartik\datecontrol\DateControl::className(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
-        'saveFormat' => 'php:H:i:s',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Start Time',
-                'autoclose' => true
-            ]
-        ]
-    ]); ?>
-
     <?php /* echo $form->field($model, 'end_time')->widget(\kartik\datecontrol\DateControl::className(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
         'saveFormat' => 'php:H:i:s',

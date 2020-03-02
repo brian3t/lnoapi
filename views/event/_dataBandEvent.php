@@ -1,8 +1,9 @@
 <?php
+
 use kartik\grid\GridView;
 use yii\data\ArrayDataProvider;
 
-    $dataProvider = new ArrayDataProvider([
+$dataProvider = new ArrayDataProvider([
         'allModels' => $model->bandEvents,
         'key' => 'id'
     ]);
@@ -11,6 +12,9 @@ use yii\data\ArrayDataProvider;
         ['attribute' => 'id', 'visible' => false],
         [
                 'attribute' => 'band.name',
+            'value'=>function($model){
+
+            },
                 'label' => 'Band'
             ],
         [
@@ -18,7 +22,7 @@ use yii\data\ArrayDataProvider;
             'controller' => 'band-event'
         ],
     ];
-    
+
     echo GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumns,
