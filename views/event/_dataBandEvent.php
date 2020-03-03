@@ -13,7 +13,7 @@ $dataProvider = new ArrayDataProvider([
         [
                 'attribute' => 'band.name',
             'value'=>function($model){
-
+                return $model->name;//todob here make it an url
             },
                 'label' => 'Band'
             ],

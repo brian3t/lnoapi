@@ -11,6 +11,7 @@ use usv\yii2helper\models\ModelB3tTrait;
 class Band extends BaseBand
 {
     use ModelB3tTrait;
+
     public function beforeValidate()
     {
         try {
@@ -18,12 +19,13 @@ class Band extends BaseBand
         } catch (\Exception $e) {
             $genre_array = null;
         }
-        if (is_array($genre_array)){
+        if (is_array($genre_array)) {
             $this->genre = implode(',', $genre_array);
         }
 //        if (is_array($this->attr)) $this->attr=json_encode($this->attr);
         return parent::beforeValidate();
     }
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -32,8 +34,9 @@ class Band extends BaseBand
         return $this->hasMany(\app\models\Event::className(), ['id' => 'event_id'])->via('bandEvents')->inverseOf('bands');
     }
 
-    public function pull_events(){
-        $query= $this->hasMany(\app\models\Event::className(), ['id' => 'event_id'])->viaTable('band_event', ['band_id'=>'id'])
+    public function pull_events()
+    {
+        $query = $this->hasMany(\app\models\Event::className(), ['id' => 'event_id'])->viaTable('band_event', ['band_id' => 'id'])
 //            ->joinWith('profile')
 //            ->addSelect(['*', "profile.name AS name"]);
         ;
@@ -48,7 +51,7 @@ class Band extends BaseBand
 
     public function extraFields()
     {
-        return ['events'];
+        return [['band_events' => 'bandEvents'], 'events'];
     }
 
 }

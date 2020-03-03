@@ -24,7 +24,7 @@ class Event extends BaseEvent
     public function fields()
     {
 //        return parent::fields();
-        return ArrayHelper::merge(parent::fields(), ['bands' => 'bands', 'venue']);
+        return ArrayHelper::merge(parent::fields(), ['band_events' => 'bandEvents', 'venue']);
     }
 
     public function beforeSave($insert)
