@@ -2,8 +2,8 @@
 
 namespace app\models;
 
-use Yii;
-use \app\models\base\BandEvent as BaseBandEvent;
+use app\models\base\BandEvent as BaseBandEvent;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "band_event".
@@ -22,5 +22,15 @@ class BandEvent extends BaseBandEvent
             [['band_id', 'event_id', 'created_by'], 'integer']
         ]);
     }
-	
+
+    public function fields()
+    {
+        return ArrayHelper::merge(parent::fields(), []);
+    }
+
+    public function extraFields()
+    {
+        return ['event','band'];
+    }
+
 }

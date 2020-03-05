@@ -4,6 +4,7 @@ namespace app\models;
 
 use app\models\base\Band as BaseBand;
 use usv\yii2helper\models\ModelB3tTrait;
+use yii\helpers\ArrayHelper;
 
 /**
  * This is the model class for table "band".
@@ -45,8 +46,7 @@ class Band extends BaseBand
 
     public function fields()
     {
-        return parent::fields();
-//        return ArrayHelper::merge(parent::fields(), ['events' => 'events']);
+        return ArrayHelper::merge(parent::fields(), ['band_events' => 'bandEvents']);
     }
 
     public function extraFields()
