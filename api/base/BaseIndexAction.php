@@ -22,6 +22,7 @@ class BaseIndexAction extends IndexAction
         $params = \Yii::$app->request->queryParams;
         $expand = $params['expand'] ?? null;
         unset($params['expand']);
+        unset($params['page']);
         $ap = new ActiveDataProvider([
             'query' => $modelClass::find()->where($params),
         ]);

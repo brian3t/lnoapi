@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="todo:event expand">
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="todo:event expand in js">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Band.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/BandEvent.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/BandEvent.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -212,6 +210,7 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ChangesTree.GroupingKeys" value="module" />
     <property name="DataGrid.QuickDoc.View" value="regular" />
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="NewWatcherDialog.advanced.open" value="true" />
@@ -601,7 +600,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583127960825</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="todo:event expand in js">
+      <created>1583376065604</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1583376065604</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TodoView">
@@ -650,7 +656,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Done scraping https://www.sandiegoreader.com/events/search/?category=Genre&amp;start_date=2018-07-04&amp;end_date=2018-07-04&#10;Next: scraping bands and venue address from SDR." />
     <MESSAGE value="Added Kris as an admin." />
     <MESSAGE value="Scraping SDR bands." />
     <MESSAGE value="Pulling venue address from SDR. git submodule init at https://github.com/brian3t/yii2helper.git" />
@@ -675,7 +680,8 @@
     <MESSAGE value="email pw" />
     <MESSAGE value="date -&gt; date_utc" />
     <MESSAGE value="todo:event expand" />
-    <option name="LAST_COMMIT_MESSAGE" value="todo:event expand" />
+    <MESSAGE value="todo:event expand in js" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo:event expand in js" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -717,10 +723,10 @@
     </state>
     <state x="753" y="235" key="#xdebugger.evaluate/0.0.1920.1049@0.0.1920.1049" timestamp="1583043554104" />
     <state x="753" y="237" key="#xdebugger.evaluate/0.0.1920.1059@0.0.1920.1059" timestamp="1581901508275" />
-    <state x="568" y="117" width="847" height="916" key="CommitChangelistDialog2" timestamp="1583216047958">
+    <state x="568" y="117" width="847" height="916" key="CommitChangelistDialog2" timestamp="1583549865829">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="568" y="117" width="847" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1583216047958" />
+    <state x="568" y="117" width="847" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1583549865829" />
     <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917597655" />
     <state x="757" y="157" key="CommitChangelistDialog2/0.0.2560.1410@0.0.2560.1410" timestamp="1583085869447" />
     <state x="95" y="95" width="1730" height="860" key="DiffContextDialog" timestamp="1582940417822">
@@ -827,10 +833,10 @@
     <state width="615" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1583291877487" />
     <state width="615" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581900931608" />
     <state width="820" height="593" key="SwitcherDM/0.0.2560.1410@0.0.2560.1410" timestamp="1583085940124" />
-    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1583216049707">
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1583376070428">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1583216049707" />
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1583376070428" />
     <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917598684" />
     <state x="740" y="354" key="Vcs.Push.Dialog.v2/0.0.2560.1410@0.0.2560.1410" timestamp="1583085870627" />
     <state width="1282" height="709" key="XDebugger.FullValuePopup" timestamp="1583082340480">
@@ -875,10 +881,10 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1583045494924" />
     <state x="619" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952124615" />
-    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup" timestamp="1583291834686">
+    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup" timestamp="1583647373134">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1583291834686" />
+    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1583647373134" />
     <state x="624" y="173" width="672" height="671" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952132000" />
     <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581900711271" />
     <state x="832" y="232" width="896" height="902" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1583081896284" />
