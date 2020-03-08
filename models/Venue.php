@@ -21,6 +21,11 @@ class Venue extends BaseVenue
     }
     public function fields()
     {
-        return ArrayHelper::merge(parent::fields(), ['events' => 'eventsNonInverse']);
+        return ArrayHelper::merge(parent::fields(), []);
+    }
+
+    public function extraFields()
+    {
+        return ['events' => 'eventsNonInverse'];
     }
 }

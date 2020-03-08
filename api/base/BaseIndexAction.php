@@ -20,12 +20,16 @@ class BaseIndexAction extends IndexAction
 
         /* @var $modelClass \yii\db\BaseActiveRecord */
         $params = \Yii::$app->request->queryParams;
-        $expand = $params['expand'] ?? null;
         unset($params['expand']);
         unset($params['page']);
+        $page_size = $params['page_size']??false;
+        unset($params['page_size']);
         $ap = new ActiveDataProvider([
             'query' => $modelClass::find()->where($params),
         ]);
+        if($page_size) {
+            $ap->pagination->setPageSize($page_size);
+        }
         return $ap;
     }
 
