@@ -35,6 +35,20 @@ class Event extends BaseEvent
         if ($this->start_datetime_utc != null && $this->date_utc == null) {
             $this->date_utc = (new \DateTime($this->start_datetime_utc))->format('Y-m-d');
         }
-            return parent::beforeSave($insert);
+        return parent::beforeSave($insert);
+    }
+
+    public function getFirst_band(){
+        $band_events = $this->bandEvents;
+        if (sizeof($band_events) < 1) return [];
+        $first_band_event = $band_events[0];
+        if (!$first_band_event instanceof BandEvent) return [];
+        $first_band = $first_band_event->getBand();
+        return $first_band;
+    }
+
+    public function extraFields()
+    {
+        return ['bands','first_band'];
     }
 }

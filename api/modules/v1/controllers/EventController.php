@@ -31,18 +31,21 @@ class EventController extends BaseActiveController
     public function indexLastMonthPrepareDataProvider()
     {
         $params = \Yii::$app->getRequest()->getQueryParams();
-        $date_start = $params['date_start'] ?? 0;
+        $date_start = $params['date_start'] ?? -3;
         $date_end = $params['date_end'] ?? 21;
 //        $searchModel = new EventSearch();
 //        $searchModel->search($params);
 //        $dataProvider = $searchModel->search($params);
+        unset($params['page']);
+        $page_size = $params['page_size']??false;
+        unset($params['page_size']);
 
         $dp = new ActiveDataProvider(
             [
                 'query' => Event::find()->where(['>=', 'date_utc', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))])
                 ->andWhere(['in','source',($params['source']??[])]),
                 'pagination' => [
-                    'pageSize' => 20,
+                    'pageSize' => $page_size??20,
                 ],
             ]
         );

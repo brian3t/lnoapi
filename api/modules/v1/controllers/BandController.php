@@ -30,8 +30,13 @@ class BandController extends BaseActiveController
     public function haseventPrepareDataProvider()
     {
         $params = \Yii::$app->getRequest()->getQueryParams();
+        unset($params['page']);
+        $page_size = $params['page_size']??false;
+        unset($params['page_size']);
         $event_date_start = $params['event_date_start'] ?? 0;
         $event_date_end = $params['event_date_end'] ?? 21;
+//        $event_date_start = (new \DateTime())->sub(new \DateInterval("P${event_date_start}D"))->format('Y-m-d');
+//        $event_date_end = (new \DateTime())->add(new \DateInterval("P${event_date_end}D"))->format('Y-m-d');
         $sql = '
         select *
 FROM
@@ -47,10 +52,11 @@ FROM
 
         $dp = new ActiveDataProvider(
             [
-//                'query' => Band::find(),
                 'query' => Band::findBySql($sql, [':event_date_start' => $event_date_start, ':event_date_end' => $event_date_end]),
+//                'query' => \app\models\Event::find()->where(['>=', 'date_utc',$event_date_start])
+//                    ->andWhere(['<=', 'date_utc', $event_date_end])->joinWith('bands'),
                 'pagination' => [
-                    'pageSize' => 1,
+                    'pageSize' => $page_size??20,
                 ],
             ]
         );
