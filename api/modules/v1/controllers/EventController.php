@@ -39,13 +39,18 @@ class EventController extends BaseActiveController
         unset($params['page']);
         $page_size = $params['page_size']??false;
         unset($params['page_size']);
-
+        $query = Event::find()->where(['>=', 'date_utc', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))]);
+        if (isset($params['source'])){
+            $query = $query->andWhere(['in', 'source', ($params['source'] ?? [])]);
+        }
+        // get the total number of articles (but do not fetch the article data yet)
+//        $count = $query->count();
         $dp = new ActiveDataProvider(
             [
-                'query' => Event::find()->where(['>=', 'date_utc', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))])
-                ->andWhere(['in','source',($params['source']??[])]),
+                'query' => $query,
                 'pagination' => [
                     'pageSize' => $page_size??20,
+//                    'totalCount' => $count
                 ],
             ]
         );
