@@ -88,6 +88,9 @@ $this->registerJs($search);
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumn,
+        'filterModel' => $searchModel,
+        'floatHeader'=>true,
+        'floatHeaderOptions'=>['top'=>'50'],
         'responsive' => true,
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-band']],
