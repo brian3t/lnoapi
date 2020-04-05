@@ -225,7 +225,7 @@
     <property name="add_unversioned_files" value="$PROJECT_DIR$/runtime/logs/app.log&#10;/var/www/lnoapi/runtime/logs/console.log" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="PHP&#10;JSON&#10;HTML&#10;TEXT" />
     <property name="database.console.LAST_STATE" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/api/modules/v1/controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/views/venue/index.php" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RecentsManager">
@@ -248,6 +248,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="oshin all" type="BashConfigurationType" factoryName="Bash">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="INTERPRETER_PATH" value="/bin/bash" />
@@ -258,13 +274,6 @@
       <option name="PARAMETERS" value="" />
       <module name="" />
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="dl pull event sdr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/pull-event-sdr">
       <method v="2">
@@ -305,17 +314,7 @@
     <configuration name="pull lat lng" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-lat-lng">
       <method v="2" />
     </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Bash.oshin all" />
       <item itemvalue="PHP Script.dl scrape sdr" />
       <item itemvalue="PHP Script.dl scrape reverb all cities" />
       <item itemvalue="PHP Script.magic pull genres from gg" />
@@ -358,6 +357,8 @@
       <workItem from="1582950400042" duration="243000" />
       <workItem from="1582950658753" duration="8000" />
       <workItem from="1582950822257" duration="1548000" />
+      <workItem from="1585627662611" duration="2000000" />
+      <workItem from="1586128996202" duration="1134000" />
     </task>
     <task id="LOCAL-00001" summary="Minor fix">
       <created>1527624014085</created>
@@ -777,9 +778,10 @@
     </state>
     <state x="95" y="95" width="1730" height="859" key="DiffContextDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1582005544255" />
     <state x="95" y="95" width="1730" height="860" key="DiffContextDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1582940417821" />
-    <state x="796" y="346" key="FileChooserDialogImpl" timestamp="1584841484613">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state x="796" y="343" key="FileChooserDialogImpl" timestamp="1586130162139">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="796" y="343" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586130162139" />
     <state x="796" y="346" key="FileChooserDialogImpl/0.0.1920.1049@0.0.1920.1049" timestamp="1584841484613" />
     <state x="1061" y="465" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1583077395196" />
     <state width="1872" height="444" key="GridCell.Tab.0.bottom" timestamp="1584842868393">
@@ -907,9 +909,10 @@
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="100" y="100" width="1720" height="849" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1584841878345" />
-    <state x="626" y="355" key="com.intellij.ide.util.TipDialog" timestamp="1584978516257">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state x="626" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1586129005976">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="626" y="352" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586129005976" />
     <state x="626" y="355" key="com.intellij.ide.util.TipDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1584978516257" />
     <state x="626" y="355" key="com.intellij.ide.util.TipDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1582950833026" />
     <state x="626" y="358" key="com.intellij.ide.util.TipDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581816637659" />
