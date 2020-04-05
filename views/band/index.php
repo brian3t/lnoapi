@@ -88,6 +88,8 @@ $this->registerJs($search);
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumn,
+        'filterModel' => $searchModel,
+//        'floatHeader'=>true,
         'responsive' => true,
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-band']],
@@ -119,3 +121,11 @@ $this->registerJs($search);
     ]); ?>
 
 </div>
+<?php
+$this->registerJs('$("body").on("keyup.yiiGridView", "#w6 .filters input", function(e){
+    let $e = $(this)
+    if ($e.val().length > 1) {
+        $("#w6").yiiGridView("applyFilter");
+    }
+})', \yii\web\View::POS_READY);
+?>
