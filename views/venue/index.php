@@ -90,7 +90,7 @@ $this->registerJs($search);
         'responsive' => true,
         'columns' => $gridColumn,
         'filterModel' => $searchModel,
-        'floatHeader'=>true,
+        //'floatHeader'=>true,
         'floatHeaderOptions'=>['top'=>'50'],
         'pjax' => true,
         'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-venue']],
