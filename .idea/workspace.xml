@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="Adding 3 lines of code for filter to venues">
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="No Need to Float Headers">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/venue/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/venue/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +242,7 @@
       <recent name="$PROJECT_DIR$/commands" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.dl scrape sdr">
+  <component name="RunManager" selected="PHP Script.index.php">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -303,6 +304,9 @@
     <configuration name="dl venaddr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/venue-addr-sdr">
       <method v="2" />
     </configuration>
+    <configuration name="index.php" type="PhpLocalRunConfigurationType" factoryName="PHP Console" temporary="true" path="$PROJECT_DIR$/views/venue/index.php">
+      <method v="2" />
+    </configuration>
     <configuration name="magic pull genres from gg" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-genre-from-google">
       <method v="2">
         <option name="ToolBeforeRunTask" enabled="true" actionId="Tool_External Tools_mysql" />
@@ -324,7 +328,13 @@
       <item itemvalue="PHP Script.dl venaddr" />
       <item itemvalue="PHP Script.pull lat lng" />
       <item itemvalue="PHP Script.oshin clean-data" />
+      <item itemvalue="PHP Script.index.php" />
     </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="PHP Script.index.php" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="ServiceViewManager">
     <option name="viewStates">
@@ -358,7 +368,7 @@
       <workItem from="1582950658753" duration="8000" />
       <workItem from="1582950822257" duration="1548000" />
       <workItem from="1585627662611" duration="2000000" />
-      <workItem from="1586128996202" duration="1682000" />
+      <workItem from="1586128996202" duration="2249000" />
     </task>
     <task id="LOCAL-00001" summary="Minor fix">
       <created>1527624014085</created>
@@ -654,7 +664,14 @@
       <option name="project" value="LOCAL" />
       <updated>1586130384119</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="No Need to Float Headers">
+      <created>1586130788930</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1586130788930</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="TodoView">
@@ -703,7 +720,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="Add sql to git" />
     <MESSAGE value="Scraping image and cost from event. Prior: image." />
     <MESSAGE value="Working on reverb. Venue must have source." />
     <MESSAGE value="Working on reverbnation: to pull from other places" />
@@ -728,7 +744,8 @@
     <MESSAGE value="getting prepared for infi scroll&#10;todo: dump BandHasEvent" />
     <MESSAGE value="minor fix event query + band_event trying to pull name from itself (must pull from Band - typo from Brian)" />
     <MESSAGE value="Adding 3 lines of code for filter to venues" />
-    <option name="LAST_COMMIT_MESSAGE" value="Adding 3 lines of code for filter to venues" />
+    <MESSAGE value="No Need to Float Headers" />
+    <option name="LAST_COMMIT_MESSAGE" value="No Need to Float Headers" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -765,15 +782,19 @@
     </state>
     <state x="755" y="318" width="795" height="575" key="#dl_pull_tickmas/0.0.1920.1049@0.0.1920.1049" timestamp="1583106789264" />
     <state x="1006" y="428" width="548" height="559" key="#dl_pull_tickmas/0.0.2560.1410@0.0.2560.1410" timestamp="1583077410922" />
+    <state x="679" y="208" key="#index.php" timestamp="1586131031069">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="679" y="208" key="#index.php/0.0.1920.1040@0.0.1920.1040" timestamp="1586131031069" />
     <state x="753" y="235" key="#xdebugger.evaluate" timestamp="1584425305774">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="753" y="235" key="#xdebugger.evaluate/0.0.1920.1049@0.0.1920.1049" timestamp="1584425305774" />
     <state x="753" y="237" key="#xdebugger.evaluate/0.0.1920.1059@0.0.1920.1059" timestamp="1581901508275" />
-    <state x="568" y="116" width="847" height="916" key="CommitChangelistDialog2" timestamp="1586130382818">
+    <state x="568" y="116" width="847" height="916" key="CommitChangelistDialog2" timestamp="1586130788383">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="568" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586130382818" />
+    <state x="568" y="116" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1586130788383" />
     <state x="568" y="117" width="847" height="916" key="CommitChangelistDialog2/0.0.1920.1049@0.0.1920.1049" timestamp="1585340431857" />
     <state x="568" y="118" width="781" height="833" key="CommitChangelistDialog2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917597655" />
     <state x="757" y="157" key="CommitChangelistDialog2/0.0.2560.1410@0.0.2560.1410" timestamp="1583085869447" />
@@ -914,9 +935,10 @@
     <state x="672" y="159" width="576" height="834" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1583215164500" />
     <state x="672" y="161" width="574" height="745" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.1920.1059@0.0.1920.1059" timestamp="1581899526214" />
     <state x="896" y="214" key="com.intellij.database.view.ui.AbstractDbRefactoringDialog/0.0.2560.1410@0.0.2560.1410" timestamp="1583080850693" />
-    <state x="100" y="100" width="1720" height="849" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1584841878345">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state x="100" y="99" width="1720" height="842" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1586131162729">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
+    <state x="100" y="99" width="1720" height="842" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586131162729" />
     <state x="100" y="100" width="1720" height="849" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1049@0.0.1920.1049" timestamp="1584841878345" />
     <state x="626" y="352" key="com.intellij.ide.util.TipDialog" timestamp="1586129005976">
       <screen x="0" y="0" width="1920" height="1040" />

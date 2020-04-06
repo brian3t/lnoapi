@@ -122,3 +122,12 @@ $this->registerJs($search);
     ]); ?>
 
 </div>
+
+<?php
+$this->registerJs('$("body").on("keyup.yiiGridView", "#w6 .filters input", function(e){
+let $e = $(this)
+if ($e.val().length > 1) {
+$("#w6").yiiGridView("applyFilter");
+}
+})', \yii\web\View::POS_READY);
+?>
