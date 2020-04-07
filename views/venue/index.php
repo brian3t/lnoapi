@@ -2,6 +2,7 @@
 
 /* @var $this yii\web\View */
 
+/* @var $searchModel app\models\VenueSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use kartik\export\ExportMenu;
@@ -124,10 +125,10 @@ $this->registerJs($search);
 </div>
 
 <?php
-$this->registerJs('$("body").on("keyup.yiiGridView", "#w6 .filters input", function(e){
+$this->registerJs('$("body").on("keyup.yiiGridView", "#w4 .filters input", function(e){
 let $e = $(this)
 if ($e.val().length > 1) {
-$("#w6").yiiGridView("applyFilter");
+$("#w4").yiiGridView("applyFilter");
 }
 })', \yii\web\View::POS_READY);
 ?>

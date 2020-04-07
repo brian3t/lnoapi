@@ -3,8 +3,8 @@
 namespace app\controllers;
 
 use app\models\Venue;
+use app\models\VenueSearch;
 use Yii;
-use yii\data\ActiveDataProvider;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -45,12 +45,11 @@ class VenueController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => Venue::find(),
-        ]);
-        $dataProvider->setSort(['defaultOrder' => ['created_at' => SORT_DESC]]);
+        $searchModel = new VenueSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
@@ -152,6 +151,9 @@ class VenueController extends Controller
     {
         if (Yii::$app->request->isAjax) {
             $row = Yii::$app->request->post('Event');
+            if (!empty($row)) {
+                $row = array_values($row);
+            }
             if((Yii::$app->request->post('isNewRecord') && Yii::$app->request->post('_action') == 'load' && empty($row)) || Yii::$app->request->post('_action') == 'add')
                 $row[] = [];
             return $this->renderAjax('_formEvent', ['row' => $row]);
