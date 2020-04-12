@@ -98,7 +98,6 @@
       <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
       <path value="$PROJECT_DIR$/vendor/dektrium/yii2-user" />
       <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
-      <path value="$PROJECT_DIR$/vendor/jstayton/google-maps-geocoder" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
@@ -123,6 +122,17 @@
       <path value="$PROJECT_DIR$/vendor/bower-asset/jquery" />
       <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/bower/typeahead.js" />
+      <path value="$PROJECT_DIR$/vendor/php-http/discovery" />
+      <path value="$PROJECT_DIR$/vendor/php-http/promise" />
+      <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message-factory" />
+      <path value="$PROJECT_DIR$/vendor/php-http/httplug" />
+      <path value="$PROJECT_DIR$/vendor/willdurand/geocoder" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/geocoder-php/google-maps-provider" />
+      <path value="$PROJECT_DIR$/vendor/geocoder-php/common-http" />
+      <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.3" />

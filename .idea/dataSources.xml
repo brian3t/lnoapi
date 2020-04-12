@@ -8,9 +8,9 @@
       <jdbc-url>jdbc:mysql://127.0.0.1:3306/lno</jdbc-url>
     </data-source>
     <data-source source="LOCAL" name="usv" uuid="19081506-98ae-47eb-8b48-0d263e125b74">
-      <driver-ref>mysql.8</driver-ref>
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
       <jdbc-url>jdbc:mysql://192.151.151.226:3306</jdbc-url>
     </data-source>
   </component>

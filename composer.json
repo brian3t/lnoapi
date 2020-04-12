@@ -41,8 +41,10 @@
     "kartik-v/yii2-mpdf": "*",
     "mpdf/mpdf": "^6.1",
     "kartik-v/yii2-widget-datetimepicker": "*",
-    "jstayton/google-maps-geocoder": "^2.4",
-    "fabpot/goutte": "^3.2"
+    "fabpot/goutte": "^3.2",
+    "geocoder-php/google-maps-provider": "^4.4",
+    "php-http/guzzle6-adapter": "^2.0",
+    "php-http/message": "^1.8"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "*",

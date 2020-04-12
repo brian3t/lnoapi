@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use Yii;
 use app\models\Event;
 use yii\console\Controller;
 use yii\db\Exception;
@@ -82,6 +83,14 @@ class OshinController extends Controller
         return 1;
     }
 
+    /**
+     * Daily tasks, normally consists of all tasks
+     */
+    public function actionDailyTasks(){
+        $controller = new MagicController(\Yii::$app->controller->id, \Yii::$app);
+        $controller->actionPullLatLng();
+//        $controller->actionPullGenreFromGoogle();
+    }
 
 }
 

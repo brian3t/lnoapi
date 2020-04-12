@@ -9,10 +9,11 @@ define('SEARCH_ENGINE_ID', '016413111986528629647:bssckogzvpk');
 /** End Google custom search constants */
 
 use app\models\Venue;
-use GoogleMapsGeocoder;
 use Goutte\Client as GoutteClient;
 use yii\console\Controller;
 use yii\db\Exception;
+use Geocoder\Query\GeocodeQuery;
+use Geocoder\Query\ReverseQuery;
 
 
 /**
@@ -30,24 +31,40 @@ class MagicController extends Controller
     {
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
         $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null]);
-        $geocoder = new GoogleMapsGeocoder();
+        $httpClient = new \Http\Adapter\Guzzle6\Client();
+        $provider = new \Geocoder\Provider\GoogleMaps\GoogleMaps($httpClient, null, GPLACE_KEY);
+        $geocoder = new \Geocoder\StatefulGeocoder($provider, 'en');
+
+//        $result = $geocoder->reverseQuery(ReverseQuery::fromCoordinates(...));
         $affected_rows = 0;
+        $failed_rows = 0;
         foreach ($venues_no_latlng as $venue) {
+            if ($failed_rows > 20) {
+                echo "Failed 20 rows, exitting";
+                break;
+            }
             $full_addr = $venue->pull_address();
             if (empty($full_addr)) {
                 continue;
             }
-            $geocoder->setAddress($full_addr);
 
-            $latlng = $geocoder->geocode(true);
-            if ($latlng['status'] == 'ZERO_RESULTS') {
+            $geo_result = $geocoder->geocodeQuery(GeocodeQuery::create($full_addr));
+            if (! $geo_result instanceof \Geocoder\Model\AddressCollection) {
+                $failed_rows++;
                 continue;
             }
-            if ($latlng['status'] == 'OK') {
-                $geometry = array_shift($latlng['results'])['geometry']['location'];
-                $venue->setAttributes(['lat' => $geometry['lat'], 'lng' => $geometry['lng']]);
-                $affected_rows += $venue->save();
+            $geo_result = $geo_result->first()->getCoordinates();
+            $lat = $geo_result->getLatitude();
+            $lng = $geo_result->getLongitude();
+
+            if (! is_numeric($lat)) {
+                echo 'Bad lat';
+                echo PHP_EOL;
+                $failed_rows++;
+                continue;
             }
+            $venue->setAttributes(['lat' => $lat, 'lng' => $lng]);
+            $affected_rows += $venue->save();
         }
 
 //        $affected_rows = $command->execute();
