@@ -53,6 +53,10 @@ class MagicController extends Controller
                 $failed_rows++;
                 continue;
             }
+            if ($geo_result->count() < 1){
+                echo 'No result, skipping..' . PHP_EOL;
+                continue;
+            }
             $geo_result = $geo_result->first()->getCoordinates();
             $lat = $geo_result->getLatitude();
             $lng = $geo_result->getLongitude();
