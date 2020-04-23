@@ -10,6 +10,7 @@ use yii\bootstrap\Nav;
 use yii\bootstrap\NavBar;
 use yii\helpers\Html;
 use yii\widgets\Breadcrumbs;
+use yii\helpers\Url;
 
 AppAsset::register($this);
 ?>
@@ -76,17 +77,17 @@ AppAsset::register($this);
         ],
         [
             'label' => 'Bands',
-            'url' => '/band',
+            'url' => Url::toRoute(['band/index']),
         ],
         [
             'label' => 'Venues',
-            'url' => '/venue',
+            'url' => Url::toRoute(['venue/index']),
         ],
         [
             'label' => 'Events',
-            'url' => '/event',
+            'url' => Url::toRoute(['event/index']),
         ],
-        ['label' => 'Raw User data', 'url' => '/user'],
+        ['label' => 'Raw User data', 'url' => Url::toRoute(['user/index'])],
         ['label' => 'Webapp', 'url' => 'https://app.livenout.usvsolutions.com', 'linkOptions' => ['target' => '_blank'],
         ]
     ]);
