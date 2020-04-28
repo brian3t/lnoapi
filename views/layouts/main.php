@@ -38,7 +38,7 @@ AppAsset::register($this);
             'class' => 'navbar navbar-default navbar-fixed-top',
         ],
     ]);
-    echo '<span class="version">v0.6</span>';
+    echo '<span class="version">v0.7</span>';
     $items = [];
     $admin_items = [
 
@@ -123,7 +123,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Entertainment Direct Metrics <?= date('Y') ?></p>
+        <p class="pull-left">&copy; Live N Out <?= date('Y') ?></p>
 
     </div>
 </footer>
