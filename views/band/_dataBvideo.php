@@ -9,7 +9,13 @@ use yii\data\ArrayDataProvider;
     $gridColumns = [
         ['class' => 'yii\grid\SerialColumn'],
         ['attribute' => 'id', 'visible' => false],
-        'video_url:url',
+        [
+            'attribute'=> 'video_url',
+            'format' => 'raw',
+            'value' => function ($m) {
+                return \yii\helpers\Html::a(substr($m->video_url, 0, 80), $m->video_url, ['target' => '_blank']);
+            }
+        ],
         'is_selected',
         'seq',
         'note',
@@ -23,7 +29,7 @@ use yii\data\ArrayDataProvider;
             'controller' => 'bvideo'
         ],
     ];
-    
+
     echo GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumns,

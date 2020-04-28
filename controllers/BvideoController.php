@@ -64,7 +64,7 @@ class BvideoController extends Controller
         $model = new Bvideo();
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect('index');
         } else {
             return $this->render('create', [
                 'model' => $model,
@@ -83,11 +83,9 @@ class BvideoController extends Controller
         $model = $this->findModel($id);
 
         if ($model->loadAll(Yii::$app->request->post()) && $model->saveAll()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect('index');
         } else {
-            return $this->render('update', [
-                'model' => $model,
-            ]);
+            return $this->redirect('index');
         }
     }
 
@@ -104,7 +102,7 @@ class BvideoController extends Controller
         return $this->redirect(['index']);
     }
 
-    
+
     /**
      * Finds the Bvideo model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.

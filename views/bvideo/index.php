@@ -22,7 +22,7 @@ $this->registerJs($search);
     <p>
         <?= Html::a('Create Bvideo', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php 
+<?php
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         [
@@ -41,8 +41,8 @@ $this->registerJs($search);
         [
                 'attribute' => 'band_id',
                 'label' => 'Band',
-                'value' => function($model){                   
-                    return $model->band->name;                   
+                'value' => function($model){
+                    return $model->band->name;
                 },
                 'filterType' => GridView::FILTER_SELECT2,
                 'filter' => \yii\helpers\ArrayHelper::map(\app\models\Band::find()->asArray()->all(), 'id', 'name'),
@@ -74,8 +74,9 @@ $this->registerJs($search);
             ],
         [
             'class' => 'yii\grid\ActionColumn',
+            'template' => '{update} {delete}'
         ],
-    ]; 
+    ];
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
