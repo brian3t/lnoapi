@@ -2,6 +2,8 @@
 
 namespace app\models\base;
 
+use Yii;
+
 /**
  * This is the base model class for table "band".
  *
@@ -26,12 +28,15 @@ namespace app\models\base;
  * @property string $source
  * @property array $attr
  * @property string $scrape_status
+ * @property string $gg_last_attempt
+ * @property string $ytlink_first
  *
  * @property \app\models\User $user
  * @property \app\models\BandComment[] $bandComments
  * @property \app\models\BandEvent[] $bandEvents
  * @property \app\models\BandFollow[] $bandFollows
  * @property \app\models\BandRate[] $bandRates
+ * @property \app\models\Bvideo[] $bvideos
  */
 class Band extends \yii\db\ActiveRecord
 {
@@ -49,7 +54,8 @@ class Band extends \yii\db\ActiveRecord
             'bandComments',
             'bandEvents',
             'bandFollows',
-            'bandRates'
+            'bandRates',
+            'bvideos'
         ];
     }
 
@@ -59,16 +65,16 @@ class Band extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'gg_last_attempt'], 'safe'],
             [['user_id'], 'integer'],
             [['lno_score'], 'number'],
-            [['type', 'description', 'source', 'scrape_status'], 'string'],
+            [['type', 'description', 'source', 'attr', 'scrape_status'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
             [['logo'], 'string', 'max' => 300],
             [['genre', 'website', 'facebook', 'twitter'], 'string', 'max' => 255],
             [['similar_to'], 'string', 'max' => 5000],
             [['hometown_state'], 'string', 'max' => 50],
-            [['youtube'], 'string', 'max' => 800],
+            [['youtube', 'ytlink_first'], 'string', 'max' => 800],
             [['instagram'], 'string', 'max' => 500]
         ];
     }
@@ -106,9 +112,11 @@ class Band extends \yii\db\ActiveRecord
             'source' => 'Source',
             'attr' => 'Attr',
             'scrape_status' => 'Scrape Status',
+            'gg_last_attempt' => 'Gg Last Attempt',
+            'ytlink_first' => 'Ytlink First',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -116,7 +124,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\User::className(), ['id' => 'user_id'])->inverseOf('bands');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -124,7 +132,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandComment::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -132,7 +140,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandEvent::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -140,12 +148,20 @@ class Band extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandFollow::className(), ['band_id' => 'id'])->inverseOf('band');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
     public function getBandRates()
     {
         return $this->hasMany(\app\models\BandRate::className(), ['band_id' => 'id'])->inverseOf('band');
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getBvideos()
+    {
+        return $this->hasMany(\app\models\Bvideo::className(), ['band_id' => 'id'])->inverseOf('band');
     }
     }

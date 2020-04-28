@@ -193,4 +193,34 @@ $this->params['breadcrumbs'][] = $this->title;
         ?>
 
     </div>
+    <div class="row">
+        <?php
+        if($providerBvideo->totalCount){
+            $gridColumnBvideo = [
+                ['class' => 'yii\grid\SerialColumn'],
+                ['attribute' => 'id', 'visible' => false],
+                'video_url:url',
+                'is_selected',
+                'seq',
+                'note',
+                'last_processed',
+                [
+                    'attribute' => 'processedBy.username',
+                    'label' => 'Processed By'
+                ],
+            ];
+            echo Gridview::widget([
+                'dataProvider' => $providerBvideo,
+                'pjax' => true,
+                'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-bvideo']],
+                'panel' => [
+                    'type' => GridView::TYPE_PRIMARY,
+                    'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Bvideo'),
+                ],
+                'export' => false,
+                'columns' => $gridColumnBvideo
+            ]);
+        }
+        ?>
+    </div>
 </div>

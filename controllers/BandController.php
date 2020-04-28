@@ -75,12 +75,16 @@ class BandController extends Controller
         $providerBandRate = new \yii\data\ArrayDataProvider([
             'allModels' => $model->bandRates,
         ]);
+        $providerBvideo = new \yii\data\ArrayDataProvider([
+            'allModels' => $model->bvideos,
+        ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
             'providerBandComment' => $providerBandComment,
             'providerBandEvent' => $providerBandEvent,
             'providerBandFollow' => $providerBandFollow,
             'providerBandRate' => $providerBandRate,
+            'providerBvideo' => $providerBvideo,
         ]);
     }
 
@@ -134,7 +138,7 @@ class BandController extends Controller
         return $this->redirect(['index']);
     }
 
-    
+
     /**
      * Finds the Band model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -150,7 +154,7 @@ class BandController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     /**
     * Action to load a tabular form grid
     * for BandComment
@@ -170,7 +174,7 @@ class BandController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     /**
     * Action to load a tabular form grid
     * for BandEvent
@@ -190,7 +194,7 @@ class BandController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     /**
     * Action to load a tabular form grid
     * for BandFollow
@@ -210,7 +214,7 @@ class BandController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     /**
     * Action to load a tabular form grid
     * for BandRate

@@ -37,6 +37,13 @@ $items = [
             'row' => $model->bandRates,
         ]),
     ],
+            [
+        'label' => '<i class="glyphicon glyphicon-book"></i> '. Html::encode('Bvideo'),
+        'content' => $this->render('_dataBvideo', [
+            'model' => $model,
+            'row' => $model->bvideos,
+        ]),
+    ],
     ];
 echo TabsX::widget([
     'items' => $items,
