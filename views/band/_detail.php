@@ -16,7 +16,7 @@ use yii\widgets\DetailView;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         'name',
@@ -37,11 +37,12 @@ use yii\widgets\DetailView;
         'instagram:url',
         'facebook',
         'twitter',
+        'ytlink_first',
     ];
     echo DetailView::widget([
         'model' => $model,
         'attributes' => $gridColumn
-    ]); 
+    ]);
 ?>
     </div>
 </div>

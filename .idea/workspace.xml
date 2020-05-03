@@ -42,8 +42,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="add band' videos">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/BvideoController.php" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/BvideoController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/bvideo/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/bvideo/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/base/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Band.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/band/_detail.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/_detail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/band/_form.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/_form.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/views/band/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -277,6 +279,22 @@
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.oshin dailyTasks">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -293,13 +311,6 @@
       <option name="PARAMETERS" value="" />
       <module name="" />
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="dl pull event sdr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/pull-event-sdr">
       <method v="2">
@@ -345,15 +356,6 @@
     </configuration>
     <configuration name="pull lat lng" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-lat-lng">
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <list>
       <item itemvalue="PHP Script.dl scrape sdr" />
@@ -1026,13 +1028,14 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1583045494924" />
     <state x="619" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952124615" />
-    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup" timestamp="1588050889063">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup" timestamp="1588524161399">
+      <screen x="0" y="0" width="2560" height="1413" />
     </state>
     <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1588050889063" />
     <state x="624" y="173" width="672" height="671" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952132000" />
     <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581900711271" />
     <state x="832" y="232" width="896" height="902" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1583081896284" />
+    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1588524161399" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

@@ -103,6 +103,8 @@ require_once 'models/constants.php';
 
     <?= $form->field($model, 'twitter')->textInput(['maxlength' => true, 'placeholder' => 'Twitter']) ?>
 
+    <?= $form->field($model, 'ytlink_first')->textInput(['maxlength' => true, 'placeholder' => 'Ytlink First']) ?>
+
     <?php
     $forms = [
         [

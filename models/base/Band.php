@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the base model class for table "band".
  *
@@ -113,7 +111,7 @@ class Band extends \yii\db\ActiveRecord
             'attr' => 'Attr',
             'scrape_status' => 'Scrape Status',
             'gg_last_attempt' => 'Gg Last Attempt',
-            'ytlink_first' => 'Ytlink First',
+            'ytlink_first' => 'First Youtube video link',
         ];
     }
 
