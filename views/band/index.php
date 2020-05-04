@@ -3,6 +3,7 @@
 /* @var $this yii\web\View */
 
 /* @var $searchModel app\models\BandSearch */
+
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 use kartik\export\ExportMenu;
@@ -20,7 +21,7 @@ $this->registerJs($search);
 <div class="band-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php  echo $this->render('_search', ['model' => $searchModel]); ?>
+    <?php echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create Band', ['create'], ['class' => 'btn btn-success']) ?>
@@ -72,9 +73,17 @@ $this->registerJs($search);
         'type',
         'genre',
         'similar_to',
-        'ytlink_first:url',
+        [
+            'attribute' => 'ytlink_first',
+            'format' => 'raw',
+            'value' => function ($m) {
+                /** @var $m \app\models\Band */
+                if (! ($m->ytlink_first)) return '';
+                if ($m->ytlink_first_tnail) return Html::a("<img src='" . $m->ytlink_first_tnail . "'/>", "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
+                return Html::a($m->ytlink_first, "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
+            }],
         'hometown_city',
-        'website',
+        'website:url',
         'youtube:url',
         'instagram:url',
         'facebook',

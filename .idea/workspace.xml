@@ -40,9 +40,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="update copyright">
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="todo: show youtube thumbnail">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/base/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Band.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/band/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -718,7 +717,14 @@
       <option name="project" value="LOCAL" />
       <updated>1588050531116</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="todo: show youtube thumbnail">
+      <created>1588564403591</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1588564403591</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="TodoView">
@@ -767,7 +773,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="reverbnation: can now pull other places" />
     <MESSAGE value="Enable band search" />
     <MESSAGE value="Enable event search" />
     <MESSAGE value="update composer lock with `composer update --lock`" />
@@ -792,7 +797,8 @@
     <MESSAGE value="MUST DO COMPOSER PULL!&#10;&#10;- oshin to pull daily-tasks&#10;- update geocoder code. Old packagist https://github.com/jstayton/Miner/ outdated" />
     <MESSAGE value="better geocode handling" />
     <MESSAGE value="add band' videos" />
-    <option name="LAST_COMMIT_MESSAGE" value="add band' videos" />
+    <MESSAGE value="todo: show youtube thumbnail" />
+    <option name="LAST_COMMIT_MESSAGE" value="todo: show youtube thumbnail" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -853,10 +859,10 @@
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="643" y="332" width="624" height="380" key="DUMP_DIALOG_DIMENSION_KEY/0.0.1920.1049@0.0.1920.1049" timestamp="1584841506729" />
-    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1586663729231">
+    <state width="254" height="195" key="DatabaseViewActions_Filter" timestamp="1588564506855">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1920.1049@0.0.1920.1049" timestamp="1586663729231" />
+    <state width="254" height="195" key="DatabaseViewActions_Filter/0.0.1920.1049@0.0.1920.1049" timestamp="1588564506855" />
     <state x="95" y="95" width="1730" height="860" key="DiffContextDialog" timestamp="1582940417822">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -868,28 +874,28 @@
     <state x="796" y="343" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586130162139" />
     <state x="796" y="346" key="FileChooserDialogImpl/0.0.1920.1049@0.0.1920.1049" timestamp="1584841484613" />
     <state x="1061" y="465" key="FileChooserDialogImpl/0.0.2560.1410@0.0.2560.1410" timestamp="1583077395196" />
-    <state width="1289" height="276" key="GridCell.Tab.0.bottom" timestamp="1588553587771">
+    <state width="1289" height="276" key="GridCell.Tab.0.bottom" timestamp="1588565164598">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="1289" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1049@0.0.1920.1049" timestamp="1588553587771" />
+    <state width="1289" height="276" key="GridCell.Tab.0.bottom/0.0.1920.1049@0.0.1920.1049" timestamp="1588565164598" />
     <state width="1878" height="416" key="GridCell.Tab.0.bottom/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604925" />
     <state width="1741" height="404" key="GridCell.Tab.0.bottom/0.0.2560.1410@0.0.2560.1410" timestamp="1583085954456" />
-    <state width="1289" height="276" key="GridCell.Tab.0.center" timestamp="1588553587771">
+    <state width="1289" height="276" key="GridCell.Tab.0.center" timestamp="1588565164593">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="1289" height="276" key="GridCell.Tab.0.center/0.0.1920.1049@0.0.1920.1049" timestamp="1588553587771" />
+    <state width="1289" height="276" key="GridCell.Tab.0.center/0.0.1920.1049@0.0.1920.1049" timestamp="1588565164593" />
     <state width="1878" height="416" key="GridCell.Tab.0.center/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604924" />
     <state width="1741" height="404" key="GridCell.Tab.0.center/0.0.2560.1410@0.0.2560.1410" timestamp="1583085954456" />
-    <state width="1289" height="276" key="GridCell.Tab.0.left" timestamp="1588553587771">
+    <state width="1289" height="276" key="GridCell.Tab.0.left" timestamp="1588565164593">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="1289" height="276" key="GridCell.Tab.0.left/0.0.1920.1049@0.0.1920.1049" timestamp="1588553587771" />
+    <state width="1289" height="276" key="GridCell.Tab.0.left/0.0.1920.1049@0.0.1920.1049" timestamp="1588565164593" />
     <state width="1878" height="416" key="GridCell.Tab.0.left/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604923" />
     <state width="1741" height="404" key="GridCell.Tab.0.left/0.0.2560.1410@0.0.2560.1410" timestamp="1583085954456" />
-    <state width="1289" height="276" key="GridCell.Tab.0.right" timestamp="1588553587771">
+    <state width="1289" height="276" key="GridCell.Tab.0.right" timestamp="1588565164594">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="1289" height="276" key="GridCell.Tab.0.right/0.0.1920.1049@0.0.1920.1049" timestamp="1588553587771" />
+    <state width="1289" height="276" key="GridCell.Tab.0.right/0.0.1920.1049@0.0.1920.1049" timestamp="1588565164594" />
     <state width="1878" height="416" key="GridCell.Tab.0.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604925" />
     <state width="1741" height="404" key="GridCell.Tab.0.right/0.0.2560.1410@0.0.2560.1410" timestamp="1583085954456" />
     <state width="1872" height="443" key="GridCell.Tab.1.bottom" timestamp="1587325922016">
@@ -940,10 +946,10 @@
     <state width="1872" height="443" key="GridCell.Tab.2.right/0.0.1920.1049@0.0.1920.1049" timestamp="1587325922017" />
     <state width="1878" height="416" key="GridCell.Tab.2.right/0.0.1920.1059@0.0.1920.1059" timestamp="1581917604928" />
     <state width="2517" height="443" key="GridCell.Tab.2.right/0.0.2560.1410@0.0.2560.1410" timestamp="1583082985423" />
-    <state width="390" height="675" key="HiddenNamespacesPopup" timestamp="1583082957360">
-      <screen x="0" y="0" width="2560" height="1410" />
+    <state width="292" height="501" key="HiddenNamespacesPopup" timestamp="1588564516206">
+      <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="292" height="501" key="HiddenNamespacesPopup/0.0.1920.1049@0.0.1920.1049" timestamp="1582518621708" />
+    <state width="292" height="501" key="HiddenNamespacesPopup/0.0.1920.1049@0.0.1920.1049" timestamp="1588564516206" />
     <state width="292" height="502" key="HiddenNamespacesPopup/0.0.1920.1050@0.0.1920.1050" timestamp="1582949981841" />
     <state width="390" height="675" key="HiddenNamespacesPopup/0.0.2560.1410@0.0.2560.1410" timestamp="1583082957360" />
     <state x="794" y="456" key="NewPhpFileDialog" timestamp="1582947768819">
@@ -967,11 +973,11 @@
     <state width="615" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1588553591798" />
     <state width="615" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581900931608" />
     <state width="820" height="593" key="SwitcherDM/0.0.2560.1410@0.0.2560.1410" timestamp="1583085940124" />
-    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1588050533309">
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1588564405583">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="555" y="261" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586130397150" />
-    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1588050533309" />
+    <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1588564405583" />
     <state x="555" y="266" width="808" height="536" key="Vcs.Push.Dialog.v2/0.0.1920.1059@0.0.1920.1059" timestamp="1581917598684" />
     <state x="740" y="354" key="Vcs.Push.Dialog.v2/0.0.2560.1410@0.0.2560.1410" timestamp="1583085870627" />
     <state width="1282" height="709" key="XDebugger.FullValuePopup" timestamp="1583082340480">
