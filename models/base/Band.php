@@ -28,6 +28,7 @@ namespace app\models\base;
  * @property string $scrape_status
  * @property string $gg_last_attempt
  * @property string $ytlink_first
+ * @property string $ytlink_first_tnail
  *
  * @property \app\models\User $user
  * @property \app\models\BandComment[] $bandComments
@@ -73,7 +74,7 @@ class Band extends \yii\db\ActiveRecord
             [['similar_to'], 'string', 'max' => 5000],
             [['hometown_state'], 'string', 'max' => 50],
             [['youtube', 'ytlink_first'], 'string', 'max' => 800],
-            [['instagram'], 'string', 'max' => 500]
+            [['instagram', 'ytlink_first_tnail'], 'string', 'max' => 500]
         ];
     }
 
@@ -111,7 +112,8 @@ class Band extends \yii\db\ActiveRecord
             'attr' => 'Attr',
             'scrape_status' => 'Scrape Status',
             'gg_last_attempt' => 'Gg Last Attempt',
-            'ytlink_first' => 'First Youtube video link',
+            'ytlink_first' => 'First Youtube video id',
+            'ytlink_first_tnail' => 'First Youtube video thumnail',
         ];
     }
 

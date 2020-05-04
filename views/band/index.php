@@ -72,7 +72,7 @@ $this->registerJs($search);
         'type',
         'genre',
         'similar_to',
-        'ytlink_first',
+        'ytlink_first:url',
         'hometown_city',
         'website',
         'youtube:url',
