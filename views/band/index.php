@@ -72,7 +72,6 @@ $this->registerJs($search);
         'lno_score',
         'type',
         'genre',
-        'similar_to',
         [
             'attribute' => 'ytlink_first',
             'format' => 'raw',
@@ -82,6 +81,17 @@ $this->registerJs($search);
                 if ($m->ytlink_first_tnail) return Html::a("<img src='" . $m->ytlink_first_tnail . "'/>", "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
                 return Html::a($m->ytlink_first, "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
             }],
+        /*[
+            'class' => '\kartik\grid\BooleanColumn',
+            'trueLabel' => 'Yes',
+            'falseLabel' => 'No',
+            'attribute' => 'ytlink_approved'
+        ],*/
+        [
+            'attribute' => 'ytlink_approved',
+            'class'=>'usv\yii2helper\grid\AjaxToggleColumn',
+        ],
+        'similar_to',
         'hometown_city',
         'website:url',
         'youtube:url',

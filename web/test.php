@@ -5,14 +5,12 @@ ob_start();
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" media="screen"/>
 </head>
 <body>
 
 <?php
 require_once __DIR__. '/../vendor/autoload.php';
 
-use mPDF;
 //use phpQuery;
 
 // instantiate and use the dompdf class

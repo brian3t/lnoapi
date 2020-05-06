@@ -29,6 +29,7 @@ namespace app\models\base;
  * @property string $gg_last_attempt
  * @property string $ytlink_first
  * @property string $ytlink_first_tnail
+ * @property integer $ytlink_approved
  *
  * @property \app\models\User $user
  * @property \app\models\BandComment[] $bandComments
@@ -65,7 +66,7 @@ class Band extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at', 'gg_last_attempt'], 'safe'],
-            [['user_id'], 'integer'],
+            [['user_id','ytlink_approved'], 'integer'],
             [['lno_score'], 'number'],
             [['type', 'description', 'source', 'attr', 'scrape_status'], 'string'],
             [['name', 'hometown_city'], 'string', 'max' => 100],
@@ -114,6 +115,7 @@ class Band extends \yii\db\ActiveRecord
             'gg_last_attempt' => 'Gg Last Attempt',
             'ytlink_first' => 'First Youtube video id',
             'ytlink_first_tnail' => 'First Youtube video thumnail',
+            'ytlink_approved' => 'Yt vid approved',
         ];
     }
 

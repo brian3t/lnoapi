@@ -6,11 +6,11 @@
 
 use app\assets\AppAsset;
 use kartik\widgets\Alert;
-use yii\bootstrap\Nav;
-use yii\bootstrap\NavBar;
+use yii\bootstrap4\Nav;
+use yii\bootstrap4\NavBar;
 use yii\helpers\Html;
-use yii\widgets\Breadcrumbs;
 use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 ?>
@@ -93,9 +93,10 @@ AppAsset::register($this);
     ]);
 
     echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar-right'],
+        'options' => ['class' => 'navbar-nav'],
         'items' => $items,
     ]);
+
     ?>
 
     <?php
