@@ -6,11 +6,11 @@
 
 use app\assets\AppAsset;
 use kartik\widgets\Alert;
+use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Nav;
 use yii\bootstrap4\NavBar;
 use yii\helpers\Html;
 use yii\helpers\Url;
-use yii\widgets\Breadcrumbs;
 
 AppAsset::register($this);
 ?>
@@ -35,7 +35,7 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/img/logo.png'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-default navbar-fixed-top',
+            'class' => 'navbar navbar-nav navbar-default navbar-fixed-top',
         ],
     ]);
     echo '<span class="version">v0.7</span>';
@@ -103,7 +103,7 @@ AppAsset::register($this);
     NavBar::end();
     ?>
 
-    <div class="container">
+    <div class="container-fluid">
         <?= Breadcrumbs::widget([
             'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
         ]) ?>

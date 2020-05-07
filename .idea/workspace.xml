@@ -15,47 +15,18 @@
         <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
         <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
       </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:composer" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
-      <path>
-        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:dependabot" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:composer" type="e8cecc67:BranchNodeDescriptor" />
-        <item name="GROUP_NODE:phpoffice" type="e8cecc67:BranchNodeDescriptor" />
-      </path>
     </expand>
     <select />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="todo: page to verify youtube url">
-      <change afterPath="$PROJECT_DIR$/yii2helper/grid/AjaxToggleColumn.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/lnoapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lnoapi.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/AppAsset.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/ChartAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/ChartAsset.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/base/Band.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/base/Band.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/band/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/site/login.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/site/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/web/test.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -159,10 +130,8 @@
       <path value="$PROJECT_DIR$/vendor/mootensai/yii2-optimistic-lock-validator" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-datecontrol" />
       <path value="$PROJECT_DIR$/vendor/mootensai/yii2-enhanced-gii" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-apidoc" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-typeahead" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-export" />
-      <path value="$PROJECT_DIR$/vendor/cebe/js-search" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-tabs-x" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tree-manager" />
@@ -178,25 +147,20 @@
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rangeinput" />
       <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/php-date-formatter" />
-      <path value="$PROJECT_DIR$/vendor/psr/log" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
       <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
       <path value="$PROJECT_DIR$/vendor/voskobovich/yii2-many-many-behavior" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
-      <path value="$PROJECT_DIR$/vendor/scrivo/highlight.php" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-authclient" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-composer" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
-      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-httpclient" />
-      <path value="$PROJECT_DIR$/vendor/phpdocumentor/reflection-docblock" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer" />
       <path value="$PROJECT_DIR$/vendor/creocoder/yii2-nested-sets" />
       <path value="$PROJECT_DIR$/vendor/electrolinux/phpquery" />
-      <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
       <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
       <path value="$PROJECT_DIR$/vendor/vova07/yii2-console-runner-extension" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
@@ -244,7 +208,6 @@
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap4" />
       <path value="$PROJECT_DIR$/vendor/npm/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-bootstrap4-dropdown" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
       <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
     </include_path>
   </component>
@@ -871,10 +834,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="679" y="208" key="#index.php/0.0.1920.1040@0.0.1920.1040" timestamp="1586131031069" />
-    <state x="753" y="235" key="#xdebugger.evaluate" timestamp="1586666733725">
+    <state x="753" y="235" key="#xdebugger.evaluate" timestamp="1588828056563">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="753" y="235" key="#xdebugger.evaluate/0.0.1920.1049@0.0.1920.1049" timestamp="1586666733725" />
+    <state x="753" y="235" key="#xdebugger.evaluate/0.0.1920.1049@0.0.1920.1049" timestamp="1588828056563" />
     <state x="753" y="237" key="#xdebugger.evaluate/0.0.1920.1059@0.0.1920.1059" timestamp="1581901508275" />
     <state x="568" y="116" width="847" height="916" key="CommitChangelistDialog2" timestamp="1586130788383">
       <screen x="0" y="0" width="1920" height="1040" />
@@ -995,10 +958,10 @@
     <state x="449" y="163" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1582950431581" />
     <state x="449" y="165" width="1022" height="738" key="SettingsEditor/0.0.1920.1059@0.0.1920.1059" timestamp="1581821498051" />
     <state x="599" y="219" key="SettingsEditor/0.0.2560.1410@0.0.2560.1410" timestamp="1583085055974" />
-    <state width="615" height="441" key="SwitcherDM" timestamp="1588733207649">
+    <state width="615" height="441" key="SwitcherDM" timestamp="1588828652778">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state width="615" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1588733207649" />
+    <state width="615" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1588828652778" />
     <state width="615" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581900931608" />
     <state width="820" height="593" key="SwitcherDM/0.0.2560.1410@0.0.2560.1410" timestamp="1583085940124" />
     <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1588565405896">
@@ -1045,10 +1008,10 @@
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="870" y="214" width="348" height="629" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.0.1920.1049@0.0.1920.1049" timestamp="1583008186111" />
-    <state x="667" y="281" width="779" height="576" key="find.popup" timestamp="1588735355681">
+    <state x="667" y="281" width="779" height="576" key="find.popup" timestamp="1588828467757">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="667" y="281" width="779" height="576" key="find.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1588735355681" />
+    <state x="667" y="281" width="779" height="576" key="find.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1588828467757" />
     <state x="667" y="281" width="586" height="488" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582949718170" />
     <state x="825" y="422" width="267" height="216" key="publish.login" timestamp="1582937357740">
       <screen x="0" y="0" width="1920" height="1050" />
@@ -1060,10 +1023,10 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1583045494924" />
     <state x="619" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952124615" />
-    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup" timestamp="1588735492466">
+    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup" timestamp="1588828674016">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
-    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1588735492466" />
+    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1588828674016" />
     <state x="624" y="173" width="672" height="671" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952132000" />
     <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581900711271" />
     <state x="832" y="232" width="896" height="902" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1583081896284" />
@@ -1076,6 +1039,11 @@
           <url>file://$PROJECT_DIR$/commands/DlController.php</url>
           <line>494</line>
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base/src/BootstrapTrait.php</url>
+          <line>184</line>
+          <option name="timeStamp" value="21" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
