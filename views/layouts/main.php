@@ -5,6 +5,7 @@
 /* @var $content string */
 
 use app\assets\AppAsset;
+use kartik\icons\FontAwesomeAsset;
 use kartik\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Nav;
@@ -13,6 +14,7 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 AppAsset::register($this);
+FontAwesomeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -35,7 +37,7 @@ AppAsset::register($this);
         'brandLabel' => Html::img('@web/img/logo_sml.png'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-nav navbar-light',
+            'class' => 'navbar navbar-nav navbar-light navbar-expand-lg',
 //            'class' => 'navbar navbar-nav navbar-default navbar-fixed-top',
         ],
     ]);
@@ -64,13 +66,11 @@ AppAsset::register($this);
         //     . Html::endForm()
         //     . '</li>';
         if (Yii::$app->user->identity->getIsAdmin()) {
-            $admin_items[] = '<li class="dropdown-header">Users</li>';
             $admin_items[] = ['label' => 'Admin', 'url' => '/user/admin/index'];
         }
     } else {
         $items[] = ['label' => 'Sign Up', 'url' => ['/user/registration/register']];
         $items[] = ['label' => 'Login', 'url' => ['/user/security/login']];
-
     }
     $items = array_merge($items, [
         [

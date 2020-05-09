@@ -18,6 +18,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/bootstrap3-dialog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/inputmask" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery-ui" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/microplugin" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/punycode" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/selectize" />
@@ -27,6 +28,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown-latex" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/clue/stream-filter" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/components/flag-icon-css" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/creocoder/yii2-nested-sets" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/lexer" />
@@ -57,6 +59,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-field-range" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-grid" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-helpers" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-icons" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-krajee-base" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-mpdf" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kartik-v/yii2-popover-x" />
@@ -131,6 +134,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-faker" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-gii" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-httpclient" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-jui" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-swiftmailer" />
       <excludeFolder url="file://$MODULE_DIR$/web/scrape" />
     </content>

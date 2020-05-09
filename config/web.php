@@ -83,25 +83,10 @@ $config = [
     'modules' => [
         /*'user' => [
             'class' => 'dektrium\user\Module',
-            'admins' => ['ngxtri','windlinx@hotmail.com'],
-            'controllerMap' => [
-                'admin' => 'app\controllers\user\AdminController',
-                'security' => [
-                    'class' => 'app\controllers\user\SecurityController'
-                    ,
                     'on afterLogout' => function ($e) {
                         Yii::$app->getSession()->addFlash('success', 'You have logged out successfully');
                     },
-                ],
-                'settings' => 'app\controllers\user\SettingsController',
-                'profile' => 'app\controllers\user\ProfileController',
-            ],
             'enableFlashMessages' => true,
-            'modelMap' => [
-                'User' => 'app\models\DektriumUser',
-                'Profile' => 'app\models\user\Profile',
-                // 'SettingsForm'      => 'app\models\user\SettingsForm'
-            ],
         ],*/
         'user' => [
             'class' => Da\User\Module::class,
@@ -109,6 +94,7 @@ $config = [
              'administrators' => ['admin','ngxtri','windlinx@hotmail.com'], // this is required for accessing administrative actions
             // 'generatePasswords' => true,
             // 'switchIdentitySessionKey' => 'myown_usuario_admin_user_key',
+            // docs: https://yii2-usuario.readthedocs.io/en/latest/installation/available-actions/
         ],
         'gridview' => [
             'class' => '\kartik\grid\Module',
