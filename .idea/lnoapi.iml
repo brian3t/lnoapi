@@ -9,13 +9,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/2amigos/yii2-selectize-widget" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/2amigos/yii2-usuario" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bacon/bacon-qr-code" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/bootstrap" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/inputmask" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/jquery" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/punycode" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower-asset/yii2-pjax" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/bootstrap" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/bootstrap3-dialog" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/inputmask" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/jquery-ui" />
@@ -23,7 +17,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/punycode" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/selectize" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/sifter" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/bower/typeahead.js" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/bower/yii2-pjax" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/cebe/markdown-latex" />
@@ -127,7 +120,6 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/willdurand/geocoder" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-authclient" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-bootstrap" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-bootstrap4" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-composer" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/yiisoft/yii2-debug" />

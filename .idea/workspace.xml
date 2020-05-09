@@ -20,14 +20,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="kris admin">
+      <change beforePath="$PROJECT_DIR$/.idea/lnoapi.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lnoapi.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/AppAsset.php" beforeDir="false" afterPath="$PROJECT_DIR$/assets/AppAsset.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/layouts/main.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/layouts/main.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/less/sass/custom.scss" beforeDir="false" afterPath="$PROJECT_DIR$/web/less/sass/custom.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/less/stylesheets/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/less/stylesheets/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/less/stylesheets/custom.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/web/less/stylesheets/custom.css.map" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,79 +91,39 @@
   <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP 7.3">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/doctrine/lexer" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
       <path value="$PROJECT_DIR$/vendor/bower/punycode" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-switchinput" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-sidenav" />
       <path value="$PROJECT_DIR$/vendor/bower/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-sortable" />
       <path value="$PROJECT_DIR$/vendor/bower/yii2-pjax" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-grid" />
       <path value="$PROJECT_DIR$/vendor/bower/jquery" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-spinner" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-dialog" />
       <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput" />
       <path value="$PROJECT_DIR$/vendor/bower/inputmask" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tabs-x" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-select2" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-affix" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-mpdf" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-colorinput" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-dynagrid" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-builder" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-fileinput" />
       <path value="$PROJECT_DIR$/vendor/mikevanriel/text-to-latex" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-touchspin" />
-      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-jsblock" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-growl" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-activeform" />
-      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-relation-trait" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widgets" />
-      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-uuid-behavior" />
       <path value="$PROJECT_DIR$/vendor/mpdf/mpdf" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-alert" />
-      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-optimistic-lock-validator" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-datecontrol" />
-      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-enhanced-gii" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-typeahead" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-export" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-tabs-x" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-helpers" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tree-manager" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-timepicker" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-field-range" />
       <path value="$PROJECT_DIR$/vendor/cebe/markdown" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datetimepicker" />
       <path value="$PROJECT_DIR$/vendor/cebe/markdown-latex" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-date-range" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating" />
       <path value="$PROJECT_DIR$/vendor/swiftmailer/swiftmailer" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rating" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rangeinput" />
-      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/php-date-formatter" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-krajee-base" />
-      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
-      <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
-      <path value="$PROJECT_DIR$/vendor/voskobovich/yii2-many-many-behavior" />
       <path value="$PROJECT_DIR$/vendor/setasign/fpdi" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-authclient" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-composer" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-httpclient" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-swiftmailer" />
-      <path value="$PROJECT_DIR$/vendor/creocoder/yii2-nested-sets" />
       <path value="$PROJECT_DIR$/vendor/electrolinux/phpquery" />
-      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
-      <path value="$PROJECT_DIR$/vendor/vova07/yii2-console-runner-extension" />
       <path value="$PROJECT_DIR$/vendor/egulias/email-validator" />
       <path value="$PROJECT_DIR$/vendor/ezyang/htmlpurifier" />
-      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
       <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
@@ -177,20 +134,11 @@
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
       <path value="$PROJECT_DIR$/vendor/symfony/browser-kit" />
       <path value="$PROJECT_DIR$/vendor/symfony/dom-crawler" />
-      <path value="$PROJECT_DIR$/vendor/opis/closure" />
       <path value="$PROJECT_DIR$/vendor/ralouphie/getallheaders" />
       <path value="$PROJECT_DIR$/vendor/select2/select2" />
-      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
       <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php72" />
-      <path value="$PROJECT_DIR$/vendor/bower/bootstrap3-dialog" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/yii2-pjax" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/punycode" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/inputmask" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/jquery" />
-      <path value="$PROJECT_DIR$/vendor/bower-asset/bootstrap" />
-      <path value="$PROJECT_DIR$/vendor/bower/typeahead.js" />
       <path value="$PROJECT_DIR$/vendor/php-http/discovery" />
       <path value="$PROJECT_DIR$/vendor/php-http/promise" />
       <path value="$PROJECT_DIR$/vendor/php-http/guzzle6-adapter" />
@@ -200,15 +148,11 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/geocoder-php/google-maps-provider" />
       <path value="$PROJECT_DIR$/vendor/geocoder-php/common-http" />
-      <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
-      <path value="$PROJECT_DIR$/vendor/php-http/message" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-popover-x" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-popover-x" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-editable" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap4" />
       <path value="$PROJECT_DIR$/vendor/npm/bootstrap" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-bootstrap4-dropdown" />
-      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/bower/sifter" />
       <path value="$PROJECT_DIR$/vendor/bower/selectize" />
@@ -220,11 +164,56 @@
       <path value="$PROJECT_DIR$/vendor/2amigos/2fa-library" />
       <path value="$PROJECT_DIR$/vendor/2amigos/qrcode-library" />
       <path value="$PROJECT_DIR$/vendor/khanamiryan/qrcode-detector-decoder" />
-      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap" />
       <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-jui" />
       <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-icons" />
       <path value="$PROJECT_DIR$/vendor/bower/jquery-ui" />
       <path value="$PROJECT_DIR$/vendor/components/flag-icon-css" />
+      <path value="$PROJECT_DIR$/vendor/creocoder/yii2-nested-sets" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-mpdf" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tree-manager" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-affix" />
+      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-relation-trait" />
+      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-uuid-behavior" />
+      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-optimistic-lock-validator" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-spinner" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-switchinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rating" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-fileinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-sidenav" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-touchspin" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-rangeinput" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-alert" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/dependent-dropdown" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-typeahead" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/bootstrap-star-rating" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-depdrop" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-timepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-datetimepicker" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-growl" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widget-colorinput" />
+      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-jsblock" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-tabs-x" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-widgets" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/phpoffice/phpspreadsheet" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-export" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/matrix" />
+      <path value="$PROJECT_DIR$/vendor/kartik-v/yii2-builder" />
+      <path value="$PROJECT_DIR$/vendor/markbaker/complex" />
+      <path value="$PROJECT_DIR$/vendor/mootensai/yii2-enhanced-gii" />
+      <path value="$PROJECT_DIR$/vendor/php-http/message" />
+      <path value="$PROJECT_DIR$/vendor/voskobovich/yii2-many-many-behavior" />
+      <path value="$PROJECT_DIR$/vendor/clue/stream-filter" />
+      <path value="$PROJECT_DIR$/vendor/vova07/yii2-console-runner-extension" />
+      <path value="$PROJECT_DIR$/vendor/fzaninotto/faker" />
+      <path value="$PROJECT_DIR$/vendor/opis/closure" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-bootstrap4" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-faker" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-debug" />
+      <path value="$PROJECT_DIR$/vendor/phpspec/php-diff" />
+      <path value="$PROJECT_DIR$/vendor/yiisoft/yii2-gii" />
     </include_path>
   </component>
   <component name="ProjectId" id="1XrqSXr8rmV9L53Z2JJmkBFR2nL" />
@@ -276,6 +265,22 @@
     </key>
   </component>
   <component name="RunManager" selected="PHP Script.oshin dailyTasks">
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <method v="2">
@@ -292,13 +297,6 @@
       <option name="PARAMETERS" value="" />
       <module name="" />
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
-      <option name="TEST_OBJECT" value="class" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <configuration name="dl pull event sdr" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="dl/pull-event-sdr">
       <method v="2">
@@ -344,15 +342,6 @@
     </configuration>
     <configuration name="pull lat lng" type="PhpLocalRunConfigurationType" factoryName="PHP Console" path="$PROJECT_DIR$/yii" scriptParameters="magic/pull-lat-lng">
       <method v="2" />
-    </configuration>
-    <configuration default="true" type="TestNG">
-      <option name="TEST_OBJECT" value="CLASS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
     </configuration>
     <list>
       <item itemvalue="PHP Script.dl scrape sdr" />
@@ -981,12 +970,13 @@
     <state x="449" y="163" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1582950431581" />
     <state x="449" y="165" width="1022" height="738" key="SettingsEditor/0.0.1920.1059@0.0.1920.1059" timestamp="1581821498051" />
     <state x="599" y="219" key="SettingsEditor/0.0.2560.1410@0.0.2560.1410" timestamp="1583085055974" />
-    <state width="615" height="441" key="SwitcherDM" timestamp="1588997438093">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state width="820" height="595" key="SwitcherDM" timestamp="1589043580061">
+      <screen x="0" y="0" width="2560" height="1413" />
     </state>
     <state width="615" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1588997438093" />
     <state width="615" height="445" key="SwitcherDM/0.0.1920.1059@0.0.1920.1059" timestamp="1581900931608" />
     <state width="820" height="593" key="SwitcherDM/0.0.2560.1410@0.0.2560.1410" timestamp="1583085940124" />
+    <state width="820" height="595" key="SwitcherDM/0.0.2560.1413@0.0.2560.1413" timestamp="1589043580061" />
     <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2" timestamp="1589000004410">
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
@@ -1035,11 +1025,12 @@
       <screen x="0" y="0" width="1920" height="1049" />
     </state>
     <state x="870" y="214" width="348" height="629" key="com.intellij.tools.ToolSelectDialog.dimensionServiceKey/0.0.1920.1049@0.0.1920.1049" timestamp="1583008186111" />
-    <state x="667" y="281" width="779" height="576" key="find.popup" timestamp="1588998750821">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state x="889" y="379" width="1039" height="776" key="find.popup" timestamp="1589043651543">
+      <screen x="0" y="0" width="2560" height="1413" />
     </state>
     <state x="667" y="281" width="779" height="576" key="find.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1588998750821" />
     <state x="667" y="281" width="586" height="488" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582949718170" />
+    <state x="889" y="379" width="1039" height="776" key="find.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1589043651543" />
     <state x="825" y="422" width="267" height="216" key="publish.login" timestamp="1582937357740">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -1050,14 +1041,14 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1583045494924" />
     <state x="619" y="238" width="672" height="677" key="run.anything.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952124615" />
-    <state x="624" y="173" width="672" height="672" key="search.everywhere.popup" timestamp="1589000746958">
-      <screen x="0" y="0" width="1920" height="1049" />
+    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup" timestamp="1589043685077">
+      <screen x="0" y="0" width="2560" height="1413" />
     </state>
     <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1589000746958" />
     <state x="624" y="173" width="672" height="671" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1582952132000" />
     <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1059@0.0.1920.1059" timestamp="1581900711271" />
     <state x="832" y="232" width="896" height="902" key="search.everywhere.popup/0.0.2560.1410@0.0.2560.1410" timestamp="1583081896284" />
-    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1588524161399" />
+    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1589043685077" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

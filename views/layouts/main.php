@@ -37,7 +37,7 @@ FontAwesomeAsset::register($this);
         'brandLabel' => Html::img('@web/img/logo_sml.png'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-nav navbar-light navbar-expand-lg',
+            'class' => 'navbar navbar-nav navbar-light navbar-expand-lg w-100',
 //            'class' => 'navbar navbar-nav navbar-default navbar-fixed-top',
         ],
     ]);
