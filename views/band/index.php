@@ -44,7 +44,7 @@ $this->registerJs($search);
             'headerOptions' => ['class' => 'kartik-sheet-style'],
             'expandOneOnly' => true
         ],
-        ['attribute' => 'id', 'visible' => true],
+        ['attribute' => 'id', 'visible' => false],
         ['attribute' => 'name',
             'format' => 'raw',
             'contentOptions' => ['class' => 'name'],

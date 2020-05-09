@@ -45,7 +45,7 @@
     "kartik-v/yii2-editable": "dev-master",
     "yiisoft/yii2-bootstrap4": "^2.0",
     "kartik-v/bootstrap-tabs-x": "dev-master",
-    "2amigos/yii2-usuario": "~1.0",
+    "2amigos/yii2-usuario": "~1.5",
     "kartik-v/yii2-icons": "^1.4"
   },
   "require-dev": {
