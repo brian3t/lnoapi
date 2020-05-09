@@ -32,10 +32,11 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => Html::img('@web/img/logo.png'),
+        'brandLabel' => Html::img('@web/img/logo_sml.png'),
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-nav navbar-default navbar-fixed-top',
+            'class' => 'navbar navbar-nav navbar-light',
+//            'class' => 'navbar navbar-nav navbar-default navbar-fixed-top',
         ],
     ]);
     echo '<span class="version">v0.7</span>';
@@ -50,7 +51,8 @@ AppAsset::register($this);
                 ['label' => 'Profile', 'url' => '/user/settings/profile'],
                 ['label' => 'Account', 'url' => '/user/settings/account'],
                 // ['label' => 'Social Networks', 'url' => '/user/settings/networks'],
-                ['label' => 'Log Out', 'url' => '/user/security/logout'],
+                ['label' => 'Log Out', 'url' => '/user/security/logout', 'linkOptions' => ['data-method' => 'post']],
+
             ],
         ];
         // '<li>'

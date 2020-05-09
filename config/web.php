@@ -69,16 +69,19 @@ $config = [
             'class' => 'usv\yii2helper\i18n\ViewFormatter',
             'nullDisplay' => '',
         ],
-        'view' => [
+        /*'view' => [
             'theme' => [
                 'pathMap' => [
                     '@dektrium/user/views' => '@app/views/user',
                 ],
             ],
+        ],*/
+        'authManager' => [
+            'class' => 'yii\rbac\DbManager',
         ],
     ],
     'modules' => [
-        'user' => [
+        /*'user' => [
             'class' => 'dektrium\user\Module',
             'admins' => ['ngxtri','windlinx@hotmail.com'],
             'controllerMap' => [
@@ -99,6 +102,13 @@ $config = [
                 'Profile' => 'app\models\user\Profile',
                 // 'SettingsForm'      => 'app\models\user\SettingsForm'
             ],
+        ],*/
+        'user' => [
+            'class' => Da\User\Module::class,
+            // ...other configs from here: [Configuration Options](installation/configuration-options.md), e.g.
+             'administrators' => ['admin','ngxtri'], // this is required for accessing administrative actions
+            // 'generatePasswords' => true,
+            // 'switchIdentitySessionKey' => 'myown_usuario_admin_user_key',
         ],
         'gridview' => [
             'class' => '\kartik\grid\Module',
