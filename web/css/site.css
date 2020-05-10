@@ -105,10 +105,6 @@ a.dropdown-toggle:hover + ul.dropdown-menu, ul.dropdown-menu:hover {
     width: auto;
 }
 
-.table > thead > tr > th.kv-expand-header-cell {
-    display: none
-}
-
 div.panel-primary > div > table.kv-grid-table > tbody > tr > td.kv-expand-icon-cell {
     display: table-cell;
 }

@@ -80,6 +80,7 @@ $this->registerJs($search);
                 if (! ($m->ytlink_first)) return '';
                 if ($m->ytlink_first_tnail) return Html::a("<img src='" . $m->ytlink_first_tnail . "'/>", "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
                 return Html::a($m->ytlink_first, "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
+//                here use popover https://demos.krajee.com/popover-x
             }],
         /*[
             'class' => '\kartik\grid\BooleanColumn',

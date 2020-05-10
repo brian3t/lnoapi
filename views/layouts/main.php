@@ -46,37 +46,7 @@ FontAwesomeAsset::register($this);
     $admin_items = [
 
     ];
-    if (!Yii::$app->user->isGuest) {
-        $items[] = [
-            'label' => 'My Account',
-            'items' => [
-                ['label' => 'Profile', 'url' => '/user/settings/profile'],
-                ['label' => 'Account', 'url' => '/user/settings/account'],
-                // ['label' => 'Social Networks', 'url' => '/user/settings/networks'],
-                ['label' => 'Log Out', 'url' => '/user/security/logout', 'linkOptions' => ['data-method' => 'post']],
-
-            ],
-        ];
-        // '<li>'
-        //     . Html::beginForm(['/site/logout'], 'post')
-        //     . Html::submitButton(
-        //         'Logout (' . Yii::$app->user->identity->username . ')',
-        //         ['class' => 'btn btn-link']
-        //     )
-        //     . Html::endForm()
-        //     . '</li>';
-        if (Yii::$app->user->identity->getIsAdmin()) {
-            $admin_items[] = ['label' => 'Admin', 'url' => '/user/admin/index'];
-        }
-    } else {
-        $items[] = ['label' => 'Sign Up', 'url' => ['/user/registration/register']];
-        $items[] = ['label' => 'Login', 'url' => ['/user/security/login']];
-    }
     $items = array_merge($items, [
-        [
-            'label' => 'Admins',
-            'items' => $admin_items,
-        ],
         [
             'label' => 'Bands',
             'url' => Url::toRoute(['band/index']),
@@ -91,9 +61,32 @@ FontAwesomeAsset::register($this);
         ],
         ['label' => 'Raw User data', 'url' => Url::toRoute(['user/index'])],
         ['label' => 'Webapp', 'url' => 'https://app.livenout.usvsolutions.com', 'linkOptions' => ['target' => '_blank'],
-        ]
-    ]);
+        ],
 
+
+    ]);
+    if (! Yii::$app->user->isGuest) {
+        $items[] = [
+            'label' => 'My Account',
+            'items' => [
+                ['label' => 'Profile', 'url' => '/user/settings/profile'],
+                ['label' => 'Account', 'url' => '/user/settings/account'],
+                // ['label' => 'Social Networks', 'url' => '/user/settings/networks'],
+                ['label' => 'Log Out', 'url' => '/user/security/logout', 'linkOptions' => ['data-method' => 'post']],
+
+            ],
+        ];
+        if (Yii::$app->user->identity->getIsAdmin()) {
+            $admin_items[] = ['label' => 'User Mgmt', 'url' => '/user/admin/index'];
+            $items[] = [
+                'label' => 'Admin',
+                'items' => $admin_items,
+            ];
+        }
+    } else {
+        $items[] = ['label' => 'Sign Up', 'url' => ['/user/registration/register']];
+        $items[] = ['label' => 'Login', 'url' => ['/user/security/login']];
+    }
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav'],
         'items' => $items,
