@@ -8,6 +8,7 @@
 
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
+use usv\yii2helper\widgets\PopoverX;
 use yii\helpers\Html;
 
 $this->title = 'Band';
@@ -17,6 +18,7 @@ $search = "$('.search-button').click(function(){
 	return false;
 });";
 $this->registerJs($search);
+$this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'depends' => [\app\assets\AppAsset::class]])
 ?>
 <div class="band-index">
 
@@ -30,6 +32,24 @@ $this->registerJs($search);
         <?= $this->render('_search', ['model' => $searchModel]); ?>
     </div>
     <?php
+    $content = '<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+</div>';
+
+    // right
+    echo PopoverX::widget([
+        'header' => 'Hello world',
+        'placement' => PopoverX::ALIGN_RIGHT,
+        'content' => $content,
+        'footer' => Html::button('Submit', ['class'=>'btn btn-sm btn-primary']),
+        'toggleButton' => ['label'=>'Right', 'class'=>'btn btn-default btn-secondary'],
+        'pluginEvents' => [
+    "click.target.popoverX"=>'function() { console.log("click.target.popoverX"); }',
+    "load.complete.popoverX"=>'function() { log("load.complete.popoverX"); }',
+        ]
+    ]);
+
+
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
         [
