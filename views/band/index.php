@@ -8,7 +8,6 @@
 
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
-use usv\yii2helper\widgets\PopoverX;
 use yii\helpers\Html;
 
 $this->title = 'Band';
@@ -31,24 +30,32 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
     <div class="search-form" style="display:none">
         <?= $this->render('_search', ['model' => $searchModel]); ?>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="yt_vid_popover" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Moderate Youtube video</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <iframe class="embed-responsive-item" src="" id="ytlink_first" allowscriptaccess="always" frameborder="0" allow="autoplay,encrypted-media" width="560" height="315" allowfullscreen="">
+                    </iframe>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="vid_approve btn btn-sm btn-primary" data-dismiss="modal">Approve</button>&nbsp;&nbsp;
+                    <button type="button" class="vid_disapprove btn btn-sm btn-secondary">Disapprove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php
-    $content = '<div class="embed-responsive embed-responsive-16by9">
-  <iframe class="embed-responsive-item" src="" id="video"  allowscriptaccess="always" allow="autoplay"></iframe>
+    $content = '<div class="embed-responsive">
 </div>';
-
-    // right
-    echo PopoverX::widget([
-        'header' => 'Hello world',
-        'placement' => PopoverX::ALIGN_RIGHT,
-        'content' => $content,
-        'footer' => Html::button('Submit', ['class'=>'btn btn-sm btn-primary']),
-        'toggleButton' => ['label'=>'Right', 'class'=>'btn btn-default btn-secondary'],
-        'pluginEvents' => [
-    "click.target.popoverX"=>'function() { console.log("click.target.popoverX"); }',
-    "load.complete.popoverX"=>'function() { log("load.complete.popoverX"); }',
-        ]
-    ]);
-
 
     $gridColumn = [
         ['class' => 'yii\grid\SerialColumn'],
@@ -89,7 +96,6 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
         ],
         'logo:image',
-        'lno_score',
         'type',
         'genre',
         [
@@ -110,7 +116,10 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
         ],*/
         [
             'attribute' => 'ytlink_approved',
-            'class'=>'usv\yii2helper\grid\AjaxToggleColumn',
+            'format' =>'raw',
+            'value' => function($m){
+                return '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover">Toggle video</button>';
+            }
         ],
         'similar_to',
         'hometown_city',
@@ -119,6 +128,7 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
         'instagram:url',
         'facebook',
         'created_at:datetime',
+        'lno_score',
         'twitter',
         [
             'class' => 'yii\grid\ActionColumn',
