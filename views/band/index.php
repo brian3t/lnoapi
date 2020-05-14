@@ -47,7 +47,7 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="vid_approve btn btn-sm btn-primary" data-dismiss="modal">Approve</button>&nbsp;&nbsp;
-                    <button type="button" class="vid_disapprove btn btn-sm btn-secondary">Disapprove</button>
+                    <button type="button" class="vid_disapprove btn btn-sm btn-secondary" data-dismiss="modal">Disapprove</button>
                 </div>
             </div>
         </div>
@@ -98,16 +98,15 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
         'logo:image',
         'type',
         'genre',
-        [
-            'attribute' => 'ytlink_first',
-            'format' => 'raw',
-            'value' => function ($m) {
-                /** @var $m \app\models\Band */
-                if (! ($m->ytlink_first)) return '';
-                if ($m->ytlink_first_tnail) return Html::a("<img src='" . $m->ytlink_first_tnail . "'/>", "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
-                return Html::a($m->ytlink_first, "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
-//                here use popover https://demos.krajee.com/popover-x
-            }],
+//        [
+//            'attribute' => 'ytlink_first',
+//            'format' => 'raw',
+//            'value' => function ($m) {
+//                /** @var $m \app\models\Band */
+//                if (! ($m->ytlink_first)) return '';
+//                if ($m->ytlink_first_tnail) return Html::a("<img src='" . $m->ytlink_first_tnail . "'/>", "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
+//                return Html::a($m->ytlink_first, "https://www.youtube.com/watch?v=" . $m->ytlink_first, ['target' => '_blank']);
+//            }],
         /*[
             'class' => '\kartik\grid\BooleanColumn',
             'trueLabel' => 'Yes',
@@ -118,7 +117,7 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'attribute' => 'ytlink_approved',
             'format' =>'raw',
             'value' => function($m){
-                return '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover">Toggle video</button>';
+                return '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover" data-bandid="'.$m->id.'">Toggle video</button>';
             }
         ],
         'similar_to',

@@ -22,9 +22,7 @@
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="WIP: yii2helper PopoverX.php, inherits Kartik PopoverX with minor fix">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/views/band/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/css/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/css/site.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web/js/band/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/band/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -18,3 +18,6 @@ $('#yt_vid_popover').on('show.bs.modal', function (event) {
     let modal = $(this)
     $(modal.find('#ytlink_first')).attr('src',`https://youtube.com/embed/${vidid}?&autoplay=1`)
 })
+$('#yt_vid_popover button.vid_approve').on('click',function (event){
+    console.log(`event: `, event)
+})
