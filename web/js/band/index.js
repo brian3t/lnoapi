@@ -1,23 +1,59 @@
-$('body').on('click', function (e) {
-    $('[data-toggle="popover-x"]').each(function () {
-        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+//let's get the api url
+let apiurl = window.location.href.replace('://', '://api.').replace('/index', '')
+let url_parts = apiurl.split('/')
+let endpoint = url_parts[url_parts.length - 1]
+apiurl = apiurl.replace(endpoint, 'v1/' + endpoint)
+console.log(`apiu`, apiurl)
+$('body').on('click', function (e){
+    $('[data-toggle="popover-x"]').each(function (){
+        if (! $(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
             let $this = $(this), href = $this.attr('href'),
                 $dialog = $($this.attr('data-target') || (href && href.replace(/.*(?=#[^\s]+$)/, ''))), //strip for ie7
-                option = $dialog.data('popover-x') ? 'toggle' : $.extend({remote: !/#/.test(href) && href});
+                option = $dialog.data('popover-x') ? 'toggle' : $.extend({remote: ! /#/.test(href) && href});
             if ($dialog.popoverX) $dialog.popoverX('hide').on('hide');
         }
     });
 });
+
 function popover_video(video_id){
 }
-$('#yt_vid_popover').on('show.bs.modal', function (event) {
+
+$('#yt_vid_popover').on('show.bs.modal', function (event){
     let button = $(event.relatedTarget) // Button that triggered the modal
     let vidid = button.data('vidid') // Extract info from data-* attributes
-    // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-    // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+    let bandid = button.data('bandid')
     let modal = $(this)
-    $(modal.find('#ytlink_first')).attr('src',`https://youtube.com/embed/${vidid}?&autoplay=1`)
+    modal.data('vidid', vidid)
+    modal.data('bandid', bandid)
+    $(modal.find('#ytlink_first')).attr('src', `https://youtube.com/embed/${vidid}?&autoplay=1`)
 })
-$('#yt_vid_popover button.vid_approve').on('click',function (event){
+$('#yt_vid_popover button.vid_approve').on('click', function (event){
     console.log(`event: `, event)
+    let $modal = $($(event.target).closest('.modal')) //button
+    let bandid= $modal.data('bandid')
+    $.ajax(apiurl + `/${bandid}`, {
+        contentType: 'application/json', crossOrigin: true, data: JSON.stringify({ytlink_approved: 1}), dataType: 'json', method: 'PATCH', success: function (res){
+            if (!res){
+                $.notify({
+                    message: 'API update failed. Try again'
+                },{
+                    type: 'danger',placement:{align:'center'}
+                });
+            }
+            if (res.ytlink_approved !== 1){
+                $.notify({
+                    message: 'API update called. But value not 1'
+                },{
+                    type: 'danger',placement:{align:'center'}
+                })
+            }
+            if (res.ytlink_approved === 1){
+                $.notify({
+                    message: 'API update successful'
+                },{
+                    type: 'success',placement:{align:'center'}
+                });
+            }
+        }
+    })
 })

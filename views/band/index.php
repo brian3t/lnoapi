@@ -117,7 +117,11 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'attribute' => 'ytlink_approved',
             'format' =>'raw',
             'value' => function($m){
-                return '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover" data-bandid="'.$m->id.'">Toggle video</button>';
+                $approved = $m->ytlink_approved;
+                $return = ($approved === 1 ? 'Approved' : ($approved === 0 ? 'Disproved' : 'Not reviewed yet'));
+                $return .= '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover" 
+                data-bandid="'.$m->id.'">Watch Youtube video</button>';
+                return $return;
             }
         ],
         'similar_to',

@@ -75,8 +75,9 @@ $config = [
     ],
     'modules' => [
         'user' => [
-            'class' => 'dektrium\user\Module',
-            'admins' => ['ngxtri', 'someids', 'windlinx@hotmail.com'],
+            'class' => Da\User\Module::class,
+            // ...other configs from here: [Configuration Options](installation/configuration-options.md), e.g.
+            'administrators' => ['admin','ngxtri','windlinx@hotmail.com'], // this is required for accessing administrative actions
             'controllerMap' => [
                 'security' => [
                     'class' => 'app\controllers\user\SecurityController'
