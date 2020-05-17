@@ -101,7 +101,7 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'format' =>'raw',
             'value' => function($m){
                 $approved = $m->ytlink_approved;
-                if (!$approved) {return 'No Youtube Video';}
+                if (! ($m->ytlink_first)) {return 'No Youtube Video';}
                 $return = ($approved === 1 ? '<b>Approved</b>' : ($approved === 0 ? 'Disproved' : 'Not reviewed yet'));
                 $return .= '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover" 
                 data-bandid="'.$m->id.'">Watch Youtube video</button>';
