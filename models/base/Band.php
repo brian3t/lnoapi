@@ -115,7 +115,7 @@ class Band extends \yii\db\ActiveRecord
             'gg_last_attempt' => 'Gg Last Attempt',
             'ytlink_first' => 'First Youtube video id',
             'ytlink_first_tnail' => 'First Youtube video thumnail',
-            'ytlink_approved' => 'Yt vid approved',
+            'ytlink_approved' => 'Approve YT vid?',
         ];
     }
 

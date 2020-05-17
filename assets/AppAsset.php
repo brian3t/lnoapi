@@ -19,8 +19,10 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        'css/all.min.css',
     ];
     public $js = [
+        'js/bootstrap-notify.min.js'
     ];
     public $depends = [
         'yii\bootstrap4\BootstrapAsset',
