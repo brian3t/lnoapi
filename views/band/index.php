@@ -46,8 +46,8 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
                     </iframe>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="vid_approve btn btn-sm btn-primary" data-dismiss="modal">Approve</button>&nbsp;&nbsp;
-                    <button type="button" class="vid_disapprove btn btn-sm btn-secondary" data-dismiss="modal">Disapprove</button>
+                    <button type="button" class="vid_approve btn btn-sm btn-primary" data-is_approve="1" data-dismiss="modal">Approve</button>&nbsp;&nbsp;
+                    <button type="button" class="vid_approve btn btn-sm btn-secondary" data-is_approve="0" data-dismiss="modal">Disapprove</button>
                 </div>
             </div>
         </div>
@@ -96,6 +96,18 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
         ],
         'logo:image',
+        [
+            'attribute' => 'ytlink_approved',
+            'format' =>'raw',
+            'value' => function($m){
+                $approved = $m->ytlink_approved;
+                if (!$approved) {return 'No Youtube Video';}
+                $return = ($approved === 1 ? '<b>Approved</b>' : ($approved === 0 ? 'Disproved' : 'Not reviewed yet'));
+                $return .= '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover" 
+                data-bandid="'.$m->id.'">Watch Youtube video</button>';
+                return $return;
+            }
+        ],
         'type',
         'genre',
 //        [
@@ -113,17 +125,6 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'falseLabel' => 'No',
             'attribute' => 'ytlink_approved'
         ],*/
-        [
-            'attribute' => 'ytlink_approved',
-            'format' =>'raw',
-            'value' => function($m){
-                $approved = $m->ytlink_approved;
-                $return = ($approved === 1 ? 'Approved' : ($approved === 0 ? 'Disproved' : 'Not reviewed yet'));
-                $return .= '<button type="button" class="btn btn-default btn-secondary" data-toggle="modal" data-vidid="'.$m->ytlink_first.'" data-target="#yt_vid_popover" 
-                data-bandid="'.$m->id.'">Watch Youtube video</button>';
-                return $return;
-            }
-        ],
         'similar_to',
         'hometown_city',
         'website:url',
