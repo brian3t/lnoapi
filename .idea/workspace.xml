@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="approve using API">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/band/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/views/band/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/js/band/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/web/js/band/index.js" afterDir="false" />
-    </list>
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="approve using API done" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -398,13 +394,6 @@
       <workItem from="1585627662611" duration="2000000" />
       <workItem from="1586128996202" duration="2249000" />
     </task>
-    <task id="LOCAL-00006" summary="1.  We need to download a genre table to pre-populate: Done 06/25&#10;2. Band page - missing YouTube to link to their videos (only need to link to one video): Done 06/25">
-      <created>1529963636195</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1529963636195</updated>
-    </task>
     <task id="LOCAL-00007" summary="3. Band page - Hometown state should have an unknown option.: Done 06/26&#10;4. Band page - we should add instagram: Done 06/26&#10;5. Remove seconds from event data entry. Done 06/26&#10;6. Add a link to admin section to open the users view. Done 06/26">
       <created>1530046938949</created>
       <option name="number" value="00007" />
@@ -741,7 +730,14 @@
       <option name="project" value="LOCAL" />
       <updated>1589606517421</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="approve using API done">
+      <created>1589677898381</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1589677898381</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TodoView">
@@ -790,7 +786,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="scraped TicketMas done&#10;todo: Get more band info from songkick/eventbrite" />
     <MESSAGE value="todo: Get more band info from songkick/eventbrite&#10;fix yii2helper" />
     <MESSAGE value="fix yii2helper editcol" />
     <MESSAGE value="debugging scrape tickmas" />
@@ -815,7 +810,8 @@
     <MESSAGE value="params must have:&#10;    'bsVersion' =&gt; 4" />
     <MESSAGE value="WIP: yii2helper PopoverX.php, inherits Kartik PopoverX with minor fix" />
     <MESSAGE value="approve using API" />
-    <option name="LAST_COMMIT_MESSAGE" value="approve using API" />
+    <MESSAGE value="approve using API done" />
+    <option name="LAST_COMMIT_MESSAGE" value="approve using API done" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">

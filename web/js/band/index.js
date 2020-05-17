@@ -5,7 +5,6 @@ let endpoint = url_parts[url_parts.length - 1]
 apiurl = apiurl.replace(endpoint, 'v1/' + endpoint)
 let search_portion = (new URL(apiurl)).search
 apiurl = apiurl.replace(search_portion, '')
-console.log(`apiu`, apiurl)
 $('body').on('click', function (e){
     $('[data-toggle="popover-x"]').each(function (){
         if (! $(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
