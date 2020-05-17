@@ -69,13 +69,6 @@ $config = [
             'class' => 'usv\yii2helper\i18n\ViewFormatter',
             'nullDisplay' => '',
         ],
-        /*'view' => [
-            'theme' => [
-                'pathMap' => [
-                    '@dektrium/user/views' => '@app/views/user',
-                ],
-            ],
-        ],*/
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
         ],
