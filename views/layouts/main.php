@@ -5,7 +5,6 @@
 /* @var $content string */
 
 use app\assets\AppAsset;
-use kartik\icons\FontAwesomeAsset;
 use kartik\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
 use yii\bootstrap4\Nav;
@@ -14,7 +13,6 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 
 AppAsset::register($this);
-FontAwesomeAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
