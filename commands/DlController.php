@@ -22,6 +22,9 @@ define('SDREVENT_LOCAL', 'http://lnoapi/scrape/gingercowgirl.html');
 define('SDRBAND_LOCAL', 'http://lnoapi/scrape/band_gg_cowgirl.html');
 define('TICKMAS', 'https://www.ticketmaster.com/api/next/graphql?operationName=CategorySearch&extensions={"persistedQuery":{"version":1,"sha256Hash":"e6feb139aaeaa5a2bbcf9a37e6ee6bb29cca1d6dce85fb7746f25f859041c2b4"}}');
 
+define ('DELAY', 30);//delay sec b/w http req
+define ('MAX_SCRAPE_PER_DAY', 12);//stop if we reach this num per day
+
 /**
  * The behind the scenes magic happens here
  *
@@ -443,6 +446,7 @@ class DlController extends Controller
                     echo 'Failed. ' . $events->getStatusCode();
                     return false;
                 }
+                sleep(DELAY);
                 $events = $events->getBody();
                 if (! method_exists($events, 'getContents')) {
                     echo 'Bad response. Url: ' . $url;
@@ -586,6 +590,7 @@ class DlController extends Controller
                     }
                 }
                 $scraped++;
+                if ($scraped > MAX_SCRAPE_PER_DAY) $scrape_next_page = false;
             }
         } while ($scrape_next_page);
         echo "Pulled: $scraped events";
