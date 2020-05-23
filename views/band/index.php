@@ -76,7 +76,8 @@ $this->registerJsFile('/js/band/index.js',['position'=>yii\web\View::POS_END, 'd
             'format' => 'raw',
             'contentOptions' => ['class' => 'name'],
             'value' => function ($model) {
-                return "<a href=/band/view?id=" . $model->id . ">{$model->name}</a>";
+                return "<a href=/band/view?id=" . $model->id . ">{$model->name}</a><br/><br/>"
+                    .'<a href="https://google.com/search?newwindow=1&q=&quot;' . $model->name . '&quot;" target="_blank">Google search</a>';
             }],
         [
             'attribute' => 'user_id',
