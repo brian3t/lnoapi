@@ -10,24 +10,24 @@ namespace app\api\modules\v1\controllers;
 
 use app\api\base\controllers\BaseActiveController;
 use app\controllers\user\SettingsController;
-use dektrium\user\Finder;
+use app\models\User;
 use Yii;
 use yii\web\UnauthorizedHttpException;
 
 class UserController extends BaseActiveController
 {
-    public $modelClass='app\models\User';
+    public $modelClass = 'app\models\User';
 
 
     protected function verbs()
     {
-        $verbs=parent::verbs();
-        array_push($verbs['update'],'POST');
+        $verbs = parent::verbs();
+        array_push($verbs['update'], 'POST');
     }
 
     public function actions()
     {
-        $actions=parent::actions();
+        $actions = parent::actions();
 
         // disable the default REST actions
         unset($actions['update']);
@@ -38,43 +38,37 @@ class UserController extends BaseActiveController
     public function actionLogin()
     {
         // Yii::$container
-        $response=['status'=>'failed'];
-        $module=Yii::$app->getModule('user');
-        if($module==null)
-        {
-            $response['message']='Module user not loaded';
+        $response = ['status' => 'failed'];
+        $module = Yii::$app->getModule('user');
+        if ($module == null) {
+            $response['message'] = 'Module user not loaded';
             return $response;
         }
-        $settingsController=$module->createController('settings/profile');
-        if(!$settingsController || count($settingsController)!=2)
-        {
-            $response['message']='Settings controller not found';
+        $settingsController = $module->createController('settings/profile');
+        if (! $settingsController || count($settingsController) != 2) {
+            $response['message'] = 'Settings controller not found';
         }
-        $settingsController=$settingsController[0];
+        $settingsController = $settingsController[0];
         /** @var SettingsController $settingsController */
 
         /** @var LoginForm $model */
-        $model=Yii::createObject(LoginForm::className());
-        $search_model=Yii::createObject(UserSearch::className());
+        $model = Yii::createObject(LoginForm::className());
+        $search_model = Yii::createObject(UserSearch::className());
         /** @var UserSearch $search_model */
 
-        if($model->load(Yii::$app->getRequest()->post()))
-        {
-            $finder=$settingsController->getFinder();
+        if ($model->load(Yii::$app->getRequest()->post())) {
+            $finder = $settingsController->getFinder();
             /** @var Finder $finder */
-            $user_found=$finder->findUserByEmail($model->login);
-            if(is_null($user_found))
-            {
+            $user_found = $finder->findUserByEmail($model->login);
+            if (is_null($user_found)) {
                 throw new UnauthorizedHttpException('Username does not exist');
             }
-            if($model->login())
-            {
-                $cuser=Yii::$app->user->identity;
-                $profile=$settingsController->actionApiProfile();
-                $response['status']='ok';
-                $response['id']=$user_found->id;
-            } else
-            {
+            if ($model->login()) {
+                $cuser = Yii::$app->user->identity;
+                $profile = $settingsController->actionApiProfile();
+                $response['status'] = 'ok';
+                $response['id'] = $user_found->id;
+            } else {
                 throw new UnauthorizedHttpException('Wrong password');
             }
         }
@@ -84,30 +78,24 @@ class UserController extends BaseActiveController
 
     public function actionUpdate()
     {
-        $request=Yii::$app->request;
-        $entity_body=Yii::$app->request->post();
-        $id=$request->get('id');
+        $request = Yii::$app->request;
+        $entity_body = Yii::$app->request->post();
+        $id = $request->get('id');
 
-        $user=\app\models\User::findOne($id);
-        if($user->id!=$id)
-        {
+        $user = \app\models\User::findOne($id);
+        if ($user->id != $id) {
             return "Cannot find this user";
         }
-        if(isset($entity_body['union_memberships']))
-        {
-            if(count($entity_body['union_memberships'])==0)
-            {
-                $entity_body['union_memberships']='';
-            } else
-            {
-                $entity_body['union_memberships']=implode(',',$entity_body['union_memberships']);
+        if (isset($entity_body['union_memberships'])) {
+            if (count($entity_body['union_memberships']) == 0) {
+                $entity_body['union_memberships'] = '';
+            } else {
+                $entity_body['union_memberships'] = implode(',', $entity_body['union_memberships']);
             }
         }
-        if($user->loadAll(['User'=>$entity_body]) && $user->save(false))
-        {
+        if ($user->loadAll(['User' => $entity_body]) && $user->save(false)) {
             return json_encode($user->getAttributes());
-        } else
-        {
+        } else {
             return json_encode($user->errors);
         }
 
@@ -146,5 +134,60 @@ class UserController extends BaseActiveController
 //
 //
 //        return $this->rop_response->print();
+    }
+
+    /** Sign up using fullname, email, password
+     * 5/25/20 BN using vendor/2amigos/yii2-usuario
+     * @param $variables
+     */
+    public function actionSignup()
+    {
+        $vars = Yii::$app->getRequest()->getBodyParams();
+        $username = $vars['username'];
+        $email = $vars['email'];
+        $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
+        if ($exists){
+            return ['Error: username or email already exists'];
+        }
+        $oldApp = \Yii::$app;
+        new \yii\console\Application([
+                'id' => 'Command runner',
+                'basePath' => '@app',
+                'components' => [
+                    'db' => $oldApp->db,
+                    'mailer' => [
+                        'class' => 'yii\swiftmailer\Mailer',
+                        'transport' => [
+                            'class' => 'Swift_SmtpTransport',
+                            'host' => 'smtp.gmail.com',
+                            'username' => 'someids@gmail.com',
+                            'password' => 'sTrapok02',
+                            'port' => 587,
+                            'encryption' => 'tls',
+                        ],
+                    ],
+                ],
+                'modules' => [
+                    'user' =>  \Da\User\Module::class,
+                ]
+            ]
+        );
+        $result = Yii::$app->runAction('user/create',[$email,$username,$vars['password']]);
+        \Yii::$app = $oldApp;
+        $user = User::findOne(['username' => $username]);
+        if (! ($user instanceof User)){
+            return ['Error creating user. Please try again or contact our support. Thank you'];
+        }
+        /** @var $user User */
+        $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
+        if ($profile instanceof \app\models\Profile){
+            $profile->name = $vars['name'];
+            try {
+                $profile->save();
+            } catch (\Exception $exception){
+                Yii::error($exception);
+            }
+        }
+        return ['User created successfully'];
     }
 }

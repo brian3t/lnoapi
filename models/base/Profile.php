@@ -2,15 +2,12 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the base model class for table "profile".
  *
  * @property integer $user_id
  * @property string $name
  * @property string $public_email
- * @property string $avatar
  * @property string $gravatar_email
  * @property string $gravatar_id
  * @property string $location
@@ -22,6 +19,7 @@ use Yii;
 class Profile extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
+    use \usv\yii2helper\models\ModelB3tTrait;
 
     /**
      * @inheritdoc
@@ -33,11 +31,10 @@ class Profile extends \yii\db\ActiveRecord
             [['user_id'], 'integer'],
             [['bio'], 'string'],
             [['name', 'public_email', 'gravatar_email', 'location', 'website'], 'string', 'max' => 255],
-            [['avatar'], 'string', 'max' => 800],
             [['gravatar_id'], 'string', 'max' => 32]
         ];
     }
-    
+
     /**
      * @inheritdoc
      */
@@ -55,7 +52,6 @@ class Profile extends \yii\db\ActiveRecord
             'user_id' => 'User ID',
             'name' => 'Name',
             'public_email' => 'Public Email',
-            'avatar' => 'Avatar',
             'gravatar_email' => 'Gravatar Email',
             'gravatar_id' => 'Gravatar ID',
             'location' => 'Location',
@@ -63,7 +59,7 @@ class Profile extends \yii\db\ActiveRecord
             'bio' => 'Bio',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */

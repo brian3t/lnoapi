@@ -8,6 +8,7 @@ $db = require(__DIR__ . '/db.php');
 
 $config = [
     'id' => 'basic-console',
+    'name' => 'Live N Out',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
@@ -29,6 +30,20 @@ $config = [
         'db' => $db,
         'authManager' => [
             'class' => 'yii\rbac\DbManager',
+        ],
+        'session' => [
+            'class' => 'yii\web\Session'
+        ],
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'smtp.gmail.com',
+                'username' => 'someids@gmail.com',
+                'password' => 'sTrapok02',
+                'port' => 587,
+                'encryption' => 'tls',
+            ],
         ],
     ],
     'params' => $params,

@@ -47,17 +47,16 @@ AppAsset::register($this);
     $items = array_merge($items, [
         [
             'label' => 'Bands',
-            'url' => Url::toRoute(['band/index']),
+            'url' => Url::toRoute(['/band/index']),
         ],
         [
             'label' => 'Venues',
-            'url' => Url::toRoute(['venue/index']),
+            'url' => Url::toRoute(['/venue/index']),
         ],
         [
             'label' => 'Events',
-            'url' => Url::toRoute(['event/index']),
+            'url' => Url::toRoute(['/event/index']),
         ],
-        ['label' => 'Raw User data', 'url' => Url::toRoute(['user/index'])],
         ['label' => 'Webapp', 'url' => 'https://app.livenout.usvsolutions.com', 'linkOptions' => ['target' => '_blank'],
         ],
 
