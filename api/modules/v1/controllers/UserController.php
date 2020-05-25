@@ -11,8 +11,6 @@ namespace app\api\modules\v1\controllers;
 use app\api\base\controllers\BaseActiveController;
 use app\controllers\user\SettingsController;
 use dektrium\user\Finder;
-use dektrium\user\models\LoginForm;
-use dektrium\user\models\UserSearch;
 use Yii;
 use yii\web\UnauthorizedHttpException;
 

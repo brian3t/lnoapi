@@ -50,6 +50,9 @@ $config = [
             ],
         ],*/
     ],
+    'modules' => [
+        'user' =>  Da\User\Module::class,
+    ]
 ];
 
 if (YII_ENV_DEV) {
