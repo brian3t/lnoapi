@@ -53,12 +53,9 @@ $config = [
                     'pluralize' => false,
                     'controller' => 'v1/order',
                     'extraPatterns' => [
-                        'POST pull' => 'pull',
                         'POST signup' => 'signup',
-                        'POST acknowledge' => 'acknowledge',
-                        'GET pull' => 'pull', // 'confirm' refers to 'actionConfirm'
+                        'POST signin' => 'signin',
                         'GET search_by_company' => 'search_by_company',
-                        'POST push' => 'push'
                     ],
                 ],
                 // [
@@ -90,7 +87,7 @@ $config = [
                 ],
                 'settings' => 'app\controllers\user\SettingsController'
             ],
-            'enableFlashMessages' => true
+            'enableFlashMessages' => false
             // 'modelMap' => [
             //     'User' => 'app\models\User',
             // ],

@@ -146,8 +146,8 @@ class UserController extends BaseActiveController
         $username = $vars['username'];
         $email = $vars['email'];
         $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
-        if ($exists){
-            return ['Error: username or email already exists'];
+        if ($exists) {
+            return $this->err('Error: username or email already exists');
         }
         $oldApp = \Yii::$app;
         new \yii\console\Application([
@@ -168,26 +168,43 @@ class UserController extends BaseActiveController
                     ],
                 ],
                 'modules' => [
-                    'user' =>  \Da\User\Module::class,
+                    'user' => \Da\User\Module::class,
                 ]
             ]
         );
-        $result = Yii::$app->runAction('user/create',[$email,$username,$vars['password']]);
+        $result = Yii::$app->runAction('user/create', [$email, $username, $vars['password']]);
         \Yii::$app = $oldApp;
         $user = User::findOne(['username' => $username]);
-        if (! ($user instanceof User)){
-            return ['Error creating user. Please try again or contact our support. Thank you'];
+        if (! ($user instanceof User)) {
+            return $this->err('Error creating user. Please try again or contact our support. Thank you');
         }
         /** @var $user User */
         $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
-        if ($profile instanceof \app\models\Profile){
+        if ($profile instanceof \app\models\Profile) {
             $profile->name = $vars['name'];
             try {
                 $profile->save();
-            } catch (\Exception $exception){
+            } catch (\Exception $exception) {
                 Yii::error($exception);
             }
         }
-        return ['User created successfully'];
+        return 'User created successfully';
+    }
+
+    /**
+     * Sign in via API
+     * username in param, pw in header
+     */
+    public function actionSignin()
+    {
+        $username = Yii::$app->request->get('username');
+        $pw = Yii::$app->request->headers->get('pw');
+        if (! $pw || ! $username) return $this->err('Must provide username in param, password in header pw', 401);
+        $identity = User::findOne(["username"=>$username]);
+        if (! ($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
+        $hash = $identity->password_hash;
+        $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
+        if (!$login_result) return $this->err('Wrong password, please try again', 401);
+        return 'Login validated';
     }
 }

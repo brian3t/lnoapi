@@ -3,7 +3,7 @@
 namespace app\api\base\controllers;
 
 use app\api\base\RequestBody;
-use app\api\base\RopResponse;
+use Yii;
 use yii\filters\Cors;
 use yii\helpers\ArrayHelper;
 use yii\rest\ActiveController;
@@ -14,7 +14,6 @@ use yii\web\Response;
  * @package app\api\base\controllers
  * @property RequestBody $requestbody
  * @property string $message
- * @property RopResponse $rop_response
  */
 class BaseActiveController extends ActiveController
 {
@@ -25,24 +24,24 @@ class BaseActiveController extends ActiveController
     {
         parent::init();
     }
-    
+
     public function behaviors()
     {
         $behaviors = parent::behaviors();
         $behaviors['contentNegotiator']['formats']['text/html'] = Response::FORMAT_JSON;
-        
+
         return ArrayHelper::merge([
             [
                 'class' => Cors::className(),
                 'cors' => [
                     'Origin' => ['*'],
-                    'Access-Control-Request-Methods'=>['GET','POST','OPTIONS','DELETE','PUT','PATCH'],
+                    'Access-Control-Request-Methods' => ['GET', 'POST', 'OPTIONS', 'DELETE', 'PUT', 'PATCH'],
                 ],
             ],
             // 'authenticator' => ['class' => HttpBasicAuth::className()]
         ], $behaviors);
     }
-    
+
     public function actions()
     {
         $actions = parent::actions();
@@ -54,5 +53,14 @@ class BaseActiveController extends ActiveController
             ],
         ]);
     }
-    
+
+    /** Error with an error message
+     * @param $err_mess
+     * @param int $status_code
+     */
+    protected function err($err_mess, $status_code = 500)
+    {
+        Yii::$app->getResponse()->statusCode = $status_code;
+        return $err_mess;
+    }
 }
