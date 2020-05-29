@@ -205,6 +205,6 @@ class UserController extends BaseActiveController
         $hash = $identity->password_hash;
         $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
         if (!$login_result) return $this->err('Wrong password, please try again', 401);
-        return 'Login validated';
+        return ['msg' => 'Login validated', 'id' => $identity->id];
     }
 }
