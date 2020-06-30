@@ -148,7 +148,7 @@ class DlController extends Controller
 //            $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
             $band_content = $band_crawler->filter('#content');
             $name = $band_content->filter('div.content_title > h2')->text();
-            if (empty($name)) {
+            if (empty($nampase)) {
                 return;
             }
             try {
