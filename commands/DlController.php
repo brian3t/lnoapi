@@ -16,7 +16,7 @@ use Yii;
 use yii\console\Controller;
 
 define('SDRCOM', 'https://www.sandiegoreader.com/');
-define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2018-07-04&end_date=2018-07-04
+define('SDREADER', 'https://www.sandiegoreader.com/events/search/?category=Genre');//&start_date=2020-06-01&end_date=2020-07-01
 define('SDREADER_LOCAL', 'http://lnoapi/scrape/Eventsearch_SanDiegoReader.html');
 define('SDREVENT_LOCAL', 'http://lnoapi/scrape/gingercowgirl.html');
 define('SDRBAND_LOCAL', 'http://lnoapi/scrape/band_gg_cowgirl.html');
@@ -67,8 +67,11 @@ class DlController extends Controller
         $event_client = new Client();
         $band_client = new Client();
         $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
+        $raw_html = $crawler->html();
+        //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
         $crawler->filter('table.event_list tr')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client) {
+            sleep(random_int(1, DELAY));
             /** @var Crawler $event_and_venue */
             [$venue_name, $venue_href] = current($event_and_venue->filter('h5.place > a')->extract(['_text', 'href']));
             if (empty($venue_name)) {
