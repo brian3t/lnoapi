@@ -74,16 +74,21 @@ class DlController extends Controller
         $client = new Client();
         $event_client = new Client();
         $band_client = new Client();
-        $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
-        $raw_html = $crawler->html();
-        file_put_contents(dirname(__DIR__) . "/tmp/scrape_raw/sdr.html", $raw_html);
+        if (isset($opt['debug']) && $opt['debug']) {
+            $raw_html = file_get_contents(dirname(__DIR__) . "/web/scrape/sdr_live.html");
+            $crawler = new Crawler($raw_html);
+        } else {
+            $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
+            $raw_html = $crawler->html();
+            file_put_contents(dirname(__DIR__) . "/web/scrape/sdr_live.html", $raw_html);
+        }
         //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
-        $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client) {
+        $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt) {
             if (isset($opt['debug']) && $opt['debug']) {
                 //dont delay
             } else {
-                sleep(random_int(1, DELAY));
+                sleep(random_int(2, DELAY));
             }
             /** @var Crawler $event_and_venue */
             [$event_name, $event_href] = current($event_and_venue->filter('a.event-title')->extract(['_text', 'href']));
@@ -96,9 +101,6 @@ class DlController extends Controller
             $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
             $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
             $has_local_artist = $h4_local_artist->count() > 0;
-            if (! $has_local_artist) {
-                return;
-            }
             //find out if venue already exists
             if ($venue_name) {
                 $venue_exist = Venue::findOne(['name' => $venue_name]);
