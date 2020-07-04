@@ -89,7 +89,8 @@ class DlController extends Controller
         $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler) {
             $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, July 3, 2020
             $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
-            $ev_date_utc = clone ($ev_date)->setTimezone(new \DateTimeZone('UTC'));
+            $ev_date_utc = clone ($ev_date);
+            $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
             $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc) {
                 if (isset($opt['debug']) && $opt['debug']) {
                     //dont delay
@@ -117,8 +118,10 @@ class DlController extends Controller
                     $venue->setAttributes(['name' => $venue_name,
                         'sdr_name' => str_replace('https://www.sandiegoreader.com', '', $venue_href),
                         'system_note' => $venue_href]);//'https://www.sandiegoreader.com' .
-                    $county = 'San Diego';
-                    $city = '';//7/3/20 td
+                    $venue->county = 'San Diego';
+                    $venue->source= 'sdr';
+                    $venue->state = 'CA';
+                    $venue->city=$event_and_venue->filter('div.event-content > a:last-child')->text();
                     $venue->save();
                     $venue_id = $venue->id;
                 } else {
@@ -142,7 +145,8 @@ class DlController extends Controller
                         $ev_time_str = $ev_time->text();//8pm
                         $ev_time = \DateTime::createFromFormat('h:ia', $ev_time_str);//hour and minute, such as 8:30pm
                         if ($ev_time === false) $ev_time = \DateTime::createFromFormat('ha', $ev_time_str); //hour only, such as 8pm
-                        $ev_time_utc = clone ($ev_time)->setTimezone(new \DateTimeZone('UTC'));
+                        $ev_time_utc = clone ($ev_time);
+                        $ev_time_utc->setTimezone(new \DateTimeZone('UTC'));
                     }
                     /* format for venue page
                     $date_and_time = $event_and_venue->filter('div.event-date-time')->text();// Friday, July 3, 2020, 8 p.m. //moment('dddd MMMM D YYYY h a')
@@ -494,7 +498,6 @@ class DlController extends Controller
                     echo 'Failed. ' . $events->getStatusCode();
                     return false;
                 }
-                sleep(DELAY);
                 $events = $events->getBody();
                 if (! method_exists($events, 'getContents')) {
                     echo 'Bad response. Url: ' . $url;

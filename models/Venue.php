@@ -9,6 +9,7 @@ use usv\yii2helper\models\ModelB3tTrait;
 
 /**
  * This is the model class for table "venue".
+ * @property string $county [varchar(80)]
  */
 class Venue extends BaseVenue
 {
