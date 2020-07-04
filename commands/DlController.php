@@ -22,8 +22,8 @@ define('SDREVENT_LOCAL', 'http://lnoapi/scrape/gingercowgirl.html');
 define('SDRBAND_LOCAL', 'http://lnoapi/scrape/band_gg_cowgirl.html');
 define('TICKMAS', 'https://www.ticketmaster.com/api/next/graphql?operationName=CategorySearch&extensions={"persistedQuery":{"version":1,"sha256Hash":"e6feb139aaeaa5a2bbcf9a37e6ee6bb29cca1d6dce85fb7746f25f859041c2b4"}}');
 
-define ('DELAY', 30);//delay sec b/w http req
-define ('MAX_SCRAPE_PER_DAY', 12);//stop if we reach this num per day
+define('DELAY', 30);//delay sec b/w http req
+define('MAX_SCRAPE_PER_DAY', 12);//stop if we reach this num per day
 
 /**
  * The behind the scenes magic happens here
@@ -40,6 +40,7 @@ class DlController extends Controller
         $this->SCRAPER_ID = \Yii::$app->params['scraper_id'];
         parent::init();
     }
+
     public function options($actionID)
     {
         return array_merge(parent::options($actionID), [
@@ -84,31 +85,40 @@ class DlController extends Controller
         }
         //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
-        $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt) {
-            if (isset($opt['debug']) && $opt['debug']) {
-                //dont delay
-            } else {
-                sleep(random_int(2, DELAY));
-            }
-            /** @var Crawler $event_and_venue */
-            [$event_name, $event_href] = current($event_and_venue->filter('a.event-title')->extract(['_text', 'href']));
-            if (empty($event_name)) {
-                return;
-            }
+        //first, go by date
+        $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler) {
+            $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, July 3, 2020
+            $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
+            $ev_date_utc = clone ($ev_date)->setTimezone(new \DateTimeZone('UTC'));
+            $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc) {
+                if (isset($opt['debug']) && $opt['debug']) {
+                    //dont delay
+                } else {
+                    sleep(random_int(2, DELAY));
+                }
+                /** @var Crawler $event_and_venue */
+                [$event_name, $event_href] = current($event_and_venue->filter('a.event-title')->extract(['_text', 'href']));
+                if (empty($event_name)) {
+                    return;
+                }
 
-            [$venue_name, $venue_href] = current($event_and_venue->filter('a.event-place + a')->extract(['_text', 'href']));
-            //see if it has local artist page
-            $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
-            $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
-            $has_local_artist = $h4_local_artist->count() > 0;
-            //find out if venue already exists
-            if ($venue_name) {
+                [$venue_name, $venue_href] = current($event_and_venue->filter('a.event-place + a')->extract(['_text', 'href']));
+                //see if it has local artist page
+                $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
+                $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
+                $has_local_artist = $h4_local_artist->count() > 0;
+                if (! $venue_name || empty($venue_name)) {
+                    return;
+                }
+                //find out if venue already exists
                 $venue_exist = Venue::findOne(['name' => $venue_name]);
                 if (! $venue_exist instanceof Venue) {
                     $venue = new Venue();
                     $venue->setAttributes(['name' => $venue_name,
                         'sdr_name' => str_replace('https://www.sandiegoreader.com', '', $venue_href),
                         'system_note' => $venue_href]);//'https://www.sandiegoreader.com' .
+                    $county = 'San Diego';
+                    $city = '';//7/3/20 td
                     $venue->save();
                     $venue_id = $venue->id;
                 } else {
@@ -127,13 +137,36 @@ class DlController extends Controller
                     $event = new Event();
                     $event->setAttributes(['created_by' => $this->SCRAPER_ID, 'name' => $event_name, 'source' => 'sdr',
                         'sdr_name' => str_replace('https://www.sandiegoreader.com/', '', $event_href), 'system_note' => $event_href]);//'https://www.sandiegoreader.com/' .
-                    $time = $event_and_venue->filter('td.time')->text();
-                    $city = $event_and_venue->filter('td.city>ul>li>a')->text();
-                    $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
+                    $ev_time = $event_and_venue->filter('div.event-time');
+                    if ($ev_time instanceof Crawler) {
+                        $ev_time_str = $ev_time->text();//8pm
+                        $ev_time = \DateTime::createFromFormat('h:ia', $ev_time_str);//hour and minute, such as 8:30pm
+                        if ($ev_time === false) $ev_time = \DateTime::createFromFormat('ha', $ev_time_str); //hour only, such as 8pm
+                        $ev_time_utc = clone ($ev_time)->setTimezone(new \DateTimeZone('UTC'));
+                    }
+                    /* format for venue page
+                    $date_and_time = $event_and_venue->filter('div.event-date-time')->text();// Friday, July 3, 2020, 8 p.m. //moment('dddd MMMM D YYYY h a')
+                    $date_and_time = \DateTime::createFromFormat('dddd MMMM D YYYY h a', $date_and_time);
+                    */
+                    //$city = $event_and_venue->filter('td.city>ul>li>a')->text();
+//                        $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
                     $event->venue_id = $venue_id;
-                    $event->date = $date_str;
-                    $event->date_utc = $date_str;
-                    $event->setAttributes(compact(['time', 'city', 'short_desc']));
+                    $event->date = $ev_date->format('Y-m-d');
+                    $event->date_utc = $ev_date_utc->format('Y-m-d');
+                    if ($ev_time instanceof \DateTime) {
+                        $event->start_time = $ev_time->format('H:i:s');
+                        $event->start_time_utc = $ev_time_utc->format('H:i:s');
+                    }
+                    $img = $event_and_venue->filter('div.event-avatar')->extract(['style']);
+                    $img = array_filter($img, function ($style) {
+                        return strpos($style, 'background-image2') !== FALSE;
+                    });
+                    $img = array_pop($img);//background-image: url('https://media.sandiegoreader.com/img/events/2020/tempLong_Run_t150.jpg?9327a3fb59f61056fdcd01aa32ef3b74a9932e1d');
+                    if (!empty($img)){
+                        $img = str_replace(['background-image: url(\'','\');'],'',$img);
+                    }
+                    $event->img = $img;
+//                        $event->setAttributes(compact(['time', 'city', 'short_desc']));
                     $event->save();
                     $event_id = $event->id;
                     if (is_int($event_id)) {
@@ -143,57 +176,57 @@ class DlController extends Controller
                 } else {
                     $event_id = $event->id;
                 }
-            }
-            //saving band info too
-            $band_href = $h4_local_artist->nextAll()->filter('div.image_grid a')->attr('href');
-            $band_crawler = $band_client->request('GET', SDRCOM . $band_href);
+                /*//saving band info too
+                $band_href = $h4_local_artist->nextAll()->filter('div.image_grid a')->attr('href');
+                $band_crawler = $band_client->request('GET', SDRCOM . $band_href);
 //            $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
-            $band_content = $band_crawler->filter('#content');
-            $name = $band_content->filter('div.content_title > h2')->text();
-            if (empty($nampase)) {
-                return;
-            }
-            try {
-                $name = strtolower($name);
-                $hometown_city = 'San Diego';
-                $hometown_state = 'CA';
-                $logo = $band_content->filter('img.lead_photo')->attr('src');
-                if (empty($logo)) {
+                $band_content = $band_crawler->filter('#content');
+                $name = $band_content->filter('div.content_title > h2')->text();
+                if (empty($nampase)) {
                     return;
                 }
-                $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
-                $genre = strtolower(str_replace(['Genre: ', ', '], ['', ','], $genre));
-                $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
-                $similar_to = strtolower(str_replace(['RIYL: ', ', '], ['', ','], $similar_to));
-                $description = $band_content->filter('h3#history')->parents()->text();
-                $related = $band_content->filter('h3#related')->parents();
-                $website = $related->filter('a:contains("website")')->attr('href');
-                $facebook = $related->filter('a:contains("Facebook")')->attr('href');
-            } catch (\Exception $e) {
-                $band_content = null;
-                $logo = null;
-                $genre = null;
-                $similar_to = null;
-                $description = null;
-                $website = null;
-                $facebook = null;
-            }
-            $band = Band::findOne(['name' => $name]);
-            if (! $band instanceof Band) {
-                $band = new Band();
-                $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
-                $band->type = 'originals';
-                $band->lno_score = random_int(5, 10);
-                $band->source = 'sdr';
-                $band->save();
-            }
-            $band_id = $band->id;
-            if (is_int($band_id) && is_int($event_id)) {
-                $band_event = new BandEvent();
-                $band_event->band_id = $band_id;
-                $band_event->event_id = $event_id;
-                $band_event->save();
-            }
+                try {
+                    $name = strtolower($name);
+                    $hometown_city = 'San Diego';
+                    $hometown_state = 'CA';
+                    $logo = $band_content->filter('img.lead_photo')->attr('src');
+                    if (empty($logo)) {
+                        return;
+                    }
+                    $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
+                    $genre = strtolower(str_replace(['Genre: ', ', '], ['', ','], $genre));
+                    $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
+                    $similar_to = strtolower(str_replace(['RIYL: ', ', '], ['', ','], $similar_to));
+                    $description = $band_content->filter('h3#history')->parents()->text();
+                    $related = $band_content->filter('h3#related')->parents();
+                    $website = $related->filter('a:contains("website")')->attr('href');
+                    $facebook = $related->filter('a:contains("Facebook")')->attr('href');
+                } catch (\Exception $e) {
+                    $band_content = null;
+                    $logo = null;
+                    $genre = null;
+                    $similar_to = null;
+                    $description = null;
+                    $website = null;
+                    $facebook = null;
+                }
+                $band = Band::findOne(['name' => $name]);
+                if (! $band instanceof Band) {
+                    $band = new Band();
+                    $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
+                    $band->type = 'originals';
+                    $band->lno_score = random_int(5, 10);
+                    $band->source = 'sdr';
+                    $band->save();
+                }
+                $band_id = $band->id;
+                if (is_int($band_id) && is_int($event_id)) {
+                    $band_event = new BandEvent();
+                    $band_event->band_id = $band_id;
+                    $band_event->event_id = $event_id;
+                    $band_event->save();
+                }*/
+            });
         });
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
     }
@@ -244,7 +277,6 @@ class DlController extends Controller
         $events_sdr = Event::find()->where(['source' => 'sdr'])->andFilterWhere(['or', ['img' => null], ['img' => '']])
 //            ->andWhere(['>=', 'updated_at', new Expression('DATE_SUB(CURDATE(), INTERVAL 7 DAY)')])
             ->all();
-//        $events_sdr = array_slice($events_sdr, 0, 1);//todob debugging
         foreach ($events_sdr as $event_sdr) {
 //            $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
 //            $crawler = $client->request('GET', 'http://lnoapi/scrape/Opera%20Appreciation%20Class%20_%20San%20Diego%20Reader.html');//local
@@ -410,7 +442,6 @@ class DlController extends Controller
                 }
                 $scraped++;
 //                echo "Pulled: $scraped events";
-//                return true;//todob debug
             }
         }
         echo "Pulled: $scraped events";
@@ -492,7 +523,7 @@ class DlController extends Controller
             } else {
                 $scrape_next_page = false;
             }
-            if (!is_object($events) || ! property_exists($events, 'items')) {
+            if (! is_object($events) || ! property_exists($events, 'items')) {
                 echo 'products not obj or products no items';
                 return false;
             }
