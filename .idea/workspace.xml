@@ -19,11 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="WIP: scrape sdr scraping venue city">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/Venue.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/Venue.php" afterDir="false" />
-    </list>
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="scrape sdr done basic; will scrape details later&#10;WIP: search features" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -408,13 +404,6 @@
       <workItem from="1585627662611" duration="2000000" />
       <workItem from="1586128996202" duration="2249000" />
     </task>
-    <task id="LOCAL-00016" summary="Done on Band has many events. Event has many bands.">
-      <created>1532036578515</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1532036578515</updated>
-    </task>
     <task id="LOCAL-00017" summary="Fix band form missing band_event">
       <created>1532379347853</created>
       <option name="number" value="00017" />
@@ -751,7 +740,14 @@
       <option name="project" value="LOCAL" />
       <updated>1593837683949</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="scrape sdr done basic; will scrape details later&#10;WIP: search features">
+      <created>1593887889618</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1593887889618</updated>
+    </task>
+    <option name="localTasksCounter" value="66" />
     <servers />
   </component>
   <component name="TodoView">
@@ -800,7 +796,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="todo:event expand" />
     <MESSAGE value="todo:event expand in js" />
     <MESSAGE value="don't consider ?page as db column" />
     <MESSAGE value="don't consider ?page or ?page_size as db column" />
@@ -825,7 +820,8 @@
     <MESSAGE value="WIP: scrape sdr improve" />
     <MESSAGE value="WIP: scrape sdr scraping event details" />
     <MESSAGE value="WIP: scrape sdr scraping venue city" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP: scrape sdr scraping venue city" />
+    <MESSAGE value="scrape sdr done basic; will scrape details later&#10;WIP: search features" />
+    <option name="LAST_COMMIT_MESSAGE" value="scrape sdr done basic; will scrape details later&#10;WIP: search features" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -1002,13 +998,13 @@
     <state width="615" height="444" key="SwitcherDM/0.0.1920.1055@0.0.1920.1055" timestamp="1590460458897" />
     <state width="820" height="595" key="SwitcherDM/0.0.2560.1413@0.0.2560.1413" timestamp="1590424774745" />
     <state width="820" height="596" key="SwitcherDM/0.0.2560.1416@0.0.2560.1416" timestamp="1593488625220" />
-    <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2" timestamp="1593837685744">
+    <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2" timestamp="1593887890851">
       <screen x="0" y="0" width="1920" height="1056" />
     </state>
     <state x="555" y="261" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1586130397150" />
     <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1589000004410" />
     <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.1920.1055@0.0.1920.1055" timestamp="1590781943515" />
-    <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.1920.1056@0.0.1920.1056" timestamp="1593837685744" />
+    <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.1920.1056@0.0.1920.1056" timestamp="1593887890851" />
     <state x="740" y="354" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.2560.1413@0.0.2560.1413" timestamp="1589732870718" />
     <state x="740" y="354" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.2560.1416@0.0.2560.1416" timestamp="1593493268793" />
     <state width="963" height="533" key="XDebugger.FullValuePopup" timestamp="1593754473752">

@@ -89,7 +89,11 @@ class DlController extends Controller
         $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler) {
             $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, July 3, 2020
             $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
-            $ev_date_utc = clone ($ev_date);
+            if ($ev_date instanceof \DateTime) {
+                $ev_date_utc = clone($ev_date);
+            } else {
+                $ev_date_utc = new \DateTime();
+            }
             $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
             $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc) {
                 if (isset($opt['debug']) && $opt['debug']) {
@@ -119,9 +123,9 @@ class DlController extends Controller
                         'sdr_name' => str_replace('https://www.sandiegoreader.com', '', $venue_href),
                         'system_note' => $venue_href]);//'https://www.sandiegoreader.com' .
                     $venue->county = 'San Diego';
-                    $venue->source= 'sdr';
+                    $venue->source = 'sdr';
                     $venue->state = 'CA';
-                    $venue->city=$event_and_venue->filter('div.event-content > a:last-child')->text();
+                    $venue->city = $event_and_venue->filter('div.event-content > a:last-child')->text();
                     $venue->save();
                     $venue_id = $venue->id;
                 } else {
@@ -145,7 +149,9 @@ class DlController extends Controller
                         $ev_time_str = $ev_time->text();//8pm
                         $ev_time = \DateTime::createFromFormat('h:ia', $ev_time_str);//hour and minute, such as 8:30pm
                         if ($ev_time === false) $ev_time = \DateTime::createFromFormat('ha', $ev_time_str); //hour only, such as 8pm
-                        $ev_time_utc = clone ($ev_time);
+                        if ($ev_time instanceof \DateTime) {
+                            $ev_time_utc = clone($ev_time);
+                        } else $ev_time_utc = new \DateTime();
                         $ev_time_utc->setTimezone(new \DateTimeZone('UTC'));
                     }
                     /* format for venue page
@@ -166,8 +172,8 @@ class DlController extends Controller
                         return strpos($style, 'background-image2') !== FALSE;
                     });
                     $img = array_pop($img);//background-image: url('https://media.sandiegoreader.com/img/events/2020/tempLong_Run_t150.jpg?9327a3fb59f61056fdcd01aa32ef3b74a9932e1d');
-                    if (!empty($img)){
-                        $img = str_replace(['background-image: url(\'','\');'],'',$img);
+                    if (! empty($img)) {
+                        $img = str_replace(['background-image: url(\'', '\');'], '', $img);
                     }
                     $event->img = $img;
 //                        $event->setAttributes(compact(['time', 'city', 'short_desc']));
