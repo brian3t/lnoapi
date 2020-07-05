@@ -169,7 +169,7 @@ class DlController extends Controller
                     }
                     $img = $event_and_venue->filter('div.event-avatar')->extract(['style']);
                     $img = array_filter($img, function ($style) {
-                        return strpos($style, 'background-image2') !== FALSE;
+                        return strpos($style, 'background-image') !== FALSE;
                     });
                     $img = array_pop($img);//background-image: url('https://media.sandiegoreader.com/img/events/2020/tempLong_Run_t150.jpg?9327a3fb59f61056fdcd01aa32ef3b74a9932e1d');
                     if (! empty($img)) {
