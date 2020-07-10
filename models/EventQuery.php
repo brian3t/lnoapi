@@ -32,4 +32,9 @@ class EventQuery extends \yii\db\ActiveQuery
     {
         return parent::one($db);
     }
+
+    public function init(){
+        $a=1;
+    }
+
 }

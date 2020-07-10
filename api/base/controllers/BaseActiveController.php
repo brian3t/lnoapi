@@ -63,4 +63,11 @@ class BaseActiveController extends ActiveController
         Yii::$app->getResponse()->statusCode = $status_code;
         return $err_mess;
     }
+
+    public function beforeAction($action)
+    {
+        if (Yii::$app->request->method !== 'GET') return parent::beforeAction($action);
+        $query_params = Yii::$app->request->getQueryParams();
+        return parent::beforeAction($action);
+    }
 }
