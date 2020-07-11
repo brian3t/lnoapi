@@ -8,7 +8,6 @@ namespace app\api\modules\v1\controllers;
 use app\api\base\controllers\BaseActiveController;
 use app\models\EventQuery;
 use yii\data\ActiveDataProvider;
-use yii\db\Expression;
 
 require_once realpath(dirname(dirname(dirname(dirname(__DIR__))))) . "/models/constants.php";
 class EventController extends BaseActiveController
@@ -40,11 +39,7 @@ class EventController extends BaseActiveController
         $page_size = $params['page_size']??false;
         unset($params['page_size']);
         $query = new EventQuery($this->modelClass);
-        $query->params = $params;//070920
-        $query = $query->where(['>=', 'date_utc', (new Expression("DATE_SUB(CURDATE(), INTERVAL $date_end DAY)"))]);
-        if (isset($params['source'])){
-            $query = $query->andWhere(['in', 'source', ($params['source'] ?? [])]);
-        }
+        $query->set_query_params($params);
         // get the total number of articles (but do not fetch the article data yet)
 //        $count = $query->count();
         $dp = new ActiveDataProvider(
@@ -60,6 +55,7 @@ class EventController extends BaseActiveController
         if (YII_DEBUG) {
             $dp->pagination = false;
         }
+//        return $query->asArray();//zsdf
         return $dp;
     }
 
