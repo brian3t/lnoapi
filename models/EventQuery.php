@@ -65,14 +65,14 @@ class EventQuery extends \yii\db\ActiveQuery
                 $this->andWhere(['<=', $param, $val]);
                 continue;
             }
-            if (PHPHelper::ends_with($param, '_start')) {
-                $param = str_replace('_start', '',$param);
+            if (PHPHelper::ends_with($param, '_offset_bk')) {
+                $param = str_replace('_offset_bk', '',$param);
                 $val = intval($val);
                 $this->andWhere(['>=', $param, new Expression("DATE_SUB(CURDATE(), INTERVAL $val DAY)")]);
                 continue;
             }
-            if (PHPHelper::ends_with($param, '_end')) {
-                $param = str_replace('_end', '',$param);
+            if (PHPHelper::ends_with($param, '_offset_fwd')) {
+                $param = str_replace('_offset_fwd', '',$param);
                 $val = intval($val);
                 $this->andWhere(['<=', $param, new Expression("DATE_ADD(CURDATE(), INTERVAL $val DAY)")]);
                 continue;
