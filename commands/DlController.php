@@ -76,12 +76,12 @@ class DlController extends Controller
         $event_client = new Client();
         $band_client = new Client();
         if (isset($opt['debug']) && $opt['debug']) {
-            $raw_html = file_get_contents(dirname(__DIR__) . "/web/scrape/sdr_live.html");
+            $raw_html = file_get_contents(dirname(__DIR__) . "/web/scrape/ig_sdr_live.html");
             $crawler = new Crawler($raw_html);
         } else {
             $crawler = $client->request('GET', SDREADER, ['start_date' => $date_str, 'end_date' => $date_str]);
             $raw_html = $crawler->html();
-            file_put_contents(dirname(__DIR__) . "/web/scrape/sdr_live.html", $raw_html);
+            file_put_contents(dirname(__DIR__) . "/web/scrape/ig_sdr_live.html", $raw_html);
         }
         //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);

@@ -37,3 +37,5 @@ api/assets/
 web/index.php
 api/index.php
 /index.php
+
+web/scrape/ig_*.html
