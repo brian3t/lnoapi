@@ -19,12 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="minor updates">
-      <change afterPath="$PROJECT_DIR$/iag_abc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ig_abc.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="exclude downloaded html file">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/DlController.php" beforeDir="false" afterPath="$PROJECT_DIR$/commands/DlController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/EventQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/EventQuery.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -410,13 +407,6 @@
       <workItem from="1585627662611" duration="2000000" />
       <workItem from="1586128996202" duration="2249000" />
     </task>
-    <task id="LOCAL-00024" summary="Enable event search">
-      <created>1560459967135</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1560459967135</updated>
-    </task>
     <task id="LOCAL-00025" summary="update composer lock with `composer update --lock`">
       <created>1560524413768</created>
       <option name="number" value="00025" />
@@ -753,7 +743,14 @@
       <option name="project" value="LOCAL" />
       <updated>1594610267149</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="exclude downloaded html file">
+      <created>1595039168768</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1595039168768</updated>
+    </task>
+    <option name="localTasksCounter" value="74" />
     <servers />
   </component>
   <component name="TodoView">
@@ -802,7 +799,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Adding 3 lines of code for filter to venues" />
     <MESSAGE value="No Need to Float Headers" />
     <MESSAGE value="MUST DO COMPOSER PULL!&#10;&#10;- oshin to pull daily-tasks&#10;- update geocoder code. Old packagist https://github.com/jstayton/Miner/ outdated" />
     <MESSAGE value="better geocode handling" />
@@ -827,7 +823,8 @@
     <MESSAGE value="WIP: date_offset_bk and date_offset_fwd" />
     <MESSAGE value="0712a" />
     <MESSAGE value="minor updates" />
-    <option name="LAST_COMMIT_MESSAGE" value="minor updates" />
+    <MESSAGE value="exclude downloaded html file" />
+    <option name="LAST_COMMIT_MESSAGE" value="exclude downloaded html file" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
@@ -1022,8 +1019,8 @@
     <state width="615" height="445" key="SwitcherDM/0.0.1920.1057@0.0.1920.1057" timestamp="1594576297204" />
     <state width="820" height="595" key="SwitcherDM/0.0.2560.1413@0.0.2560.1413" timestamp="1590424774745" />
     <state width="820" height="596" key="SwitcherDM/0.0.2560.1416@0.0.2560.1416" timestamp="1593970823306" />
-    <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2" timestamp="1594610269471">
-      <screen x="0" y="0" width="1920" height="1057" />
+    <state x="740" y="354" width="800" height="524" key="Vcs.Push.Dialog.v2" timestamp="1595039170245">
+      <screen x="0" y="0" width="2560" height="1417" />
     </state>
     <state x="555" y="263" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.1920.1049@0.0.1920.1049" timestamp="1589000004410" />
     <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.1920.1055@0.0.1920.1055" timestamp="1590781943515" />
@@ -1031,7 +1028,7 @@
     <state x="555" y="264" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.1920.1057@0.0.1920.1057" timestamp="1594610269471" />
     <state x="740" y="354" width="810" height="532" key="Vcs.Push.Dialog.v2/0.0.2560.1413@0.0.2560.1413" timestamp="1589732870718" />
     <state x="740" y="354" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.2560.1416@0.0.2560.1416" timestamp="1593971459208" />
-    <state x="740" y="354" key="Vcs.Push.Dialog.v2/0.0.2560.1417@0.0.2560.1417" timestamp="1594356443607" />
+    <state x="740" y="354" width="800" height="524" key="Vcs.Push.Dialog.v2/0.0.2560.1417@0.0.2560.1417" timestamp="1595039170245" />
     <state width="963" height="533" key="XDebugger.FullValuePopup" timestamp="1593754473752">
       <screen x="0" y="0" width="1920" height="1056" />
     </state>
@@ -1074,7 +1071,7 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1589163149350" />
     <state x="619" y="239" key="run.anything.popup/0.0.1920.1055@0.0.1920.1055" timestamp="1590601596173" />
-    <state x="832" y="235" width="896" height="911" key="search.everywhere.popup" timestamp="1595038704962">
+    <state x="832" y="235" width="896" height="911" key="search.everywhere.popup" timestamp="1595040557492">
       <screen x="0" y="0" width="2560" height="1417" />
     </state>
     <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1589254849550" />
@@ -1083,7 +1080,7 @@
     <state x="624" y="175" width="672" height="679" key="search.everywhere.popup/0.0.1920.1057@0.0.1920.1057" timestamp="1594436297947" />
     <state x="832" y="233" width="896" height="906" key="search.everywhere.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1590424210375" />
     <state x="832" y="234" width="896" height="908" key="search.everywhere.popup/0.0.2560.1416@0.0.2560.1416" timestamp="1593489914690" />
-    <state x="832" y="235" width="896" height="911" key="search.everywhere.popup/0.0.2560.1417@0.0.2560.1417" timestamp="1595038704962" />
+    <state x="832" y="235" width="896" height="911" key="search.everywhere.popup/0.0.2560.1417@0.0.2560.1417" timestamp="1595040557492" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
