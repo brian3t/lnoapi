@@ -45,7 +45,7 @@ class EventQuery extends \yii\db\ActiveQuery
     /**
      * Set query params
      * This method also prepares all the neccessary where_s
-     * Future: this will become part of YiiHelper
+     * bn Future: this will become part of YiiHelper
      * @param $params
      */
     public function set_query_params($params)
@@ -97,10 +97,19 @@ class EventQuery extends \yii\db\ActiveQuery
      */
     public function set_query_params_pre($params)
     {
-        if (isset($params['mile'])) {
-            $mile = $params['mile'];
-
+        if (isset($params['cen_lat'])) {
+            $cen_lat = $params['cen_lat'];
+            unset($params['cen_lat']);
         }
+        if (isset($params['cen_lng'])) {
+            $cen_lng = $params['cen_lng'];
+            unset($params['cen_lng']);
+        }
+        if (!is_numeric($cen_lat) || !is_numeric($cen_lng)) return;
+        if (isset($params['miles_away'])) {
+            $mile = $params['miles_away'];
+        }
+        if (!is_numeric($mile)) return;
     }
 /*
     function lat_lng_distance($lat1, $lon1, $lat2, $lon2, $unit)
