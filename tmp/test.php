@@ -74,17 +74,21 @@ function rev_haversin(float $lon, float $lat, float $bearing, int $distance)
             lon2 (Math/toDegrees (+ lon1 (Math/atan2 (* (Math/sin theta) (Math/sin angdist) (Math/cos lat1)) (- (Math/cos angdist) (* (Math/sin lat1) (Math/sin lat2))))))]
         {:lat lat2 :lon lon2}))
     */
-
 }
 
+/**
+ * Returns max delta in lat/lng, based on mile distance
+ * @param $mile
+ * @return float
+ */
 function rev_haversin_simple($mile)
 {
     $MILE_TO_KM = 1.60934;
-    return $mile * $MILE_TO_KM * (1 / 111) * 0.66; //1km = 1/111 deg ; multiply by .66 to balance off bird-fly vs dog-run
+    return $mile * $MILE_TO_KM * (1 / 111) * 0.66 / 2; //1km = 1/111 deg ; multiply by .66 to balance off bird-fly vs dog-run ; divide by 2 for radius (half north half south)
 }
 
-$lat = 32.948982;
-$lng = -117.018513;
+$lat = 32.9494003;//32.9494003,-117.018874,15z
+$lng = -117.018874;
 $delta = rev_haversin_simple(25);
 $newlat= $lat + $delta;
 

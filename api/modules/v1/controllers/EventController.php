@@ -18,7 +18,6 @@ class EventController extends BaseActiveController
     public function actions()
     {
         $actions = parent::actions();
-
         // disable the default REST actions
 //        unset($actions['index']);
 
