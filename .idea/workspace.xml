@@ -19,10 +19,7 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="WIP: convert miles to lat/lng box">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
+    <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="tweak haversin a bit">
       <change beforePath="$PROJECT_DIR$/yii2helper/PHPHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper/PHPHelper.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -80,10 +77,10 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$/yii2helper" value="ff26d880a803a3c501a141013cb8379c1a60636c" />
+        <entry key="$PROJECT_DIR$/yii2helper" value="219999e5ea40ee992a5a9082343ed30a2bd92700" />
       </map>
     </option>
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/yii2helper" />
     <option name="ROOT_SYNC" value="DONT_SYNC" />
   </component>
   <component name="PhpDebugGeneral" listening_started="true" />
@@ -409,13 +406,6 @@
       <workItem from="1582950822257" duration="1548000" />
       <workItem from="1585627662611" duration="2000000" />
       <workItem from="1586128996202" duration="2249000" />
-    </task>
-    <task id="LOCAL-00027" summary="0215: reducing data load">
-      <created>1581827948557</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1581827948557</updated>
     </task>
     <task id="LOCAL-00028" summary="todo: why saving attr failed. Research existing code">
       <created>1581917597800</created>
@@ -753,7 +743,14 @@
       <option name="project" value="LOCAL" />
       <updated>1595826164626</updated>
     </task>
-    <option name="localTasksCounter" value="76" />
+    <task id="LOCAL-00076" summary="tweak haversin a bit">
+      <created>1596384210899</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1596384210900</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TodoView">
@@ -802,7 +799,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="better geocode handling" />
     <MESSAGE value="add band' videos" />
     <MESSAGE value="todo: show youtube thumbnail" />
     <MESSAGE value="todo: page to verify youtube url" />
@@ -827,7 +823,8 @@
     <MESSAGE value="exclude downloaded html file" />
     <MESSAGE value="WIP: convert miles / lat/lng" />
     <MESSAGE value="WIP: convert miles to lat/lng box" />
-    <option name="LAST_COMMIT_MESSAGE" value="WIP: convert miles to lat/lng box" />
+    <MESSAGE value="tweak haversin a bit" />
+    <option name="LAST_COMMIT_MESSAGE" value="tweak haversin a bit" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="WindowStateProjectService">
