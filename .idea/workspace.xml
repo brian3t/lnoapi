@@ -20,12 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7438db3e-dd8e-4386-a121-d31b0f7f0372" name="Default" comment="WIP: convert miles to lat/lng box">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/config/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/config/api.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/modules/v1/controllers/EventController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/EventQuery.php" beforeDir="false" afterPath="$PROJECT_DIR$/models/EventQuery.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp/test.php" beforeDir="false" afterPath="$PROJECT_DIR$/tmp/test.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yii2helper" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yii2helper/PHPHelper.php" beforeDir="false" afterPath="$PROJECT_DIR$/yii2helper/PHPHelper.php" afterDir="false" />
     </list>
@@ -1022,13 +1018,13 @@
     <state x="545" y="183" width="1022" height="734" key="SettingsEditor/0.0.1920.1049@0.0.1920.1049" timestamp="1588829611348" />
     <state x="545" y="185" width="910" height="730" key="SettingsEditor/0.0.1920.1057@0.0.1920.1057" timestamp="1596249208555" />
     <state x="727" y="247" key="SettingsEditor/0.0.2560.1413@0.0.2560.1413" timestamp="1590423362959" />
-    <state width="615" height="453" key="SwitcherDM" timestamp="1596260092755">
-      <screen x="0" y="0" width="1920" height="1057" />
+    <state width="820" height="595" key="SwitcherDM" timestamp="1596383484180">
+      <screen x="0" y="0" width="2560" height="1413" />
     </state>
     <state width="615" height="441" key="SwitcherDM/0.0.1920.1049@0.0.1920.1049" timestamp="1589164428968" />
     <state width="615" height="444" key="SwitcherDM/0.0.1920.1055@0.0.1920.1055" timestamp="1590460458897" />
     <state width="615" height="453" key="SwitcherDM/0.0.1920.1057@0.0.1920.1057" timestamp="1596260092755" />
-    <state width="820" height="595" key="SwitcherDM/0.0.2560.1413@0.0.2560.1413" timestamp="1590424774745" />
+    <state width="820" height="595" key="SwitcherDM/0.0.2560.1413@0.0.2560.1413" timestamp="1596383484180" />
     <state width="820" height="596" key="SwitcherDM/0.0.2560.1416@0.0.2560.1416" timestamp="1593970823306" />
     <state width="820" height="597" key="SwitcherDM/0.0.2560.1417@0.0.2560.1417" timestamp="1596167267523" />
     <state x="740" y="354" width="800" height="524" key="Vcs.Push.Dialog.v2" timestamp="1595826165888">
@@ -1085,14 +1081,14 @@
     </state>
     <state x="619" y="238" key="run.anything.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1589163149350" />
     <state x="619" y="239" key="run.anything.popup/0.0.1920.1055@0.0.1920.1055" timestamp="1590601596173" />
-    <state x="624" y="175" width="672" height="679" key="search.everywhere.popup" timestamp="1596248959979">
-      <screen x="0" y="0" width="1920" height="1057" />
+    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup" timestamp="1596383487537">
+      <screen x="0" y="0" width="2560" height="1413" />
     </state>
     <state x="624" y="173" width="672" height="672" key="search.everywhere.popup/0.0.1920.1049@0.0.1920.1049" timestamp="1589254849550" />
     <state x="624" y="174" width="672" height="676" key="search.everywhere.popup/0.0.1920.1055@0.0.1920.1055" timestamp="1590458473247" />
     <state x="624" y="175" width="672" height="678" key="search.everywhere.popup/0.0.1920.1056@0.0.1920.1056" timestamp="1593752355351" />
     <state x="624" y="175" width="672" height="679" key="search.everywhere.popup/0.0.1920.1057@0.0.1920.1057" timestamp="1596248959979" />
-    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1590424210375" />
+    <state x="832" y="233" width="896" height="906" key="search.everywhere.popup/0.0.2560.1413@0.0.2560.1413" timestamp="1596383487537" />
     <state x="832" y="234" width="896" height="908" key="search.everywhere.popup/0.0.2560.1416@0.0.2560.1416" timestamp="1593489914690" />
     <state x="832" y="235" width="896" height="911" key="search.everywhere.popup/0.0.2560.1417@0.0.2560.1417" timestamp="1596167336482" />
   </component>
@@ -1108,11 +1104,6 @@
           <url>file://$PROJECT_DIR$/vendor/2amigos/yii2-usuario/src/User/Module.php</url>
           <line>96</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="php">
-          <url>file://$PROJECT_DIR$/models/EventQuery.php</url>
-          <line>88</line>
-          <option name="timeStamp" value="35" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
