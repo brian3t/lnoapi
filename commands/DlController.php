@@ -93,6 +93,7 @@ class DlController extends Controller
                 $ev_date_utc = clone($ev_date);
             } else {
                 $ev_date_utc = new \DateTime();
+                $ev_date = new \DateTime();
             }
             $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
             $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc) {
