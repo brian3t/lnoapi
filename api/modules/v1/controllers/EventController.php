@@ -54,7 +54,7 @@ class EventController extends BaseActiveController
         if (YII_DEBUG) {
             $dp->pagination = false;
         }
-//        return $query->asArray();//zsdf
+//        return $query->createCommand()->rawSql;//zsdf
         return $dp;
     }
 
