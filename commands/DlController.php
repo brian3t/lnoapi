@@ -75,7 +75,10 @@ class DlController extends Controller
         $client = new Client();
         $event_client = new Client();
         $band_client = new Client();
-        if (isset($opt['debug']) && $opt['debug']) {
+        $is_debug = isset($opt['debug']) && $opt['debug'];
+        $is_local = isset($opt['local']) && $opt['local'];
+        $is_logging = isset($opt['log']) && $opt['log'];
+        if ($is_local) {
             $raw_html = file_get_contents(dirname(__DIR__) . "/web/scrape/ig_sdr_live.html");
             $crawler = new Crawler($raw_html);
         } else {
@@ -86,7 +89,7 @@ class DlController extends Controller
         //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
         //first, go by date
-        $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler) {
+        $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler, $is_logging) {
             $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, Aug. 3, 2020
             $ev_date_str = str_replace('.', '', $ev_date_str);
             $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
@@ -97,7 +100,7 @@ class DlController extends Controller
                 $ev_date = new \DateTime();
             }
             $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
-            $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc) {
+            $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc, $is_logging) {
                 if (isset($opt['debug']) && $opt['debug']) {
                     //dont delay
                 } else {
@@ -105,15 +108,18 @@ class DlController extends Controller
                 }
                 /** @var Crawler $event_and_venue */
                 [$event_name, $event_href] = current($event_and_venue->filter('a.event-title')->extract(['_text', 'href']));
+                if ($is_logging) echo "event name: $event_name . ";
                 if (empty($event_name)) {
                     return;
                 }
 
-                [$venue_name, $venue_href] = current($event_and_venue->filter('a.event-place + a')->extract(['_text', 'href']));
+                $venue_name = $event_and_venue->filter('a.event-place > div.event-location')->text();
+                $venue_href = current($event_and_venue->filter('a.event-place')->extract(['href']));
                 //see if it has local artist page
                 $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
                 $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
                 $has_local_artist = $h4_local_artist->count() > 0;
+                if ($is_logging) echo "venue name: ". $venue_name . " . ";
                 if (! $venue_name || empty($venue_name)) {
                     return;
                 }
@@ -127,7 +133,8 @@ class DlController extends Controller
                     $venue->county = 'San Diego';
                     $venue->source = 'sdr';
                     $venue->state = 'CA';
-                    $venue->city = $event_and_venue->filter('div.event-content > a:last-child')->text();
+                    $city_el = $event_and_venue->filter('a.event-place + a');
+                    if (is_object($city_el) && $city_el->count()) $venue->city = $city_el->text();
                     $venue->save();
                     $venue_id = $venue->id;
                 } else {
@@ -136,8 +143,10 @@ class DlController extends Controller
                 if (! is_int($venue_id)) {
                     return;//when failed saving new venue / pulling existing venue
                 }
-                Yii::$app->db->createCommand("UPDATE venue SET `created_by` = :created_by WHERE `id` = :venue_id")
-                    ->bindValues([':created_by' => $this->SCRAPER_ID, ':venue_id' => $venue_id])->execute();
+                Yii::$app->db->createCommand("UPDATE venue SET `created_by` = :created_by WHERE `id` = :venue_id", [
+                    ':created_by' => $this->SCRAPER_ID,
+                    ':venue_id' => $venue_id
+                ])->execute();
                 $records++;
                 //find out if event already exists
                 $event = new Event();
@@ -180,9 +189,13 @@ class DlController extends Controller
                     $event->img = $img;
 //                        $event->setAttributes(compact(['time', 'city', 'short_desc']));
                     $event->save();
+                    if ($is_logging) echo "event saved: " . json_encode($event->attributes). '\n';
                     $event_id = $event->id;
                     if (is_int($event_id)) {
-                        Yii::$app->db->createCommand("UPDATE event SET `created_by` = :created_by WHERE `id` = :id")->bindValues([':created_by' => $this->SCRAPER_ID, ':id' => $event_id])->execute();
+                        Yii::$app->db->createCommand("UPDATE event SET `created_by` = :created_by WHERE `id` = :id", [
+                            ':created_by' => $this->SCRAPER_ID,
+                            ':id' => $event_id
+                        ])->execute();
                     }
                     $records++;
                 } else {
@@ -239,6 +252,7 @@ class DlController extends Controller
                     $band_event->save();
                 }*/
             });
+            echo "| $records \n";
         });
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
     }
