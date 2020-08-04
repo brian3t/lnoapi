@@ -66,7 +66,7 @@ class DlController extends Controller
      * @param int $days_forward lookahead
      * @throws \Exception
      */
-    public function actionScrapeSdr($days_forward = 7)
+    public function actionScrapeSdr($days_forward = 1)
     {
         $date = (new \DateTime())->add(new \DateInterval("P{$days_forward}D"));
         $opt = json_decode($this->opt, true);
@@ -87,7 +87,8 @@ class DlController extends Controller
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
         //first, go by date
         $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler) {
-            $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, July 3, 2020
+            $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, Aug. 3, 2020
+            $ev_date_str = str_replace('.', '', $ev_date_str);
             $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
             if ($ev_date instanceof \DateTime) {
                 $ev_date_utc = clone($ev_date);
