@@ -111,7 +111,6 @@ $this->params['breadcrumbs'][] = $this->title;
     $gridColumnUser = [
         ['attribute' => 'id', 'visible' => false],
         'username',
-        'first_name',
     ];
     echo DetailView::widget([
         'model' => $model->createdBy,

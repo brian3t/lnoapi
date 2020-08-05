@@ -121,13 +121,14 @@ if($providerBandEvent->totalCount){
         ['attribute' => 'id', 'visible' => false],
         'username',
         'email',
-        'first_name',
     ];?>
     <div class="col-md-6">
     <?php
-    echo DetailView::widget([
-        'model' => $model->createdBy,
-        'attributes' => $gridColumnUser    ]);
+    if ($model->createdBy instanceof \app\models\User) {
+        echo DetailView::widget([
+            'model' => $model->createdBy,
+            'attributes' => $gridColumnUser]);
+    }
     ?>
     </div>
     <div class="col-md-6">
