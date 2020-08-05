@@ -89,7 +89,7 @@ class DlController extends Controller
         //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
         //first, go by date
-        $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler, $is_logging) {
+        $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler, $is_debug, $is_logging) {
             $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, Aug. 3, 2020
             $ev_date_str = str_replace('.', '', $ev_date_str);
             $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
@@ -100,7 +100,7 @@ class DlController extends Controller
                 $ev_date = new \DateTime();
             }
             $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
-            $crawler->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc, $is_logging) {
+            $ev_per_date->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc, $is_logging) {
                 if (isset($opt['debug']) && $opt['debug']) {
                     //dont delay
                 } else {
@@ -253,6 +253,7 @@ class DlController extends Controller
                 }*/
             });
             echo "| $records \n";
+            if ($is_debug && $records > 0) die();
         });
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
     }
