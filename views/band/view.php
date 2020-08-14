@@ -53,6 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description:ntext',
             'website:url',
             'youtube:url',
+            'ytlink_first:url',
             'instagram:url',
             'facebook',
             'twitter',
