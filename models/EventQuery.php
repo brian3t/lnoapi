@@ -10,6 +10,7 @@ use yii\db\Expression;
  *
  * @see Event
  * @property array $query_params
+ * @property \yii\db\ActiveRecord $model
  */
 class EventQuery extends \yii\db\ActiveQuery
 {
@@ -18,7 +19,7 @@ class EventQuery extends \yii\db\ActiveQuery
         $this->andWhere('[[status]]=1');
         return $this;
     }*/
-
+    private static $model;
     /**
      * @inheritdoc
      * @return Event[]|array
@@ -39,13 +40,15 @@ class EventQuery extends \yii\db\ActiveQuery
 
     public function init()
     {
+        $model_class_name = $this->modelClass;
+        $this::$model = ($model_class_name)::getTableSchema();
         $this->alias('e');
     }
 
     /**
      * Set query params
      * This method also prepares all the neccessary where_s
-     * bn Future: this will become part of YiiHelper
+     * bn Future: this will become part of Core ( YiiHelper )
      * @param $params
      */
     public function set_query_params($params)
@@ -83,6 +86,10 @@ class EventQuery extends \yii\db\ActiveQuery
                 $param = str_replace('_offset_fwd', '', $param);
                 $val = intval($val);
                 $this->andWhere(['<=', $param, new Expression("DATE_ADD(CURDATE(), INTERVAL $val DAY)")]);
+                unset($params[$param]);
+                continue;
+            }
+            if (!isset($this::$model->columns[$param])){
                 unset($params[$param]);
                 continue;
             }
