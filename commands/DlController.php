@@ -266,30 +266,34 @@ class DlController extends Controller
         $updated = 0;
         $venues_wo_addr = Venue::find()->where(['not', ['sdr_name' => null]])->andWhere(['address1' => null])->all();
         $venue_client = new Client();
-        foreach ($venues_wo_addr as $venue_wo_addr) {
-            $sdr_url = SDRCOM . $venue_wo_addr->sdr_name;
-            $sdr_url = str_replace(SDRCOM . SDRCOM, SDRCOM, $sdr_url);//remove duplicates
-            $crawler = $venue_client->request('GET', $sdr_url);
-            $type_a = $crawler->filter('ul.categories > li:first-child > a');
-            if ($type_a instanceof Crawler) {
-                $type = $type_a->text();
-            } else {
-                $type = null;
+        try {
+            foreach ($venues_wo_addr as $venue_wo_addr) {
+                $sdr_url = SDRCOM . $venue_wo_addr->sdr_name;
+                $sdr_url = str_replace(SDRCOM . SDRCOM, SDRCOM, $sdr_url);//remove duplicates
+                $crawler = $venue_client->request('GET', $sdr_url);
+                $type_a = $crawler->filter('ul.categories > li:first-child > a');
+                if ($type_a instanceof Crawler) {
+                    $type = $type_a->text();
+                } else {
+                    $type = null;
+                }
+                $addr_a = $crawler->filter('a:contains("Directions")');
+                if ($addr_a instanceof Crawler) {
+                    $addr = $addr_a->parents()->text();
+                }
+                if (empty($addr)) {
+                    return false;
+                }
+                $addr = str_replace(' | Directions', '', $addr);
+                $addr = str_replace(' (NCC)', '', $addr);
+                $address_variables = PHPHelper::parseAddress($addr);
+                $venue_wo_addr->setAttributes($address_variables);
+                if ($venue_wo_addr->save()) {
+                    $updated++;
+                }
             }
-            $addr_a = $crawler->filter('a:contains("Directions")');
-            if ($addr_a instanceof Crawler) {
-                $addr = $addr_a->parents()->text();
-            }
-            if (empty($addr)) {
-                return false;
-            }
-            $addr = str_replace(' | Directions', '', $addr);
-            $addr = str_replace(' (NCC)', '', $addr);
-            $address_variables = PHPHelper::parseAddress($addr);
-            $venue_wo_addr->setAttributes($address_variables);
-            if ($venue_wo_addr->save()) {
-                $updated++;
-            }
+        } catch (\Exception $e){
+            Yii::error("DlController actionVenueAddrSdr 296" . $e->getMessage());
         }
         echo "Updated $updated rows\n";
         return true;
