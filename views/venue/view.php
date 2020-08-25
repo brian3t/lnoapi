@@ -112,9 +112,11 @@ $this->params['breadcrumbs'][] = $this->title;
         ['attribute' => 'id', 'visible' => false],
         'username',
     ];
-    echo DetailView::widget([
-        'model' => $model->createdBy,
-        'attributes' => $gridColumnUser]);
+    if (is_object($model->createdBy)) {
+        echo DetailView::widget([
+            'model' => $model->createdBy,
+            'attributes' => $gridColumnUser]);
+    }
     ?>
     <div class="row">
         <h4>Venue Owner</h4>
