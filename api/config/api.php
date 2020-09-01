@@ -25,6 +25,7 @@ $config = [
                 [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
+//                    'levels' => ['error'],
                     // Create API log in the standard log dir
                     // But in file 'api.log':
                     'logFile' => '@app/runtime/logs/api.log',
@@ -32,6 +33,7 @@ $config = [
             ],
         ],
         'urlManager' => [
+            'cache' => null,
             'enablePrettyUrl' => true,
             'enableStrictParsing' => false,
             'showScriptName' => false,

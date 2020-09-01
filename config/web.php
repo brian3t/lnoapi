@@ -48,6 +48,7 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
+//                    'levels' => ['error'],
                     'levels' => ['error', 'warning'],
                 ],
             ],
@@ -55,6 +56,7 @@ $config = [
         ],
         'db' => require(__DIR__ . '/db.php'),
         'urlManager' => [
+            'cache' => null,
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
