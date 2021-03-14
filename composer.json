@@ -1,13 +1,13 @@
 {
-  "name": "yiisoft/yii2-app-basic",
-  "description": "Yii 2 Basic Project Template",
+  "name": "usvsolutions/lnoadmin",
+  "description": "LiveNOut Admin",
   "keywords": [
     "yii2",
     "framework",
     "basic",
     "project template"
   ],
-  "homepage": "http://www.yiiframework.com/",
+  "homepage": "https://usvsolutions.com",
   "type": "project",
   "license": "BSD-3-Clause",
   "support": {
@@ -21,6 +21,11 @@
   "require": {
     "php": ">=7.2.0",
     "ext-json": "*",
+    "ext-mysqli": "*",
+    "ext-dom": "*",
+    "ext-zip": "*",
+    "ext-gd": "*",
+    "ext-intl": "*",
     "yiisoft/yii2": ">=2.0.5",
     "yiisoft/yii2-swiftmailer": "*",
     "kartik-v/yii2-widgets": "*",
