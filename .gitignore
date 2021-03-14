@@ -4,6 +4,11 @@ config/db.php
 # phpstorm project files
 .idea
 .idea/*.*
+./.idea
+./.idea/*
+./.idea/*.*
+./lnoapi.iml
+lnoapi.iml
 
 # netbeans project files
 nbproject
