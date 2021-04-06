@@ -57,7 +57,7 @@ class DlController extends Controller
 
     public function actionScrapeReverbAll()
     {
-        $this->actionScrapeReverb();
+        $this->actionScrapeReverbAllcities();
         $this->actionPullBandReverb();
     }
 
