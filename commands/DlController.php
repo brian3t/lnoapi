@@ -470,7 +470,11 @@ class DlController extends Controller
                     } catch (\Exception $exception) {
                         //ignore. probably duplicate band_event
                     }
-                }
+
+                    if ($IS_DEBUG !== true){
+                        sleep(rand(1, 5));
+                    }
+                }//end foreach artist
                 $scraped++;
 //                echo "Pulled: $scraped events";
             }
