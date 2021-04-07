@@ -5,7 +5,7 @@ Built with Yii 2.0.14
 Changelog
 ------------
 4/6/21 Bootstrap 4  
-For bs4 support, need to edit files inside /vendor/
+For bs4 support, need to edit config/params.php
 
 2018/10/08
 - Scrape reverbnat1on
