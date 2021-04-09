@@ -2,7 +2,6 @@
 
 namespace app\commands;
 
-use Yii;
 use app\models\Event;
 use yii\console\Controller;
 use yii\db\Exception;
@@ -19,8 +18,7 @@ class OshinController extends Controller
      * Clean up sdr systemnote url
      * @throws Exception
      */
-    public function actionCleanData()
-    {
+    public function actionCleanData() {
         $db = \Yii::$app->db;
         $db->createCommand("UPDATE event SET temp = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR) WHERE source='sdr'")->execute();
         $db->createCommand("UPDATE event SET system_note = temp WHERE temp IS NOT NULL AND source='sdr'")->execute();
@@ -34,8 +32,7 @@ class OshinController extends Controller
      * Clean up sdr systemnote url
      * @throws Exception
      */
-    public function actionRandomRateBand()
-    {
+    public function actionRandomRateBand() {
         $db = \Yii::$app->db;
         $db->createCommand("UPDATE band SET lno_score = ROUND((RAND() * (10-5)) + 5 )")->execute();
         echo "Random rate done" . PHP_EOL;
@@ -46,8 +43,7 @@ class OshinController extends Controller
     /**
      * Clean event SDR
      */
-    public function actionCleanEvent()
-    {
+    public function actionCleanEvent() {
         \Yii::beginProfile('select');
         $events = Event::find()->where(['not', ['cost' => null]])->all();
         \Yii::endProfile('select');
@@ -67,6 +63,8 @@ class OshinController extends Controller
 
         //now delete events older than 2 months
         \Yii::$app->db->createCommand("DELETE FROM event WHERE date < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ");
+        //now delete events named `event`
+        \Yii::$app->db->createCommand("DELETE FROM event WHERE name='event' ");
         echo 'Prune events done';
     }
 
@@ -75,8 +73,7 @@ class OshinController extends Controller
      * Clean up sdr systemnote url
      * @throws Exception
      */
-    public function actionPruneData()
-    {
+    public function actionPruneData() {
         $db = \Yii::$app->db;
         $db->createCommand("DELETE FROM event WHERE date < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ")->execute();
         echo "Prune done" . PHP_EOL;
@@ -86,12 +83,27 @@ class OshinController extends Controller
     /**
      * Daily tasks, normally consists of all tasks
      */
-    public function actionDailyTasks(){
+    public function actionDailyTasks() {
         $controller = new MagicController(\Yii::$app->controller->id, \Yii::$app);
         $controller->actionPullLatLng();
 //        $controller->actionPullGenreFromGoogle();
     }
 
+    /**
+     * export data into csv
+     * @param string $date Cutoff day to export
+     * @param string $output_mode
+     * - local
+     * - remote or
+     * - sql
+     */
+    public function actionExportData(string $date, string $output_mode = 'local') {
+        if (! $date) {
+            $date = (new \DateTime('now'))->format('YYYY-mm-dd');
+        }
+        //exporting bands
+
+    }
 }
 
 
