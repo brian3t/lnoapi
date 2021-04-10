@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\models\Band;
 use app\models\Event;
 use yii\console\Controller;
 use yii\db\Exception;
@@ -97,12 +98,34 @@ class OshinController extends Controller
      * - remote or
      * - sql
      */
-    public function actionExportData(string $date, string $output_mode = 'local') {
-        if (! $date) {
-            $date = (new \DateTime('now'))->format('YYYY-mm-dd');
+    public function actionExportData(string $date = '', string $output_mode = 'local') {
+        if (empty($date)) {
+            $date = (new \DateTime('now'))->format('Y-m-d');
         }
         //exporting bands
-
+        $bands = Band::find()->where(['>=', 'created_at', $date])->asArray()->all();
+        $schema_cols = Band::getTableSchema()->columnNames;
+        $schema_cols = array_filter($schema_cols, function ($col) {
+            return ($col !== 'created_at');
+        });
+        $csv_data = [];
+        array_push($csv_data, $schema_cols);
+        foreach ($bands as &$band) {
+            $csv_row = [];
+            unset($band['created_at']);
+            foreach ($schema_cols as $schema_col) {
+                array_push($csv_row, $band[$schema_col]);
+            }
+            array_push($csv_data, $csv_row);
+        }
+        //ready for fwrite
+        $f = fopen('bands.csv', 'w');
+        $write_res =false;
+        foreach ($csv_data as $csv_row) {
+            $write_res = fputcsv($f, $csv_row);
+        }
+        fclose($f);
+        echo "Write res: " . $write_res;
     }
 }
 
