@@ -172,12 +172,13 @@ class DlController extends Controller
                     //$city = $event_and_venue->filter('td.city>ul>li>a')->text();
 //                        $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
                     $event->venue_id = $venue_id;
-                    $event->date = $ev_date->format('Y-m-d');
-                    $event->date_utc = $ev_date_utc->format('Y-m-d');
                     if ($ev_time instanceof \DateTime) {
                         $event->start_time = $ev_time->format('H:i:s');
                         $event->start_time_utc = $ev_time_utc->format('H:i:s');
                     }
+                    $start_datetime_utc_obj = new \DateTime($ev_date->format('Y-m-d') . ' ' . $event->start_time, new \DateTimeZone('America/Los_Angeles'));
+                    $start_datetime_utc_obj->setTimezone(new \DateTimeZone('UTC'));
+                    $event->start_datetime_utc = $start_datetime_utc_obj->format('Y-m-d H:i:s');
                     $img = $event_and_venue->filter('div.event-avatar')->extract(['style']);
                     $img = array_filter($img, function ($style) {
                         return strpos($style, 'background-image') !== FALSE;
@@ -419,9 +420,10 @@ class DlController extends Controller
                 $event_columns = ['venue_id' => $venue->id];
                 $show_time = \DateTime::createFromFormat('Y/m/d H:i:s', $show->showtime);
                 $event_show_date = $show_time->format('Y-m-d');
-                $event_show_time = $show_time->format('h:i:s');
-                $start_datetime_utc = new \DateTime($event_show_date . ' ' . $event_show_time, new \DateTimeZone($location['tz']));
-                $start_datetime_utc->setTimezone(new \DateTimeZone('UTC'));
+                $event_show_time = $show_time->format('H:i:s');
+                $start_datetime_utc_obj = new \DateTime($event_show_date . ' ' . $event_show_time, new \DateTimeZone($location['tz']));
+                $start_datetime_utc_obj->setTimezone(new \DateTimeZone('UTC'));
+                $start_datetime_utc = $start_datetime_utc_obj->format('Y-m-d H:i:s');
                 $event = Event::findOrCreate($event_columns);
                 $event->source = 'reverb';
                 /** @var Event $event */
@@ -441,6 +443,7 @@ class DlController extends Controller
                 $event->img = $show->image_url;
                 $event->venue_id = $venue->id;
                 $event->name = $venue->name;
+                $event['start_datetime_utc'] = $start_datetime_utc;
                 try {
                     $event->save();
                 } catch (\Exception $exception) {

@@ -3,14 +3,11 @@
  * Created by IntelliJ IDEA.
  * User: tri
  * Date: 8/10/16
- * Time: 10:35 AM
  */
 
 namespace app\api\modules\v1\controllers;
 
 use app\api\base\controllers\BaseActiveController;
-use app\controllers\user\SecurityController;
-use app\controllers\user\SettingsController;
 use dektrium\user\Finder;
 use dektrium\user\models\Account;
 use dektrium\user\models\LoginForm;
@@ -19,21 +16,12 @@ use dektrium\user\models\UserSearch;
 use dektrium\user\Module;
 use dektrium\user\traits\AjaxValidationTrait;
 use dektrium\user\traits\EventTrait;
-use Yii;
-use yii\authclient\AuthAction;
-use yii\authclient\ClientInterface;
-use yii\db\ActiveQuery;
-use yii\filters\AccessControl;
-use yii\filters\VerbFilter;
-use yii\helpers\Url;
-use yii\web\Controller;
-use yii\web\Response;
 
 class CompanyController extends BaseActiveController
 {
     public $modelClass = 'app\models\Company';
-    
-    
+
+
     // public function actionLogin()
     // {
     //     // Yii::$container

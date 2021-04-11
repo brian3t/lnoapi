@@ -3,7 +3,6 @@
  * Created by IntelliJ IDEA.
  * User: tri
  * Date: 8/10/16
- * Time: 10:35 AM
  */
 
 namespace app\api\modules\v1\controllers;

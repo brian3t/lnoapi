@@ -23,7 +23,8 @@ class OshinController extends Controller
         $db = \Yii::$app->db;
         $db->createCommand("UPDATE event SET temp = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR) WHERE source='sdr'")->execute();
         $db->createCommand("UPDATE event SET system_note = temp WHERE temp IS NOT NULL AND source='sdr'")->execute();
-        $db->createCommand("UPDATE event SET created_by = 35 WHERE created_by IS NULL;")->execute();
+        $db->createCommand("UPDATE event SET created_by = 34 WHERE created_by IS NULL;")->execute();
+        $db->createCommand("DELETE FROM event WHERE source='unknown'")->execute();
         echo "Cleanup done" . PHP_EOL;
         return 1;
     }
