@@ -14,7 +14,6 @@ use yii\behaviors\BlameableBehavior;
  * @property integer $created_by
  * @property integer $user_id
  * @property integer $venue_id
- * @property string $date
  * @property string $start_time
  * @property string $end_time
  * @property string $when
@@ -36,7 +35,6 @@ use yii\behaviors\BlameableBehavior;
  * @property string $source
  * @property array $attr
  * @property string $genre
- * @property string $date_utc
  * @property string $start_datetime_utc
  * @property string $start_time_utc
  *
@@ -45,6 +43,11 @@ use yii\behaviors\BlameableBehavior;
  * @property \app\models\User $user
  * @property \app\models\Venue $venue
  * @property \app\models\UserEvent[] $userEvents
+ * @property string $band_urls [varchar(800)]
+ * @property string $last_scraped_utc [datetime]
+ * @property string $scrape_msg [varchar(800)]
+ * @property int $scrape_status [smallint]
+ * @property string $scrape_url [varchar(200)]
  */
 class Event extends \yii\db\ActiveRecord
 {
@@ -72,7 +75,7 @@ class Event extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'date', 'start_time', 'start_time_utc', 'end_time', 'date_utc', 'start_datetime_utc'], 'safe'],
+            [['created_at', 'updated_at', 'start_time', 'start_time_utc', 'end_time', 'start_datetime_utc'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
             [['short_desc', 'description', 'source', 'attr'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
@@ -102,7 +105,6 @@ class Event extends \yii\db\ActiveRecord
             'id' => 'ID',
             'user_id' => 'User ID',
             'venue_id' => 'Venue ID',
-            'date' => 'Date',
             'start_time' => 'Start Time',
             'end_time' => 'End Time',
             'when' => 'When',
@@ -124,7 +126,6 @@ class Event extends \yii\db\ActiveRecord
             'source' => 'Source',
             'attr' => 'Attr',
             'genre' => 'Genre',
-            'date_utc' => 'Date Utc',
             'start_datetime_utc' => 'Start Datetime Utc',
             'start_time_utc' => 'Start Time Utc',
         ];

@@ -34,30 +34,6 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'date')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose Date',
-                'autoclose' => true
-            ]
-        ],
-    ]); ?>
-
-    <?php /* echo $form->field($model, 'end_time')->widget(\kartik\datecontrol\DateControl::className(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
-        'saveFormat' => 'php:H:i:s',
-        'ajaxConversion' => true,
-        'options' => [
-            'pluginOptions' => [
-                'placeholder' => 'Choose End Time',
-                'autoclose' => true
-            ]
-        ]
-    ]); */ ?>
-
     <?php /* echo $form->field($model, 'when')->textInput(['maxlength' => true, 'placeholder' => 'When']) */ ?>
 
     <?php /* echo $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) */ ?>

@@ -369,6 +369,7 @@ class DlController extends Controller
             $location['state'] = $LOCATION[0];
             $location['city'] = $LOCATION[1];
             $location['postal_code'] = $LOCATION[2];
+            $location['tz'] = $LOCATION[3];
             $this->actionScrapeReverb($location);
         }
 
@@ -381,7 +382,7 @@ class DlController extends Controller
      * @return boolean result
      * @throws
      */
-    public function actionScrapeReverb($location = ["geo" => "local", "country" => "US", "state" => "CA", "city" => "San%20Diego", "postal_code" => "92115"], $per_page = 10)
+    public function actionScrapeReverb($location = ["geo" => "local", "country" => "US", "state" => "CA", "city" => "San%20Diego", "postal_code" => "92115", "tz" => "PST"], $per_page = 10)
     {
 
 //        $IS_DEBUG = true;
@@ -417,8 +418,10 @@ class DlController extends Controller
                 $venue->source = 'reverb';
                 $event_columns = ['venue_id' => $venue->id];
                 $show_time = \DateTime::createFromFormat('Y/m/d H:i:s', $show->showtime);
-                $event_columns['date'] = $show_time->format('Y-m-d');
-                $event_columns['start_time'] = $show_time->format('h:i:s');
+                $event_show_date = $show_time->format('Y-m-d');
+                $event_show_time = $show_time->format('h:i:s');
+                $start_datetime_utc = new \DateTime($event_show_date . ' ' . $event_show_time, new \DateTimeZone($location['tz']));
+                $start_datetime_utc->setTimezone(new \DateTimeZone('UTC'));
                 $event = Event::findOrCreate($event_columns);
                 $event->source = 'reverb';
                 /** @var Event $event */
@@ -438,7 +441,6 @@ class DlController extends Controller
                 $event->img = $show->image_url;
                 $event->venue_id = $venue->id;
                 $event->name = $venue->name;
-                $event->date = $event_columns['date'];
                 try {
                     $event->save();
                 } catch (\Exception $exception) {

@@ -11,39 +11,16 @@ ob_start();
 <?php
 require_once __DIR__. '/../vendor/autoload.php';
 
-//use phpQuery;
+$pst = new DateTime('2021-04-11 9:40:00', new DateTimeZone('America/Los_Angeles'));
+echo $pst->getOffset()/3600 . "\n";
 
-// instantiate and use the dompdf class
-$pdf = new mPDF();
-$pdf->WriteHTML('<h1>Hello world!</h1>');
-$pdf->Output();
+$utc = $pst->setTimezone(new DateTimeZone('utc'));
 
-exit(1);
-// Create a HTML object with a basic div container
-phpQuery::newDocument();
+$winter = new DateTime('2010-12-21', new DateTimeZone('America/New_York'));
+$summer = new DateTime('2008-06-21', new DateTimeZone('America/New_York'));
 
-$body = pq('<div>');
-$div = pq('<div>');
-$div->addClass('row')->text('hi there');
-
-$div2 = pq('<div>');
-$div2->addClass('row')->text('hi again');
-
-$body->append($div)->append($div2);
-
-// (Optional) Setup the paper size and orientation
-$pdf->setPaper('A4', 'landscape');
-
-// Render the HTML to ob
-echo $body->html();
-
-$output = ob_get_clean();
-$pdf->loadHtml($output);
-echo $output;
-$pdf->render();
-
-// Output the generated PDF to Browser
-$pdf->stream();
+echo $utc->getOffset()/3600 . "\n";
+echo $utc->format('Y-m-d H:i:s') . "\n";
 
 ?>
 </body>

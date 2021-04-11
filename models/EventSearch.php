@@ -17,7 +17,7 @@ use yii\data\ActiveDataProvider;
     {
         return [
             [['id', 'created_by', 'user_id', 'venue_id'], 'integer'],
-            [['created_at', 'updated_at', 'date', 'start_time', 'end_time', 'when', 'name', 'short_desc', 'description', 'img', 'cost', 'is_charity', 'age_limit', 'twitter', 'facebook', 'website', 'system_note', 'sdr_name', 'temp', 'source', 'attr'], 'safe'],
+            [['created_at', 'updated_at', 'start_time', 'end_time', 'when', 'name', 'short_desc', 'description', 'img', 'cost', 'is_charity', 'age_limit', 'twitter', 'facebook', 'website', 'system_note', 'sdr_name', 'temp', 'source', 'attr'], 'safe'],
             [['min_cost', 'max_cost'], 'number'],
         ];
     }
@@ -61,7 +61,6 @@ use yii\data\ActiveDataProvider;
             'created_by' => $this->created_by,
             'user_id' => $this->user_id,
             'venue_id' => $this->venue_id,
-            'date' => $this->date,
             'start_time' => $this->start_time,
             'end_time' => $this->end_time,
             'min_cost' => $this->min_cost,
