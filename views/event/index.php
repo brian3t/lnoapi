@@ -5,9 +5,11 @@
 /* @var $searchModel app\models\EventSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+use app\models\Event;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
 use yii\helpers\Html;
+use yii\helpers\Url;
 
 $this->title = 'Event';
 $this->params['breadcrumbs'][] = $this->title;
@@ -81,6 +83,18 @@ $this->registerJs($search);
                 'pluginOptions' => ['allowClear' => true],
             ],
             'filterInputOptions' => ['placeholder' => 'Venue', 'id' => 'grid--venue_id']
+        ],
+        [
+            'format' => 'raw',
+            'value' => function ($model) {
+                /** @var $model Event */
+                $first_band = $model->first_band;
+                if (!$first_band) return 'N/A';
+                $band_name = $first_band->name;
+                $band_url = Url::to(['band/view', 'id' => $first_band->id]);
+                return "<a href='$band_url' target='_blank' data-pjax='0' >$band_name</a>";
+            },
+            'label' => 'First Band'
         ],
         'date',
         'start_time',
