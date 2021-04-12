@@ -28,7 +28,8 @@ class EventController extends BaseActiveController
     // prepare and return a data provider for the "index" action
     public function indexLastMonthPrepareDataProvider() {
         $params = \Yii::$app->getRequest()->getQueryParams();
-        $date_start = $params['date_start'] ?? -3;
+//        $date_start = $params['date_start'] ?? -3;
+        $date_start = $params['date_start'] ?? 14;//two weeks ago
         $date_end = $params['date_end'] ?? 21;
 //        $searchModel = new EventSearch();
 //        $searchModel->search($params);
