@@ -52,7 +52,8 @@
     "kartik-v/bootstrap-tabs-x": "dev-master",
     "2amigos/yii2-usuario": "~1.5",
     "kartik-v/yii2-icons": "^1.4",
-    "ext-pdo": "*"
+    "ext-pdo": "*",
+    "colinodell/json5": "^2.2"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "*",

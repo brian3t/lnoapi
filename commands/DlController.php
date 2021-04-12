@@ -1,8 +1,13 @@
 <?php
+/**
+ * Passing options:
+ * --opt={debug:1,log:1}
+ */
 
 namespace app\commands;
 
 require_once dirname(__DIR__) . "/yii2helper/PHPHelper.php";
+require_once dirname(__DIR__) . "/vendor/autoload.php";
 
 use app\models\Band;
 use app\models\BandEvent;
@@ -35,28 +40,24 @@ class DlController extends Controller
     public $SCRAPER_ID = null;
     public $opt;
 
-    public function init()
-    {
+    public function init() {
         $this->SCRAPER_ID = \Yii::$app->params['scraper_id'];
         parent::init();
     }
 
-    public function options($actionID)
-    {
+    public function options($actionID) {
         return array_merge(parent::options($actionID), [
             'opt'
         ]);
     }
 
-    public function actionScrapeSdrAll()
-    {
+    public function actionScrapeSdrAll() {
         $this->actionScrapeSdr();
         $this->actionPullEventSdr();
         $this->actionVenueAddrSdr();
     }
 
-    public function actionScrapeReverbAll()
-    {
+    public function actionScrapeReverbAll() {
         $this->actionScrapeReverbAllcities();
         $this->actionPullBandReverb();
     }
@@ -66,10 +67,9 @@ class DlController extends Controller
      * @param int $days_forward lookahead
      * @throws \Exception
      */
-    public function actionScrapeSdr($days_forward = 1)
-    {
+    public function actionScrapeSdr($days_forward = 1) {
         $date = (new \DateTime())->add(new \DateInterval("P{$days_forward}D"));
-        $opt = json_decode($this->opt, true);
+        $opt = json5_decode($this->opt, true);
         $date_str = $date->format('Y-m-d');
         $records = 0;
         $client = new Client();
@@ -89,181 +89,185 @@ class DlController extends Controller
         //6/29/20
 //        $crawler = $client->request('GET', SDREADER_LOCAL, ['start_date' => '2018-07-04', 'end_date' => '2018-07-04']);
         //first, go by date
-        $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler, $is_debug, $is_logging) {
-            $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, Aug. 3, 2020
-            $ev_date_str = str_replace('.', '', $ev_date_str);
-            $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
-            if ($ev_date instanceof \DateTime) {
-                $ev_date_utc = clone($ev_date);
-            } else {
-                $ev_date_utc = new \DateTime();
-                $ev_date = new \DateTime();
-            }
-            $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
-            $ev_per_date->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc, $is_logging) {
-                if (isset($opt['debug']) && $opt['debug']) {
-                    //dont delay
+        try {
+            $crawler->filter('div.events-date')->each(function ($ev_per_date) use (&$records, $date_str, $event_client, $band_client, $opt, $crawler, $is_debug, $is_logging) {
+                $ev_date_str = $ev_per_date->filter('h2')->text();//Friday, Aug. 3, 2020
+                $ev_date_str = str_replace('.', '', $ev_date_str);
+                $ev_date = \DateTime::createFromFormat('l, F j, Y', $ev_date_str, new \DateTimeZone('America/Los_Angeles'));
+                if ($ev_date instanceof \DateTime) {
+                    $ev_date_utc = clone($ev_date);
                 } else {
-                    sleep(random_int(2, DELAY));
+                    $ev_date_utc = new \DateTime();
+                    $ev_date = new \DateTime();
                 }
-                /** @var Crawler $event_and_venue */
-                [$event_name, $event_href] = current($event_and_venue->filter('a.event-title')->extract(['_text', 'href']));
-                if ($is_logging) echo "event name: $event_name . ";
-                if (empty($event_name)) {
-                    return;
-                }
-
-                $venue_name = $event_and_venue->filter('a.event-place > div.event-location')->text();
-                $venue_href = current($event_and_venue->filter('a.event-place')->extract(['href']));
-                //see if it has local artist page
-                $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
-                $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
-                $has_local_artist = $h4_local_artist->count() > 0;
-                if ($is_logging) echo "venue name: ". $venue_name . " . ";
-                if (! $venue_name || empty($venue_name)) {
-                    return;
-                }
-                //find out if venue already exists
-                $venue_exist = Venue::findOne(['name' => $venue_name]);
-                if (! $venue_exist instanceof Venue) {
-                    $venue = new Venue();
-                    $venue->setAttributes(['name' => $venue_name,
-                        'sdr_name' => str_replace('https://www.sandiegoreader.com', '', $venue_href),
-                        'system_note' => $venue_href]);//'https://www.sandiegoreader.com' .
-                    $venue->county = 'San Diego';
-                    $venue->source = 'sdr';
-                    $venue->state = 'CA';
-                    $city_el = $event_and_venue->filter('a.event-place + a');
-                    if (is_object($city_el) && $city_el->count()) $venue->city = $city_el->text();
-                    $venue->save();
-                    $venue_id = $venue->id;
-                } else {
-                    $venue_id = $venue_exist->id;
-                }
-                if (! is_int($venue_id)) {
-                    return;//when failed saving new venue / pulling existing venue
-                }
-                Yii::$app->db->createCommand("UPDATE venue SET `created_by` = :created_by WHERE `id` = :venue_id", [
-                    ':created_by' => $this->SCRAPER_ID,
-                    ':venue_id' => $venue_id
-                ])->execute();
-                $records++;
-                //find out if event already exists
-                $event = new Event();
-                $event_exist = Event::findOne(['name' => $event_name]);
-                if (! $event_exist instanceof Event) {
-                    $event = new Event();
-                    $event->setAttributes(['created_by' => $this->SCRAPER_ID, 'name' => $event_name, 'source' => 'sdr',
-                        'sdr_name' => str_replace('https://www.sandiegoreader.com/', '', $event_href), 'system_note' => $event_href]);//'https://www.sandiegoreader.com/' .
-                    $ev_time = $event_and_venue->filter('div.event-time');
-                    if ($ev_time instanceof Crawler) {
-                        $ev_time_str = $ev_time->text();//8pm
-                        $ev_time = \DateTime::createFromFormat('h:ia', $ev_time_str);//hour and minute, such as 8:30pm
-                        if ($ev_time === false) $ev_time = \DateTime::createFromFormat('ha', $ev_time_str); //hour only, such as 8pm
-                        if ($ev_time instanceof \DateTime) {
-                            $ev_time_utc = clone($ev_time);
-                        } else $ev_time_utc = new \DateTime();
-                        $ev_time_utc->setTimezone(new \DateTimeZone('UTC'));
+                $ev_date_utc->setTimezone(new \DateTimeZone('UTC'));
+                echo "Event date UTC: " . $ev_date_utc->format('Y-m-d') . PHP_EOL;
+                $ev_per_date->filter('div.event-item')->each(function ($event_and_venue) use (&$records, $date_str, $event_client, $band_client, $opt, $ev_date, $ev_date_utc, $is_logging) {
+                    if (isset($opt['debug']) && $opt['debug']) {
+                        //dont delay
+                    } else {
+                        sleep(random_int(2, DELAY));
                     }
-                    /* format for venue page
-                    $date_and_time = $event_and_venue->filter('div.event-date-time')->text();// Friday, July 3, 2020, 8 p.m. //moment('dddd MMMM D YYYY h a')
-                    $date_and_time = \DateTime::createFromFormat('dddd MMMM D YYYY h a', $date_and_time);
-                    */
-                    //$city = $event_and_venue->filter('td.city>ul>li>a')->text();
-//                        $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
-                    $event->venue_id = $venue_id;
-                    if ($ev_time instanceof \DateTime) {
-                        $event->start_time = $ev_time->format('H:i:s');
-                        $event->start_time_utc = $ev_time_utc->format('H:i:s');
-                    }
-                    $start_datetime_utc_obj = new \DateTime($ev_date->format('Y-m-d') . ' ' . $event->start_time, new \DateTimeZone('America/Los_Angeles'));
-                    $start_datetime_utc_obj->setTimezone(new \DateTimeZone('UTC'));
-                    $event->start_datetime_utc = $start_datetime_utc_obj->format('Y-m-d H:i:s');
-                    $img = $event_and_venue->filter('div.event-avatar')->extract(['style']);
-                    $img = array_filter($img, function ($style) {
-                        return strpos($style, 'background-image') !== FALSE;
-                    });
-                    $img = array_pop($img);//background-image: url('https://media.sandiegoreader.com/img/events/2020/tempLong_Run_t150.jpg?9327a3fb59f61056fdcd01aa32ef3b74a9932e1d');
-                    if (! empty($img)) {
-                        $img = str_replace(['background-image: url(\'', '\');'], '', $img);
-                    }
-                    $event->img = $img;
-//                        $event->setAttributes(compact(['time', 'city', 'short_desc']));
-                    $event->save();
-                    if ($is_logging) echo "event saved: " . json_encode($event->attributes). '\n';
-                    $event_id = $event->id;
-                    if (is_int($event_id)) {
-                        Yii::$app->db->createCommand("UPDATE event SET `created_by` = :created_by WHERE `id` = :id", [
-                            ':created_by' => $this->SCRAPER_ID,
-                            ':id' => $event_id
-                        ])->execute();
-                    }
-                    $records++;
-                } else {
-                    $event_id = $event->id;
-                }
-                /*//saving band info too
-                $band_href = $h4_local_artist->nextAll()->filter('div.image_grid a')->attr('href');
-                $band_crawler = $band_client->request('GET', SDRCOM . $band_href);
-//            $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
-                $band_content = $band_crawler->filter('#content');
-                $name = $band_content->filter('div.content_title > h2')->text();
-                if (empty($nampase)) {
-                    return;
-                }
-                try {
-                    $name = strtolower($name);
-                    $hometown_city = 'San Diego';
-                    $hometown_state = 'CA';
-                    $logo = $band_content->filter('img.lead_photo')->attr('src');
-                    if (empty($logo)) {
+                    /** @var Crawler $event_and_venue */
+                    [$event_name, $event_href] = current($event_and_venue->filter('a.event-title')->extract(['_text', 'href']));
+                    if ($is_logging) echo "event name: $event_name . " . PHP_EOL;
+                    if (empty($event_name)) {
                         return;
                     }
-                    $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
-                    $genre = strtolower(str_replace(['Genre: ', ', '], ['', ','], $genre));
-                    $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
-                    $similar_to = strtolower(str_replace(['RIYL: ', ', '], ['', ','], $similar_to));
-                    $description = $band_content->filter('h3#history')->parents()->text();
-                    $related = $band_content->filter('h3#related')->parents();
-                    $website = $related->filter('a:contains("website")')->attr('href');
-                    $facebook = $related->filter('a:contains("Facebook")')->attr('href');
-                } catch (\Exception $e) {
-                    $band_content = null;
-                    $logo = null;
-                    $genre = null;
-                    $similar_to = null;
-                    $description = null;
-                    $website = null;
-                    $facebook = null;
-                }
-                $band = Band::findOne(['name' => $name]);
-                if (! $band instanceof Band) {
-                    $band = new Band();
-                    $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
-                    $band->type = 'originals';
-                    $band->lno_score = random_int(5, 10);
-                    $band->source = 'sdr';
-                    $band->save();
-                }
-                $band_id = $band->id;
-                if (is_int($band_id) && is_int($event_id)) {
-                    $band_event = new BandEvent();
-                    $band_event->band_id = $band_id;
-                    $band_event->event_id = $event_id;
-                    $band_event->save();
-                }*/
+
+                    $venue_name = $event_and_venue->filter('a.event-place > div.event-location')->text();
+                    $venue_href = current($event_and_venue->filter('a.event-place')->extract(['href']));
+                    //see if it has local artist page
+                    $event_crawler = $event_client->request('GET', SDRCOM . $event_href);
+                    $h4_local_artist = $event_crawler->filter('h4:contains("Local artist page:")');
+                    $has_local_artist = $h4_local_artist->count() > 0;
+                    if ($is_logging) echo "venue name: " . $venue_name . " . " . PHP_EOL;
+                    if (! $venue_name || empty($venue_name)) {
+                        return;
+                    }
+                    //find out if venue already exists
+                    $venue_exist = Venue::findOne(['name' => $venue_name]);
+                    if (! $venue_exist instanceof Venue) {
+                        $venue = new Venue();
+                        $venue->setAttributes(['name' => $venue_name,
+                            'sdr_name' => str_replace('https://www.sandiegoreader.com', '', $venue_href),
+                            'system_note' => $venue_href]);//'https://www.sandiegoreader.com' .
+                        $venue->county = 'San Diego';
+                        $venue->source = 'sdr';
+                        $venue->state = 'CA';
+                        $city_el = $event_and_venue->filter('a.event-place + a');
+                        if (is_object($city_el) && $city_el->count()) $venue->city = $city_el->text();
+                        $venue->save();
+                        $venue_id = $venue->id;
+                    } else {
+                        $venue_id = $venue_exist->id;
+                    }
+                    if (! is_int($venue_id)) {
+                        return;//when failed saving new venue / pulling existing venue
+                    }
+                    Yii::$app->db->createCommand("UPDATE venue SET `created_by` = :created_by WHERE `id` = :venue_id", [
+                        ':created_by' => $this->SCRAPER_ID,
+                        ':venue_id' => $venue_id
+                    ])->execute();
+                    $records++;
+                    //find out if event already exists
+                    $event = new Event();
+                    $event_exist = Event::findOne(['name' => $event_name]);
+                    if (! $event_exist instanceof Event) {
+                        $event = new Event();
+                        $event->setAttributes(['created_by' => $this->SCRAPER_ID, 'name' => $event_name, 'source' => 'sdr',
+                            'sdr_name' => str_replace('https://www.sandiegoreader.com/', '', $event_href), 'system_note' => $event_href]);//'https://www.sandiegoreader.com/' .
+                        $ev_time = $event_and_venue->filter('div.event-time');
+                        if ($ev_time instanceof Crawler) {
+                            $ev_time_str = $ev_time->text();//8pm
+                            $ev_time = \DateTime::createFromFormat('h:ia', $ev_time_str);//hour and minute, such as 8:30pm
+                            if ($ev_time === false) $ev_time = \DateTime::createFromFormat('ha', $ev_time_str); //hour only, such as 8pm
+                            if ($ev_time instanceof \DateTime) {
+                                $ev_time_utc = clone($ev_time);
+                            } else $ev_time_utc = new \DateTime();
+                            $ev_time_utc->setTimezone(new \DateTimeZone('UTC'));
+                        }
+                        /* format for venue page
+                        $date_and_time = $event_and_venue->filter('div.event-date-time')->text();// Friday, July 3, 2020, 8 p.m. //moment('dddd MMMM D YYYY h a')
+                        $date_and_time = \DateTime::createFromFormat('dddd MMMM D YYYY h a', $date_and_time);
+                        */
+                        //$city = $event_and_venue->filter('td.city>ul>li>a')->text();
+//                        $short_desc = implode(', ', $event_and_venue->filter('td.category > ul li')->extract(['_text']));
+                        $event->venue_id = $venue_id;
+                        if ($ev_time instanceof \DateTime) {
+                            $event->start_time = $ev_time->format('H:i:s');
+                            $event->start_time_utc = $ev_time_utc->format('H:i:s');
+                        }
+                        $start_datetime_utc_obj = new \DateTime($ev_date->format('Y-m-d') . ' ' . $event->start_time, new \DateTimeZone('America/Los_Angeles'));
+                        $start_datetime_utc_obj->setTimezone(new \DateTimeZone('UTC'));
+                        $event->start_datetime_utc = $start_datetime_utc_obj->format('Y-m-d H:i:s');
+                        $img = $event_and_venue->filter('div.event-avatar')->extract(['style']);
+                        $img = array_filter($img, function ($style) {
+                            return strpos($style, 'background-image') !== FALSE;
+                        });
+                        $img = array_pop($img);//background-image: url('https://media.sandiegoreader.com/img/events/2020/tempLong_Run_t150.jpg?9327a3fb59f61056fdcd01aa32ef3b74a9932e1d');
+                        if (! empty($img)) {
+                            $img = str_replace(['background-image: url(\'', '\');'], '', $img);
+                        }
+                        $event->img = $img;
+//                        $event->setAttributes(compact(['time', 'city', 'short_desc']));
+                        $event->save();
+                        if ($is_logging) echo "event saved: " . json_encode($event->attributes) . '\n';
+                        $event_id = $event->id;
+                        if (is_int($event_id)) {
+                            Yii::$app->db->createCommand("UPDATE event SET `created_by` = :created_by WHERE `id` = :id", [
+                                ':created_by' => $this->SCRAPER_ID,
+                                ':id' => $event_id
+                            ])->execute();
+                        }
+                        $records++;
+                    } else {
+                        $event_id = $event->id;
+                    }
+                    /*//saving band info too
+                    $band_href = $h4_local_artist->nextAll()->filter('div.image_grid a')->attr('href');
+                    $band_crawler = $band_client->request('GET', SDRCOM . $band_href);
+    //            $band_crawler = $band_client->request('GET', SDRBAND_LOCAL);
+                    $band_content = $band_crawler->filter('#content');
+                    $name = $band_content->filter('div.content_title > h2')->text();
+                    if (empty($nampase)) {
+                        return;
+                    }
+                    try {
+                        $name = strtolower($name);
+                        $hometown_city = 'San Diego';
+                        $hometown_state = 'CA';
+                        $logo = $band_content->filter('img.lead_photo')->attr('src');
+                        if (empty($logo)) {
+                            return;
+                        }
+                        $genre = $band_content->filter('strong:contains("Genre:")')->parents()->text();
+                        $genre = strtolower(str_replace(['Genre: ', ', '], ['', ','], $genre));
+                        $similar_to = $band_content->filter('strong:contains("RIYL:")')->parents()->text();
+                        $similar_to = strtolower(str_replace(['RIYL: ', ', '], ['', ','], $similar_to));
+                        $description = $band_content->filter('h3#history')->parents()->text();
+                        $related = $band_content->filter('h3#related')->parents();
+                        $website = $related->filter('a:contains("website")')->attr('href');
+                        $facebook = $related->filter('a:contains("Facebook")')->attr('href');
+                    } catch (\Exception $e) {
+                        $band_content = null;
+                        $logo = null;
+                        $genre = null;
+                        $similar_to = null;
+                        $description = null;
+                        $website = null;
+                        $facebook = null;
+                    }
+                    $band = Band::findOne(['name' => $name]);
+                    if (! $band instanceof Band) {
+                        $band = new Band();
+                        $band->setAttributes(compact(['name', 'logo', 'genre', 'similar_to', 'hometown_city', 'hometown_state', 'description', 'website', 'facebook']));
+                        $band->type = 'originals';
+                        $band->lno_score = random_int(5, 10);
+                        $band->source = 'sdr';
+                        $band->save();
+                    }
+                    $band_id = $band->id;
+                    if (is_int($band_id) && is_int($event_id)) {
+                        $band_event = new BandEvent();
+                        $band_event->band_id = $band_id;
+                        $band_event->event_id = $event_id;
+                        $band_event->save();
+                    }*/
+                });
+                echo "| $records \n";
+                if ($is_debug && $records > 0) die();
             });
-            echo "| $records \n";
-            if ($is_debug && $records > 0) die();
-        });
+        } catch (\Exception $e) {
+            echo "Exception scr sdr 263: " . $e->getMessage() . PHP_EOL;
+        }
         echo "Pulled this much: " . $records . " records." . PHP_EOL;
     }
 
     /**
      * Pull address for all venues without address
      */
-    public function actionVenueAddrSdr()
-    {
+    public function actionVenueAddrSdr() {
         $updated = 0;
         $venues_wo_addr = Venue::find()->where(['not', ['sdr_name' => null]])->andWhere(['address1' => null])->all();
         $venue_client = new Client();
@@ -293,7 +297,7 @@ class DlController extends Controller
                     $updated++;
                 }
             }
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             Yii::error("DlController actionVenueAddrSdr 296" . $e->getMessage());
         }
         echo "Updated $updated rows\n";
@@ -303,8 +307,7 @@ class DlController extends Controller
     /**
      * Pull event info from SDR events
      */
-    public function actionPullEventSdr()
-    {
+    public function actionPullEventSdr() {
         $client = new Client();
         $events_sdr = Event::find()->where(['source' => 'sdr'])->andFilterWhere(['or', ['img' => null], ['img' => '']])
 //            ->andWhere(['>=', 'updated_at', new Expression('DATE_SUB(CURDATE(), INTERVAL 7 DAY)')])
@@ -362,8 +365,7 @@ class DlController extends Controller
         }
     }
 
-    public function actionScrapeReverbAllcities()
-    {
+    public function actionScrapeReverbAllcities() {
         require_once dirname(__DIR__) . "/config/reverb/constant.php";
         $location = BASE_LOC_ARRAY;
         foreach (LOCATIONS as $LOCATION) {
@@ -383,8 +385,7 @@ class DlController extends Controller
      * @return boolean result
      * @throws
      */
-    public function actionScrapeReverb($location = ["geo" => "local", "country" => "US", "state" => "CA", "city" => "San%20Diego", "postal_code" => "92115", "tz" => "PST"], $per_page = 10)
-    {
+    public function actionScrapeReverb($location = ["geo" => "local", "country" => "US", "state" => "CA", "city" => "San%20Diego", "postal_code" => "92115", "tz" => "PST"], $per_page = 10) {
 
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
@@ -398,12 +399,12 @@ class DlController extends Controller
             $guzzle = new GuzzleClient();
             $events = $guzzle->request('GET', $url, $params);
             if ($events->getStatusCode() !== 200) {
-                echo 'Failed. ' . $events->getStatusCode();
+                echo 'Failed. ' . $events->getStatusCode() . PHP_EOL;
                 return false;
             }
             $events = $events->getBody();
             if (! method_exists($events, 'getContents')) {
-                echo 'Bad response. Url: ' . $url;
+                echo 'Bad response. Url: ' . $url . PHP_EOL;
                 return false;
             }
             $events = $events->getContents();
@@ -476,15 +477,14 @@ class DlController extends Controller
                         //ignore. probably duplicate band_event
                     }
 
-                    if ($IS_DEBUG !== true){
+                    if ($IS_DEBUG !== true) {
                         sleep(rand(1, 5));
                     }
                 }//end foreach artist
                 $scraped++;
-//                echo "Pulled: $scraped events";
             }
         }
-        echo "Pulled: $scraped events";
+        echo "Pulled: $scraped events" . PHP_EOL;
         return false;
     }
 
@@ -495,8 +495,7 @@ class DlController extends Controller
      * @return boolean result
      * @throws
      */
-    public function actionScrapeTickmas($per_page = 10, $variables = [])
-    {
+    public function actionScrapeTickmas($per_page = 10, $variables = []) {
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $today = new \DateTime();
@@ -531,12 +530,12 @@ class DlController extends Controller
                 $url .= "&variables=${params['variables']}";
                 $events = $guzzle->request('GET', $url, $params);
                 if ($events->getStatusCode() !== 200) {
-                    echo 'Failed. ' . $events->getStatusCode();
+                    echo 'Failed. ' . $events->getStatusCode() . PHP_EOL;
                     return false;
                 }
                 $events = $events->getBody();
                 if (! method_exists($events, 'getContents')) {
-                    echo 'Bad response. Url: ' . $url;
+                    echo 'Bad response. Url: ' . $url . PHP_EOL;
                     return false;
                 }
                 $events = $events->getContents();
@@ -545,12 +544,12 @@ class DlController extends Controller
             }
             $events = json_decode($events);
             if (! property_exists($events, 'data')) {
-                echo 'events no data';
+                echo 'events no data' . PHP_EOL;
                 return false;
             }
             $events = $events->data;
             if (! property_exists($events, 'products')) {
-                echo 'events data no products';
+                echo 'events data no products' . PHP_EOL;
                 return false;
             }
             $events = $events->products;
@@ -563,12 +562,12 @@ class DlController extends Controller
                 $scrape_next_page = false;
             }
             if (! is_object($events) || ! property_exists($events, 'items')) {
-                echo 'products not obj or products no items';
+                echo 'products not obj or products no items' . PHP_EOL;
                 return false;
             }
             $events = $events->items;
             if (! is_array($events)) {
-                echo 'items not array';
+                echo 'items not array' . PHP_EOL;
                 return false;
             }
             foreach ($events as $e) {
@@ -583,7 +582,7 @@ class DlController extends Controller
                     $em->name = $e->name;
                 } else continue;
                 if (! property_exists($e, 'jsonLd')) {
-                    echo 'item miss jsonLd';
+                    echo 'item miss jsonLd' . PHP_EOL;
                     continue;
                 }
                 $json = $e->jsonLd;
@@ -612,7 +611,7 @@ class DlController extends Controller
                     continue;
                 }
                 if (! property_exists($json, 'location')) {
-                    echo 'json no location';
+                    echo 'json no location' . PHP_EOL;
                     continue;
                 }
                 $l = $json->location;
@@ -643,7 +642,7 @@ class DlController extends Controller
                 $em->venue_id = $v->id;
                 //now parse bands
                 if (! property_exists($json, 'performer')) {
-                    echo 'json no performer';
+                    echo 'json no performer' . PHP_EOL;
                     continue;
                 }
                 foreach ($json->performer as $b) {
@@ -680,7 +679,7 @@ class DlController extends Controller
                 if ($scraped > MAX_SCRAPE_PER_DAY) $scrape_next_page = false;
             }
         } while ($scrape_next_page);
-        echo "Pulled: $scraped events";
+        echo "Pulled: $scraped events" . PHP_EOL;
         return true;
     }
 
@@ -688,8 +687,7 @@ class DlController extends Controller
      * Pull band details for reverbnation
      * Getting them from https://www.reverbnation.com/api/artist/3981578
      */
-    public function actionPullBandReverb()
-    {
+    public function actionPullBandReverb() {
         $K_LIMIT = 1000;
 //        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status`='init' AND `source`='reverb' 
@@ -722,12 +720,12 @@ class DlController extends Controller
             }
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
             if ($band_api_data->getStatusCode() !== 200) {
-                echo 'Failed. ' . $band_api_data->getStatusCode();
+                echo 'Failed. ' . $band_api_data->getStatusCode() . PHP_EOL;
                 continue;
             }
             $band_api_data = $band_api_data->getBody();
             if (! method_exists($band_api_data, 'getContents')) {
-                echo 'Bad response. Url: ' . $url;
+                echo 'Bad response. Url: ' . $url . PHP_EOL;
                 continue;
             }
             $band_api_data = $band_api_data->getContents();
@@ -764,8 +762,7 @@ class DlController extends Controller
     /**
      * Pull from https://www.songkick.com/metro_areas/11086-us-san-diego
      */
-    public function actionPullSongkick()
-    {
+    public function actionPullSongkick() {
         $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $goutte = new Client();
         $guzzle = new \GuzzleHttp\Client();
@@ -785,12 +782,12 @@ class DlController extends Controller
             $guzzle = new GuzzleClient();
             $events = $guzzle->request('GET', $url, $params);
             if ($events->getStatusCode() !== 200) {
-                echo 'Failed. ' . $events->getStatusCode();
+                echo 'Failed. ' . $events->getStatusCode() . PHP_EOL;
                 return false;
             }
             $events = $events->getBody();
             if (! method_exists($events, 'getContents')) {
-                echo 'Bad response. Url: ' . $url;
+                echo 'Bad response. Url: ' . $url . PHP_EOL;
                 return false;
             }
             $events = $events->getContents();

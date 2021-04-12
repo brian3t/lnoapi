@@ -96,7 +96,7 @@ $this->registerJs($search);
             },
             'label' => 'First Band'
         ],
-        'start_date',
+        'startDate',
         'start_time',
         'end_time',
         'name',
