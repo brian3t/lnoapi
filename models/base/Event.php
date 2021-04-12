@@ -48,6 +48,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $scrape_msg [varchar(800)]
  * @property int $scrape_status [smallint]
  * @property string $scrape_url [varchar(200)]
+ * @property string $tz [varchar(120)]
  */
 class Event extends \yii\db\ActiveRecord
 {
