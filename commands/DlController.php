@@ -432,6 +432,7 @@ class DlController extends Controller
                 $venue->city = $show->city;
                 $venue->state = $show->state;
                 $venue->attr = $venue_attrs;
+                $venue->tz = $location['tz'];
                 try {
                     $venue->save();
                 } catch (\Exception $exception) {
@@ -445,6 +446,7 @@ class DlController extends Controller
                 $event->venue_id = $venue->id;
                 $event->name = $venue->name;
                 $event['start_datetime_utc'] = $start_datetime_utc;
+                $event['tz'] = $location['tz'];
                 try {
                     $event->save();
                 } catch (\Exception $exception) {
