@@ -43,8 +43,8 @@ FROM
   (select distinct band_id
    FROM (SELECT *
          FROM event
-         WHERE date >= DATE_SUB(CURDATE(), INTERVAL :event_date_start DAY)
-               AND date <= DATE_ADD(CURDATE(), INTERVAL :event_date_end DAY)) ev
+         WHERE start_datetime_utc >= DATE_SUB(CURDATE(), INTERVAL :event_date_start DAY)
+               AND start_datetime_utc <= DATE_ADD(CURDATE(), INTERVAL :event_date_end DAY)) ev
      INNER JOIN (SELECT distinct band_id, event_id
                  FROM band_event) band_event on band_event.event_id = ev.id)
   band_performing
