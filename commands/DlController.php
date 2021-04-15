@@ -692,13 +692,14 @@ class DlController extends Controller
     public function actionPullBandReverb() {
         $K_LIMIT = 1000;
 //        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
-        $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status`='init' AND `source`='reverb' 
+        $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status` IS NULL AND `source`='reverb' 
             AND COALESCE(`logo`,'')='' LIMIT :limit ", [':limit' => $K_LIMIT])->all();
         $goutte = new Client();
         $guzzle = new \GuzzleHttp\Client();
         $base_api_url = 'https://www.reverbnation.com/api/artist/';
         $scraped = 0;
         foreach ($bands as $band) {
+            $band->scrape_status = 'init';
             $attr = $band->attr;
             $url = ($attr['url'] ?? $band->website);
             if (empty($url)) {
