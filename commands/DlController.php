@@ -480,7 +480,7 @@ class DlController extends Controller
                     }
 
                     if ($IS_DEBUG !== true) {
-                        sleep(rand(1, 5));
+                        sleep(rand(2, 8));
                     }
                 }//end foreach artist
                 $scraped++;
@@ -698,6 +698,8 @@ class DlController extends Controller
         $guzzle = new \GuzzleHttp\Client();
         $base_api_url = 'https://www.reverbnation.com/api/artist/';
         $scraped = 0;
+        $is_debug = isset($opt['debug']) && $opt['debug'];
+
         foreach ($bands as $band) {
             $band->scrape_status = 'init';
             $attr = $band->attr;
@@ -721,6 +723,7 @@ class DlController extends Controller
             if (! is_int(intval($band_id)) || ! is_string($band_id)) {
                 continue;
             }
+            if (!$is_debug) sleep(rand(2,8));
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
             if ($band_api_data->getStatusCode() !== 200) {
                 echo 'Failed. ' . $band_api_data->getStatusCode() . PHP_EOL;
