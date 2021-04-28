@@ -37,7 +37,10 @@ class EventController extends BaseActiveController
         unset($params['page']);
         $page_size = $params['page_size'] ?? false;
         unset($params['page_size']);
+        $limit = $params['limit'] ?? 30;
+        unset($params['limit']);
         $query = new EventQuery($this->modelClass);
+        $query->limit = $limit;
         $query->set_query_params($params);
         $query->andWhere(['>=', 'start_datetime_utc', (new \yii\db\Expression("DATE_SUB(curdate(), INTERVAL $date_start DAY)"))]);
         // get the total number of articles (but do not fetch the article data yet)
