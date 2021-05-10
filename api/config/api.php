@@ -5,7 +5,7 @@ $params = require(__DIR__ . '/params.php');
 
 $config = [
     'id' => 'basic',
-    'name' => 'Sme',
+    'name' => 'Lno',
     // Need to get one level up:
     'basePath' => dirname(dirname(__DIR__)),
     'bootstrap' => ['log'],
@@ -41,7 +41,7 @@ $config = [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'pluralize' => false,
-                    'controller' => ['v1/user', 'v1/order', 'v1/band', 'v1/venue', 'v1/event', 'v1/band-event'],
+                    'controller' => ['v1/user', 'v1/order', 'v1/band', 'v1/venue', 'v1/event', 'v1/band-event', 'v1/test'],
                     'patterns' => ['PUT,PATCH {id}' => 'update', 'DELETE {id}' => 'delete', 'GET,HEAD {id}' => 'view', 'POST' => 'create', 'GET,HEAD' => 'index', '{id}' => 'options'
                         , '' => 'options'],
                     // 'extraPatterns' => [
