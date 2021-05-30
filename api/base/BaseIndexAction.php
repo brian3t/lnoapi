@@ -14,6 +14,7 @@ class BaseIndexAction extends IndexAction
      * {'ytlink_first':null}
      *
      * or a stringified object as a result of JSON.stringify(filter)
+     * , such as ?qr=[[%22not%22,{%22ytlink_first%22:null}]]
      *
      * It will be converted to Yii2 where condition, such as
      * [
