@@ -10,9 +10,12 @@ class BaseIndexAction extends IndexAction
     /**
      * Prepares the data provider that should return the requested collection of the models.
      * Acceptable params:
-     * ?qa=query_array, JSON string of queries in array format, such as
+     * ?qr=query_request, JSON string of queries in array format, such as
+     * {'ytlink_first':null}
+     * It will be converted to Yii2 where condition, such as
      * [
-     *  ['not', ['column' => value]]
+     *  ['not', ['column' => value]],
+     *  ['col2' => 'val2']
      * ]
      * Read Yii2 where condition for format
      * @return ActiveDataProvider
@@ -32,6 +35,7 @@ class BaseIndexAction extends IndexAction
         unset($params['page_size']);
         $qr = $params['qr'] ?? false;//query raw
         unset($params['qr']);
+        $qr = str_replace("'", "\"", $qr);
         try {
             $qr_array = json_decode($qr, JSON_OBJECT_AS_ARRAY);
         } catch (\Exception $e) {
@@ -39,7 +43,10 @@ class BaseIndexAction extends IndexAction
         }
         $dp_query = $modelClass::find()->where($params);
         if ($qr_array) {
-            foreach ($qr_array as $qr_cond) {
+            if (sizeof($qr_array) == 1 || ($qr_array[0] == 'not')) {
+                $qr_array = [$qr_array];//form client side we can pass 1 single condition. Here we convert it into a list of conditions
+            }
+            foreach ($qr_array as $qr_cond) {//loop through the list of conditions
                 $dp_query = $dp_query->andWhere($qr_cond);//e.g. ['not', ['column' => value]]
             }
         }
