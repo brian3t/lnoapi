@@ -12,6 +12,9 @@ class BaseIndexAction extends IndexAction
      * Acceptable params:
      * ?qr=query_request, JSON string of queries in array format, such as
      * {'ytlink_first':null}
+     *
+     * or a stringified object as a result of JSON.stringify(filter)
+     *
      * It will be converted to Yii2 where condition, such as
      * [
      *  ['not', ['column' => value]],
@@ -36,6 +39,7 @@ class BaseIndexAction extends IndexAction
         $qr = $params['qr'] ?? false;//query raw
         unset($params['qr']);
         $qr = str_replace("'", "\"", $qr);
+        $qr = str_replace("\\\"", "\"", $qr);//JSON.stringify created redundant \"
         try {
             $qr_array = json_decode($qr, JSON_OBJECT_AS_ARRAY);
         } catch (\Exception $e) {
