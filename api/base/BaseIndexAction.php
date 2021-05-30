@@ -47,7 +47,7 @@ class BaseIndexAction extends IndexAction
         }
         $dp_query = $modelClass::find()->where($params);
         if ($qr_array) {
-            if (sizeof($qr_array) == 1 || ($qr_array[0] == 'not')) {
+            if ($qr_array[0] == 'not') {
                 $qr_array = [$qr_array];//form client side we can pass 1 single condition. Here we convert it into a list of conditions
             }
             foreach ($qr_array as $qr_cond) {//loop through the list of conditions
