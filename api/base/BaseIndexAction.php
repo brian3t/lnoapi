@@ -22,6 +22,9 @@ class BaseIndexAction extends IndexAction
      *  ['col2' => 'val2']
      * ]
      * Read Yii2 where condition for format
+     *
+     * Also accept ?cols = col1,col2,col3
+     *
      * @return ActiveDataProvider
      */
     protected function prepareDataProvider() {
@@ -30,13 +33,15 @@ class BaseIndexAction extends IndexAction
             return call_user_func($this->prepareDataProvider, $this);
         }
 
-        /* @var $modelClass \yii\db\BaseActiveRecord */
+        /* @var $modelClass \yii\db\ActiveRecord */
         $params = \Yii::$app->request->queryParams;
         unset($params['expand']);
         unset($params['_']);
         unset($params['page']);
         $page_size = $params['page_size'] ?? false;
         unset($params['page_size']);
+        $qr_cols = $params['cols'] ?? false;//query columns
+        unset($params['cols']);
         $qr = $params['qr'] ?? false;//query raw
         unset($params['qr']);
         $qr = str_replace("'", "\"", $qr);
@@ -55,9 +60,19 @@ class BaseIndexAction extends IndexAction
                 $dp_query = $dp_query->andWhere($qr_cond);//e.g. ['not', ['column' => value]]
             }
         }
-        $ap = new ActiveDataProvider([
+        //end query request
+
+        if ($qr_cols) {
+            $qr_cols = explode(',', $qr_cols);
+        }
+
+        if ($qr_cols) {
+            $dp_query->select($qr_cols);
+        }
+        $ap = new \yii\data\ActiveDataProvider([
             'query' => $dp_query,
         ]);
+
         if ($page_size) {
             $ap->pagination->setPageSize($page_size);
         }
