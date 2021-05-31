@@ -29,9 +29,9 @@ class BaseIndexAction extends IndexAction
      */
     protected function prepareDataProvider() {
         $modelClass = new $this->modelClass();
-        if ($this->prepareDataProvider !== null) {
-            return call_user_func($this->prepareDataProvider, $this);
-        }
+//        if ($this->prepareDataProvider !== null) {
+//            return call_user_func($this->prepareDataProvider, $this);
+//        }
 
         /* @var $modelClass \yii\db\ActiveRecord */
         $params = \Yii::$app->request->queryParams;
@@ -40,6 +40,8 @@ class BaseIndexAction extends IndexAction
         unset($params['page']);
         $page_size = $params['page_size'] ?? false;
         unset($params['page_size']);
+        $maxrows = intval($params['maxrows']) ?? false;
+        unset($params['maxrows']);
         $qr_cols = $params['cols'] ?? false;//query columns
         unset($params['cols']);
         $qr = $params['qr'] ?? false;//query raw
@@ -69,6 +71,10 @@ class BaseIndexAction extends IndexAction
         if ($qr_cols) {
             $dp_query->select($qr_cols);
         }
+        if (is_int($maxrows) && $maxrows !== -1){
+            $dp_query->limit($maxrows);
+        }
+
         $ap = new \yii\data\ActiveDataProvider([
             'query' => $dp_query,
         ]);
@@ -76,6 +82,10 @@ class BaseIndexAction extends IndexAction
         if ($page_size) {
             $ap->pagination->setPageSize($page_size);
         }
+        if (is_int($maxrows) && $maxrows !== -1){
+            $ap->pagination->setPageSize($maxrows);
+        }
+
         return $ap;
     }
 
