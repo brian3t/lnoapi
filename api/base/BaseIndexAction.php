@@ -40,7 +40,7 @@ class BaseIndexAction extends IndexAction
         unset($params['page']);
         $page_size = $params['page_size'] ?? false;
         unset($params['page_size']);
-        $maxrows = intval($params['maxrows']) ?? false;
+        $maxrows = intval($params['maxrows'] ?? -1);
         unset($params['maxrows']);
         $qr_cols = $params['cols'] ?? false;//query columns
         unset($params['cols']);
