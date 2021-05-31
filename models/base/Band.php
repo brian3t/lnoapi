@@ -30,6 +30,8 @@ namespace app\models\base;
  * @property string $ytlink_first
  * @property string $ytlink_first_tnail
  * @property integer $ytlink_approved
+ * @property string $scrape_url
+ * @property string $yt_scr_status
  *
  * @property \app\models\User $user
  * @property \app\models\BandComment[] $bandComments
@@ -75,6 +77,7 @@ class Band extends \yii\db\ActiveRecord
             [['similar_to'], 'string', 'max' => 5000],
             [['hometown_state'], 'string', 'max' => 50],
             [['youtube', 'ytlink_first'], 'string', 'max' => 800],
+            [['yt_scr_status'], 'string', 'max' => 80],
             [['instagram', 'ytlink_first_tnail'], 'string', 'max' => 500]
         ];
     }
@@ -116,6 +119,8 @@ class Band extends \yii\db\ActiveRecord
             'ytlink_first' => 'First Youtube video id',
             'ytlink_first_tnail' => 'First Youtube video thumnail',
             'ytlink_approved' => 'Approve YT vid?',
+            'scrape_url' => 'Scrape Url',
+            'yt_scr_status' => 'Youtube Scrape Status',
         ];
     }
 
