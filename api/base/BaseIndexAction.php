@@ -35,6 +35,9 @@ class BaseIndexAction extends IndexAction
 
         /* @var $modelClass \yii\db\ActiveRecord */
         $params = \Yii::$app->request->queryParams;
+        $params = array_filter($params, function ($param) {
+            return ! str_starts_with($param, 'xq_');//remove extra query params
+        }, ARRAY_FILTER_USE_KEY);
         unset($params['expand']);
         unset($params['_']);
         unset($params['page']);
@@ -71,7 +74,7 @@ class BaseIndexAction extends IndexAction
         if ($qr_cols) {
             $dp_query->select($qr_cols);
         }
-        if (is_int($maxrows) && $maxrows !== -1){
+        if (is_int($maxrows) && $maxrows !== -1) {
             $dp_query->limit($maxrows);
         }
 
@@ -82,7 +85,7 @@ class BaseIndexAction extends IndexAction
         if ($page_size) {
             $ap->pagination->setPageSize($page_size);
         }
-        if (is_int($maxrows) && $maxrows !== -1){
+        if (is_int($maxrows) && $maxrows !== -1) {
             $ap->pagination->setPageSize($maxrows);
         }
 
