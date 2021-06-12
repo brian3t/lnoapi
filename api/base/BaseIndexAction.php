@@ -36,7 +36,13 @@ class BaseIndexAction extends IndexAction
         /* @var $modelClass \yii\db\ActiveRecord */
         $params = \Yii::$app->request->queryParams;
         $params = array_filter($params, function ($param) {
-            return ! str_starts_with($param, 'xq_');//remove extra query params
+            return (! (str_starts_with($param, 'xq_') ||
+                str_ends_with($param, '_from') ||
+                str_ends_with($param, '_to') ||
+                str_ends_with($param, '_offset_bk') ||
+                str_ends_with($param, '_offset_fwd')
+            )
+            );//remove extra query params
         }, ARRAY_FILTER_USE_KEY);
         unset($params['expand']);
         unset($params['_']);
