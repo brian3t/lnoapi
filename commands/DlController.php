@@ -270,21 +270,18 @@ class DlController extends Controller
     public function actionVenueAddrSdr() {
         $updated = 0;
         $venues_wo_addr = Venue::find()->where(['not', ['sdr_name' => null]])->andWhere(['address1' => null])->all();
+        echo sizeof($venues_wo_addr) . " venues w/o address. Trying pulling.. ". PHP_EOL;
         $venue_client = new Client();
         try {
             foreach ($venues_wo_addr as $venue_wo_addr) {
                 $sdr_url = SDRCOM . $venue_wo_addr->sdr_name;
                 $sdr_url = str_replace(SDRCOM . SDRCOM, SDRCOM, $sdr_url);//remove duplicates
                 $crawler = $venue_client->request('GET', $sdr_url);
-                $type_a = $crawler->filter('ul.categories > li:first-child > a');
-                if ($type_a instanceof Crawler) {
-                    $type = $type_a->text();
+                $addr_e = $crawler->filter('address');
+                if ($addr_e instanceof Crawler) {
+                    $addr = $addr_e->text();
                 } else {
-                    $type = null;
-                }
-                $addr_a = $crawler->filter('a:contains("Directions")');
-                if ($addr_a instanceof Crawler) {
-                    $addr = $addr_a->parents()->text();
+                    $addr = null;
                 }
                 if (empty($addr)) {
                     return false;

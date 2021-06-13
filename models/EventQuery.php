@@ -117,7 +117,7 @@ class EventQuery extends \yii\db\ActiveQuery
             unset($params['miles_away']);
         }
         if (! isset($cen_lat) || ! isset($cen_lng) || ! is_numeric($cen_lat) || ! is_numeric($cen_lng)) return;
-        if (! is_numeric($mile)) return;
+        if (!isset($mile) || ! is_numeric($mile)) return;
         $delta = PHPHelper::rev_haversin_simple($mile);
         $this->joinWith(['venue as v' => function ($q) use ($cen_lat, $cen_lng, $delta) {
             $q->andFilterWhere(['between', '`v`.lat', $cen_lat - $delta, $cen_lat + $delta]);

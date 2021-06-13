@@ -9,11 +9,10 @@ define('SEARCH_ENGINE_ID', '016413111986528629647:bssckogzvpk');
 /** End Google custom search constants */
 
 use app\models\Venue;
+use Geocoder\Query\GeocodeQuery;
 use Goutte\Client as GoutteClient;
 use yii\console\Controller;
 use yii\db\Exception;
-use Geocoder\Query\GeocodeQuery;
-use Geocoder\Query\ReverseQuery;
 
 
 /**
@@ -30,7 +29,7 @@ class MagicController extends Controller
     public function actionPullLatLng()
     {
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
-        $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null]);
+        $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null,['not',['address1' => null]]]);
         $httpClient = new \Http\Adapter\Guzzle6\Client();
         $provider = new \Geocoder\Provider\GoogleMaps\GoogleMaps($httpClient, null, GPLACE_KEY);
         $geocoder = new \Geocoder\StatefulGeocoder($provider, 'en');
@@ -38,9 +37,10 @@ class MagicController extends Controller
 //        $result = $geocoder->reverseQuery(ReverseQuery::fromCoordinates(...));
         $affected_rows = 0;
         $failed_rows = 0;
+        echo sizeof($venues_no_latlng) . " venues with no lat/lng:" . PHP_EOL;
         foreach ($venues_no_latlng as $venue) {
             if ($failed_rows > 20) {
-                echo "Failed 20 rows, exitting";
+                echo "Failed 20 rows, exiting";
                 break;
             }
             $full_addr = $venue->pull_address();
