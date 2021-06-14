@@ -291,12 +291,11 @@ class DlController extends Controller
                     $venue_wo_addr->save();
                     continue;
                 }
-                $addr = str_replace(' | Directions', '', $addr);
-                $addr = str_replace(' (NCC)', '', $addr);
                 $address_variables = PHPHelper::parseAddress($addr);
+                $address_variables = array_filter($address_variables);//remove null
                 $venue_wo_addr->setAttributes($address_variables);
-                if ($venue_wo_addr->save()) {
-                    $updated++;
+                if ($venue_wo_addr->saveAndLogError()) {
+                    $updated = $updated + 1;
                 }
                 sleep($SLEEP_DELAY);
             }

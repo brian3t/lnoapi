@@ -15,6 +15,13 @@ class Venue extends BaseVenue
 {
     use ModelB3tTrait;
 
+    public function beforeValidate() {
+        if (empty($this->attr) || !is_string($this->attr)){
+            $this->attr = "{}";
+        }
+        return parent::beforeValidate();
+    }
+
     public function pull_address()
     {
         $full = implode(', ', [$this->address1, $this->address2, $this->city, $this->state, $this->zip]);
