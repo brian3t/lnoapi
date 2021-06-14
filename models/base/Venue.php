@@ -16,6 +16,7 @@ use yii\behaviors\BlameableBehavior;
  * @property string $type
  * @property string $address1
  * @property string $address2
+ * @property string $county
  * @property string $city
  * @property string $state
  * @property string $zip
@@ -31,6 +32,10 @@ use yii\behaviors\BlameableBehavior;
  * @property string $sdr_name
  * @property string $source
  * @property array $attr
+ * @property integer $scrape_status
+ * @property string $scrape_msg
+ * @property string $scrape_url
+ * @property string $tz
  *
  * @property \app\models\Event[] $events
  * @property \app\models\Event[] $eventsNonInverse
@@ -62,17 +67,19 @@ class Venue extends \yii\db\ActiveRecord
     {
         return [
             [['created_at', 'updated_at'], 'safe'],
-            [['created_by', 'user_id'], 'integer'],
+            [['created_by', 'user_id', 'scrape_status'], 'integer'],
             [['lat', 'lng', 'cost'], 'number'],
-            [['source'], 'string'],
+            [['source', 'attr'], 'string'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook', 'sdr_name'], 'string', 'max' => 255],
-            [['type', 'description'], 'string', 'max' => 800],
-            [['city'], 'string', 'max' => 80],
+            [['type', 'description', 'scrape_msg'], 'string', 'max' => 800],
+            [['county', 'city'], 'string', 'max' => 80],
             [['state'], 'string', 'max' => 8],
             [['zip'], 'string', 'max' => 25],
             [['phone'], 'string', 'max' => 18],
-            [['system_note'], 'string', 'max' => 8000]
-        ];
+            [['system_note'], 'string', 'max' => 8000],
+            [['scrape_url'], 'string', 'max' => 200],
+            [['tz'], 'string', 'max' => 120]
+       ];
     }
 
     /**
@@ -95,6 +102,7 @@ class Venue extends \yii\db\ActiveRecord
             'type' => 'Type',
             'address1' => 'Address1',
             'address2' => 'Address2',
+            'county' => 'County',
             'city' => 'City',
             'state' => 'State',
             'zip' => 'Zip',
@@ -110,9 +118,13 @@ class Venue extends \yii\db\ActiveRecord
             'sdr_name' => 'Sdr Name',
             'source' => 'Source',
             'attr' => 'Attr',
+            'scrape_status' => 'Scrape Status',
+            'scrape_msg' => 'Scrape Msg',
+            'scrape_url' => 'Scrape Url',
+            'tz' => 'Tz',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -138,7 +150,7 @@ class Venue extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\User::className(), ['id' => 'created_by'])->inverseOf('venues');
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -146,7 +158,7 @@ class Venue extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\User::className(), ['id' => 'user_id'])->inverseOf('venues');
     }
-    
+
     /**
      * @inheritdoc
      * @return array mixed

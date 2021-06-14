@@ -269,8 +269,10 @@ class DlController extends Controller
      */
     public function actionVenueAddrSdr() {
         $updated = 0;
-        $venues_wo_addr = Venue::find()->where(['not', ['sdr_name' => null]])->andWhere(['address1' => null])->all();
-        echo sizeof($venues_wo_addr) . " venues w/o address. Trying pulling.. ". PHP_EOL;
+        $now = (new \DateTime())->format('Y-m-d h:i:s');
+        $SLEEP_DELAY = 0;
+        $venues_wo_addr = Venue::find()->where(['not', ['sdr_name' => null]])->andWhere(['address1' => null])->orderBy(['created_at' => SORT_DESC])->limit(10)->all();
+        echo sizeof($venues_wo_addr) . " venues w/o address. Trying pulling.. " . PHP_EOL;
         $venue_client = new Client();
         try {
             foreach ($venues_wo_addr as $venue_wo_addr) {
@@ -284,7 +286,10 @@ class DlController extends Controller
                     $addr = null;
                 }
                 if (empty($addr)) {
-                    return false;
+                    $venue_wo_addr->scrape_status = -1;
+                    $venue_wo_addr->scrape_msg = "Tried by didn't find any addr " . $now;
+                    $venue_wo_addr->save();
+                    continue;
                 }
                 $addr = str_replace(' | Directions', '', $addr);
                 $addr = str_replace(' (NCC)', '', $addr);
@@ -293,6 +298,7 @@ class DlController extends Controller
                 if ($venue_wo_addr->save()) {
                     $updated++;
                 }
+                sleep($SLEEP_DELAY);
             }
         } catch (\Exception $e) {
             Yii::error("DlController actionVenueAddrSdr 296" . $e->getMessage());
@@ -720,7 +726,7 @@ class DlController extends Controller
             if (! is_int(intval($band_id)) || ! is_string($band_id)) {
                 continue;
             }
-            if (!$is_debug) sleep(rand(2,8));
+            if (! $is_debug) sleep(rand(2, 8));
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
             if ($band_api_data->getStatusCode() !== 200) {
                 echo 'Failed. ' . $band_api_data->getStatusCode() . PHP_EOL;
