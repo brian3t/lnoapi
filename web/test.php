@@ -1,28 +1,31 @@
 <?php
-ob_start();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
+require_once dirname(__DIR__) . '/vendor/autoload.php';
 
-<?php
-require_once __DIR__. '/../vendor/autoload.php';
+use Symfony\Component\DomCrawler\Crawler;
 
-$pst = new DateTime('2021-04-11 9:40:00', new DateTimeZone('America/Los_Angeles'));
-echo $pst->getOffset()/3600 . "\n";
-
-$utc = $pst->setTimezone(new DateTimeZone('utc'));
-
-$winter = new DateTime('2010-12-21', new DateTimeZone('America/New_York'));
-$summer = new DateTime('2008-06-21', new DateTimeZone('America/New_York'));
-
-echo $utc->getOffset()/3600 . "\n";
-echo $utc->format('Y-m-d H:i:s') . "\n";
-
-?>
-</body>
+$html = <<<HTML
+<html>
+<div class="content">
+    <h2 class="gamma">Excerpt</h2>
+    <p>...content html...</p>
+</div>
+<div class="content">
+    <h2 class="gamma">Excerpt</h2>
+    <p>...more content html...</p>
+</div>
 </html>
+HTML;
 
+$crawler = new Crawler($html, 'http://localhost');
+
+// remove all h2 nodes inside .content
+$crawler->filter('html .content h2')->each(function (Crawler $crawler) {
+    foreach ($crawler as $node) {
+        $node->parentNode->removeChild($node);
+    }
+});
+
+// output .content nodes with h2 removed
+$crawler->filter('html .content')->each(function (Crawler $crawler) {
+    echo $crawler->html();
+});

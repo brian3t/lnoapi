@@ -493,13 +493,107 @@ class DlController extends Controller
     }
 
     /**
+     * Scrape reverb venues to pull address if it's missing
+     */
+    public function actionScrapeReverbVenue() {
+        $LIMIT = 1;
+//        $LIMIT = 50;
+        $ven_wo_addr = Venue::find()->where(['address1' => null, 'source' => 'reverb'])->orderBy(['created_at' => SORT_DESC])->limit($LIMIT)->all();
+        echo "Venues reverb w/o address: " . count($ven_wo_addr). PHP_EOL;
+        $guzzle = new GuzzleClient();
+        $updated = 0;
+        $updated_ids = [];
+        foreach ($ven_wo_addr as $ven) {
+            /** @var $ven Venue */
+            $attr = $ven->attr;
+            if (! isset($attr['show_id'])) continue;
+            $show_id = $attr['show_id'];
+            $venue_url = "https://www.reverbnation.com/show/$show_id";
+            try {
+                $ven_html = $guzzle->request('GET', $venue_url);
+            } catch (\GuzzleHttp\Exception\GuzzleException $e) {
+                echo "Guzzle fails" . $venue_url . PHP_EOL;
+                continue;
+            }
+            if ($ven_html->getStatusCode() !== 200) {
+                echo 'Failed. ' . $ven_html->getStatusCode() . PHP_EOL;
+                return false;
+            }
+            $ven_html = $ven_html->getBody();
+            if (! method_exists($ven_html, 'getContents')) {
+                echo 'Bad response. Url: ' . $venue_url . PHP_EOL;
+                return false;
+            }
+            $ven_html = $ven_html->getContents();
+            $crawler = new Crawler($ven_html);
+            $crawler = $crawler->filter('span[itemtype="http://schema.org/Place"]');
+            if ($crawler->count() !== 1) continue;
+            $ven_reverb_website = $crawler->filter('a[itemprop="url"]');
+            if ($ven_reverb_website->count() == 1) {
+                $ven_reverb_website = $ven_reverb_website->attr('href');
+                $ven->website = $ven_reverb_website;
+            }
+            $address1_cr = $crawler->filter('span[itemprop="streetAddress"]');
+            if ($address1_cr->count() == 1) {
+                $address1 = $address1_cr->text();
+                if ($address1 == 'Online') {
+                    $ven->type = 'online';
+                } elseif (! empty($address1)) {
+                    $ven->address1 = $address1;
+                }
+            }
+            foreach ($address1_cr as $node){
+                $node->parentNode->removeChild($node);
+            }
+            $city_cr = $crawler->filter('span[itemprop="addressLocality"]');
+            if ($city_cr->count() == 1) {
+                $city = $city_cr->text();
+                if (! empty($city)) $ven->city = $city;
+            }
+            foreach ($city_cr as $node){
+                $node->parentNode->removeChild($node);
+            }
+            $state_cr = $crawler->filter('span[itemprop="addressRegion"]');
+            if ($state_cr->count() == 1) {
+                $state = $state_cr->text();
+                if (! empty($state)) $ven->state = $state;
+            }
+            foreach ($state_cr as $node){
+                $node->parentNode->removeChild($node);
+            }
+            $zip_cr = $crawler->filter('span[itemprop="postalCode"]');
+            if ($zip_cr->count() == 1) {
+                $zip = $zip_cr->text();
+                if (! empty($zip)) $ven->zip = $zip;
+            }
+            foreach ($zip_cr as $node){
+                $node->parentNode->removeChild($node);
+            }
+
+            $div_itemprop_addr = $crawler->filter('div[itemprop="address"]');
+            $phone = $div_itemprop_addr->text();
+            $phone = str_replace(',', '', $phone);
+            if (!empty($phone)){
+                $ven->phone = $phone;
+            }
+            if ($ven->saveAndLogError()){
+                $updated++;
+                array_push($updated_ids, $ven->id);
+            }
+        }
+        echo "Updated $updated records" . PHP_EOL;
+        return true;
+    }
+
+    /**
      * Scrape from Ticket Master
      * @param $variables array
      * @param $per_page int per page
      * @return boolean result
      * @throws
      */
-    public function actionScrapeTickmas($per_page = 10, $variables = []) {
+    public
+    function actionScrapeTickmas($per_page = 10, $variables = []) {
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $today = new \DateTime();
@@ -691,7 +785,8 @@ class DlController extends Controller
      * Pull band details for reverbnation
      * Getting them from https://www.reverbnation.com/api/artist/3981578
      */
-    public function actionPullBandReverb() {
+    public
+    function actionPullBandReverb() {
         $K_LIMIT = 1000;
 //        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status` IS NULL AND `source`='reverb' 
@@ -770,7 +865,8 @@ class DlController extends Controller
     /**
      * Pull from https://www.songkick.com/metro_areas/11086-us-san-diego
      */
-    public function actionPullSongkick() {
+    public
+    function actionPullSongkick() {
         $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $goutte = new Client();
         $guzzle = new \GuzzleHttp\Client();
