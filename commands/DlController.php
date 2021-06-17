@@ -498,7 +498,8 @@ class DlController extends Controller
     public function actionScrapeReverbVenue() {
 //        $LIMIT = 1;
         $LIMIT = 50;
-        $DELAY = 0;
+//        $DELAY = 0;
+        $DELAY = 10;
         $connection = Yii::$app->getDb();
         $command = $connection->createCommand("
     SELECT * FROM lno.venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%'
@@ -521,7 +522,7 @@ class DlController extends Controller
             try {
                 $ven_html = $guzzle->request('GET', $venue_url);
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-                echo "Guzzle fails" . $venue_url . PHP_EOL;
+                echo "Guzzle fails at $venue_url . message: " . $e->message . PHP_EOL;
                 continue;
             }
             if ($ven_html->getStatusCode() !== 200) {
