@@ -496,14 +496,23 @@ class DlController extends Controller
      * Scrape reverb venues to pull address if it's missing
      */
     public function actionScrapeReverbVenue() {
-        $LIMIT = 1;
-//        $LIMIT = 50;
-        $ven_wo_addr = Venue::find()->where(['address1' => null, 'source' => 'reverb'])->orderBy(['created_at' => SORT_DESC])->limit($LIMIT)->all();
-        echo "Venues reverb w/o address: " . count($ven_wo_addr). PHP_EOL;
+//        $LIMIT = 1;
+        $LIMIT = 50;
+        $DELAY = 0;
+        $connection = Yii::$app->getDb();
+        $command = $connection->createCommand("
+    SELECT * FROM lno.venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%'
+    ORDER BY created_at DESC LIMIT $LIMIT ", [':source' => 'reverb']
+        );
+
+        $ven_wo_addr = $command->queryAll();
+
+        echo "Venues reverb w/o address: " . count($ven_wo_addr) . PHP_EOL;
         $guzzle = new GuzzleClient();
         $updated = 0;
         $updated_ids = [];
         foreach ($ven_wo_addr as $ven) {
+            $ven = Venue::find()->where(['id' => $ven['id']])->one();
             /** @var $ven Venue */
             $attr = $ven->attr;
             if (! isset($attr['show_id'])) continue;
@@ -542,7 +551,7 @@ class DlController extends Controller
                     $ven->address1 = $address1;
                 }
             }
-            foreach ($address1_cr as $node){
+            foreach ($address1_cr as $node) {
                 $node->parentNode->removeChild($node);
             }
             $city_cr = $crawler->filter('span[itemprop="addressLocality"]');
@@ -550,7 +559,7 @@ class DlController extends Controller
                 $city = $city_cr->text();
                 if (! empty($city)) $ven->city = $city;
             }
-            foreach ($city_cr as $node){
+            foreach ($city_cr as $node) {
                 $node->parentNode->removeChild($node);
             }
             $state_cr = $crawler->filter('span[itemprop="addressRegion"]');
@@ -558,7 +567,7 @@ class DlController extends Controller
                 $state = $state_cr->text();
                 if (! empty($state)) $ven->state = $state;
             }
-            foreach ($state_cr as $node){
+            foreach ($state_cr as $node) {
                 $node->parentNode->removeChild($node);
             }
             $zip_cr = $crawler->filter('span[itemprop="postalCode"]');
@@ -566,20 +575,21 @@ class DlController extends Controller
                 $zip = $zip_cr->text();
                 if (! empty($zip)) $ven->zip = $zip;
             }
-            foreach ($zip_cr as $node){
+            foreach ($zip_cr as $node) {
                 $node->parentNode->removeChild($node);
             }
 
             $div_itemprop_addr = $crawler->filter('div[itemprop="address"]');
             $phone = $div_itemprop_addr->text();
             $phone = str_replace(',', '', $phone);
-            if (!empty($phone)){
+            if (! empty($phone)) {
                 $ven->phone = $phone;
             }
-            if ($ven->saveAndLogError()){
+            if ($ven->saveAndLogError()) {
                 $updated++;
                 array_push($updated_ids, $ven->id);
             }
+            sleep($DELAY);
         }
         echo "Updated $updated records" . PHP_EOL;
         return true;
