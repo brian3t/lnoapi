@@ -12,7 +12,6 @@ use app\models\Venue;
 use Geocoder\Query\GeocodeQuery;
 use Goutte\Client as GoutteClient;
 use yii\console\Controller;
-use yii\db\Exception;
 
 
 /**
@@ -24,12 +23,14 @@ class MagicController extends Controller
 {
     /**
      * Pull lat lng for all venues that don't have it yet
-     * @throws Exception
+     * @param string $limit e.g. ' LIMIT 5 '
+     * @return bool
      */
-    public function actionPullLatLng()
-    {
+    public function actionPullLatLng(string $limit = ''): bool {
+        $limit = ' LIMIT 5 ';//asdf
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
-        $venues_no_latlng = Venue::findAll(['lat' => null, 'lng' => null,['not',['address1' => null]]]);
+        $venues_no_latlng = Venue::findBySql("SELECT * FROM venue 
+            WHERE lat IS NULL AND lng IS NULL AND address1 IS NOT NULL $limit ")->all();
         $httpClient = new \Http\Adapter\Guzzle6\Client();
         $provider = new \Geocoder\Provider\GoogleMaps\GoogleMaps($httpClient, null, GPLACE_KEY);
         $geocoder = new \Geocoder\StatefulGeocoder($provider, 'en');
@@ -48,12 +49,17 @@ class MagicController extends Controller
                 continue;
             }
 
-            $geo_result = $geocoder->geocodeQuery(GeocodeQuery::create($full_addr));
+            $geo_result = false;
+            try {
+                $geo_result = $geocoder->geocodeQuery(GeocodeQuery::create($full_addr));
+            } catch (\Geocoder\Exception\Exception $e) {
+                echo $e->getMessage();
+            }
             if (! $geo_result instanceof \Geocoder\Model\AddressCollection) {
                 $failed_rows++;
                 continue;
             }
-            if ($geo_result->count() < 1){
+            if ($geo_result->count() < 1) {
                 echo 'No result, skipping..' . PHP_EOL;
                 continue;
             }
@@ -68,21 +74,20 @@ class MagicController extends Controller
                 continue;
             }
             $venue->setAttributes(['lat' => $lat, 'lng' => $lng]);
-            $affected_rows += $venue->save();
+            $affected_rows += $venue->saveAndLogError();
         }
 
 //        $affected_rows = $command->execute();
 //        \Yii::warning("Warning, affected rows:". $affected_rows);
         echo "Updated for: " . $affected_rows . " records." . PHP_EOL;
-        return 1;
+        return true;
     }
 
     /**
      * Pull genre from google
      * For bands that doesn't have genre populated
      */
-    public function actionPullGenreFromGoogle()
-    {
+    public function actionPullGenreFromGoogle() {
         $id = null;
         $genre = null;
         $sql = "SELECT `id`, `name` FROM lno.band WHERE genre IS NULL OR genre = ''";
