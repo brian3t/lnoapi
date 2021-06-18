@@ -522,7 +522,9 @@ class DlController extends Controller
             try {
                 $ven_html = $guzzle->request('GET', $venue_url);
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
-                echo "Guzzle fails at $venue_url . message: " . $e->message . PHP_EOL;
+                $message = '';
+                if (property_exists($e, 'getMessage')) $message = $e->getMessage();
+                echo "Guzzle fails at $venue_url . message: $message " . PHP_EOL;
                 continue;
             }
             if ($ven_html->getStatusCode() !== 200) {
