@@ -60,6 +60,7 @@ class DlController extends Controller
     public function actionScrapeReverbAll() {
         $this->actionScrapeReverbAllcities();
         $this->actionPullBandReverb();
+        $this->actionScrapeReverbVenue();
     }
 
     /**
@@ -497,7 +498,7 @@ class DlController extends Controller
      */
     public function actionScrapeReverbVenue() {
 //        $LIMIT = 1;
-        $LIMIT = 50;
+        $LIMIT = 100;
 //        $DELAY = 0;
         $DELAY = 10;
         $connection = Yii::$app->getDb();
