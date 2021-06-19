@@ -526,6 +526,7 @@ class DlController extends Controller
                 $message = '';
                 if (property_exists($e, 'getMessage')) $message = $e->getMessage();
                 echo "Guzzle fails at $venue_url . message: $message " . PHP_EOL;
+                sleep($DELAY);
                 continue;
             }
             if ($ven_html->getStatusCode() !== 200) {
