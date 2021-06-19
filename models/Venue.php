@@ -10,13 +10,14 @@ use usv\yii2helper\models\ModelB3tTrait;
 /**
  * This is the model class for table "venue".
  * @property string $county [varchar(80)]
+ * @property string $scrape_dt [datetime]
  */
 class Venue extends BaseVenue
 {
     use ModelB3tTrait;
 
     public function beforeValidate() {
-        if (empty($this->attr) || !is_string($this->attr)){
+        if (empty($this->attr) || (!is_string($this->attr) && !is_array($this->attr))){
             $this->attr = "{}";
         }
         return parent::beforeValidate();

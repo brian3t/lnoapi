@@ -494,16 +494,48 @@ class DlController extends Controller
     }
 
     /**
+     * Mark an active record as failed when scraping
+     * @param $active_record \yii\db\ActiveRecord
+     * @param string $msg Extra message
+     */
+    public function mark_scrape_failed(\yii\db\ActiveRecord $active_record, string $msg = '') {
+        try {
+            $active_record->scrape_status = -1;
+            $active_record->scrape_msg = "Failed to scrape $msg";
+            $active_record->scrape_dt = new \yii\db\Expression('CURRENT_TIMESTAMP');
+            $active_record->save();
+        } catch (\yii\db\Exception $e) {
+            Yii::error($e->getMessage());
+        }
+    }
+
+    /**
+     * Mark an active record as successfully scraped
+     * @param $active_record \yii\db\ActiveRecord
+     * @param string $msg Extra message
+     */
+    public function mark_scrape_ok(\yii\db\ActiveRecord $active_record, string $msg = '') {
+        try {
+            $active_record->scrape_status = 1;
+            $active_record->scrape_msg = "Successfully scraped $msg";
+            $active_record->scrape_dt = new \yii\db\Expression('CURRENT_TIMESTAMP');
+            $active_record->save();
+        } catch (\yii\db\Exception $e) {
+            Yii::error($e->getMessage());
+        }
+    }
+
+    /**
      * Scrape reverb venues to pull address if it's missing
      */
     public function actionScrapeReverbVenue() {
 //        $LIMIT = 1;
         $LIMIT = 100;
 //        $DELAY = 0;
-        $DELAY = 10;
+        $DELAY = 20;
         $connection = Yii::$app->getDb();
         $command = $connection->createCommand("
-    SELECT * FROM lno.venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%'
+    SELECT * FROM venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%'
     ORDER BY created_at DESC LIMIT $LIMIT ", [':source' => 'reverb']
         );
 
@@ -514,10 +546,14 @@ class DlController extends Controller
         $updated = 0;
         $updated_ids = [];
         foreach ($ven_wo_addr as $ven) {
+            sleep($DELAY);
             $ven = Venue::find()->where(['id' => $ven['id']])->one();
             /** @var $ven Venue */
             $attr = $ven->attr;
-            if (! isset($attr['show_id'])) continue;
+            if (! isset($attr['show_id'])) {
+                $this->mark_scrape_failed($ven, 'Missing show_id in reverb');
+                continue;
+            }
             $show_id = $attr['show_id'];
             $venue_url = "https://www.reverbnation.com/show/$show_id";
             try {
@@ -525,18 +561,19 @@ class DlController extends Controller
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
                 $message = '';
                 if (property_exists($e, 'getMessage')) $message = $e->getMessage();
-                echo "Guzzle fails at $venue_url . message: $message " . PHP_EOL;
-                sleep($DELAY);
+                $message = "Guzzle fails at $venue_url . message: $message " . PHP_EOL;
+                $this->mark_scrape_failed($ven, $message);
+                echo $message . PHP_EOL;
                 continue;
             }
             if ($ven_html->getStatusCode() !== 200) {
                 echo 'Failed. ' . $ven_html->getStatusCode() . PHP_EOL;
-                return false;
+                continue;
             }
             $ven_html = $ven_html->getBody();
             if (! method_exists($ven_html, 'getContents')) {
                 echo 'Bad response. Url: ' . $venue_url . PHP_EOL;
-                return false;
+                continue;
             }
             $ven_html = $ven_html->getContents();
             $crawler = new Crawler($ven_html);
@@ -592,9 +629,9 @@ class DlController extends Controller
             }
             if ($ven->saveAndLogError()) {
                 $updated++;
+                $this->mark_scrape_ok($ven);
                 array_push($updated_ids, $ven->id);
             }
-            sleep($DELAY);
         }
         echo "Updated $updated records" . PHP_EOL;
         return true;

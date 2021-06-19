@@ -41,6 +41,7 @@ use yii\behaviors\BlameableBehavior;
  * @property \app\models\Event[] $eventsNonInverse
  * @property \app\models\User $createdBy
  * @property \app\models\User $user
+ * @property string $scrape_dt [datetime]
  */
 class Venue extends \yii\db\ActiveRecord
 {
@@ -66,7 +67,7 @@ class Venue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at'], 'safe'],
+            [['created_at', 'updated_at', 'scrape_dt'], 'safe'],
             [['created_by', 'user_id', 'scrape_status'], 'integer'],
             [['lat', 'lng', 'cost'], 'number'],
             [['source', 'attr'], 'string'],
@@ -119,6 +120,7 @@ class Venue extends \yii\db\ActiveRecord
             'source' => 'Source',
             'attr' => 'Attr',
             'scrape_status' => 'Scrape Status',
+            'scrape_dt' => 'Scrape Last DateTime',
             'scrape_msg' => 'Scrape Msg',
             'scrape_url' => 'Scrape Url',
             'tz' => 'Tz',
