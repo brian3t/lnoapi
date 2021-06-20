@@ -372,6 +372,7 @@ class DlController extends Controller
         require_once dirname(__DIR__) . "/config/reverb/constant.php";
         $location = BASE_LOC_ARRAY;
         foreach (LOCATIONS as $LOCATION) {
+            sleep(10);
             $location['state'] = $LOCATION[0];
             $location['city'] = $LOCATION[1];
             $location['postal_code'] = $LOCATION[2];
@@ -858,6 +859,7 @@ class DlController extends Controller
                 $band->saveAndLogError();
                 continue;
             }
+            sleep(10);
             $crawler = $goutte->request('get', $url);
             $image_src = $crawler->filter('meta[name="image_src"]');
             try {
