@@ -391,6 +391,7 @@ class DlController extends Controller
      */
     public function actionScrapeReverb($location = ["geo" => "local", "country" => "US", "state" => "CA", "city" => "San%20Diego", "postal_code" => "92115", "tz" => "PST"], $per_page = 10) {
 
+        $DELAY = 15;
 //        $IS_DEBUG = true;
         $IS_DEBUG = false;
         $scraped = 0;
@@ -401,6 +402,7 @@ class DlController extends Controller
             $params = ['per_page' => $per_page, 'location' => json_encode($location)];
             $url .= "&" . http_build_query($params);
             $guzzle = new GuzzleClient();
+            sleep($DELAY);
             $events = $guzzle->request('GET', $url, $params);
             if ($events->getStatusCode() !== 200) {
                 echo 'Failed. ' . $events->getStatusCode() . PHP_EOL;
@@ -482,10 +484,6 @@ class DlController extends Controller
                     } catch (\Exception $exception) {
                         //ignore. probably duplicate band_event
                     }
-
-                    if ($IS_DEBUG !== true) {
-                        sleep(rand(2, 8));
-                    }
                 }//end foreach artist
                 $scraped++;
             }
@@ -533,7 +531,7 @@ class DlController extends Controller
 //        $LIMIT = 1;
         $LIMIT = 100;
 //        $DELAY = 0;
-        $DELAY = 20;
+        $DELAY = 15;
         $connection = Yii::$app->getDb();
         $command = $connection->createCommand("
     SELECT * FROM venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%'
@@ -547,7 +545,6 @@ class DlController extends Controller
         $updated = 0;
         $updated_ids = [];
         foreach ($ven_wo_addr as $ven) {
-            sleep($DELAY);
             $ven = Venue::find()->where(['id' => $ven['id']])->one();
             /** @var $ven Venue */
             $attr = $ven->attr;
@@ -558,6 +555,7 @@ class DlController extends Controller
             $show_id = $attr['show_id'];
             $venue_url = "https://www.reverbnation.com/show/$show_id";
             try {
+                sleep($DELAY);
                 $ven_html = $guzzle->request('GET', $venue_url);
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
                 $message = '';
@@ -841,6 +839,7 @@ class DlController extends Controller
     public
     function actionPullBandReverb() {
         $K_LIMIT = 1000;
+        $DELAY = 15;
 //        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
         $bands = Band::findBySql("SELECT  id, attr, website FROM `band` WHERE `scrape_status` IS NULL AND `source`='reverb' 
             AND COALESCE(`logo`,'')='' LIMIT :limit ", [':limit' => $K_LIMIT])->all();
@@ -874,7 +873,7 @@ class DlController extends Controller
             if (! is_int(intval($band_id)) || ! is_string($band_id)) {
                 continue;
             }
-            if (! $is_debug) sleep(rand(2, 8));
+            sleep($DELAY);
             $band_api_data = $guzzle->request('get', $base_api_url . $band_id);
             if ($band_api_data->getStatusCode() !== 200) {
                 echo 'Failed. ' . $band_api_data->getStatusCode() . PHP_EOL;
