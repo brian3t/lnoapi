@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c6d963ceb6c474626897012f93475f44",
+    "content-hash": "5aa2f31ebd32a492af51deac2cb53c3c",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -1927,12 +1927,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-datecontrol.git",
-                "reference": "0e7057f644fb178c9a949836c2b0dc7325d07e02"
+                "reference": "83abdbe6e6f7b52a705e4649fae027a80670c04a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-datecontrol/zipball/0e7057f644fb178c9a949836c2b0dc7325d07e02",
-                "reference": "0e7057f644fb178c9a949836c2b0dc7325d07e02",
+                "url": "https://api.github.com/repos/kartik-v/yii2-datecontrol/zipball/83abdbe6e6f7b52a705e4649fae027a80670c04a",
+                "reference": "83abdbe6e6f7b52a705e4649fae027a80670c04a",
                 "shasum": ""
             },
             "require": {
@@ -1971,7 +1971,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2020-02-03T06:37:57+00:00"
+            "time": "2021-06-12T11:11:36+00:00"
         },
         {
             "name": "kartik-v/yii2-dialog",
@@ -2685,12 +2685,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-tree-manager.git",
-                "reference": "a0ca2bdce4e5669b39aabbd228b03d271f570534"
+                "reference": "203312467a29f6e3b8a67a4163cc8aa138b3ee57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-tree-manager/zipball/a0ca2bdce4e5669b39aabbd228b03d271f570534",
-                "reference": "a0ca2bdce4e5669b39aabbd228b03d271f570534",
+                "url": "https://api.github.com/repos/kartik-v/yii2-tree-manager/zipball/203312467a29f6e3b8a67a4163cc8aa138b3ee57",
+                "reference": "203312467a29f6e3b8a67a4163cc8aa138b3ee57",
                 "shasum": ""
             },
             "require": {
@@ -2734,7 +2734,7 @@
                 "tree",
                 "treeview"
             ],
-            "time": "2020-06-18T11:21:50+00:00"
+            "time": "2021-06-03T09:48:41+00:00"
         },
         {
             "name": "kartik-v/yii2-widget-activeform",
@@ -4046,12 +4046,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mootensai/yii2-enhanced-gii.git",
-                "reference": "387965a6144a0aef278f0213976f4e56f032245e"
+                "reference": "a00e4e19fe191da621a2291db95634942039f7bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mootensai/yii2-enhanced-gii/zipball/387965a6144a0aef278f0213976f4e56f032245e",
-                "reference": "387965a6144a0aef278f0213976f4e56f032245e",
+                "url": "https://api.github.com/repos/mootensai/yii2-enhanced-gii/zipball/a00e4e19fe191da621a2291db95634942039f7bf",
+                "reference": "a00e4e19fe191da621a2291db95634942039f7bf",
                 "shasum": ""
             },
             "require": {
@@ -4097,7 +4097,7 @@
                 "yii",
                 "yii2"
             ],
-            "time": "2020-09-16T12:04:33+00:00"
+            "time": "2021-03-08T04:19:13+00:00"
         },
         {
             "name": "mootensai/yii2-jsblock",
@@ -6259,16 +6259,16 @@
         },
         {
             "name": "yiisoft/yii2",
-            "version": "2.0.41.1",
+            "version": "2.0.42.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-framework.git",
-                "reference": "2ad0894a2ccbd3912b33de4419ad1ae3df0595c4"
+                "reference": "976e2e892af4df933831b5e0a05d0acf4b173d98"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/2ad0894a2ccbd3912b33de4419ad1ae3df0595c4",
-                "reference": "2ad0894a2ccbd3912b33de4419ad1ae3df0595c4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-framework/zipball/976e2e892af4df933831b5e0a05d0acf4b173d98",
+                "reference": "976e2e892af4df933831b5e0a05d0acf4b173d98",
                 "shasum": ""
             },
             "require": {
@@ -6369,7 +6369,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-03-04T15:45:04+00:00"
+            "time": "2021-05-06T11:44:35+00:00"
         },
         {
             "name": "yiisoft/yii2-authclient",
@@ -7224,7 +7224,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.2.0",
+        "php": "^8.0",
         "ext-json": "*",
         "ext-mysqli": "*",
         "ext-dom": "*",
