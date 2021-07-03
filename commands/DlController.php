@@ -532,6 +532,8 @@ class DlController extends Controller
         $LIMIT = 100;
 //        $DELAY = 0;
         $DELAY = 15;
+        $ts_start = new \DateTime();
+        echo(PHP_EOL. "Started at " . $ts_start->format('H:i:s'));
         $connection = Yii::$app->getDb();
         $command = $connection->createCommand("
     SELECT * FROM venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%' AND scrape_status = 0
@@ -556,6 +558,7 @@ class DlController extends Controller
             $venue_url = "https://www.reverbnation.com/show/$show_id";
             try {
                 sleep($DELAY);
+                echo(PHP_EOL. "Guzzle started at " . (new \DateTime())->format('H:i:s'));
                 $ven_html = $guzzle->request('GET', $venue_url);
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
                 $message = '';
@@ -633,6 +636,9 @@ class DlController extends Controller
                 array_push($updated_ids, $ven->id);
             }
         }
+        $ts_end = new \DateTime();
+        $duration = $ts_end->diff($ts_start);
+        echo("Finished at " . ($ts_end)->format('H:i:s') . ", duration: " . $duration->format('i:s'));
         echo "Updated $updated records" . PHP_EOL;
         return true;
     }
