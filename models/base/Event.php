@@ -78,7 +78,7 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['created_at', 'updated_at', 'start_time', 'start_time_utc', 'end_time', 'start_datetime_utc'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
-            [['short_desc', 'description', 'source', 'attr'], 'string'],
+            [['short_desc', 'description', 'source'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
             [['when'], 'string', 'max' => 300],
             [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name', 'genre'], 'string', 'max' => 255],

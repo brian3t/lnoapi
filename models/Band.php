@@ -25,6 +25,9 @@ class Band extends BaseBand
         }
 //        if (! is_string($this->attr)) $this->attr = "";
 //        if (is_array($this->attr)) $this->attr=json_encode($this->attr);
+//        if (empty($this->attr) || (!is_string($this->attr) && !is_array($this->attr))){
+//            $this->attr = "{}";
+//        }
         return parent::beforeValidate();
     }
 

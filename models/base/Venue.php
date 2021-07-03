@@ -70,7 +70,7 @@ class Venue extends \yii\db\ActiveRecord
             [['created_at', 'updated_at', 'scrape_dt'], 'safe'],
             [['created_by', 'user_id', 'scrape_status'], 'integer'],
             [['lat', 'lng', 'cost'], 'number'],
-            [['source', 'attr'], 'string'],
+            [['source'], 'string'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook', 'sdr_name'], 'string', 'max' => 255],
             [['type', 'description', 'scrape_msg'], 'string', 'max' => 800],
             [['county', 'city'], 'string', 'max' => 80],
