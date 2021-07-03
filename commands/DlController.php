@@ -527,14 +527,14 @@ class DlController extends Controller
     /**
      * Scrape reverb venues to pull address if it's missing
      */
-    public function actionScrapeReverbVenue() {
+    public function actionScrapeReverbVenue(): bool {
 //        $LIMIT = 1;
         $LIMIT = 100;
 //        $DELAY = 0;
         $DELAY = 15;
         $connection = Yii::$app->getDb();
         $command = $connection->createCommand("
-    SELECT * FROM venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%'
+    SELECT * FROM venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%' AND scrape_status = 0
     ORDER BY created_at DESC LIMIT $LIMIT ", [':source' => 'reverb']
         );
 
@@ -560,7 +560,8 @@ class DlController extends Controller
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
                 $message = '';
                 if (property_exists($e, 'getMessage')) $message = $e->getMessage();
-                $message = "Guzzle fails at $venue_url . message: $message " . PHP_EOL;
+                if (property_exists($e, 'getCode')) $message .= "| code: " . $e->getCode();
+                $message = "scr-reverb-venue Guzzle fails at $venue_url . message: $message " . PHP_EOL;
                 $this->mark_scrape_failed($ven, $message);
                 echo $message . PHP_EOL;
                 continue;
