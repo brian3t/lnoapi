@@ -19,7 +19,7 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
 
     <?= $form->field($model, 'source')->widget(\kartik\widgets\Select2::classname(), [
-        'data' => ['sdr'=>'San Diego Reader (sdr)','ticketfly'=>'TicketFly','reverb'=>'Reverb','tickmas'=>'Ticket Master (tickmas)','other'=>'Other','unknown'=>'Unknown'],
+        'data' => ['sdr'=>'San Diego Reader (sdr)','ticketfly'=>'TicketFly','reverb'=>'Reverb','tickmas'=>'Ticket Master (tickmas)','skick'=>'Songkick','other'=>'Other','unknown'=>'Unknown'],
         'options' => ['placeholder' => 'Choose Source'],
         'pluginOptions' => [
             'allowClear' => true

@@ -26,7 +26,7 @@
     "ext-zip": "*",
     "ext-gd": "*",
     "ext-intl": "*",
-    "yiisoft/yii2": ">=2.0.5",
+    "yiisoft/yii2": "~2.0.42",
     "yiisoft/yii2-swiftmailer": "*",
     "kartik-v/yii2-widgets": "*",
     "kartik-v/yii2-field-range": "*",
