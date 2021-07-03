@@ -17,24 +17,23 @@ class Venue extends BaseVenue
     use ModelB3tTrait;
 
     public function beforeValidate() {
-        if (empty($this->attr) || (!is_string($this->attr) && !is_array($this->attr))){
+        if (empty($this->attr) || (! is_string($this->attr) && ! is_array($this->attr))) {
             $this->attr = "{}";
         }
+        if (strlen($this->state) > 8) $this->state = substr($this->state, 0, 8);
         return parent::beforeValidate();
     }
 
-    public function pull_address()
-    {
+    public function pull_address() {
         $full = implode(', ', [$this->address1, $this->address2, $this->city, $this->state, $this->zip]);
         return $full;
     }
-    public function fields()
-    {
+
+    public function fields() {
         return ArrayHelper::merge(parent::fields(), []);
     }
 
-    public function extraFields()
-    {
+    public function extraFields() {
         return ['events' => 'eventsNonInverse'];
     }
 }
