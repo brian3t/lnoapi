@@ -72,9 +72,10 @@ $this->registerJs($search);
             'format'=>'html',
             'value' => function ($model) {
                 if ($model->venue) {
-                    return "<a href='/venue/view?id={$model->venue->id}' target='_blank'>{$model->venue->name}</a>";
+                    $venue_name = $model->venue->name | 'Unknown';
+                    return "<a href='/venue/view?id={$model->venue->id}' target='_blank'>{$venue_name}</a>";
                 } else {
-                    return NULL;
+                    return $model->venue_id;
                 }
             },
             'filterType' => GridView::FILTER_SELECT2,
