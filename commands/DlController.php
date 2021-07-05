@@ -528,8 +528,8 @@ class DlController extends Controller
      * Scrape reverb venues to pull address if it's missing
      */
     public function actionScrapeReverbVenue(): bool {
-//        $LIMIT = 1;
-        $LIMIT = 100;
+        $LIMIT = 1;
+//        $LIMIT = 100;
 //        $DELAY = 0;
         $DELAY = 15;
         $ts_start = new \DateTime();
@@ -542,7 +542,7 @@ class DlController extends Controller
 
         $ven_wo_addr = $command->queryAll();
 
-        echo "Venues reverb w/o address: " . count($ven_wo_addr) . PHP_EOL;
+        echo " Venues reverb w/o address: " . count($ven_wo_addr) . PHP_EOL;
         $guzzle = new GuzzleClient();
         $updated = 0;
         $updated_ids = [];
@@ -559,12 +559,13 @@ class DlController extends Controller
             try {
                 sleep($DELAY);
                 echo(PHP_EOL. "Guzzle started at " . (new \DateTime())->format('H:i:s'));
-                $ven_html = $guzzle->request('GET', $venue_url);
+                $ven_html = $guzzle->request('GET', $venue_url, ['header' => 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36
+']);
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
                 $message = '';
-                if (property_exists($e, 'getMessage')) $message = $e->getMessage();
+                if (method_exists($e, 'getMessage')) $message = $e->getMessage();
                 if (property_exists($e, 'getCode')) $message .= "| code: " . $e->getCode();
-                $message = "scr-reverb-venue Guzzle fails at $venue_url . message: $message " . PHP_EOL;
+                $message = "scr-reverb-venue Guzzle fails at venue url: $venue_url | venueid: $ven->id | message: $message " . PHP_EOL;
                 $this->mark_scrape_failed($ven, $message);
                 echo $message . PHP_EOL;
                 continue;
@@ -638,7 +639,7 @@ class DlController extends Controller
         }
         $ts_end = new \DateTime();
         $duration = $ts_end->diff($ts_start);
-        echo("Finished at " . ($ts_end)->format('H:i:s') . ", duration: " . $duration->format('i:s'));
+        echo("Finished at " . ($ts_end)->format('H:i:s') . ", duration: " . $duration->format('%i:%s'));
         echo "Updated $updated records" . PHP_EOL;
         return true;
     }
