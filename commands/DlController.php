@@ -533,7 +533,7 @@ class DlController extends Controller
 //        $DELAY = 0;
         $DELAY = 15;
         $ts_start = new \DateTime();
-        echo(PHP_EOL. "Started at " . $ts_start->format('H:i:s'));
+        echo(PHP_EOL . "Started at " . $ts_start->format('H:i:s'));
         $connection = Yii::$app->getDb();
         $command = $connection->createCommand("
     SELECT * FROM venue WHERE address1 IS NULL AND source = :source AND attr LIKE '%show_id%' AND scrape_status = 0
@@ -558,7 +558,7 @@ class DlController extends Controller
             $venue_url = "https://www.reverbnation.com/show/$show_id";
             try {
                 sleep($DELAY);
-                echo(PHP_EOL. "Guzzle started at " . (new \DateTime())->format('H:i:s'));
+                echo(PHP_EOL . "Guzzle started at " . (new \DateTime())->format('H:i:s'));
                 $ven_html = $guzzle->request('GET', $venue_url, ['header' => 'User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.87 Safari/537.36
 ']);
             } catch (\GuzzleHttp\Exception\GuzzleException $e) {
@@ -921,45 +921,5 @@ class DlController extends Controller
             }
         }
         echo "Scraped $scraped bands" . PHP_EOL;
-    }
-
-    /**
-     * Pull from https://www.songkick.com/metro_areas/11086-us-san-diego
-     */
-    public
-    function actionPullSongkick() {
-        $bands = Band::findAll(['source' => 'reverb', 'description' => null]);
-        $goutte = new Client();
-        $guzzle = new \GuzzleHttp\Client();
-        $base_api_url = 'https://www.songkick.com/metro_areas/';
-        $metro = '11086-us-san-diego';
-
-        //        $IS_DEBUG = true;
-        $IS_DEBUG = false;
-        $scraped = 0;
-        $url = "";
-        if ($IS_DEBUG) {
-            $events = file_get_contents(dirname(__DIR__) . "/web/scrape/reverb_ev.json");
-//            var_dump($events);
-//            return true;
-        } else {
-            $params = [];
-            $guzzle = new GuzzleClient();
-            $events = $guzzle->request('GET', $url, $params);
-            if ($events->getStatusCode() !== 200) {
-                echo 'Failed. ' . $events->getStatusCode() . PHP_EOL;
-                return false;
-            }
-            $events = $events->getBody();
-            if (! method_exists($events, 'getContents')) {
-                echo 'Bad response. Url: ' . $url . PHP_EOL;
-                return false;
-            }
-            $events = $events->getContents();
-        }
-        $events = json_decode($events);
-
-        echo "Scraped $scraped bands" . PHP_EOL;
-        return true;
     }
 }
