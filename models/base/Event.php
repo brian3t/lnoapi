@@ -49,6 +49,7 @@ use yii\behaviors\BlameableBehavior;
  * @property int $scrape_status [smallint]
  * @property string $scrape_url [varchar(200)]
  * @property string $tz [varchar(120)]
+ * @property string $addi_det [varchar(800)]  Additional details
  */
 class Event extends \yii\db\ActiveRecord
 {
@@ -78,7 +79,7 @@ class Event extends \yii\db\ActiveRecord
         return [
             [['created_at', 'updated_at', 'start_time', 'start_time_utc', 'end_time', 'start_datetime_utc'], 'safe'],
             [['created_by', 'user_id', 'venue_id'], 'integer'],
-            [['short_desc', 'description', 'source'], 'string'],
+            [['short_desc', 'description', 'source', 'addi_det'], 'string'],
             [['min_cost', 'max_cost'], 'number'],
             [['when'], 'string', 'max' => 300],
             [['name', 'cost', 'twitter', 'facebook', 'website', 'sdr_name', 'genre'], 'string', 'max' => 255],
@@ -129,6 +130,7 @@ class Event extends \yii\db\ActiveRecord
             'genre' => 'Genre',
             'start_datetime_utc' => 'Start Datetime Utc',
             'start_time_utc' => 'Start Time Utc',
+            'addi_det' => 'Additional Details',
         ];
     }
 

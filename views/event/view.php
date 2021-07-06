@@ -60,6 +60,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'when',
         'name',
         'short_desc:ntext',
+        'addi_det:ntext',
         'description:ntext',
         'img:image',
         'cost',

@@ -69,10 +69,10 @@ $this->registerJs($search);
         [
             'attribute' => 'venue_id',
             'label' => 'Venue',
-            'format'=>'html',
+            'format'=>'raw',
             'value' => function ($model) {
                 if ($model->venue) {
-                    $venue_name = $model->venue->name | 'Unknown';
+                    $venue_name = $model->venue->name ?? 'Unknown';
                     return "<a href='/venue/view?id={$model->venue->id}' target='_blank'>{$venue_name}</a>";
                 } else {
                     return $model->venue_id;
