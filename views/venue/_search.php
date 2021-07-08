@@ -30,7 +30,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'type')->textInput(['maxlength' => true, 'placeholder' => 'Type']) ?>
 
     <?= $form->field($model, 'address1')->textInput(['maxlength' => true, 'placeholder' => 'Address1']) ?>
+    <div class="form-group field-venuesearch-type">
+      <label class="control-label" for="has_latlng">Has Lat/Lng</label>
+      <input type="checkbox" id="has_latlng" class="form-control" name="has_latlng">
 
+      <div class="help-block"></div>
+    </div>
     <?php /* echo $form->field($model, 'address2')->textInput(['maxlength' => true, 'placeholder' => 'Address2']) */ ?>
 
     <?php /* echo $form->field($model, 'city')->textInput(['maxlength' => true, 'placeholder' => 'City']) */ ?>

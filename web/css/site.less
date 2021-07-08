@@ -13,9 +13,9 @@ body {
   height: auto;
   margin: 0 auto -60px;
   padding: 0 0 60px;
-}
-.wrap > .container {
-  padding: 70px 20px 20px;
+  >.container {
+    padding: 70px 20px 20px;
+  }
 }
 .footer {
   height: 60px;
@@ -26,17 +26,19 @@ body {
 .jumbotron {
   text-align: center;
   background-color: transparent;
-}
-.jumbotron .btn {
-  font-size: 21px;
-  padding: 14px 24px;
+  .btn {
+    font-size: 21px;
+    padding: 14px 24px;
+  }
 }
 .not-set {
   color: #c55;
   font-style: italic;
 }
-.grid-view th {
-  white-space: nowrap;
+.grid-view {
+  th {
+    white-space: nowrap;
+  }
 }
 .hint-block {
   display: block;
@@ -53,25 +55,48 @@ body {
 .container {
   width: 100%;
 }
-a.dropdown-toggle:hover + ul.dropdown-menu,
-ul.dropdown-menu:hover {
+
+a.dropdown-toggle:hover + ul.dropdown-menu, ul.dropdown-menu:hover {
   display: block;
 }
-ul.dropdown-menu:hover {
-  display: block;
+
+ul.dropdown-menu {
+  &:hover {
+    display: block;
+  }
 }
-.navbar-brand > img {
-  height: 100%;
-  width: auto;
+.navbar-brand {
+  >img {
+    height: 100%;
+    width: auto;
+  }
 }
-div.panel-primary > div > table.kv-grid-table > tbody > tr > td.kv-expand-icon-cell {
-  display: table-cell;
+div.panel-primary {
+  >div {
+    >table.kv-grid-table {
+      >tbody {
+        >tr {
+          >td.kv-expand-icon-cell {
+            display: table-cell;
+          }
+        }
+      }
+      >thead {
+        >tr {
+          >th.kv-expand-header-cell {
+            display: table-cell;
+          }
+        }
+      }
+    }
+  }
 }
-div.panel-primary > div > table.kv-grid-table > thead > tr > th.kv-expand-header-cell {
-  display: table-cell;
-}
-.navbar-nav > li > form {
-  padding: 7px 0 3px 0;
+.navbar-nav {
+  >li {
+    >form {
+      padding: 7px 0 3px 0;
+    }
+  }
 }
 .version {
   float: left;
@@ -80,22 +105,23 @@ div.panel-primary > div > table.kv-grid-table > thead > tr > th.kv-expand-header
   font-size: 18px;
   line-height: 20px;
 }
-div.grid-view img {
-  max-width: 300px;
+div.grid-view {
+  img {
+    max-width: 300px;
+  }
 }
 .popover-xxl {
   min-width: 960px;
 }
-@media (max-width: 725px) {
+@media (max-width:725px) {
   .version {
     width: 100%;
   }
 }
+
 /*
 b3t
  */
-div[class*="-search"] div.form-group {
-  width: 15%;
-  display: inline-block;
+div[class*="-search"]{
+  div.form-group{ width: 15%; display: inline-block}
 }
-/*# sourceMappingURL=site.css.map */
