@@ -94,8 +94,7 @@ div.grid-view img {
 /*
 b3t
  */
-div[class*="-search"] div.form-group {
-  width: 15%;
-  display: inline-block;
-}
+/*div[class*="-search"]{
+  div.form-group{ width: 15%; display: inline-block}
+}*/
 /*# sourceMappingURL=site.css.map */

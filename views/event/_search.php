@@ -13,12 +13,13 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'options' => ['class' => 'form-inline']
     ]); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
 
-    <?= $form->field($model, 'source')->widget(\kartik\widgets\Select2::classname(), [
+    <?= $form->field($model, 'source')->widget(\kartik\widgets\Select2::class, [
         'data' => ['sdr'=>'San Diego Reader (sdr)','ticketfly'=>'TicketFly','reverb'=>'Reverb','tickmas'=>'Ticket Master (tickmas)','skick'=>'Songkick','other'=>'Other','unknown'=>'Unknown'],
         'options' => ['placeholder' => 'Choose Source'],
         'pluginOptions' => [

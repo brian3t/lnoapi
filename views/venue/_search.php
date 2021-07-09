@@ -1,7 +1,10 @@
 <?php
 
+use kartik\widgets\ActiveForm;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+
+//use yii\widgets\ActiveForm;
+//use yii\bootstrap4\ActiveForm;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\VenueSearch */
@@ -13,11 +16,13 @@ use yii\widgets\ActiveForm;
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
         'method' => 'get',
+        'type' => ActiveForm::TYPE_INLINE,
+        'fieldConfig' => ['options' => ['class' => 'form-group mr-2']] // spacing form field groups
     ]); ?>
 
     <?= $form->field($model, 'id', ['template' => '{input}'])->textInput(['style' => 'display:none']); ?>
 
-    <?= $form->field($model, 'user_id')->widget(\kartik\widgets\Select2::classname(), [
+    <?= $form->field($model, 'user_id')->widget(\kartik\widgets\Select2::class, [
         'data' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->orderBy('id')->asArray()->all(), 'id', 'username'),
         'options' => ['placeholder' => 'Choose User'],
         'pluginOptions' => [
@@ -30,12 +35,18 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'type')->textInput(['maxlength' => true, 'placeholder' => 'Type']) ?>
 
     <?= $form->field($model, 'address1')->textInput(['maxlength' => true, 'placeholder' => 'Address1']) ?>
-    <div class="form-group field-venuesearch-type">
+    <!--<div class="form-group field-venuesearch-type">
       <label class="control-label" for="has_latlng">Has Lat/Lng</label>
       <input type="checkbox" id="has_latlng" class="form-control" name="has_latlng">
 
       <div class="help-block"></div>
+    </div>-->
+  <div class="form-group mr-2 highlight-addon hide-errors field-has_latlng-inl">
+    <div class="custom-control custom-checkbox"><input type="hidden" name="has_latlng" value="0">
+      <input type="checkbox" id="has_latlng" class="custom-control-input" name="has_latlng" value="1">
+      <label class="has-star custom-control-label" for="has_latlng">Remember Me</label>
     </div>
+  </div>
     <?php /* echo $form->field($model, 'address2')->textInput(['maxlength' => true, 'placeholder' => 'Address2']) */ ?>
 
     <?php /* echo $form->field($model, 'city')->textInput(['maxlength' => true, 'placeholder' => 'City']) */ ?>
@@ -67,12 +78,11 @@ use yii\widgets\ActiveForm;
     <?php /* echo $form->field($model, 'source')->dropDownList([ 'sdr' => 'Sdr', 'ticketfly' => 'Ticketfly', 'other' => 'Other', 'unknown' => 'Unknown', 'reverb' => 'Reverb', 'tickmas' => 'Tickmas', ], ['prompt' => '']) */ ?>
 
     <?php /* echo $form->field($model, 'attr')->textInput(['placeholder' => 'Attr']) */ ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>
+<div class="w-100">&nbsp;</div>
+        <?= Html::submitButton('Search', ['class' => 'btn btn-primary mr-1']) ?>
         <?= Html::resetButton('Reset', ['class' => 'btn btn-default']) ?>
-    </div>
 
     <?php ActiveForm::end(); ?>
 
 </div>
+<br>
