@@ -8,13 +8,12 @@ use yii\data\ActiveDataProvider;
 /**
  * app\models\VenueSearch represents the model behind the search form about `app\models\Venue`.
  */
- class VenueSearch extends Venue
+class VenueSearch extends Venue
 {
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'created_by', 'user_id'], 'integer'],
             [['created_at', 'updated_at', 'name', 'type', 'address1', 'address2', 'city', 'state', 'zip', 'description', 'phone', 'website', 'twitter', 'facebook', 'system_note', 'sdr_name', 'source', 'attr'], 'safe'],
@@ -25,8 +24,7 @@ use yii\data\ActiveDataProvider;
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -38,8 +36,7 @@ use yii\data\ActiveDataProvider;
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Venue::find();
 
         $dataProvider = new ActiveDataProvider([
@@ -48,11 +45,12 @@ use yii\data\ActiveDataProvider;
 
         $this->load($params);
 
-        if (!$this->validate()) {
+        if (! $this->validate()) {
             // uncomment the following line if you do not want to return any records when validation fails
             // $query->where('0=1');
             return $dataProvider;
         }
+        $has_latlng = $params['has_latlng'] ?? null;
 
         $query->andFilterWhere([
             'id' => $this->id,
@@ -64,6 +62,11 @@ use yii\data\ActiveDataProvider;
             'lng' => $this->lng,
             'cost' => $this->cost,
         ]);
+        if (is_int($has_latlng)) {
+            if ($has_latlng) {
+                $query->andFilterWhere(['not', ['lat' => null]]);
+            }
+        }
 
         $query->andFilterWhere(['like', 'name', $this->name])
             ->andFilterWhere(['like', 'type', $this->type])

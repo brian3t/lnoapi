@@ -42,9 +42,9 @@ use yii\helpers\Html;
       <div class="help-block"></div>
     </div>-->
   <div class="form-group mr-2 highlight-addon hide-errors field-has_latlng-inl">
-    <div class="custom-control custom-checkbox"><input type="hidden" name="has_latlng" value="0">
+    <div class="custom-control custom-checkbox">
       <input type="checkbox" id="has_latlng" class="custom-control-input" name="has_latlng" value="1">
-      <label class="has-star custom-control-label" for="has_latlng">Remember Me</label>
+      <label class="has-star custom-control-label" for="has_latlng">Has LatLng</label>
     </div>
   </div>
     <?php /* echo $form->field($model, 'address2')->textInput(['maxlength' => true, 'placeholder' => 'Address2']) */ ?>

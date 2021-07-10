@@ -49,6 +49,7 @@ $this->registerJs($search);
         'state',
         'zip',
         'lat',
+        'lng',
         ['attribute' => 'description',
             'value' => function ($model) {
                 return substr($model->description, 0, 80);
