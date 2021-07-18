@@ -4,6 +4,8 @@ Built with Yii 2.0.41.1
 
 Changelog
 ------------
+7/18/21 Venue search filter has lat/lng
+
 4/6/21 Bootstrap 4  
 For bs4 support, need to edit config/params.php
 
