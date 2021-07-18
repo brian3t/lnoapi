@@ -1,6 +1,6 @@
 REST Api for LNO mobile app
 
-Built with Yii 2.0.41.1
+Built with Yii 2.0.42.1
 
 Changelog
 ------------
