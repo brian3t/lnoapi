@@ -8,6 +8,7 @@ define('SEARCH_ENGINE_ID', '016413111986528629647:bssckogzvpk');
 
 /** End Google custom search constants */
 
+use app\models\Journal;
 use app\models\Venue;
 use Geocoder\Query\GeocodeQuery;
 use Goutte\Client as GoutteClient;
@@ -31,7 +32,7 @@ class MagicController extends Controller
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
         $venues_no_latlng = Venue::findBySql("SELECT * FROM venue 
             WHERE lat IS NULL AND lng IS NULL AND address1 IS NOT NULL $limit ")->all();
-        $httpClient = new \Http\Adapter\Guzzle6\Client();
+        $httpClient = new \Http\Adapter\Guzzle7\Client();
         $provider = new \Geocoder\Provider\GoogleMaps\GoogleMaps($httpClient, null, GPLACE_KEY);
         $geocoder = new \Geocoder\StatefulGeocoder($provider, 'en');
 
@@ -73,13 +74,18 @@ class MagicController extends Controller
                 $failed_rows++;
                 continue;
             }
-            $venue->setAttributes(['lat' => $lat, 'lng' => $lng]);
+            $now = (new \DateTime())->format('Y-m-d H:i:s');
+            $venue->setAttributes(['lat' => $lat, 'lng' => $lng,'gmap_last_utc' => $now, 'gmap_status' => 1, 'gmap_msg'=>'success']);
             $affected_rows += $venue->saveAndLogError();
         }
 
 //        $affected_rows = $command->execute();
 //        \Yii::warning("Warning, affected rows:". $affected_rows);
         echo "Updated for: " . $affected_rows . " records." . PHP_EOL;
+        $j = new Journal();
+        $j->username = 'bot';
+        $j->the_action='magic/pull-lat-lng';
+        $j->action_msg=sizeof($venues_no_latlng) . " venues without latlng. Updated for: " . $affected_rows . " records.";
         return true;
     }
 
