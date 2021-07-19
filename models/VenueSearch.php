@@ -50,7 +50,7 @@ class VenueSearch extends Venue
             // $query->where('0=1');
             return $dataProvider;
         }
-        $has_latlng = $params['has_latlng'] ?? null;
+        $has_latlng = $params['has_latlng'] ?? 2;
 
         $query->andFilterWhere([
             'id' => $this->id,
@@ -62,9 +62,13 @@ class VenueSearch extends Venue
             'lng' => $this->lng,
             'cost' => $this->cost,
         ]);
+        $has_latlng = intval($has_latlng);
         if (is_int($has_latlng)) {
-            if ($has_latlng) {
-                $query->andFilterWhere(['not', ['lat' => null]]);
+            if ($has_latlng == 1) {
+                $query->andWhere(['not', ['lat' => null]])->andWhere(['not', ['lng' => null]]);
+            } else if ($has_latlng == 0) {
+                $query->andWhere(['or', ['lat' => null], ['lng' => null]]);
+//                $query->andWhere(['lat' => null]);
             }
         }
 

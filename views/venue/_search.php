@@ -41,11 +41,30 @@ use yii\helpers\Html;
 
       <div class="help-block"></div>
     </div>-->
-  <div class="form-group mr-2 highlight-addon hide-errors field-has_latlng-inl">
-    <div class="custom-control custom-checkbox">
-      <input type="checkbox" id="has_latlng" class="custom-control-input" name="has_latlng" value="1">
-      <label class="has-star custom-control-label" for="has_latlng">Has LatLng</label>
+  <div class="mr-2 highlight-addon hide-errors field-has_latlng-inl">
+<!--    <div class="custom-control custom-checkbox">-->
+<!--      <input type="checkbox" id="has_latlng" class="custom-control-input" name="has_latlng" value="1" --><?//= (isset($_REQUEST['has_latlng']) && $_REQUEST['has_latlng'] == 1)?"checked=checked":"" ?><!--">-->
+<!--      <label class="has-star custom-control-label" for="has_latlng">Has LatLng</label>-->
+<!--    </div>-->
+    <div class="form-check tw md:justify-start">
+      <input class="form-check-input" type="radio" name="has_latlng" id="has_latlng1" value="1" checked>
+      <label class="form-check-label" for="has_latlng1">
+        Has Lat Lng
+      </label>
     </div>
+    <div class="form-check tw md:justify-start">
+      <input class="form-check-input" type="radio" name="has_latlng" id="has_latlng0" value="0">
+      <label class="form-check-label" for="has_latlng0">
+        Does not have Lat Lng
+      </label>
+    </div>
+    <div class="form-check tw md:justify-start">
+      <input class="form-check-input" type="radio" name="has_latlng" id="has_latlng2" value="2">
+      <label class="form-check-label w-100 tw md:justify-start" for="has_latlng2">
+        All
+      </label>
+    </div>
+
   </div>
     <?php /* echo $form->field($model, 'address2')->textInput(['maxlength' => true, 'placeholder' => 'Address2']) */ ?>
 
