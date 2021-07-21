@@ -86,8 +86,8 @@ class VenueSearch extends Venue
             ->andFilterWhere(['like', 'facebook', $this->facebook])
             ->andFilterWhere(['like', 'system_note', $this->system_note])
             ->andFilterWhere(['like', 'sdr_name', $this->sdr_name])
-            ->andFilterWhere(['like', 'source', $this->source])
-            ->andFilterWhere(['like', 'attr', $this->attr]);
+            ->andFilterWhere(['like', 'source', $this->source]);
+//            ->andFilterWhere(['like', 'attr', $this->attr]);
 
         return $dataProvider;
     }

@@ -36,12 +36,16 @@ use yii\behaviors\BlameableBehavior;
  * @property string $scrape_msg
  * @property string $scrape_url
  * @property string $tz
+ * @property string $scrape_dt [datetime]
+ * @property string $last_scraped_utc
+ * @property string $gmap_last_utc
+ * @property integer $gmap_status
+ * @property string $gmap_msg
  *
  * @property \app\models\Event[] $events
  * @property \app\models\Event[] $eventsNonInverse
  * @property \app\models\User $createdBy
  * @property \app\models\User $user
- * @property string $scrape_dt [datetime]
  */
 class Venue extends \yii\db\ActiveRecord
 {
@@ -67,8 +71,8 @@ class Venue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['created_at', 'updated_at', 'scrape_dt'], 'safe'],
-            [['created_by', 'user_id', 'scrape_status'], 'integer'],
+            [['created_at', 'updated_at', 'scrape_dt', 'last_scraped_utc', 'gmap_last_utc'], 'safe'],
+            [['created_by', 'user_id', 'scrape_status', 'gmap_status'], 'integer'],
             [['lat', 'lng', 'cost'], 'number'],
             [['source'], 'string'],
             [['name', 'address1', 'address2', 'website', 'twitter', 'facebook', 'sdr_name'], 'string', 'max' => 255],
@@ -79,7 +83,8 @@ class Venue extends \yii\db\ActiveRecord
             [['phone'], 'string', 'max' => 18],
             [['system_note'], 'string', 'max' => 8000],
             [['scrape_url'], 'string', 'max' => 200],
-            [['tz'], 'string', 'max' => 120]
+            [['tz'], 'string', 'max' => 120],
+            [['gmap_msg'], 'string', 'max' => 2000]
        ];
     }
 
@@ -124,6 +129,10 @@ class Venue extends \yii\db\ActiveRecord
             'scrape_msg' => 'Scrape Msg',
             'scrape_url' => 'Scrape Url',
             'tz' => 'Tz',
+            'last_scraped_utc' => 'Last Scraped Utc',
+            'gmap_last_utc' => 'Gmap Last Utc',
+            'gmap_status' => 'Gmap Status',
+            'gmap_msg' => 'Gmap Msg',
         ];
     }
 

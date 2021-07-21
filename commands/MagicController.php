@@ -28,6 +28,8 @@ class MagicController extends Controller
      * @return bool
      */
     public function actionPullLatLng(string $limit = ''): bool {
+//        $IS_DEBUG = true;
+        $IS_DEBUG = false;
         $limit = ' LIMIT 5 ';//asdf
         define('GPLACE_KEY', 'AIzaSyBPeYraJ4H0BiuD1IQanQFlY1npx114ZpM');
         $venues_no_latlng = Venue::findBySql("SELECT * FROM venue 
@@ -76,6 +78,7 @@ class MagicController extends Controller
             }
             $now = (new \DateTime())->format('Y-m-d H:i:s');
             $venue->setAttributes(['lat' => $lat, 'lng' => $lng,'gmap_last_utc' => $now, 'gmap_status' => 1, 'gmap_msg'=>'success']);
+            if ($IS_DEBUG) echo "Updating venue: ". $venue->id . " " . $venue->name . " with lat $lat lng $lng". PHP_EOL;
             $affected_rows += $venue->saveAndLogError();
         }
 
@@ -86,6 +89,7 @@ class MagicController extends Controller
         $j->username = 'bot';
         $j->the_action='magic/pull-lat-lng';
         $j->action_msg=sizeof($venues_no_latlng) . " venues without latlng. Updated for: " . $affected_rows . " records.";
+        $j->save();
         return true;
     }
 

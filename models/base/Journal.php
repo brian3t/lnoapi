@@ -43,8 +43,6 @@ class Journal extends \yii\db\ActiveRecord
             [['username', 'the_action'], 'string', 'max' => 80],
             [['entity'], 'string', 'max' => 50],
             [['ent_before', 'action_msg'], 'string', 'max' => 2000],
-            [['lock'], 'default', 'value' => '0'],
-            [['lock'], 'mootensai\components\OptimisticLockValidator']
         ];
     }
 
@@ -54,17 +52,6 @@ class Journal extends \yii\db\ActiveRecord
     public static function tableName()
     {
         return 'journal';
-    }
-
-    /**
-     *
-     * @return string
-     * overwrite function optimisticLock
-     * return string name of field are used to stored optimistic lock
-     *
-     */
-    public function optimisticLock() {
-        return 'lock';
     }
 
     /**
