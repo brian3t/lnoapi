@@ -70,7 +70,7 @@ class DlController extends Controller
      */
     public function actionScrapeSdr($days_forward = 1) {
         $date = (new \DateTime())->add(new \DateInterval("P{$days_forward}D"));
-        $opt = json5_decode($this->opt, true);
+        $opt = json5_decode($this->opt ?? '{}', true);
         $date_str = $date->format('Y-m-d');
         $records = 0;
         $client = new Client();
