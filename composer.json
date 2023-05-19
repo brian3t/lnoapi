@@ -62,7 +62,10 @@
     "yiisoft/yii2-faker": "*"
   },
   "config": {
-    "process-timeout": 1800
+    "process-timeout": 1800,
+    "allow-plugins": {
+      "yiisoft/yii2-composer": true
+    }
   },
   "scripts": {
     "post-create-project-cmd": [
@@ -89,7 +92,7 @@
   },
   "autoload": {
     "psr-4": {
-      "usv\\yii2helper\\": "yii2helper/"
+      "soc\\yii2helper\\": "yii2helper/"
     }
   }
 }

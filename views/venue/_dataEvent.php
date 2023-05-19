@@ -18,7 +18,7 @@ $dataProvider = new ArrayDataProvider([
         'start_time',
         'end_time',
         [
-            'class' => 'usv\yii2helper\grid\EditColumn',
+            'class' => 'soc\yii2helper\grid\EditColumn',
         ],
         'description:ntext',
         'cost',

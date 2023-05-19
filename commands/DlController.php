@@ -15,8 +15,8 @@ use app\models\Event;
 use app\models\Venue;
 use Goutte\Client;
 use GuzzleHttp\Client as GuzzleClient;
+use soc\yii2helper\PHPHelper;
 use Symfony\Component\DomCrawler\Crawler;
-use usv\yii2helper\PHPHelper;
 use Yii;
 use yii\console\Controller;
 

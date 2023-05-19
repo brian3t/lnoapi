@@ -80,7 +80,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'start_time',
                 'end_time',
                 [
-                    'class' => 'usv\yii2helper\grid\EditColumn',
+                    'class' => 'soc\yii2helper\grid\EditColumn',
                 ],
                 'description:ntext',
                 'cost',

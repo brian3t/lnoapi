@@ -19,7 +19,7 @@ namespace app\models\base;
 class Profile extends \yii\db\ActiveRecord
 {
     use \mootensai\relation\RelationTrait;
-    use \usv\yii2helper\models\ModelB3tTrait;
+    use \soc\yii2helper\models\ModelB3tTrait;
 
     /**
      * @inheritdoc

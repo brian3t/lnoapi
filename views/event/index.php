@@ -45,7 +45,7 @@ $this->registerJs($search);
         ],
         ['attribute' => 'id', 'visible' => false],
         [
-            'class' => 'usv\yii2helper\grid\EditColumn',
+            'class' => 'soc\yii2helper\grid\EditColumn',
         ],
         [
             'attribute' => 'user_id',

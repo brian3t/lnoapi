@@ -2,7 +2,7 @@
 
 namespace app\models;
 
-use usv\yii2helper\PHPHelper;
+use soc\yii2helper\PHPHelper;
 use yii\db\Expression;
 
 /**

@@ -4,7 +4,7 @@ namespace app\models;
 
 use app\models\base\Venue as BaseVenue;
 use app\override\helpers\ArrayHelper;
-use usv\yii2helper\models\ModelB3tTrait;
+use soc\yii2helper\models\ModelB3tTrait;
 
 
 /**

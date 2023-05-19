@@ -3,7 +3,7 @@
 namespace app\api\modules\v1;
 
 use app\models\EventQuery;
-use usv\yii2helper\PHPHelper;
+use soc\yii2helper\PHPHelper;
 use yii\data\ActiveDataProvider;
 use yii\rest\IndexAction;
 
