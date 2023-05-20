@@ -17,6 +17,28 @@ For bs4 support, need to edit config/params.php
 - Attr for venue, band and event, to save JSON data into Mysql8
 
 
+INSTALL
+--------
+Config files: `config/db.php` `config/params.php` `api/params.php` `models/constant.php`
+
+`chmod -R 777 web/assets`  
+`chmod -R 777 runtime`  
+`cp -aR vendor/bower-asset ./vendor/bower`  
+`cp -aR vendor/npm-asset ./vendor/npm`  
+
+
+
+CRONJOBS
+--------
+
+```
+#0 23 * * * /var/www/lnoapi/yii oshin/prune-data
+#10 0 * * * /var/www/lnoapi/yii oshin/daily-tasks
+#0 0 * * * /var/www/lnoapi/yii dl/scrape-reverb-allcities
+#15 0 * * * /var/www/lnoapi/yii dl/scrape-tickmas
+#30 0 * * * /var/www/lnoapi/yii dl/scrape-sdr-al 
+```
+
 Screenshot:
 
 ![alt tag](http://i.imgur.com/NyNASU9.png)
