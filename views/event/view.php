@@ -55,6 +55,7 @@ $this->params['breadcrumbs'][] = $this->title;
             }
         ],
         'date',
+        'start_datetime_utc',
         'start_time',
         'end_time',
         'when',

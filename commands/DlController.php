@@ -61,6 +61,7 @@ class DlController extends Controller
         $this->actionScrapeReverbAllcities();
         $this->actionPullBandReverb();
         $this->actionScrapeReverbVenue();
+        Event::deleteAll(['name' => 'event']);//delete bad data
     }
 
     /**
@@ -658,9 +659,9 @@ class DlController extends Controller
         $today = new \DateTime();
         $today_str = $today->format('Y-m-d');
         $nextweek_str = $today->add(new \DateInterval('P7D'))->format('Y-m-d');
-        $timerange = "${today_str}T00:00:00,${nextweek_str}T23:59:59";
+        $timerange = "{$today_str}T00:00:00,{$nextweek_str}T23:59:59";
         $scraped = 0;
-        $guzzle = new GuzzleClient();
+        $guzzle = new \GuzzleHttp\Client();
         $page = 0;
         $scrape_next_page = false;
         do {
@@ -682,9 +683,10 @@ class DlController extends Controller
                     "localeStr" => "en-us",
                     "type" => "event",
                     "localStartEndDateTime" => $timerange])
+                  ,'headers'=>['user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/88.0.4324.104 Safari/537.36']
                 ];
                 $url = TICKMAS;
-                $url .= "&variables=${params['variables']}";
+                $url .= "&variables={$params['variables']}";
                 $events = $guzzle->request('GET', $url, $params);
                 if ($events->getStatusCode() !== 200) {
                     echo 'Failed. ' . $events->getStatusCode() . PHP_EOL;
@@ -696,7 +698,7 @@ class DlController extends Controller
                     return false;
                 }
                 $events = $events->getContents();
-                $raw_file = dirname(__DIR__) . "/web/scrape/tickmas/rawdl_${todaytime_str}.json";
+                $raw_file = dirname(__DIR__) . "/web/scrape/tickmas/rawdl_{$todaytime_str}.json";
 //                file_put_contents($raw_file, $events); //zsdf
             }
             $events = json_decode($events);
@@ -733,7 +735,7 @@ class DlController extends Controller
                 $em->created_by = $this->SCRAPER_ID;
                 $em->source = 'tickmas';
                 $date_t_format = $e->dates->start->dateTime ?? 'null';
-                $start_date_time = \DateTime::createFromFormat(\DateTime::ISO8601, $date_t_format);
+                $start_date_time = \DateTime::createFromFormat(\DateTime::ISO8601_EXPANDED, $date_t_format);
                 $em->start_datetime_utc = $start_date_time->format('Y-m-d H:i:s');//2020-03-01T03:00:00Z
                 if ($e->name) {
                     $em->name = $e->name;

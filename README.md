@@ -34,8 +34,10 @@ CRONJOBS
 ```
 #0 23 * * * /var/www/lnoapi/yii oshin/prune-data
 #10 0 * * * /var/www/lnoapi/yii oshin/daily-tasks
-#0 0 * * * /var/www/lnoapi/yii dl/scrape-reverb-allcities
+#0 0 * * * /var/www/lnoapi/yii dl/scrape-reverb-all
+# tickmas not able to pull start_date; img; Not able to save source 
 #15 0 * * * /var/www/lnoapi/yii dl/scrape-tickmas
+# sdr not able to pull band
 #30 0 * * * /var/www/lnoapi/yii dl/scrape-sdr-al 
 ```
 
