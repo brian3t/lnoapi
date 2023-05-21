@@ -64,6 +64,18 @@ $this->params['breadcrumbs'][] = $this->title;
         'addi_det:ntext',
         'description:ntext',
         'img:image',
+        [
+            'label' => 'Image',
+            'format'=>'html',
+            'value' => function ($event) {
+            if ($event->img)
+            {
+                return "<img src='https:{$event->img}' alt='img' />";
+            } else {
+                return "No venue found";
+            }
+            }
+        ],
         'cost',
         'min_cost',
         'max_cost',
