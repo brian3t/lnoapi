@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cb707787c2358a4e82460df2bc9d58bb",
+    "content-hash": "ef08e35c8b88d9a247d61e72ded19797",
     "packages": [
         {
             "name": "2amigos/yii2-selectize-widget",
@@ -65,45 +65,50 @@
         },
         {
             "name": "2amigos/yii2-usuario",
-            "version": "1.5.1",
+            "version": "1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/2amigos/yii2-usuario.git",
-                "reference": "e2b041a32a9cd248c7849ff6cfb12a2f60822b57"
+                "reference": "38ad4d188a918259a71ac83ed0784a16ba50197d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/2amigos/yii2-usuario/zipball/e2b041a32a9cd248c7849ff6cfb12a2f60822b57",
-                "reference": "e2b041a32a9cd248c7849ff6cfb12a2f60822b57",
+                "url": "https://api.github.com/repos/2amigos/yii2-usuario/zipball/38ad4d188a918259a71ac83ed0784a16ba50197d",
+                "reference": "38ad4d188a918259a71ac83ed0784a16ba50197d",
                 "shasum": ""
             },
             "require": {
                 "2amigos/yii2-selectize-widget": "^1.1",
                 "php": ">=5.5",
+                "yetopen/yii2-sms-sender-interface": "^0.1.1",
                 "yiisoft/yii2-authclient": "^2.1",
                 "yiisoft/yii2-bootstrap": "^2.0",
-                "yiisoft/yii2-httpclient": "^2.0",
-                "yiisoft/yii2-swiftmailer": "^2.0"
+                "yiisoft/yii2-httpclient": "^2.0"
             },
             "conflict": {
                 "dektrium/yii2-rbac": "*",
                 "dektrium/yii2-user": "*"
             },
             "require-dev": {
-                "codeception/codeception": "*",
-                "codeception/module-asserts": "^1.1",
-                "codeception/module-db": "^1.0",
-                "codeception/module-filesystem": "^1.0",
+                "2amigos/2fa-library": "^2.0",
+                "2amigos/qrcode-library": "^2.0",
+                "codeception/codeception": "^4|^5",
+                "codeception/module-asserts": "^2|^3",
+                "codeception/module-db": "^2|^3",
+                "codeception/module-filesystem": "^2|^3",
                 "codeception/module-yii2": "^1.1",
-                "codeception/verify": "^0.3.3",
-                "friendsofphp/php-cs-fixer": "^2.3",
+                "friendsofphp/php-cs-fixer": "^3",
+                "php": ">=7.4",
                 "phpmd/phpmd": "@stable",
+                "phpstan/phpstan": "^1.8",
                 "roave/security-advisories": "dev-master",
-                "squizlabs/php_codesniffer": "*"
+                "squizlabs/php_codesniffer": "*",
+                "yiisoft/yii2-symfonymailer": "^2|^3"
             },
             "suggest": {
                 "2amigos/2fa-library": "Needed if you want to enable 2 Factor Authentication. Require version ^1.0",
-                "2amigos/qrcode-library": "Needed if you want to enable 2FA with QR Code generation. Require version ^1.1"
+                "2amigos/qrcode-library": "Needed if you want to enable 2FA with QR Code generation. Require version ^1.1",
+                "yiisoft/yii2-symfonymailer": "A mailer driver is needed to send e-mails. Older versions use abandoned Swiftmailer which can be replaced with symfonymailer"
             },
             "type": "yii2-extension",
             "extra": {
@@ -148,7 +153,12 @@
                 "yii2 user",
                 "yii2-user"
             ],
-            "time": "2020-04-05T11:59:36+00:00"
+            "support": {
+                "forum": "https://gitter.im/2amigos/yii2-usuario",
+                "issues": "https://github.com/2amigos/yii2-usuario/issues?state=open",
+                "source": "https://github.com/2amigos/yii2-usuario"
+            },
+            "time": "2023-04-04T06:48:42+00:00"
         },
         {
             "name": "bower-asset/bootstrap",
@@ -6864,6 +6874,51 @@
             "time": "2020-12-21T09:30:01+00:00"
         },
         {
+            "name": "yetopen/yii2-sms-sender-interface",
+            "version": "v0.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/YetOpen/yii2-sms-sender-interface.git",
+                "reference": "f3d1fc37d271614195173ceee14b7b83b94dc346"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/YetOpen/yii2-sms-sender-interface/zipball/f3d1fc37d271614195173ceee14b7b83b94dc346",
+                "reference": "f3d1fc37d271614195173ceee14b7b83b94dc346",
+                "shasum": ""
+            },
+            "require": {
+                "yiisoft/yii2": "~2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "yetopen\\smssender\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Yetopen",
+                    "email": "marco.piazza@yetopen.com"
+                }
+            ],
+            "description": "It implements SmsSenderInterface that should be implemented by text message sender classes",
+            "keywords": [
+                "extension",
+                "interface",
+                "yii2"
+            ],
+            "support": {
+                "issues": "https://github.com/YetOpen/yii2-sms-sender-interface/issues",
+                "source": "https://github.com/YetOpen/yii2-sms-sender-interface/tree/v0.1.2"
+            },
+            "time": "2022-07-08T08:33:16+00:00"
+        },
+        {
             "name": "yiisoft/yii2",
             "version": "2.0.42.1",
             "source": {
@@ -7879,5 +7934,5 @@
         "ext-pdo": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.1.0"
+    "plugin-api-version": "2.3.0"
 }
