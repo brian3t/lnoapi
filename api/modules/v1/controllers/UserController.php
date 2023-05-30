@@ -13,6 +13,7 @@ use app\models\User;
 use Yii;
 use yii\console\Exception;
 use yii\web\UnauthorizedHttpException;
+use function Matrix\trace;
 
 class UserController extends BaseActiveController
 {
@@ -45,7 +46,7 @@ class UserController extends BaseActiveController
             return $response;
         }
         $settingsController = $module->createController('settings/profile');
-        if (! $settingsController || count($settingsController) != 2) {
+        if (!$settingsController || count($settingsController) != 2) {
             $response['message'] = 'Settings controller not found';
         }
         $settingsController = $settingsController[0];
@@ -138,7 +139,11 @@ class UserController extends BaseActiveController
 
     /** Sign up using fullname, email, password
      * 5/25/20 BN using vendor/2amigos/yii2-usuario
-     * @param $variables
+     * Send params in request body:
+     * {
+     *  append_id : username = username + new_gen_id
+     *  password: if not exist (guest mode), it's reverse of username, but without the ID appendix
+     * }
      */
     public function actionSignup()
     {
@@ -146,7 +151,11 @@ class UserController extends BaseActiveController
         $append_id = $vars['append_id'] ?? false;
         $now = new \DateTime();
         $username = $vars['username'] ?? ('guest' . $now->format('YYmmdd'));
-        $email = $vars['email'];
+        $email = $vars['email'] ?? null;
+        $password = $vars['password'] ?? null;
+        if (!$password){//guest mode
+            $password = strrev($username);
+        }
         $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
         if ($exists) {
             return $this->err('Error: username or email already exists');
@@ -174,17 +183,24 @@ class UserController extends BaseActiveController
                 ]
             ]
         );
-      try {
-        $result = Yii::$app->runAction('user/create', [$email, $username, $vars['password']]);
-      } catch (Exception $e) {
-        return $this->err('fail user/create');
-      }
-      \Yii::$app = $oldApp;
+        try {
+            $result = Yii::$app->runAction('user/create', [$email, $username, $password]);
+        } catch (Exception $e) {
+            return $this->err('fail user/create');
+        }
+        \Yii::$app = $oldApp;
         $user = User::findOne(['username' => $username]);
-        if (! ($user instanceof User)) {
+        if (!($user instanceof User)) {
             return $this->err('Error creating user. Please try again or contact our support. Thank you');
         }
-        /** @var $user User */
+        if ($append_id === true){
+            $user->username = $user->username . $user->id;
+            try {
+                $user->save();
+            } catch (\Exception $e){
+                //future report error
+            }
+        }
         $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
         if ($profile instanceof \app\models\Profile) {
             $profile->name = $vars['name'];
@@ -205,9 +221,9 @@ class UserController extends BaseActiveController
     {
         $username = Yii::$app->request->get('username');
         $pw = Yii::$app->request->headers->get('pw');
-        if (! $pw || ! $username) return $this->err('Must provide username in param, password in header pw', 401);
-        $identity = User::findOne(["username"=>$username]);
-        if (! ($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
+        if (!$pw || !$username) return $this->err('Must provide username in param, password in header pw', 401);
+        $identity = User::findOne(["username" => $username]);
+        if (!($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
         $hash = $identity->password_hash;
         $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
         if (!$login_result) return $this->err('Wrong password, please try again', 401);
