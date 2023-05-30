@@ -91,7 +91,8 @@ $config = [
       // 'switchIdentitySessionKey' => 'myown_usuario_admin_user_key',
       // docs: https://yii2-usuario.readthedocs.io/en/latest/installation/available-actions/
       'classMap' => [
-        'MailService' => 'soc\yii2helper\usuario\MailService'
+//        'MailService' => 'soc\yii2helper\usuario\MailService'
+        'UserCreateService' => 'soc\yii2helper\usuario\UserCreateService'
       ]
     ],
     'gridview' => [

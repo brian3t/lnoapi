@@ -17,88 +17,88 @@ use function Matrix\trace;
 
 class UserController extends BaseActiveController
 {
-    public $modelClass = 'app\models\User';
+  public $modelClass = 'app\models\User';
 
 
-    protected function verbs()
-    {
-        $verbs = parent::verbs();
-        array_push($verbs['update'], 'POST');
+  protected function verbs()
+  {
+    $verbs = parent::verbs();
+    array_push($verbs['update'], 'POST');
+  }
+
+  public function actions()
+  {
+    $actions = parent::actions();
+
+    // disable the default REST actions
+    unset($actions['update']);
+
+    return $actions;
+  }
+
+  public function actionLogin()
+  {
+    // Yii::$container
+    $response = ['status' => 'failed'];
+    $module = Yii::$app->getModule('user');
+    if ($module == null) {
+      $response['message'] = 'Module user not loaded';
+      return $response;
     }
-
-    public function actions()
-    {
-        $actions = parent::actions();
-
-        // disable the default REST actions
-        unset($actions['update']);
-
-        return $actions;
+    $settingsController = $module->createController('settings/profile');
+    if (!$settingsController || count($settingsController) != 2) {
+      $response['message'] = 'Settings controller not found';
     }
+    $settingsController = $settingsController[0];
+    /** @var SettingsController $settingsController */
 
-    public function actionLogin()
-    {
-        // Yii::$container
-        $response = ['status' => 'failed'];
-        $module = Yii::$app->getModule('user');
-        if ($module == null) {
-            $response['message'] = 'Module user not loaded';
-            return $response;
-        }
-        $settingsController = $module->createController('settings/profile');
-        if (!$settingsController || count($settingsController) != 2) {
-            $response['message'] = 'Settings controller not found';
-        }
-        $settingsController = $settingsController[0];
-        /** @var SettingsController $settingsController */
+    /** @var LoginForm $model */
+    $model = Yii::createObject(LoginForm::className());
+    $search_model = Yii::createObject(UserSearch::className());
+    /** @var UserSearch $search_model */
 
-        /** @var LoginForm $model */
-        $model = Yii::createObject(LoginForm::className());
-        $search_model = Yii::createObject(UserSearch::className());
-        /** @var UserSearch $search_model */
-
-        if ($model->load(Yii::$app->getRequest()->post())) {
-            $finder = $settingsController->getFinder();
-            /** @var Finder $finder */
-            $user_found = $finder->findUserByEmail($model->login);
-            if (is_null($user_found)) {
-                throw new UnauthorizedHttpException('Username does not exist');
-            }
-            if ($model->login()) {
-                $cuser = Yii::$app->user->identity;
-                $profile = $settingsController->actionApiProfile();
-                $response['status'] = 'ok';
-                $response['id'] = $user_found->id;
-            } else {
-                throw new UnauthorizedHttpException('Wrong password');
-            }
-        }
-        return $response;
-
+    if ($model->load(Yii::$app->getRequest()->post())) {
+      $finder = $settingsController->getFinder();
+      /** @var Finder $finder */
+      $user_found = $finder->findUserByEmail($model->login);
+      if (is_null($user_found)) {
+        throw new UnauthorizedHttpException('Username does not exist');
+      }
+      if ($model->login()) {
+        $cuser = Yii::$app->user->identity;
+        $profile = $settingsController->actionApiProfile();
+        $response['status'] = 'ok';
+        $response['id'] = $user_found->id;
+      } else {
+        throw new UnauthorizedHttpException('Wrong password');
+      }
     }
+    return $response;
 
-    public function actionUpdate()
-    {
-        $request = Yii::$app->request;
-        $entity_body = Yii::$app->request->post();
-        $id = $request->get('id');
+  }
 
-        $user = \app\models\User::findOne($id);
-        if ($user->id != $id) {
-            return "Cannot find this user";
-        }
-        if (isset($entity_body['union_memberships'])) {
-            if (count($entity_body['union_memberships']) == 0) {
-                $entity_body['union_memberships'] = '';
-            } else {
-                $entity_body['union_memberships'] = implode(',', $entity_body['union_memberships']);
-            }
-        }
-        if ($user->loadAll(['User' => $entity_body]) && $user->save(false)) {
-            return json_encode($user->getAttributes());
-        } else {
-            return json_encode($user->errors);
-        }
+  public function actionUpdate()
+  {
+    $request = Yii::$app->request;
+    $entity_body = Yii::$app->request->post();
+    $id = $request->get('id');
+
+    $user = \app\models\User::findOne($id);
+    if ($user->id != $id) {
+      return "Cannot find this user";
+    }
+    if (isset($entity_body['union_memberships'])) {
+      if (count($entity_body['union_memberships']) == 0) {
+        $entity_body['union_memberships'] = '';
+      } else {
+        $entity_body['union_memberships'] = implode(',', $entity_body['union_memberships']);
+      }
+    }
+    if ($user->loadAll(['User' => $entity_body]) && $user->save(false)) {
+      return json_encode($user->getAttributes());
+    } else {
+      return json_encode($user->errors);
+    }
 
 //        $order_new = $this->requestbody->order;
 //
@@ -135,98 +135,100 @@ class UserController extends BaseActiveController
 //
 //
 //        return $this->rop_response->print();
-    }
+  }
 
-    /** Sign up using fullname, email, password
-     * 5/25/20 BN using vendor/2amigos/yii2-usuario
-     * Send params in request body:
-     * {
-     *  append_id : username = username + new_gen_id
-     *  password: if not exist (guest mode), it's reverse of username, but without the ID appendix
-     * }
-     */
-    public function actionSignup()
-    {
-        $vars = Yii::$app->getRequest()->getBodyParams();
-        $append_id = $vars['append_id'] ?? false;
-        $now = new \DateTime();
-        $username = $vars['username'] ?? ('guest' . $now->format('YYmmdd'));
-        $email = $vars['email'] ?? null;
-        $password = $vars['password'] ?? null;
-        if (!$password){//guest mode
-            $password = strrev($username);
-        }
-        $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
-        if ($exists) {
-            return $this->err('Error: username or email already exists');
-        }
-        $oldApp = \Yii::$app;
-        new \yii\console\Application([
-                'id' => 'Command runner',
-                'basePath' => '@app',
-                'components' => [
-                    'db' => $oldApp->db,
-                    'mailer' => [
-                        'class' => 'yii\swiftmailer\Mailer',
-                        'transport' => [
-                            'class' => 'Swift_SmtpTransport',
-                            'host' => 'smtp.gmail.com',
-                            'username' => 'someids@gmail.com',
-                            'password' => 'sTrapok02',
-                            'port' => 587,
-                            'encryption' => 'tls',
-                        ],
-                    ],
-                ],
-                'modules' => [
-                    'user' => \Da\User\Module::class,
-                ]
-            ]
-        );
-        try {
-            $result = Yii::$app->runAction('user/create', [$email, $username, $password]);
-        } catch (Exception $e) {
-            return $this->err('fail user/create');
-        }
-        \Yii::$app = $oldApp;
-        $user = User::findOne(['username' => $username]);
-        if (!($user instanceof User)) {
-            return $this->err('Error creating user. Please try again or contact our support. Thank you');
-        }
-        if ($append_id === true){
-            $user->username = $user->username . $user->id;
-            try {
-                $user->save();
-            } catch (\Exception $e){
-                //future report error
-            }
-        }
-        $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
-        if ($profile instanceof \app\models\Profile) {
-            $profile->name = $vars['name'];
-            try {
-                $profile->save();
-            } catch (\Exception $exception) {
-                Yii::error($exception);
-            }
-        }
-        return 'User created successfully';
+  /** Sign up using fullname, email, password
+   * 5/25/20 BN using vendor/2amigos/yii2-usuario
+   * Send params in request body:
+   * {
+   *  append_id : username = username + new_gen_id
+   *  password: if not exist (guest mode), it's reverse of username, but without the ID appendix
+   *  email: if guest_mode: someids@yahoo.com . User can claim their email later.
+   * }
+   */
+  public function actionSignup()
+  {
+    $vars = Yii::$app->getRequest()->getBodyParams();
+    $append_id = $vars['append_id'] ?? false;
+    $now = new \DateTime();
+    $username = $vars['username'] ?? ('guest' . $now->format('YYmmdd'));
+    $guest_mode = str_starts_with($username, 'guest');
+    $email = $vars['email'] ?? ($guest_mode ? 'someids@yahoo.com' : null);
+    $password = $vars['password'] ?? null;
+    if (!$password) {//guest mode
+      $password = strrev($username);
     }
+    $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
+    if ($exists) {
+      return $this->err('Error: username or email already exists');
+    }
+    $oldApp = \Yii::$app;
+    new \yii\console\Application([
+        'id' => 'Command runner',
+        'basePath' => '@app',
+        'components' => [
+          'db' => $oldApp->db,
+          'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+            'transport' => [
+              'class' => 'Swift_SmtpTransport',
+              'host' => 'smtp.gmail.com',
+              'username' => 'someids@gmail.com',
+              'password' => 'sTrapok02',
+              'port' => 587,
+              'encryption' => 'tls',
+            ],
+          ],
+        ],
+        'modules' => [
+          'user' => \Da\User\Module::class,
+        ]
+      ]
+    );
+    try {
+      $result = Yii::$app->runAction('user/create', [$email, $username, $password]);
+    } catch (Exception $e) {
+      return $this->err('fail user/create');
+    }
+    \Yii::$app = $oldApp;
+    $user = User::findOne(['username' => $username]);
+    if (!($user instanceof User)) {
+      return $this->err('Error creating user. Please try again or contact our support. Thank you');
+    }
+    if ($append_id === true) {
+      $user->username = $user->username . $user->id;
+      try {
+        $user->save();
+      } catch (\Exception $e) {
+        //future report error
+      }
+    }
+    $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
+    if ($profile instanceof \app\models\Profile) {
+      $profile->name = $vars['name'];
+      try {
+        $profile->save();
+      } catch (\Exception $exception) {
+        Yii::error($exception);
+      }
+    }
+    return 'User created successfully';
+  }
 
-    /**
-     * Sign in via API
-     * username in param, pw in header
-     */
-    public function actionSignin()
-    {
-        $username = Yii::$app->request->get('username');
-        $pw = Yii::$app->request->headers->get('pw');
-        if (!$pw || !$username) return $this->err('Must provide username in param, password in header pw', 401);
-        $identity = User::findOne(["username" => $username]);
-        if (!($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
-        $hash = $identity->password_hash;
-        $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
-        if (!$login_result) return $this->err('Wrong password, please try again', 401);
-        return ['msg' => 'Login validated', 'id' => $identity->id];
-    }
+  /**
+   * Sign in via API
+   * username in param, pw in header
+   */
+  public function actionSignin()
+  {
+    $username = Yii::$app->request->get('username');
+    $pw = Yii::$app->request->headers->get('pw');
+    if (!$pw || !$username) return $this->err('Must provide username in param, password in header pw', 401);
+    $identity = User::findOne(["username" => $username]);
+    if (!($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
+    $hash = $identity->password_hash;
+    $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
+    if (!$login_result) return $this->err('Wrong password, please try again', 401);
+    return ['msg' => 'Login validated', 'id' => $identity->id];
+  }
 }
