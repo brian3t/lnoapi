@@ -143,6 +143,7 @@ class UserController extends BaseActiveController
     public function actionSignup()
     {
         $vars = Yii::$app->getRequest()->getBodyParams();
+        $append_id = $vars['append_id'] ?? false;
         $now = new \DateTime();
         $username = $vars['username'] ?? ('guest' . $now->format('YYmmdd'));
         $email = $vars['email'];
