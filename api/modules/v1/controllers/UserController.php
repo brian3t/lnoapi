@@ -11,6 +11,7 @@ use app\api\base\controllers\BaseActiveController;
 use app\controllers\user\SettingsController;
 use app\models\User;
 use Yii;
+use yii\console\Exception;
 use yii\web\UnauthorizedHttpException;
 
 class UserController extends BaseActiveController
@@ -142,7 +143,8 @@ class UserController extends BaseActiveController
     public function actionSignup()
     {
         $vars = Yii::$app->getRequest()->getBodyParams();
-        $username = $vars['username'];
+        $now = new \DateTime();
+        $username = $vars['username'] ?? ('guest' . $now->format('YYmmdd'));
         $email = $vars['email'];
         $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
         if ($exists) {
@@ -171,8 +173,12 @@ class UserController extends BaseActiveController
                 ]
             ]
         );
+      try {
         $result = Yii::$app->runAction('user/create', [$email, $username, $vars['password']]);
-        \Yii::$app = $oldApp;
+      } catch (Exception $e) {
+        return $this->err('fail user/create');
+      }
+      \Yii::$app = $oldApp;
         $user = User::findOne(['username' => $username]);
         if (! ($user instanceof User)) {
             return $this->err('Error creating user. Please try again or contact our support. Thank you');
