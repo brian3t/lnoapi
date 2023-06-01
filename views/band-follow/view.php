@@ -2,7 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\BandFollow */
@@ -18,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= 'Band Follow'.' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
-            
+
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -32,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         [
@@ -53,7 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <h4>Band<?= ' '. Html::encode($this->title) ?></h4>
     </div>
-    <?php 
+    <?php
     $gridColumnBand = [
         ['attribute' => 'id', 'visible' => false],
         'name',
@@ -79,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <h4>User<?= ' '. Html::encode($this->title) ?></h4>
     </div>
-    <?php 
+    <?php
     $gridColumnUser = [
         ['attribute' => 'id', 'visible' => false],
         'username',
@@ -97,7 +96,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'phone_number_type',
         'phone_number',
         'birthdate',
-        'birth_month',
         'birth_year',
         'favorite_genres',
         'favorite_venue_types',

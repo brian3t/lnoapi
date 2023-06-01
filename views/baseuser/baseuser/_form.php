@@ -7,7 +7,7 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\User */
 /* @var $form yii\widgets\ActiveForm */
 
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END,
     'viewParams' => [
        'class' => 'Band',
        'relID' => 'band',
@@ -97,14 +97,13 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true, 'placeholder' => 'Phone Number']) ?>
 
-   <?= $form->field($model, 'birth_month')->textInput(['placeholder' => 'Birth Month']) ?> 
- 
-   <?= $form->field($model, 'birth_year')->textInput(['placeholder' => 'Birth Year']) ?> 
- 
-   <?= $form->field($model, 'favorite_genres')->textInput(['placeholder' => 'Favorite Genres']) ?> 
- 
-   <?= $form->field($model, 'favorite_venue_types')->textInput(['placeholder' => 'Favorite Venue Types']) ?> 
- 
+
+   <?= $form->field($model, 'birth_year')->textInput(['placeholder' => 'Birth Year']) ?>
+
+   <?= $form->field($model, 'favorite_genres')->textInput(['placeholder' => 'Favorite Genres']) ?>
+
+   <?= $form->field($model, 'favorite_venue_types')->textInput(['placeholder' => 'Favorite Venue Types']) ?>
+
     <?= $form->field($model, 'birthdate')->widget(\kartik\datecontrol\DateControl::classname(), [
         'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
         'saveFormat' => 'php:Y-m-d',
@@ -128,15 +127,15 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'google_id')->textInput(['maxlength' => true, 'placeholder' => 'Google']) ?>
 
     <?= $form->field($model, 'address1')->textInput(['maxlength' => true, 'placeholder' => 'Address1']) ?>
-    
+
     <?= $form->field($model, 'address2')->textInput(['maxlength' => true, 'placeholder' => 'Address2']) ?>
-    
+
     <?= $form->field($model, 'city')->textInput(['maxlength' => true, 'placeholder' => 'City']) ?>
-    
+
     <?= $form->field($model, 'state')->textInput(['maxlength' => true, 'placeholder' => 'State']) ?>
-    
+
     <?= $form->field($model, 'zipcode')->textInput(['maxlength' => true, 'placeholder' => 'Zipcode']) ?>
-    
+
     <?= $form->field($model, 'country')->textInput(['maxlength' => true, 'placeholder' => 'Country']) ?>
 
    <?= $form->field($model, 'last_login_at')->textInput(['placeholder' => 'Last Login At']) ?>
@@ -196,7 +195,7 @@ use yii\widgets\ActiveForm;
        ],
    ]);
    ?>
-   
+
     <div class="form-group">
         <?= Html::submitButton($model->isNewRecord ? 'Create' : 'Update', ['class' => $model->isNewRecord ? 'btn btn-success' : 'btn btn-primary']) ?>
         <?= Html::a(Yii::t('app', 'Cancel'), Yii::$app->request->referrer , ['class'=> 'btn btn-danger']) ?>

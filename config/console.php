@@ -39,12 +39,17 @@ $config = [
             'transport' => [
                 'class' => 'Swift_SmtpTransport',
                 'host' => 'smtp.gmail.com',
-                'username' => 'someids@gmail.com',
-                'password' => 'sTrapok02',
+                'username' => 'ceo@socalappsolutions.com',
+                'password' => 'wmqtmhewukftlixm',
                 'port' => 587,
                 'encryption' => 'tls',
             ],
         ],
+        'urlManager' => [
+          'baseUrl' => '/',
+          'hostInfo' => 'https://admin.lno.socalappsolutions.com',
+          'scriptUrl' => ''
+        ]
     ],
     'params' => $params,
     /*

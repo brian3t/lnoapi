@@ -13,7 +13,6 @@ use app\models\User;
 use Yii;
 use yii\console\Exception;
 use yii\web\UnauthorizedHttpException;
-use function Matrix\trace;
 
 class UserController extends BaseActiveController
 {
@@ -151,7 +150,7 @@ class UserController extends BaseActiveController
     $vars = Yii::$app->getRequest()->getBodyParams();
     $append_id = $vars['append_id'] ?? false;
     $now = new \DateTime();
-    $username = $vars['username'] ?? ('guest' . $now->format('YYmmdd'));
+    $username = $vars['username'] ?? ('guest' . $now->format('Ymd'));
     $guest_mode = str_starts_with($username, 'guest');
     $email = $vars['email'] ?? ($guest_mode ? 'someids@yahoo.com' : null);
     $password = $vars['password'] ?? null;
@@ -173,20 +172,24 @@ class UserController extends BaseActiveController
             'transport' => [
               'class' => 'Swift_SmtpTransport',
               'host' => 'smtp.gmail.com',
-              'username' => 'someids@gmail.com',
-              'password' => 'sTrapok02',
+              'username' => 'ceo@socalappsolutions.com',
+              'password' => 'wmqtmhewukftlixm',
               'port' => 587,
               'encryption' => 'tls',
             ],
           ],
+          'urlManager' => [
+            'scriptUrl' => '',
+            'hostInfo' => ''
+          ]
         ],
         'modules' => [
           'user' => \Da\User\Module::class,
-        ]
+        ],
       ]
     );
     try {
-      $result = Yii::$app->runAction('user/create', [$email, $username, $password]);
+      $result = Yii::$app->runAction('user/create', [$email, $username, $password, 'interactive' => false]);
     } catch (Exception $e) {
       return $this->err('fail user/create');
     }
@@ -197,22 +200,23 @@ class UserController extends BaseActiveController
     }
     if ($append_id === true) {
       $user->username = $user->username . $user->id;
-      try {
-        $user->save();
-      } catch (\Exception $e) {
-        //future report error
-      }
+    }
+    $user->registration_ip = Yii::$app->request->userIP;
+    try {
+      $user->save();
+    } catch (\Exception $e) {
+      //future report error
     }
     $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
     if ($profile instanceof \app\models\Profile) {
-      $profile->name = $vars['name'];
+      $profile->name = $vars['name'] ?? $user->username;
       try {
         $profile->save();
       } catch (\Exception $exception) {
         Yii::error($exception);
       }
     }
-    return 'User created successfully';
+    return ['username' => $user->username,'pw' => $password];
   }
 
   /**

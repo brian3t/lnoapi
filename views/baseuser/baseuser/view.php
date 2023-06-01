@@ -1,8 +1,8 @@
 <?php
 
+use kartik\grid\GridView;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
-use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\User */
@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= 'User'.' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
-            
+
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         'username',
@@ -52,10 +52,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'phone_number_type',
         'phone_number',
         'birthdate',
-		'birth_month', 
-		'birth_year', 
-		'favorite_genres', 
-		'favorite_venue_types', 
+		'birth_year',
+		'favorite_genres',
+		'favorite_venue_types',
         'website_url:url',
         'twitter_id',
         'facebook_id',
@@ -71,10 +70,10 @@ $this->params['breadcrumbs'][] = $this->title;
     echo DetailView::widget([
         'model' => $model,
         'attributes' => $gridColumn
-    ]); 
+    ]);
 ?>
     </div>
-    
+
    <div class="row">
 <?php
 if($providerBand->totalCount){
@@ -107,7 +106,7 @@ if($providerBand->totalCount){
 }
 ?>
    </div>
-   
+
    <div class="row">
 <?php
 if($providerBandComment->totalCount){
@@ -134,7 +133,7 @@ if($providerBandComment->totalCount){
 }
 ?>
    </div>
-   
+
    <div class="row">
 <?php
 if($providerBandFollow->totalCount){
@@ -160,7 +159,7 @@ if($providerBandFollow->totalCount){
 }
 ?>
    </div>
-   
+
    <div class="row">
 <?php
 if($providerBandRate->totalCount){
@@ -188,7 +187,7 @@ if($providerBandRate->totalCount){
 }
 ?>
    </div>
-   
+
    <div class="row">
 <?php
 if($providerEvent->totalCount){
@@ -224,7 +223,7 @@ if($providerEvent->totalCount){
 }
 ?>
    </div>
-   
+
    <div class="row">
 <?php
 if($providerUserEvent->totalCount){
@@ -252,7 +251,7 @@ if($providerUserEvent->totalCount){
 }
 ?>
    </div>
-   
+
    <div class="row">
 <?php
 if($providerVenue->totalCount){

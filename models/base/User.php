@@ -2,8 +2,6 @@
 
 namespace app\models\base;
 
-use Yii;
-
 /**
  * This is the base model class for table "user".
  *
@@ -24,8 +22,7 @@ use Yii;
  * @property string $note
  * @property string $phone_number_type
  * @property string $phone_number
- * @property string $birthdate
- * @property integer $birth_month
+ * @property integer $birthdate
  * @property integer $birth_year
  * @property string $favorite_genres
  * @property string $favorite_venue_types
@@ -89,7 +86,6 @@ class User extends \yii\db\ActiveRecord
             [['first_name', 'last_name', 'twitter_id', 'facebook_id', 'instagram_id', 'google_id', 'state', 'country'], 'string', 'max' => 80],
             [['note', 'address1'], 'string', 'max' => 2000],
             [['phone_number', 'zipcode'], 'string', 'max' => 20],
-            [['birth_month'], 'string', 'max' => 3],
             [['website_url'], 'string', 'max' => 400],
             [['address2'], 'string', 'max' => 800],
             [['username'], 'unique']
@@ -126,7 +122,6 @@ class User extends \yii\db\ActiveRecord
             'phone_number_type' => 'Phone Number Type',
             'phone_number' => 'Phone Number',
             'birthdate' => 'Birthdate',
-            'birth_month' => 'Birth Month',
             'birth_year' => 'Birth Year',
             'favorite_genres' => 'Favorite Genres',
             'favorite_venue_types' => 'Favorite Venue Types',
@@ -144,7 +139,7 @@ class User extends \yii\db\ActiveRecord
             'last_login_at' => 'Last Login At',
         ];
     }
-    
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -152,7 +147,7 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\Band::className(), ['user_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -160,7 +155,7 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandComment::className(), ['created_by' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -168,7 +163,7 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandFollow::className(), ['user_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -176,7 +171,7 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\BandRate::className(), ['user_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -184,7 +179,7 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\Event::className(), ['user_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */
@@ -192,7 +187,7 @@ class User extends \yii\db\ActiveRecord
     {
         return $this->hasMany(\app\models\UserEvent::className(), ['user_id' => 'id']);
     }
-        
+
     /**
      * @return \yii\db\ActiveQuery
      */

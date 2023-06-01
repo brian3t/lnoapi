@@ -37,10 +37,11 @@ $config = [
       'transport' => [
         'class' => 'Swift_SmtpTransport',
         'host' => 'smtp.gmail.com',
-        'username' => 'someids@gmail.com',
-        'password' => 'sTrapok02',
+        'username' => 'ceo@socalappsolutions.com',
+        'password' => 'wmqtmhewukftlixm',
         'port' => 587,
         'encryption' => 'tls',
+
       ],
     ],
     'log' => [
@@ -62,6 +63,7 @@ $config = [
       'rules' => [
         '/user' => 'baseuser/index',
       ],
+      'scriptUrl' => ''
     ],
     'consoleRunner' => [
       'class' => 'vova07\console\ConsoleRunner',
@@ -90,10 +92,10 @@ $config = [
       // 'generatePasswords' => true,
       // 'switchIdentitySessionKey' => 'myown_usuario_admin_user_key',
       // docs: https://yii2-usuario.readthedocs.io/en/latest/installation/available-actions/
-      'classMap' => [
+//      'classMap' => [
 //        'MailService' => 'soc\yii2helper\usuario\MailService'
-        'UserCreateService' => 'soc\yii2helper\usuario\UserCreateService'
-      ]
+//        'UserCreateService' => 'soc\yii2helper\usuario\UserCreateService'
+//      ]
     ],
     'gridview' => [
       'class' => '\kartik\grid\Module',
