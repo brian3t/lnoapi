@@ -8,7 +8,7 @@ $db = require(__DIR__ . '/db.php');
 
 $config = [
     'id' => 'basic-console',
-    'name' => 'Live N Out',
+    'name' => 'SD Events',
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',

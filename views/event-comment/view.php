@@ -2,22 +2,23 @@
 
 use yii\helpers\Html;
 use yii\widgets\DetailView;
+use kartik\grid\GridView;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Bvideo */
+/* @var $model app\models\EventComment */
 
 $this->title = $model->id;
-$this->params['breadcrumbs'][] = ['label' => 'Bvideo', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => 'Event Comment', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="bvideo-view">
+<div class="event-comment-view">
 
     <div class="row">
         <div class="col-sm-9">
-            <h2><?= 'Bvideo'.' '. Html::encode($this->title) ?></h2>
+            <h2><?= 'Event Comment'.' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
-
+            
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -31,22 +32,15 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-<?php
+<?php 
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         [
-            'attribute' => 'band.name',
-            'label' => 'Band',
+            'attribute' => 'editedBy.username',
+            'label' => 'Edited By',
         ],
-        'video_url:url',
-        'is_selected',
-        'seq',
-        'note',
-        'last_processed',
-        [
-            'attribute' => 'processedBy.username',
-            'label' => 'Processed By',
-        ],
+        'edited_at',
+        'comment',
     ];
     echo DetailView::widget([
         'model' => $model,
@@ -57,18 +51,28 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row">
         <h4>User<?= ' '. Html::encode($this->title) ?></h4>
     </div>
-    <?php
+    <?php 
     $gridColumnUser = [
         ['attribute' => 'id', 'visible' => false],
         'username',
         'email',
         'password_hash',
         'auth_key',
-        'confirmed_at',
         'unconfirmed_email',
-        'blocked_at',
         'registration_ip',
         'flags',
+        'confirmed_at',
+        'blocked_at',
+        'last_login_at',
+        'last_login_ip',
+        'auth_tf_key',
+        'auth_tf_enabled',
+        'auth_tf_type',
+        'auth_tf_mobile_phone',
+        'password_changed_at',
+        'gdpr_consent',
+        'gdpr_consent_date',
+        'gdpr_deleted',
         'first_name',
         'last_name',
         'note',
@@ -86,41 +90,56 @@ $this->params['breadcrumbs'][] = $this->title;
         'state',
         'zipcode',
         'country',
-        'last_login_at',
     ];
     echo DetailView::widget([
-        'model' => $model->processedBy,
+        'model' => $model->createdBy,
         'attributes' => $gridColumnUser    ]);
     ?>
     <div class="row">
-        <h4>Band<?= ' '. Html::encode($this->title) ?></h4>
+        <h4>User<?= ' '. Html::encode($this->title) ?></h4>
     </div>
-    <?php
-    $gridColumnBand = [
+    <?php 
+    $gridColumnUser = [
         ['attribute' => 'id', 'visible' => false],
-        'name',
-        'user_id',
-        'logo',
-        'lno_score',
-        'type',
-        'genre',
-        'similar_to',
-        'hometown_city',
-        'hometown_state',
-        'description',
-        'website',
-        'youtube',
-        'instagram',
-        'facebook',
-        'twitter',
-        'source',
-        'attr',
-        'scrape_status',
-        'gg_last_attempt',
-        'ytlink_first',
+        'username',
+        'email',
+        'password_hash',
+        'auth_key',
+        'unconfirmed_email',
+        'registration_ip',
+        'flags',
+        'confirmed_at',
+        'blocked_at',
+        'last_login_at',
+        'last_login_ip',
+        'auth_tf_key',
+        'auth_tf_enabled',
+        'auth_tf_type',
+        'auth_tf_mobile_phone',
+        'password_changed_at',
+        'gdpr_consent',
+        'gdpr_consent_date',
+        'gdpr_deleted',
+        'first_name',
+        'last_name',
+        'note',
+        'phone_number_type',
+        'phone_number',
+        'birthdate',
+        'favorite_genres',
+        'favorite_venue_types',
+        'twitter_id',
+        'facebook_id',
+        'instagram_id',
+        'address1',
+        'address2',
+        'city',
+        'state',
+        'zipcode',
+        'country',
     ];
     echo DetailView::widget([
-        'model' => $model->band,
-        'attributes' => $gridColumnBand    ]);
+        'model' => $model->editedBy,
+        'attributes' => $gridColumnUser    ]);
     ?>
 </div>

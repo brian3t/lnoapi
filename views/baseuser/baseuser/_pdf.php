@@ -20,7 +20,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
                 'username',
         [
@@ -45,21 +45,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'phone_number_type',
         'phone_number',
         'birthdate',
-        'website_url:url',
         'twitter_id',
         'facebook_id',
         'instagram_id',
-        'google_id',
         'yahoo_id',
         'linkedin_id',
     ];
     echo DetailView::widget([
         'model' => $model,
         'attributes' => $gridColumn
-    ]); 
+    ]);
 ?>
     </div>
-    
+
     <div class="row">
 <?php
 if($providerSocialAccount->totalCount){
@@ -86,7 +84,7 @@ if($providerSocialAccount->totalCount){
 }
 ?>
     </div>
-    
+
     <div class="row">
 <?php
 if($providerToken->totalCount){

@@ -23,14 +23,11 @@ namespace app\models\base;
  * @property string $phone_number_type
  * @property string $phone_number
  * @property integer $birthdate
- * @property integer $birth_year
  * @property string $favorite_genres
  * @property string $favorite_venue_types
- * @property string $website_url
  * @property string $twitter_id
  * @property string $facebook_id
  * @property string $instagram_id
- * @property string $google_id
  * @property string $address1
  * @property string $address2
  * @property string $city
@@ -76,17 +73,16 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username'], 'required'],
-            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'birth_year', 'last_login_at'], 'integer'],
+            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at'], 'integer'],
             [['phone_number_type', 'favorite_genres', 'favorite_venue_types'], 'string'],
             [['birthdate'], 'safe'],
             [['username', 'email', 'unconfirmed_email', 'city'], 'string', 'max' => 255],
             [['password_hash'], 'string', 'max' => 60],
             [['auth_key'], 'string', 'max' => 32],
             [['registration_ip'], 'string', 'max' => 45],
-            [['first_name', 'last_name', 'twitter_id', 'facebook_id', 'instagram_id', 'google_id', 'state', 'country'], 'string', 'max' => 80],
+            [['first_name', 'last_name', 'twitter_id', 'facebook_id', 'instagram_id', 'state', 'country'], 'string', 'max' => 80],
             [['note', 'address1'], 'string', 'max' => 2000],
             [['phone_number', 'zipcode'], 'string', 'max' => 20],
-            [['website_url'], 'string', 'max' => 400],
             [['address2'], 'string', 'max' => 800],
             [['username'], 'unique']
         ];
@@ -122,14 +118,11 @@ class User extends \yii\db\ActiveRecord
             'phone_number_type' => 'Phone Number Type',
             'phone_number' => 'Phone Number',
             'birthdate' => 'Birthdate',
-            'birth_year' => 'Birth Year',
             'favorite_genres' => 'Favorite Genres',
             'favorite_venue_types' => 'Favorite Venue Types',
-            'website_url' => 'Website Url',
             'twitter_id' => 'Twitter ID',
             'facebook_id' => 'Facebook ID',
             'instagram_id' => 'Instagram ID',
-            'google_id' => 'Google ID',
             'address1' => 'Address1',
             'address2' => 'Address2',
             'city' => 'City',

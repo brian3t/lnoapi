@@ -22,7 +22,6 @@ use yii\data\ArrayDataProvider;
         'phone_number_type',
         'phone_number',
         'birthdate',
-        'website_url:url',
         'address1',
         'address2',
         'city',
@@ -34,7 +33,7 @@ use yii\data\ArrayDataProvider;
             'controller' => 'user'
         ],
     ];
-    
+
     echo GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumns,

@@ -3,11 +3,11 @@
 /* @var $this yii\web\View */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
+use yii\helpers\Html;
 use kartik\export\ExportMenu;
 use kartik\grid\GridView;
-use yii\helpers\Html;
 
-$this->title = 'User';
+$this->title = 'Event Comment';
 $this->params['breadcrumbs'][] = $this->title;
 $search = "$('.search-button').click(function(){
 	$('.search-form').toggle(1000);
@@ -15,42 +15,45 @@ $search = "$('.search-button').click(function(){
 });";
 $this->registerJs($search);
 ?>
-<div class="user-index">
+<div class="event-comment-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Event Comment', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
-<?php
+<?php 
     $gridColumn = [
-        ['attribute' => 'id'],
-        ['attribute'=>'username',
-            'value' => function($model){
-                return "<a href=/baseuser/update?id={$model->id}>{$model->username}</a>";
-            },
-            'format'=>'html'
+        ['class' => 'yii\grid\SerialColumn'],
+        ['attribute' => 'id', 'visible' => false],
+        [
+                'attribute' => 'edited_by',
+                'label' => 'Edited By',
+                'value' => function($model){
+                    if ($model->editedBy)
+                    {return $model->editedBy->username;}
+                    else
+                    {return NULL;}
+                },
+                'filterType' => GridView::FILTER_SELECT2,
+                'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
+                'filterWidgetOptions' => [
+                    'pluginOptions' => ['allowClear' => true],
+                ],
+                'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--edited_by']
             ],
-        'email:email',
-        'registration_ip',
-        'created_at:datetime',
-        'updated_at:datetime',
-        'first_name',
-        'last_name',
-        ['attribute'=>'phone_number_type','label'=>'Phone Type'],
-        ['attribute'=>'phone_number','label'=> 'Phone'],
-       'favorite_genres',
-       'favorite_venue_types',
+        'edited_at',
+        'comment',
         [
             'class' => 'yii\grid\ActionColumn',
         ],
-    ];
+    ]; 
     ?>
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'columns' => $gridColumn,
         'pjax' => true,
-        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-user']],
+        'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-event-comment']],
         'panel' => [
             'type' => GridView::TYPE_PRIMARY,
             'heading' => '<span class="glyphicon glyphicon-book"></span>  ' . Html::encode($this->title),

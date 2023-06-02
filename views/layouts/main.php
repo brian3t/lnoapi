@@ -39,7 +39,7 @@ AppAsset::register($this);
 //            'class' => 'navbar navbar-nav navbar-default navbar-fixed-top',
         ],
     ]);
-    echo '<span class="version">v0.7</span>';
+    echo '<span class="version">v0.8</span>';
     $items = [];
     $admin_items = [
 
@@ -57,7 +57,11 @@ AppAsset::register($this);
             'label' => 'Events',
             'url' => Url::toRoute(['/event/index']),
         ],
-        ['label' => 'Webapp', 'url' => 'https://app.livenout.usvsolutions.com', 'linkOptions' => ['target' => '_blank'],
+        [
+            'label' => 'Event Comments',
+            'url' => Url::toRoute(['/event-comment/index']),
+        ],
+        ['label' => 'Webapp', 'url' => 'https://app.livenout.socalappsolutions.com', 'linkOptions' => ['target' => '_blank'],
         ],
 
 
@@ -116,7 +120,7 @@ AppAsset::register($this);
 
 <footer class="footer">
     <div class="container">
-        <p class="pull-left">&copy; Live N Out <?= date('Y') ?></p>
+        <p class="pull-left">&copy; SD Events <?= date('Y') ?></p>
 
     </div>
 </footer>

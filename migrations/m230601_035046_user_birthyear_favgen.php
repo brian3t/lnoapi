@@ -33,6 +33,39 @@ class m230601_035046_user_birthyear_favgen extends Migration
     if (!isset($table->columns['birthdate'])) {
       $this->addColumn('user', 'birthdate', 'char(8) default NULL');
     }
+    if (!isset($table->columns['favorite_genres'])) {
+      $this->addColumn('user', 'favorite_genres', 'varchar(500) default ""');
+    }
+    if (!isset($table->columns['favorite_venue_types'])) {
+      $this->addColumn('user', 'favorite_venue_types', 'varchar(500) default ""');
+    }
+    if (!isset($table->columns['twitter_id'])) {
+      $this->addColumn('user', 'twitter_id', 'bigint default NULL');
+    }
+    if (!isset($table->columns['facebook_id'])) {
+      $this->addColumn('user', 'facebook_id', 'bigint default NULL');
+    }
+    if (!isset($table->columns['instagram_id'])) {
+      $this->addColumn('user', 'instagram_id', 'bigint default NULL');
+    }
+    if (!isset($table->columns['address1'])) {
+      $this->addColumn('user', 'address1', 'varchar(255) default ""');
+    }
+    if (!isset($table->columns['address2'])) {
+      $this->addColumn('user', 'address2', 'varchar(255) default ""');
+    }
+    if (!isset($table->columns['city'])) {
+      $this->addColumn('user', 'city', 'varchar(25) default ""');
+    }
+    if (!isset($table->columns['state'])) {
+      $this->addColumn('user', 'state', 'varchar(25) default ""');
+    }
+    if (!isset($table->columns['zipcode'])) {
+      $this->addColumn('user', 'zipcode', 'varchar(25) default ""');
+    }
+    if (!isset($table->columns['country'])) {
+      $this->addColumn('user', 'country', 'char(2) default "us"');
+    }
   }
 
   /**

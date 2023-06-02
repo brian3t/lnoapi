@@ -18,7 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <h2><?= 'Company'.' '. Html::encode($this->title) ?></h2>
         </div>
         <div class="col-sm-3" style="margin-top: 15px">
-            
+
             <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
             <?= Html::a('Delete', ['delete', 'id' => $model->id], [
                 'class' => 'btn btn-danger',
@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => false],
         'name',
@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
     echo DetailView::widget([
         'model' => $model,
         'attributes' => $gridColumn
-    ]); 
+    ]);
 ?>
     </div>
 
@@ -152,11 +152,9 @@ if($providerUser->totalCount){
             'phone_number_type',
             'phone_number',
             'birthdate',
-            'website_url:url',
             'twitter_id',
             'facebook_id',
             'instagram_id',
-            'google_id',
             'yahoo_id',
             'linkedin_id',
             'work_phone',
@@ -182,7 +180,7 @@ if($providerUser->totalCount){
 }
 ?>
     </div>
-    
+
     <div class="row">
 <?php
 if($providerVenue->totalCount){

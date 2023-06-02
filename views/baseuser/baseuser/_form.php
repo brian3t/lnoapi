@@ -98,8 +98,6 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'phone_number')->textInput(['maxlength' => true, 'placeholder' => 'Phone Number']) ?>
 
 
-   <?= $form->field($model, 'birth_year')->textInput(['placeholder' => 'Birth Year']) ?>
-
    <?= $form->field($model, 'favorite_genres')->textInput(['placeholder' => 'Favorite Genres']) ?>
 
    <?= $form->field($model, 'favorite_venue_types')->textInput(['placeholder' => 'Favorite Venue Types']) ?>
@@ -116,15 +114,11 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'website_url')->textInput(['maxlength' => true, 'placeholder' => 'Website Url']) ?>
-
     <?= $form->field($model, 'twitter_id')->textInput(['maxlength' => true, 'placeholder' => 'Twitter']) ?>
 
     <?= $form->field($model, 'facebook_id')->textInput(['maxlength' => true, 'placeholder' => 'Facebook']) ?>
 
     <?= $form->field($model, 'instagram_id')->textInput(['maxlength' => true, 'placeholder' => 'Instagram']) ?>
-
-    <?= $form->field($model, 'google_id')->textInput(['maxlength' => true, 'placeholder' => 'Google']) ?>
 
     <?= $form->field($model, 'address1')->textInput(['maxlength' => true, 'placeholder' => 'Address1']) ?>
 

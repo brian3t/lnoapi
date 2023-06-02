@@ -140,18 +140,18 @@ class UserController extends BaseActiveController
    * 5/25/20 BN using vendor/2amigos/yii2-usuario
    * Send params in request body:
    * {
-   *  append_id : username = username + new_gen_id
-   *  password: if not exist (guest mode), it's reverse of username, but without the ID appendix
+   *  append_id : username = username + new_gen_id. If guest_mode, this is a must
+   *  password: if not exist (guest_mode), it's reverse of username, but without the ID appendix
    *  email: if guest_mode: someids@yahoo.com . User can claim their email later.
    * }
    */
   public function actionSignup()
   {
     $vars = Yii::$app->getRequest()->getBodyParams();
-    $append_id = $vars['append_id'] ?? false;
     $now = new \DateTime();
-    $username = $vars['username'] ?? ('guest' . $now->format('Ymd'));
+    $username = $vars['username'] ?? ('guest' . $now->format('ymd'));
     $guest_mode = str_starts_with($username, 'guest');
+    $append_id = $vars['append_id'] ?? $guest_mode;
     $email = $vars['email'] ?? ($guest_mode ? 'someids@yahoo.com' : null);
     $password = $vars['password'] ?? null;
     if (!$password) {//guest mode
@@ -164,6 +164,7 @@ class UserController extends BaseActiveController
     $oldApp = \Yii::$app;
     new \yii\console\Application([
         'id' => 'Command runner',
+        'name' => 'SD Events',
         'basePath' => '@app',
         'components' => [
           'db' => $oldApp->db,
@@ -179,7 +180,7 @@ class UserController extends BaseActiveController
             ],
           ],
           'urlManager' => [
-            'scriptUrl' => '',
+            'scriptUrl' => $oldApp->getHomeUrl(),
             'hostInfo' => ''
           ]
         ],
@@ -201,10 +202,12 @@ class UserController extends BaseActiveController
     if ($append_id === true) {
       $user->username = $user->username . $user->id;
     }
+    if ($guest_mode) $user->email = $user->username . '@notconfirmed.com';
     $user->registration_ip = Yii::$app->request->userIP;
     try {
       $user->save();
     } catch (\Exception $e) {
+      Yii::error("uc 209 " . $e->getMessage() . json_encode($user->errors));
       //future report error
     }
     $profile = \app\models\Profile::findOrCreate(['user_id' => $user->id]);
@@ -216,7 +219,7 @@ class UserController extends BaseActiveController
         Yii::error($exception);
       }
     }
-    return ['username' => $user->username,'pw' => $password];
+    return ['username' => $user->username, 'pw' => $password];
   }
 
   /**

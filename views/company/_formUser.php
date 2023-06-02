@@ -67,11 +67,9 @@
                     ],
                 ]
             ],
-            'website_url' => ['type' => TabularForm::INPUT_TEXT],
             'twitter_id' => ['type' => TabularForm::INPUT_TEXT],
             'facebook_id' => ['type' => TabularForm::INPUT_TEXT],
             'instagram_id' => ['type' => TabularForm::INPUT_TEXT],
-            'google_id' => ['type' => TabularForm::INPUT_TEXT],
             'yahoo_id' => ['type' => TabularForm::INPUT_TEXT],
             'linkedin_id' => ['type' => TabularForm::INPUT_TEXT],
             'work_phone' => ['type' => TabularForm::INPUT_TEXT],

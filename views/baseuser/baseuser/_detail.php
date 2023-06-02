@@ -17,7 +17,7 @@ use kartik\grid\GridView;
     </div>
 
     <div class="row">
-<?php 
+<?php
     $gridColumn = [
         ['attribute' => 'id', 'visible' => true],
         'username',
@@ -43,18 +43,16 @@ use kartik\grid\GridView;
         'phone_number_type',
         'phone_number',
         'birthdate',
-        'website_url:url',
         'twitter_id',
         'facebook_id',
         'instagram_id',
-        'google_id',
         'yahoo_id',
         'linkedin_id',
     ];
     echo DetailView::widget([
         'model' => $model,
         'attributes' => $gridColumn
-    ]); 
+    ]);
 ?>
     </div>
 </div>
