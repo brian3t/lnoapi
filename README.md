@@ -54,3 +54,4 @@ Screenshot:
 + Steps to scrape Reverb:
     +  dl/scrape-reverb-all
   
++ tool: bbot populate event_comment
