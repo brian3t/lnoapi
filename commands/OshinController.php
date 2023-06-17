@@ -19,6 +19,17 @@ class OshinController extends Controller
      * Clean up sdr systemnote url
      * @throws Exception
      */
+    public function actionAsdf() {
+        $db = \Yii::$app->db;
+        echo "Asdf" . PHP_EOL;
+        return 1;
+    }
+
+  /**
+     * Clean up data
+     * Clean up sdr systemnote url
+     * @throws Exception
+     */
     public function actionCleanData() {
         $db = \Yii::$app->db;
         $db->createCommand("UPDATE event SET temp = CAST(REGEXP_REPLACE(system_note, '(?<!https:)//', '/') AS CHAR) WHERE source='sdr'")->execute();
