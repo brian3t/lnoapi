@@ -35,6 +35,7 @@ namespace app\models\base;
  * @property string $zipcode
  * @property string $country
  * @property integer $last_login_at
+ * @property integer $is_btt
  *
  * @property \app\models\Band[] $bands
  * @property \app\models\BandComment[] $bandComments
@@ -73,7 +74,7 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             [['username'], 'required'],
-            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at'], 'integer'],
+            [['confirmed_at', 'blocked_at', 'created_at', 'updated_at', 'flags', 'last_login_at', 'is_btt'], 'integer'],
             [['phone_number_type', 'favorite_genres', 'favorite_venue_types'], 'string'],
             [['birthdate'], 'safe'],
             [['username', 'email', 'unconfirmed_email', 'city'], 'string', 'max' => 255],
@@ -130,7 +131,8 @@ class User extends \yii\db\ActiveRecord
             'zipcode' => 'Zipcode',
             'country' => 'Country',
             'last_login_at' => 'Last Login At',
-        ];
+            'is_btt' => 'Is Btt',
+       ];
     }
 
     /**
