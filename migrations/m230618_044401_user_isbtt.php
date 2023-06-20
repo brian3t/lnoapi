@@ -24,6 +24,10 @@ update user set updated_at=null;
 alter table user
     modify updated_at timestamp default null null
         ON UPDATE CURRENT_TIMESTAMP;');
+        $this->execute('alter table user modify created_at int default 0 null;
+update user set created_at = null;
+alter table user modify created_at timestamp default CURRENT_TIMESTAMP;
+UPDATE user set created_at=current_timestamp where created_at is null;');
     }
 
     /**

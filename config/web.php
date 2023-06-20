@@ -49,8 +49,8 @@ $config = [
       'targets' => [
         [
           'class' => 'yii\log\FileTarget',
-//                    'levels' => ['error'],
-          'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning'],
+//          'levels' => ['error', 'warning', 'trace', 'profile'],
         ],
       ],
 
@@ -64,6 +64,13 @@ $config = [
         '/user' => 'baseuser/index',
       ],
       'scriptUrl' => ''
+    ],
+    'view' => [
+        'theme' => [
+            'pathMap' => [
+                '@Da/User/resources/views' => '@app/views/user'
+            ]
+        ]
     ],
     'consoleRunner' => [
       'class' => 'vova07\console\ConsoleRunner',
@@ -89,6 +96,9 @@ $config = [
       'class' => Da\User\Module::class,
       // ...other configs from here: [Configuration Options](installation/configuration-options.md), e.g.
       'administrators' => ['admin', 'ngxtri', 'windlinx@hotmail.com'], // this is required for accessing administrative actions
+      'classMap' => [
+            'User' => \app\models\User::class,
+        ],
       // 'generatePasswords' => true,
       // 'switchIdentitySessionKey' => 'myown_usuario_admin_user_key',
       // docs: https://yii2-usuario.readthedocs.io/en/latest/installation/available-actions/

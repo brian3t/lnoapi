@@ -14,8 +14,7 @@ use yii\db\Exception;
 class BotController extends Controller
 {
   /**
-   * Clean up data
-   * Clean up sdr systemnote url
+   * Asdf
    */
   public function actionAsdf() {
     $db = \Yii::$app->db;
@@ -36,20 +35,19 @@ class BotController extends Controller
   }
 
   /**
-   * Clean up data
-   * Clean up sdr systemnote url
-   * @throws Exception
+   * Generate users
    */
   public function actionGenusers() {
     $db = \Yii::$app->db;
+    $NUM_USERS = 223;
     //make sure id goes from 6 upwards; up to 223 times
     $now = new \DateTime('now');
     $now = $now->getTimestamp();
-    for ($i = 1; $i <= 2; $i++) {
+    for ($i = 1; $i <= $NUM_USERS; $i++) {
       $user = new \app\models\base\User();
       $user->username = $this->genRandString(rand(8, 12));
       $mail_len = rand(8, 12);
-      $user->email = $this->genRandString($mail_len);
+      $user->email = $this->genRandString($mail_len) . '@unconfirmed.com';
       $user->is_btt = 1;
       $user->confirmed_at = $now;
       $user->auth_key = '7fjsLFp_FL3qZI4EqJfw3-BxuMIgbwxF';

@@ -29,7 +29,7 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\web\Response;
 use yii\widgets\ActiveForm;
-use dektrium\user\controllers\AdminController as BaseAdminController;
+use Da\User\Controller\AdminController as BaseAdminController;
 use yii\web\UploadedFile;
 use yii\helpers\BaseFileHelper;
 
@@ -41,7 +41,7 @@ use yii\helpers\BaseFileHelper;
  */
 class AdminController extends BaseAdminController
 {
-    
+
     /**
      * Updates an existing profile.
      *
@@ -55,16 +55,16 @@ class AdminController extends BaseAdminController
         $user = $this->findModel($id);
         $profile = $user->profile;
         $event = $this->getProfileEvent($profile);
-        
+
         if ($profile == null) {
             $profile = Yii::createObject(Profile::className());
             $profile->link('user', $user);
         }
-        
+
         $this->performAjaxValidation($profile);
-        
+
         $this->trigger(self::EVENT_BEFORE_PROFILE_UPDATE, $event);
-        
+
         if ($profile->load(Yii::$app->request->post())) {
             $profile->avatarFile = UploadedFile::getInstance($profile, 'avatarFile');
             $avatarFolder = \Yii::$app->getBasePath() . "/api/img/avatar/" . \Yii::$app->user->id;
@@ -73,7 +73,7 @@ class AdminController extends BaseAdminController
                     BaseFileHelper::removeDirectory($avatarFolder);
                 }
                 mkdir($avatarFolder, 0775);
-                
+
                 $profile->avatarFile->saveAs($avatarFolder . '/' . $profile->avatarFile->baseName . '.' . $profile->avatarFile->extension);
                 $profile->avatar = $profile->avatarFile->baseName . '.' . $profile->avatarFile->extension;
             }
@@ -83,13 +83,13 @@ class AdminController extends BaseAdminController
                 return $this->refresh();
             }
         }
-        
+
         return $this->render('_profile', [
             'user' => $user,
             'profile' => $profile,
         ]);
     }
-    
+
     /**
      * Shows information about user.
      *
@@ -103,12 +103,12 @@ class AdminController extends BaseAdminController
     ) {
         Url::remember('', 'actions-redirect');
         $user = $this->findModel($id);
-        
+
         return $this->render('_info', [
             'user' => $user,
         ]);
     }
-    
+
     /**
      * If "dektrium/yii2-rbac" extension is installed, this page displays form
      * where user can assign multiple auth items to user.
@@ -127,12 +127,12 @@ class AdminController extends BaseAdminController
         }
         Url::remember('', 'actions-redirect');
         $user = $this->findModel($id);
-        
+
         return $this->render('_assignments', [
             'user' => $user,
         ]);
     }
-    
+
     /**
      * Confirms the User.
      *
@@ -146,16 +146,16 @@ class AdminController extends BaseAdminController
     ) {
         $model = $this->findModel($id);
         $event = $this->getUserEvent($model);
-        
+
         $this->trigger(self::EVENT_BEFORE_CONFIRM, $event);
         $model->confirm();
         $this->trigger(self::EVENT_AFTER_CONFIRM, $event);
-        
+
         Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been confirmed'));
-        
+
         return $this->redirect(Url::previous('actions-redirect'));
     }
-    
+
     /**
      * Deletes an existing User model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
@@ -178,10 +178,10 @@ class AdminController extends BaseAdminController
             $this->trigger(self::EVENT_AFTER_DELETE, $event);
             Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been deleted'));
         }
-        
+
         return $this->redirect(['index']);
     }
-    
+
     /**
      * Blocks the user.
      *
@@ -210,10 +210,10 @@ class AdminController extends BaseAdminController
                 Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been blocked'));
             }
         }
-        
+
         return $this->redirect(Url::previous('actions-redirect'));
     }
-    
+
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -231,10 +231,10 @@ class AdminController extends BaseAdminController
         if ($user === null) {
             throw new NotFoundHttpException('The requested page does not exist');
         }
-        
+
         return $user;
     }
-    
+
     /**
      * Performs AJAX validation.
      *
