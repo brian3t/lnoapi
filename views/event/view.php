@@ -88,6 +88,17 @@ $this->params['breadcrumbs'][] = $this->title;
         'sdr_name',
         'temp',
         'source',
+       'attr',
+       'genre',
+       'start_datetime_utc',
+       'start_time_utc',
+       'band_urls:url',
+       'last_scraped_utc',
+       'scrape_msg',
+       'scrape_status',
+       'scrape_url:url',
+       'tz',
+       'addi_det',
     ];
     echo DetailView::widget([
         'model' => $model,
@@ -203,6 +214,33 @@ if($providerUserEvent->totalCount){
     ]);
 }
 ?>
-
+<div class="row">
+<?php
+if($providerEventComment->totalCount){
+   $gridColumnEventComment = [
+       ['class' => 'yii\grid\SerialColumn'],
+           ['attribute' => 'id', 'visible' => false],
+                       [
+               'attribute' => 'createdBy.username',
+               'label' => 'User'
+           ],
+           'created_at:datetime',
+           'comment',
+   ];
+   echo Gridview::widget([
+       'dataProvider' => $providerEventComment,
+       'pjax' => true,
+       'pjaxSettings' => ['options' => ['id' => 'kv-pjax-container-event-comment']],
+       'panel' => [
+           'type' => GridView::TYPE_PRIMARY,
+           'heading' => '<span class="glyphicon glyphicon-book"></span> ' . Html::encode('Event Comment'),
+       ],
+       'export' => false,
+       'columns' => $gridColumnEventComment
+   ]);
+}
+?>
+   </div>
     </div>
+
 </div>

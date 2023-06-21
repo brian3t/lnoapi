@@ -66,12 +66,16 @@ class EventController extends Controller
         $providerBandEvent = new \yii\data\ArrayDataProvider([
             'allModels' => $model->bandEvents,
         ]);
+       $providerEventComment = new \yii\data\ArrayDataProvider([
+           'allModels' => $model->eventComments,
+       ]);
         $providerUserEvent = new \yii\data\ArrayDataProvider([
             'allModels' => $model->userEvents,
         ]);
         return $this->render('view', [
             'model' => $this->findModel($id),
             'providerBandEvent' => $providerBandEvent,
+           'providerEventComment' => $providerEventComment,
             'providerUserEvent' => $providerUserEvent,
         ]);
     }
@@ -126,7 +130,7 @@ class EventController extends Controller
         return $this->redirect(['index']);
     }
 
-    
+
     /**
      * Finds the Event model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -142,7 +146,7 @@ class EventController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     /**
     * Action to load a tabular form grid
     * for BandEvent
@@ -162,7 +166,7 @@ class EventController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-    
+
     /**
     * Action to load a tabular form grid
     * for UserEvent

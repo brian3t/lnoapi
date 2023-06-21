@@ -10,12 +10,13 @@ Changelog
 For bs4 support, need to edit config/params.php
 
 2018/10/08
+
 - Scrape reverbnat1on
 - Overall improvement
 
 2018/10/05
-- Attr for venue, band and event, to save JSON data into Mysql8
 
+- Attr for venue, band and event, to save JSON data into Mysql8
 
 INSTALL
 --------
@@ -24,9 +25,9 @@ Config files: `config/db.php` `config/params.php` `api/params.php` `models/const
 `chmod -R 777 web/assets`  
 `chmod -R 777 runtime`  
 `cp -aR vendor/bower-asset ./vendor/bower`  
-`cp -aR vendor/npm-asset ./vendor/npm`  
+`cp -aR vendor/npm-asset ./vendor/npm`
 
-
+Refer to DEVNOTE.md for additional setup
 
 CRONJOBS
 --------
@@ -46,12 +47,13 @@ Screenshot:
 ![alt tag](http://i.imgur.com/NyNASU9.png)
 
 + Steps to scrape SDR:
-    + dl/scrape-sdr
-    + dl/pull-event-sdr
-    + dl/venue-addr-sdr
-    + magic/pull-lat-lng
-    
+  + dl/scrape-sdr
+  + dl/pull-event-sdr
+  + dl/venue-addr-sdr
+  + magic/pull-lat-lng
+
 + Steps to scrape Reverb:
-    +  dl/scrape-reverb-all
-  
-+ tool: bbot populate event_comment
+  + dl/scrape-reverb-all
+
++ tool:
+  + bbot populate event_comment

@@ -48,23 +48,6 @@ $this->registerJs($search);
             'class' => 'soc\yii2helper\grid\EditColumn',
         ],
         [
-            'attribute' => 'user_id',
-            'label' => 'User',
-            'value' => function ($model) {
-                if ($model->user) {
-                    return $model->user->username;
-                } else {
-                    return NULL;
-                }
-            },
-            'filterType' => GridView::FILTER_SELECT2,
-            'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
-            'filterWidgetOptions' => [
-                'pluginOptions' => ['allowClear' => true],
-            ],
-            'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
-        ],
-        [
             'attribute' => 'venue_id',
             'label' => 'Venue',
             'format'=>'raw',
@@ -110,6 +93,23 @@ $this->registerJs($search);
         'twitter',
         'facebook',
         'website',
+        [
+            'attribute' => 'user_id',
+            'label' => 'Claimed By',
+            'value' => function ($model) {
+                if ($model->user) {
+                    return $model->user->username;
+                } else {
+                    return NULL;
+                }
+            },
+            'filterType' => GridView::FILTER_SELECT2,
+            'filter' => \yii\helpers\ArrayHelper::map(\app\models\User::find()->asArray()->all(), 'id', 'username'),
+            'filterWidgetOptions' => [
+                'pluginOptions' => ['allowClear' => true],
+            ],
+            'filterInputOptions' => ['placeholder' => 'User', 'id' => 'grid--user_id']
+        ],
         [
             'class' => 'yii\grid\ActionColumn',
         ],

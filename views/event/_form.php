@@ -8,18 +8,18 @@ use yii\widgets\ActiveForm;
 /* @var $model app\models\Event */
 /* @var $form yii\widgets\ActiveForm */
 
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END,
     'viewParams' => [
-        'class' => 'BandEvent', 
-        'relID' => 'band-event', 
+        'class' => 'BandEvent',
+        'relID' => 'band-event',
         'value' => \yii\helpers\Json::encode($model->bandEvents),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
 ]);
-\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END, 
+\mootensai\components\JsBlock::widget(['viewFile' => '_script', 'pos'=> \yii\web\View::POS_END,
     'viewParams' => [
-        'class' => 'UserEvent', 
-        'relID' => 'user-event', 
+        'class' => 'UserEvent',
+        'relID' => 'user-event',
         'value' => \yii\helpers\Json::encode($model->userEvents),
         'isNewRecord' => ($model->isNewRecord) ? 1 : 0
     ]
@@ -50,18 +50,28 @@ use yii\widgets\ActiveForm;
         ],
     ]); ?>
 
-    <?= $form->field($model, 'date')->label('Event Date')->widget(\kartik\datecontrol\DateControl::classname(), [
-        'type' => \kartik\datecontrol\DateControl::FORMAT_DATE,
-        'saveFormat' => 'php:Y-m-d',
+    <?= $form->field($model, 'start_time')->label('Event Start At')->widget(\kartik\datecontrol\DateControl::classname(), [
+        'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
+        'saveFormat' => 'php:H:i:s',
         'ajaxConversion' => true,
         'options' => [
             'pluginOptions' => [
-                'placeholder' => 'Choose Date',
+                'placeholder' => 'Choose Start Time',
                 'autoclose' => true
             ]
         ],
     ]); ?>
-
+    <?= $form->field($model, 'end_time')->label('Event End At')->widget(\kartik\datecontrol\DateControl::className(), [
+       'type' => \kartik\datecontrol\DateControl::FORMAT_TIME,
+       'saveFormat' => 'php:H:i:s',
+       'ajaxConversion' => true,
+       'options' => [
+           'pluginOptions' => [
+               'placeholder' => 'Choose End Time',
+               'autoclose' => true
+           ]
+       ]
+   ]); ?>
     <?php
 /*    echo $form->field($model, 'start_time')->widget(TimePicker::classname(), []);
     */?>
@@ -69,6 +79,7 @@ use yii\widgets\ActiveForm;
     <?php
 //    echo $form->field($model, 'end_time')->widget(TimePicker::classname(), []);
     ?>
+   <?= $form->field($model, 'short_desc')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true, 'placeholder' => 'Name']) ?>
 
@@ -89,6 +100,17 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'facebook')->textInput(['maxlength' => true, 'placeholder' => 'Facebook']) ?>
 
     <?= $form->field($model, 'website')->textInput(['maxlength' => true, 'placeholder' => 'Website']) ?>
+    <?= $form->field($model, 'start_datetime_utc')->widget(\kartik\datecontrol\DateControl::classname(), [
+           'type' => \kartik\datecontrol\DateControl::FORMAT_DATETIME,
+           'saveFormat' => 'php:Y-m-d H:i:s',
+           'ajaxConversion' => true,
+           'options' => [
+               'pluginOptions' => [
+                   'placeholder' => 'Choose Start Datetime Utc',
+                   'autoclose' => true,
+               ]
+           ],
+       ]); ?>
 
     <?php
     $forms = [

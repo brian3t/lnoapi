@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use soc\yii2helper\models\ModelB3tTrait;
 use Yii;
 use \app\models\base\EventComment as BaseEventComment;
 
@@ -10,6 +11,7 @@ use \app\models\base\EventComment as BaseEventComment;
  */
 class EventComment extends BaseEventComment
 {
+  use ModelB3tTrait;
     /**
      * @inheritdoc
      */
@@ -17,13 +19,11 @@ class EventComment extends BaseEventComment
     {
         return array_replace_recursive(parent::rules(),
 	    [
+            [['event_id', 'created_by'], 'required'],
+            [['event_id', 'created_by', 'edited_by'], 'integer'],
             [['created_at', 'updated_at', 'edited_at'], 'safe'],
-            [['created_by'], 'required'],
-            [['created_by', 'edited_by'], 'integer'],
             [['comment'], 'string', 'max' => 800],
-            [['lock'], 'default', 'value' => '0'],
-            [['lock'], 'mootensai\components\OptimisticLockValidator']
         ]);
     }
-	
+
 }

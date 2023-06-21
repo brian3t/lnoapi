@@ -37,12 +37,6 @@ use yii\behaviors\BlameableBehavior;
  * @property string $genre
  * @property string $start_datetime_utc
  * @property string $start_time_utc
- *
- * @property \app\models\BandEvent[] $bandEvents
- * @property \app\models\User $createdBy
- * @property \app\models\User $user
- * @property \app\models\Venue $venue
- * @property \app\models\UserEvent[] $userEvents
  * @property string $band_urls [varchar(800)]
  * @property string $last_scraped_utc [datetime]
  * @property string $scrape_msg [varchar(800)]
@@ -50,6 +44,14 @@ use yii\behaviors\BlameableBehavior;
  * @property string $scrape_url [varchar(200)]
  * @property string $tz [varchar(120)]
  * @property string $addi_det [varchar(800)]  Additional details
+ *
+ * @property \app\models\BandEvent[] $bandEvents
+ * @property \app\models\User $createdBy
+ * @property \app\models\User $user
+ * @property \app\models\Venue $venue
+* @property \app\models\EventComment[] $eventComments
+ * @property \app\models\UserEvent[] $userEvents
+
  */
 class Event extends \yii\db\ActiveRecord
 {
@@ -67,6 +69,7 @@ class Event extends \yii\db\ActiveRecord
             'createdBy',
             'user',
             'venue',
+           'eventComments',
             'userEvents'
         ];
     }
@@ -159,7 +162,7 @@ class Event extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(\app\models\User::className(), ['id' => 'user_id'])->inverseOf('events');
+        return $this->hasOne(\app\models\User::class, ['id' => 'user_id'])->inverseOf('events');
     }
 
     /**
@@ -169,6 +172,15 @@ class Event extends \yii\db\ActiveRecord
     {
         return $this->hasOne(\app\models\Venue::className(), ['id' => 'venue_id'])->inverseOf('events');
     }
+
+   /**
+    * @return \yii\db\ActiveQuery
+    */
+   public function getEventComments()
+   {
+       return $this->hasMany(\app\models\EventComment::className(), ['event_id' => 'id'])->inverseOf('event');
+   }
+
 
     /**
      * @return \yii\db\ActiveQuery

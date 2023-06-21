@@ -104,6 +104,14 @@ class User extends BaseUser
     return [];//disable created_at updated_at
   }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getEvents()
+    {
+        return $this->hasMany(\app\models\Event::class, ['user_id' => 'id'])->inverseOf('user');
+    }
+
   public function beforeSave($insert) {
     if (!$insert && ($this->is_btt > 0)) {
       $this->username = strtolower($this->first_name . '.' . $this->last_name . '.ny.' . strval(rand(3, 10)));

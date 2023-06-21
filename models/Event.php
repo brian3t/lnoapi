@@ -4,8 +4,10 @@ namespace app\models;
 
 use app\models\base\Event as BaseEvent;
 use soc\yii2helper\models\ModelB3tTrait;
+use yii\db\Exception;
 use yii\helpers\ArrayHelper;
 
+const POPULATE_MODE = true;
 /**
  * This is the model class for table "event".
  */
@@ -53,7 +55,32 @@ class Event extends BaseEvent
         }
     }
 
-    public function extraFields()
+  /**
+   * @throws Exception
+   */
+  public function afterSave($insert, $changedAttributes): void {
+      parent::afterSave($insert, $changedAttributes);
+      if (!$insert) return;
+      if (POPULATE_MODE !== true) return;
+      //Populate mode: if new record; populate comments
+      $count_comments = EventComment::find()->where(['event_id' => $this->id])->count();
+      if ($count_comments > 7) return;
+      $user_ids = [rand(6,100), rand(6,100), rand(6,100), rand(6,100), rand(6,100), rand(6,100), rand(6,100)];//7 commenters
+      $conn = \Yii::$app->db;
+      foreach ($user_ids as $user_id){
+        $event_comment = new EventComment();
+        $event_comment->detachBehavior('blameable');
+        $event_comment->event_id = $this->id;
+        $event_comment->created_by = $user_id;
+        $event_comment->comment = "I'm going to this event";
+        $event_comment->saveAndLogError();
+        //to overwrite the blameable behavior:
+        /*$set_commenter_cmd = $conn->createCommand('UPDATE event_comment set edited_by=null,created_by=:created_by');
+        $set_commenter_cmd->bindParam(':created_by', $user_id)->queryAll();*/
+      }
+    }
+
+  public function extraFields()
     {
         return ['bands','first_band'];
     }
