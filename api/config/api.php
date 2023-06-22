@@ -24,7 +24,8 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-                    'levels' => ['error', 'warning'],
+//                    'levels' => ['error', 'warning'],
+                    'levels' => ['error', 'warning', 'trace', 'profile'],
 //                    'levels' => ['error'],
                     // Create API log in the standard log dir
                     // But in file 'api.log':
@@ -41,7 +42,7 @@ $config = [
                 [
                     'class' => 'yii\rest\UrlRule',
                     'pluralize' => false,
-                    'controller' => ['v1/user', 'v1/order', 'v1/band', 'v1/venue', 'v1/event', 'v1/band-event', 'v1/test'],
+                    'controller' => ['v1/user', 'v1/order', 'v1/band', 'v1/venue', 'v1/event', 'v1/event-comment', 'v1/band-event', 'v1/test'],
                     'patterns' => ['PUT,PATCH {id}' => 'update', 'DELETE {id}' => 'delete', 'GET,HEAD {id}' => 'view', 'POST' => 'create', 'GET,HEAD' => 'index', '{id}' => 'options'
                         , '' => 'options'],
                     // 'extraPatterns' => [

@@ -159,7 +159,7 @@ class Venue extends \yii\db\ActiveRecord
      */
     public function getCreatedBy()
     {
-        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by'])->inverseOf('venues');
+        return $this->hasOne(\app\models\User::className(), ['id' => 'created_by']);
     }
 
     /**
@@ -167,7 +167,7 @@ class Venue extends \yii\db\ActiveRecord
      */
     public function getUser()
     {
-        return $this->hasOne(\app\models\User::className(), ['id' => 'user_id'])->inverseOf('venues');
+        return $this->hasOne(\app\models\User::className(), ['id' => 'user_id']);
     }
 
     /**
