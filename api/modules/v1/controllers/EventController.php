@@ -7,7 +7,7 @@ namespace app\api\modules\v1\controllers;
 
 use app\api\base\controllers\BaseActiveController;
 
-require_once realpath(dirname(dirname(dirname(dirname(__DIR__))))) . "/models/constants.php";
+require_once realpath(dirname(__DIR__, 4)) . "/models/constants.php";
 
 class EventController extends BaseActiveController
 {
