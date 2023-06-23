@@ -24,8 +24,8 @@ $config = [
             'targets' => [
                 [
                     'class' => 'yii\log\FileTarget',
-//                    'levels' => ['error', 'warning'],
-                    'levels' => ['error', 'warning', 'trace', 'profile'],
+                    'levels' => ['error', 'warning'],
+//                    'levels' => ['error', 'warning', 'trace', 'profile'],
 //                    'levels' => ['error'],
                     // Create API log in the standard log dir
                     // But in file 'api.log':
