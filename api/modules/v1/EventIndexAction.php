@@ -25,10 +25,15 @@ class EventIndexAction extends IndexAction
 //        $searchModel->search($params);
 //        $dataProvider = $searchModel->search($params);
         unset($params['page']);
-        $page_size = $params['page_size'] ?? false;
+        $page_size = $params['page_size'] ?? 100;//default 50
         unset($params['page_size']);
-        $limit = $params['limit'] ?? 30;
+        $limit = $params['limit'] ?? 100;
         unset($params['limit']);
+        /*$page_num = $params['page_num'] ?? null;
+        $pagination = false;
+        if ($page_num > 0){
+          $pagination = ['pageSize' => $page_size];
+        }*/
         $query = new EventQuery($this->modelClass);
         $query->limit = $limit;
         $query->set_query_params($params);
@@ -40,7 +45,7 @@ class EventIndexAction extends IndexAction
             [
                 'query' => $query,
                 'pagination' => [
-                    'pageSize' => $page_size ?? 20,
+                    'pageSize' => $page_size,
 //                    'totalCount' => $count
                 ],
             ]
