@@ -12,6 +12,7 @@ use app\controllers\user\SettingsController;
 use app\models\User;
 use Yii;
 use yii\console\Exception;
+use yii\web\BadRequestHttpException;
 use yii\web\UnauthorizedHttpException;
 
 class UserController extends BaseActiveController
@@ -158,9 +159,10 @@ class UserController extends BaseActiveController
       $password = strrev($username);
     }
     if (strlen($password) < 6) return $this->err("Error: password must be at least 6 characters");
+    if (strlen($username) < 3) return $this->err("Error: username must be at least 3 characters");
     $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
     if ($exists) {
-      return $this->err('Error: username or email already exists');
+      return $this->err('Error: username or email already exists', 400);
     }
     $oldApp = \Yii::$app;
     new \yii\console\Application([
