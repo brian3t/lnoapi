@@ -57,3 +57,6 @@ Screenshot:
 
 + tool:
   + bbot populate event_comment
++ API endpoints:
+  + user/signup: 
+  + user/signin: {username, pw}

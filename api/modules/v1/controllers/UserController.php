@@ -157,6 +157,7 @@ class UserController extends BaseActiveController
     if (!$password) {//guest mode
       $password = strrev($username);
     }
+    if (strlen($password) < 6) return $this->err("Error: password must be at least 6 characters");
     $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
     if ($exists) {
       return $this->err('Error: username or email already exists');
@@ -190,9 +191,9 @@ class UserController extends BaseActiveController
       ]
     );
     try {
-      $result = Yii::$app->runAction('user/create', [$email, $username, $password, 'interactive' => false]);
+      $result = Yii::$app->runAction('user/create/index', [$email, $username, $password, 'interactive' => false]);
     } catch (Exception $e) {
-      return $this->err('fail user/create');
+      return $this->err('fail user/create/index');
     }
     \Yii::$app = $oldApp;
     $user = User::findOne(['username' => $username]);
