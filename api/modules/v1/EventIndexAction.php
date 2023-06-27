@@ -7,6 +7,9 @@ use soc\yii2helper\PHPHelper;
 use yii\data\ActiveDataProvider;
 use yii\rest\IndexAction;
 
+/**
+ * 6/26/23 b3t Add operator gt lt
+ */
 class EventIndexAction extends IndexAction
 {
 
@@ -29,6 +32,17 @@ class EventIndexAction extends IndexAction
         unset($params['page_size']);
         $limit = $params['limit'] ?? 100;
         unset($params['limit']);
+        foreach ($params as $col_and_operator => $cond){
+          if (!str_contains($col_and_operator, '__')) continue;
+          [$col_only, $operator] = explode('__', $col_and_operator);
+          switch ($operator){
+            case 'gt': {
+              //future, this can replace the _from and _to from
+              break;
+            }
+            default: break;
+          }
+        }
         /*$page_num = $params['page_num'] ?? null;
         $pagination = false;
         if ($page_num > 0){

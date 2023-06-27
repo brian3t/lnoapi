@@ -47,7 +47,8 @@ class EventQuery extends \yii\db\ActiveQuery
 
     /**
      * Set query params
-     * This method also prepares all the neccessary where_s
+     * This method also prepares all the necessary where_s
+     * e.g.: date_from, gt, date_to, date_offset_bk
      * bn Future: this will become part of Core ( YiiHelper )
      * @param $params
      */
@@ -63,27 +64,33 @@ class EventQuery extends \yii\db\ActiveQuery
                 unset($params[$param]);
                 continue;
             }
-            if (PHPHelper::ends_with($param, '_from')) {
-                $param = str_replace('_from', '', $param);
+            if (PHPHelper::ends_with($param, '__from')) {
+                $param = str_replace('__from', '', $param);
                 $this->andWhere(['>=', $param, $val]);
                 unset($params[$param]);
                 continue;
             }
-            if (PHPHelper::ends_with($param, '_to')) {
-                $param = str_replace('_to', '', $param);
+            if (str_ends_with($param, '__gt')) {
+                $param = str_replace('__gt', '', $param);
+                $this->andWhere(['>', $param, $val]);
+                unset($params[$param]);
+                continue;
+            }
+            if (PHPHelper::ends_with($param, '__to')) {
+                $param = str_replace('__to', '', $param);
                 $this->andWhere(['<=', $param, $val]);
                 unset($params[$param]);
                 continue;
             }
-            if (PHPHelper::ends_with($param, '_offset_bk')) {
-                $param = str_replace('_offset_bk', '', $param);
+            if (PHPHelper::ends_with($param, '__offset_bk')) {
+                $param = str_replace('__offset_bk', '', $param);
                 $val = intval($val);
                 $this->andWhere(['>=', $param, new Expression("DATE_SUB(CURDATE(), INTERVAL $val DAY)")]);
                 unset($params[$param]);
                 continue;
             }
-            if (PHPHelper::ends_with($param, '_offset_fwd')) {
-                $param = str_replace('_offset_fwd', '', $param);
+            if (PHPHelper::ends_with($param, '__offset_fwd')) {
+                $param = str_replace('__offset_fwd', '', $param);
                 $val = intval($val);
                 $this->andWhere(['<=', $param, new Expression("DATE_ADD(CURDATE(), INTERVAL $val DAY)")]);
                 unset($params[$param]);
