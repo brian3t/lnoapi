@@ -226,15 +226,32 @@ class UserController extends BaseActiveController
   }
 
   /**
-   * Sign in via API
+   * Sign in via API; using GET
    * username in param, pw in header
    */
-  public function actionSignin()
+  public function actionSigninget()
   {
     $username = Yii::$app->request->get('username');
     $pw = Yii::$app->request->headers->get('pw');
     if (!$pw || !$username) return $this->err('Must provide username in param, password in header pw', 401);
     $identity = User::findOne(["username" => $username]);
+    if (!($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
+    $hash = $identity->password_hash;
+    $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
+    if (!$login_result) return $this->err('Wrong password, please try again', 401);
+    return ['msg' => 'Login validated', 'id' => $identity->id];
+  }
+  /**
+   * Sign in via API, using POST
+   * Need: username in body, pw in header
+   */
+  public function actionSignin()
+  {
+    $username = Yii::$app->request->post('username');
+    $pw = Yii::$app->request->headers->get('pw');
+    if (!$pw || !$username) return $this->err('Must provide username in body, password in header pw', 401);
+    $identity = User::findOne(["username" => $username]);
+    if (!$identity instanceof User) $identity = User::findOne(["email" => $username]);
     if (!($identity instanceof User)) return $this->err("Username not found. Please double check.", 401);
     $hash = $identity->password_hash;
     $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
