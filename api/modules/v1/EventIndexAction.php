@@ -28,9 +28,9 @@ class EventIndexAction extends IndexAction
 //        $searchModel->search($params);
 //        $dataProvider = $searchModel->search($params);
         unset($params['page']);
-        $page_size = $params['page_size'] ?? 100;//default 50
+        $page_size = $params['page_size'] ?? 50;//default 50
         unset($params['page_size']);
-        $limit = $params['limit'] ?? 100;
+        $limit = $params['limit'] ?? 50;
         unset($params['limit']);
         foreach ($params as $col_and_operator => $cond){
           if (!str_contains($col_and_operator, '__')) continue;

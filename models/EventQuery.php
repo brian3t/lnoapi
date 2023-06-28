@@ -76,6 +76,12 @@ class EventQuery extends \yii\db\ActiveQuery
                 unset($params[$param]);
                 continue;
             }
+            if (str_ends_with($param, '__lt')) {
+                $param = str_replace('__lt', '', $param);
+                $this->andWhere(['<', $param, $val]);
+                unset($params[$param]);
+                continue;
+            }
             if (PHPHelper::ends_with($param, '__to')) {
                 $param = str_replace('__to', '', $param);
                 $this->andWhere(['<=', $param, $val]);
