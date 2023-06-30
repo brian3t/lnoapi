@@ -47,8 +47,8 @@ class EventComment extends \yii\db\ActiveRecord
         return [
             [['event_id', 'created_by'], 'required'],
             [['event_id', 'created_by', 'edited_by'], 'integer'],
-            [['created_at', 'updated_at', 'edited_at'], 'safe'],
-            [['comment'], 'string', 'max' => 800],
+            [['created_at', 'created_by', 'updated_at', 'edited_at'], 'safe'],
+            [['comment'], 'string', 'max' => 800, 'min' => 1],
         ];
     }
 

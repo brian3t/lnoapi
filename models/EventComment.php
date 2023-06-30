@@ -26,4 +26,11 @@ class EventComment extends BaseEventComment
         ]);
     }
 
+    public function beforeValidate() {
+    if ($this->created_by > 0 || $this->edited_by > 0){
+      $this->detachBehavior('blameable');
+    }
+      return parent::beforeValidate();
+    }
+
 }
