@@ -12,8 +12,7 @@ use yii\rest\IndexAction;
  */
 class EventIndexAction extends IndexAction
 {
-
-    // prepare and return a data provider for "index" action
+  // prepare and return a data provider for "index" action
     public function prepareDataProvider() {
         $params = \Yii::$app->getRequest()->getQueryParams();
         PHPHelper::api_param_pre($params);

@@ -33,4 +33,7 @@ class EventComment extends BaseEventComment
       return parent::beforeValidate();
     }
 
+    public function createdByQuery(){
+      return $this->createRelationQuery('app\models\User', ['id' => 'created_by'], true);
+    }
 }
