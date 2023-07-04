@@ -54,6 +54,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'website:url',
             'youtube:url',
             'ytlink_first:url',
+            'ytlink_first_tnail:image',
             'instagram:url',
             'facebook',
             'twitter',
