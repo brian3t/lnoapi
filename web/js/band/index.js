@@ -1,5 +1,5 @@
 //let's get the api url
-let apiurl = window.location.href.replace('://', '://api.').replace('/index', '')
+let apiurl = window.location.href.replace('be.', 'api.').replace('/index', '')
 let url_parts = apiurl.split('/')
 let endpoint = url_parts[url_parts.length - 1]
 apiurl = apiurl.replace(endpoint, 'v1/' + endpoint)
