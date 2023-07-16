@@ -239,7 +239,7 @@ class UserController extends BaseActiveController
     $hash = $identity->password_hash;
     $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
     if (!$login_result) return $this->err('Wrong password, please try again', 401);
-    return ['msg' => 'Login validated', 'id' => $identity->id];
+    return ['msg' => 'Login validated', 'id' => $identity->id, 'prof_name' => $identity->profile->name ?? ''];
   }
   /**
    * Sign in via API, using POST
@@ -256,6 +256,6 @@ class UserController extends BaseActiveController
     $hash = $identity->password_hash;
     $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
     if (!$login_result) return $this->err('Wrong password, please try again', 401);
-    return ['msg' => 'Login validated', 'id' => $identity->id];
+    return ['msg' => 'Login validated', 'id' => $identity->id, 'prof_name' => $identity->profile->name ?? ''];
   }
 }
