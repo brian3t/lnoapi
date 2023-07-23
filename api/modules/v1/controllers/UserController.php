@@ -269,11 +269,13 @@ class UserController extends BaseActiveController
   public function actionDel()
   {
     $username = Yii::$app->request->post('username');
+    $userid = Yii::$app->request->headers->get('userid');
     $pw = Yii::$app->request->headers->get('pw');
-    if (!$pw || !$username) return $this->err('Must provide username in body, password in header pw', 401);
+    if (!$pw || (!$username && !$userid)) return $this->err('Must provide username in body, password in header pw', 401);
     $identity = User::findOne(["username" => $username]);
     if (!$identity instanceof User) $identity = User::findOne(["email" => $username]);
-    if (!($identity instanceof User)) return ['msg'=> 'User account deleted', 'id' => null];
+    if (!$identity instanceof User) $identity = User::findOne(["id" => $userid]);
+    if (!($identity instanceof User)) return ['msg'=> 'User account already deleted before', 'id' => null];
     $hash = $identity->password_hash;
     $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
     if (!$login_result) return $this->err('Wrong password, please try again', 401);
