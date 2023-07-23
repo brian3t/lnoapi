@@ -11,6 +11,7 @@ use app\api\base\controllers\BaseActiveController;
 use app\controllers\user\SettingsController;
 use app\models\User;
 use Yii;
+use yii\base\Theme;
 use yii\console\Exception;
 use yii\web\BadRequestHttpException;
 use yii\web\UnauthorizedHttpException;
@@ -150,10 +151,10 @@ class UserController extends BaseActiveController
   {
     $vars = Yii::$app->getRequest()->getBodyParams();
     $now = new \DateTime();
-    $username = $vars['username'] ?? ('guest' . $now->format('ymd'));
+    $username = $vars['username'] ?? ('guest' . $now->format('ymdHi'));
     $guest_mode = str_starts_with($username, 'guest');
-    $append_id = $vars['append_id'] ?? $guest_mode;
-    $email = $vars['email'] ?? ($guest_mode ? 'someids@yahoo.com' : null);
+//    $append_id = $vars['append_id'] ?? $guest_mode;
+    $email = $vars['email'] ?? ($guest_mode ? ("someids" . $now->format('ymdHi') . "@yahoo.com") : null);
     $password = $vars['password'] ?? null;
     if (!$password) {//guest mode
       $password = strrev($username);
@@ -162,7 +163,7 @@ class UserController extends BaseActiveController
     if (strlen($username) < 3) return $this->err("Error: username must be at least 3 characters");
     $exists = \app\models\User::findBySql("SELECT 1 FROM user WHERE username = '${username}' OR email = '${email}' ")->exists();
     if ($exists) {
-      return $this->err('Error: username or email already exists', 400);
+      return $this->err("Error: username or email already exists $username $email", 400);
     }
     $oldApp = \Yii::$app;
     new \yii\console\Application([
@@ -202,9 +203,9 @@ class UserController extends BaseActiveController
     if (!($user instanceof User)) {
       return $this->err('Error creating user. Please try again or contact our support. Thank you');
     }
-    if ($append_id === true) {
+    /*if ($append_id === true) {
       $user->username = $user->username . $user->id;
-    }
+    }*/
     if ($guest_mode) $user->email = $user->username . '@notconfirmed.com';
     $user->registration_ip = Yii::$app->request->userIP;
     try {
@@ -222,7 +223,7 @@ class UserController extends BaseActiveController
         Yii::error($exception);
       }
     }
-    return ['username' => $user->username, 'pw' => $password];
+    return ['username' => $user->username, 'pw' => $password, 'id' => $user->id];
   }
 
   /**
@@ -257,5 +258,28 @@ class UserController extends BaseActiveController
     $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
     if (!$login_result) return $this->err('Wrong password, please try again', 401);
     return ['msg' => 'Login validated', 'id' => $identity->id, 'prof_name' => $identity->profile->name ?? ''];
+  }
+  /**
+   * Sign in via API, using POST
+   * Need: username in body, pw in header
+   */
+  public function actionDel()
+  {
+    $username = Yii::$app->request->post('username');
+    $pw = Yii::$app->request->headers->get('pw');
+    if (!$pw || !$username) return $this->err('Must provide username in body, password in header pw', 401);
+    $identity = User::findOne(["username" => $username]);
+    if (!$identity instanceof User) $identity = User::findOne(["email" => $username]);
+    if (!($identity instanceof User)) return ['msg'=> 'User account deleted', 'id' => null];
+    $hash = $identity->password_hash;
+    $login_result = Yii::$app->getSecurity()->validatePassword($pw, $hash);
+    if (!$login_result) return $this->err('Wrong password, please try again', 401);
+    //login successful
+    try {
+      $identity->delete();
+    } catch (\Throwable $e) {
+      return $this->err('Error deleting account. Please contact our support team');
+    }
+    return ['msg' => 'User account deleted', 'id' => $identity->id];
   }
 }
