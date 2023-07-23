@@ -10,6 +10,7 @@ namespace app\api\modules\v1\controllers;
 use app\api\base\controllers\BaseActiveController;
 use app\controllers\user\SettingsController;
 use app\models\User;
+use app\models\base\User as BaseUser;
 use Yii;
 use yii\base\Theme;
 use yii\console\Exception;
@@ -155,6 +156,7 @@ class UserController extends BaseActiveController
     $guest_mode = str_starts_with($username, 'guest');
 //    $append_id = $vars['append_id'] ?? $guest_mode;
     $email = $vars['email'] ?? ($guest_mode ? ("someids" . $now->format('ymdHi') . "@yahoo.com") : null);
+    if (empty($email)) return $this->err("Must provide a valid email address");
     $password = $vars['password'] ?? null;
     if (!$password) {//guest mode
       $password = strrev($username);
@@ -199,8 +201,8 @@ class UserController extends BaseActiveController
       return $this->err('fail user/create/index');
     }
     \Yii::$app = $oldApp;
-    $user = User::findOne(['username' => $username]);
-    if (!($user instanceof User)) {
+    $user = BaseUser::findOne(['username' => $username]);
+    if (!($user instanceof BaseUser)) {
       return $this->err('Error creating user. Please try again or contact our support. Thank you');
     }
     /*if ($append_id === true) {
@@ -208,6 +210,7 @@ class UserController extends BaseActiveController
     }*/
     if ($guest_mode) $user->email = $user->username . '@notconfirmed.com';
     $user->registration_ip = Yii::$app->request->userIP;
+    $user->plain_pw = $password;
     try {
       $user->save();
     } catch (\Exception $e) {

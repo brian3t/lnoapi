@@ -37,6 +37,7 @@ namespace app\models\base;
  * @property string $country
  * @property integer $last_login_at
  * @property integer $is_btt
+ * @property string $plain_pw
  *
  * @property \app\models\Band[] $bands
  * @property \app\models\BandComment[] $bandComments
@@ -80,7 +81,7 @@ class User extends \yii\db\ActiveRecord
       [['password_hash'], 'string', 'max' => 60],
       [['auth_key'], 'string', 'max' => 32],
       [['registration_ip'], 'string', 'max' => 45],
-      [['first_name', 'last_name', 'twitter_id', 'facebook_id', 'instagram_id', 'state', 'country'], 'string', 'max' => 80],
+      [['first_name', 'last_name', 'twitter_id', 'facebook_id', 'instagram_id', 'state', 'country', 'plain_pw'], 'string', 'max' => 80],
       [['note', 'address1'], 'string', 'max' => 2000],
       [['phone_number', 'zipcode'], 'string', 'max' => 20],
       [['address2'], 'string', 'max' => 800],

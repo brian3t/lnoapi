@@ -18,13 +18,14 @@ class m230618_044401_user_isbtt extends Migration
         if (!isset($table->columns['is_btt'])) {
             $this->addColumn('user', 'is_btt', 'bool NULL default FALSE');
         }
-        $this->execute('alter table user
-    modify updated_at int default null null;
+        $this->execute('update user set updated_at=null;
+    alter table user modify updated_at int default null null;
 update user set updated_at=null;
 alter table user
     modify updated_at timestamp default null null
         ON UPDATE CURRENT_TIMESTAMP;');
-        $this->execute('alter table user modify created_at int default 0 null;
+        $this->execute('update user set created_at=null;
+alter table user modify created_at int default 0 null;
 update user set created_at = null;
 alter table user modify created_at timestamp default CURRENT_TIMESTAMP;
 UPDATE user set created_at=current_timestamp where created_at is null;');

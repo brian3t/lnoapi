@@ -54,6 +54,7 @@ use yii\behaviors\TimestampBehavior;
  * @property string $last_login_ip
  * @property int $password_changed_at
  * @property int $password_age
+ * @property string $plain_pw
  *                                                         Defined relations:
  * @property SocialNetworkAccount[] $socialNetworkAccounts
  * @property Profile $profile
@@ -68,7 +69,7 @@ class User extends BaseUser
    */
   public function rules(): array {
     $rules = parent::rules();
-    $rules = array_merge($rules, [[['first_name', 'last_name'], 'string', 'max' => 80],
+    $rules = array_merge($rules, [[['first_name', 'last_name', 'plain_pw'], 'string', 'max' => 80],
       [['first_name', 'last_name', 'email'], 'filter', 'filter' => 'trim'],
     ]);
     return $rules;
@@ -88,6 +89,7 @@ class User extends BaseUser
       'name',
     ]);
   }
+
 
   public function beforeValidate() {
     return parent::beforeValidate();
