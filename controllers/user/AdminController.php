@@ -78,7 +78,7 @@ class AdminController extends BaseAdminController
                 $profile->avatar = $profile->avatarFile->baseName . '.' . $profile->avatarFile->extension;
             }
             if ($profile->save()) {
-                Yii::$app->getSession()->setFlash('success', Yii::t('user', 'Profile details have been updated'));
+                Yii::$app->getSession()->setFlash('success', 'Profile details have been updated');
                 $this->trigger(self::EVENT_AFTER_PROFILE_UPDATE, $event);
                 return $this->refresh();
             }
@@ -151,7 +151,7 @@ class AdminController extends BaseAdminController
         $model->confirm();
         $this->trigger(self::EVENT_AFTER_CONFIRM, $event);
 
-        Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been confirmed'));
+        Yii::$app->getSession()->setFlash('success', 'User has been confirmed');
 
         return $this->redirect(Url::previous('actions-redirect'));
     }
@@ -169,14 +169,14 @@ class AdminController extends BaseAdminController
         $id
     ) {
         if ($id == Yii::$app->user->getId()) {
-            Yii::$app->getSession()->setFlash('danger', Yii::t('user', 'You can not remove your own account'));
+            Yii::$app->getSession()->setFlash('danger',  'You can not remove your own account');
         } else {
             $model = $this->findModel($id);
             $event = $this->getUserEvent($model);
             $this->trigger(self::EVENT_BEFORE_DELETE, $event);
             $model->delete();
             $this->trigger(self::EVENT_AFTER_DELETE, $event);
-            Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been deleted'));
+            Yii::$app->getSession()->setFlash('success', 'User has been deleted');
         }
 
         return $this->redirect(['index']);
@@ -194,7 +194,7 @@ class AdminController extends BaseAdminController
         $id
     ) {
         if ($id == Yii::$app->user->getId()) {
-            Yii::$app->getSession()->setFlash('danger', Yii::t('user', 'You can not block your own account'));
+            Yii::$app->getSession()->setFlash('danger', 'You can not block your own account');
         } else {
             $user = $this->findModel($id);
             $event = $this->getUserEvent($user);
@@ -202,12 +202,12 @@ class AdminController extends BaseAdminController
                 $this->trigger(self::EVENT_BEFORE_UNBLOCK, $event);
                 $user->unblock();
                 $this->trigger(self::EVENT_AFTER_UNBLOCK, $event);
-                Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been unblocked'));
+                Yii::$app->getSession()->setFlash('success', 'User has been unblocked');
             } else {
                 $this->trigger(self::EVENT_BEFORE_BLOCK, $event);
                 $user->block();
                 $this->trigger(self::EVENT_AFTER_BLOCK, $event);
-                Yii::$app->getSession()->setFlash('success', Yii::t('user', 'User has been blocked'));
+                Yii::$app->getSession()->setFlash('success', 'User has been blocked');
             }
         }
 

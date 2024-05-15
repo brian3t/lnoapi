@@ -41,7 +41,7 @@ if (! empty($profile->avatar)):
     <div class="form-group ">
         <label class="col-lg-3 control-label" for="profile-display-avatar">Current profile
             picture</label>
-        
+
         <div class="col-lg-9">
             <img src= "<?= API_BASE ?>img/avatar/<?= \Yii::$app->user->id . '/' . $profile->avatar ?>" class="avatar"
                  alt="avatar">
@@ -62,7 +62,7 @@ endif;
 
 <div class="form-group">
     <div class="col-lg-offset-3 col-lg-9">
-        <?= Html::submitButton(Yii::t('user', 'Update'), ['class' => 'btn btn-block btn-success']) ?>
+        <?= Html::submitButton('Update', ['class' => 'btn btn-block btn-success']) ?>
     </div>
 </div>
 

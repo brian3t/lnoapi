@@ -20,10 +20,11 @@ For bs4 support, need to edit config/params.php
 
 INSTALL
 --------
-Config files: `config/db.php` `config/params.php` `api/params.php` `models/constant.php`
+Copy .gitignored files: `config/db.php` `config/params.php` `api/params.php` `web/index.php` 
+`api/index.php`
 
-`chmod -R 777 web/assets`  
-`chmod -R 777 runtime`  
+
+`chmod -R 777 web/assets && chmod -R 777 runtime`  
 `cp -aR vendor/bower-asset ./vendor/bower`  
 `cp -aR vendor/npm-asset ./vendor/npm`
 
