@@ -20,13 +20,17 @@ For bs4 support, need to edit config/params.php
 
 INSTALL
 --------
-Copy .gitignored files: `config/db.php` `config/params.php` `api/params.php` `web/index.php` 
+Copy .gitignored files: `config/db.php` `config/params.php` `api/config/params.php` `web/index.php` 
 `api/index.php`
 
 
 `chmod -R 777 web/assets && chmod -R 777 runtime`  
 `cp -aR vendor/bower-asset ./vendor/bower`  
 `cp -aR vendor/npm-asset ./vendor/npm`
+
+If yii2helper is not installed automatically:
+`cd yii2helper` and `git clone git@github.com:brian3t/yii2helper.git .`
+
 
 Refer to DEVNOTE.md for additional setup
 
