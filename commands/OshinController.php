@@ -75,7 +75,7 @@ class OshinController extends Controller
         echo 'Clean event done';
 
         //now delete events older than 2 months
-        \Yii::$app->db->createCommand("DELETE FROM event WHERE date < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ");
+        \Yii::$app->db->createCommand("DELETE FROM event WHERE created_at < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ");
         //now delete events named `event`
         \Yii::$app->db->createCommand("DELETE FROM event WHERE name='event' ");
         echo 'Prune events done';
@@ -88,7 +88,7 @@ class OshinController extends Controller
      */
     public function actionPruneData() {
         $db = \Yii::$app->db;
-        $db->createCommand("DELETE FROM event WHERE date < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ")->execute();
+        $db->createCommand("DELETE FROM event WHERE created_at < DATE_SUB(CURDATE(), INTERVAL 2 MONTH) ")->execute();
         echo "Prune done" . PHP_EOL;
         return 1;
     }

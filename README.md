@@ -36,15 +36,13 @@ Refer to DEVNOTE.md for additional setup
 
 CRONJOBS
 --------
-
 ```
-#0 23 * * * /var/www/lnoapi/yii oshin/prune-data
-#10 0 * * * /var/www/lnoapi/yii oshin/daily-tasks
-#0 0 * * * /var/www/lnoapi/yii dl/scrape-reverb-all
-# tickmas not able to pull start_date; img; Not able to save source 
-#15 0 * * * /var/www/lnoapi/yii dl/scrape-tickmas
-# sdr not able to pull band
-#30 0 * * * /var/www/lnoapi/yii dl/scrape-sdr-al 
+#05/21/24:
+0 23 * * * /var/www/lnoapi/yii oshin/prune-data
+10 0 * * * /var/www/lnoapi/yii oshin/daily-tasks
+0 0 * * * /var/www/lnoapi/yii dl/scrape-reverb-allcities #Brian note future: fix code so that scrape-reverb-all also works
+15 0 * * * /var/www/lnoapi/yii dl/scrape-tickmas
+30 0 * * * /var/www/lnoapi/yii dl/scrape-sdr-all
 ```
 
 Screenshot:
