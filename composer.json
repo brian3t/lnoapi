@@ -54,7 +54,8 @@
     "ext-pdo": "*",
     "colinodell/json5": "^2.2",
     "php-http/guzzle7-adapter": "^1.0",
-    "kartik-v/yii2-widget-activeform": "dev-master"
+    "kartik-v/yii2-widget-activeform": "dev-master",
+    "phpmailer/phpmailer": "^6.9"
   },
   "require-dev": {
     "yiisoft/yii2-debug": "*",
@@ -92,7 +93,8 @@
   },
   "autoload": {
     "psr-4": {
-      "soc\\yii2helper\\": "yii2helper/"
+      "soc\\yii2helper\\": "yii2helper/",
+      "soc\\yiiuser\\": "soc/yiiuser/"
     }
   }
 }

@@ -31,6 +31,11 @@ Copy .gitignored files: `config/db.php` `config/params.php` `api/config/params.p
 If yii2helper is not installed automatically:
 `cd yii2helper` and `git clone git@github.com:brian3t/yii2helper.git .`
 
+```
+mkdir ./soc
+git submodule add git@gitlab.com:brian3t/yii-user.git soc/yiiuser
+```
+In composer.json , configure autoload PSR
 
 Refer to DEVNOTE.md for additional setup
 
