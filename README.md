@@ -42,11 +42,11 @@ Refer to DEVNOTE.md for additional setup
 CRONJOBS
 --------
 ```
-#05/21/24:
+#08/31/24:
 0 23 * * * /var/www/lnoapi/yii oshin/prune-data
 10 0 * * * /var/www/lnoapi/yii oshin/daily-tasks
 0 0 * * * /var/www/lnoapi/yii dl/scrape-reverb-allcities #Brian note future: fix code so that scrape-reverb-all also works
-15 0 * * * /var/www/lnoapi/yii dl/scrape-tickmas
+#15 0 * * * /var/www/lnoapi/yii dl/scrape-tickmas #240831 blocked
 30 0 * * * /var/www/lnoapi/yii dl/scrape-sdr-all
 ```
 
